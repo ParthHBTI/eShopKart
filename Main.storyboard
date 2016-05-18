@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1yd-fF-FSM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kMq-J2-f6y">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -113,7 +113,7 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.91234821081161499" green="0.58999025821685791" blue="0.32082986831665039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="TextLabel" destination="gA5-nb-w6K" id="b21-gy-raS"/>
                                     <segue destination="PGA-fU-wSe" kind="show" id="RYD-Eh-5LV"/>
@@ -533,7 +533,7 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.91234821081161499" green="0.58999025821685791" blue="0.32082986831665039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="UAD-H0-Z6M" kind="show" id="hoQ-Bb-akY"/>
                                 </connections>
@@ -933,7 +933,7 @@
                                             </variation>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.91234821081161499" green="0.58999025821685791" blue="0.32082986831665039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="ryx-Qt-vpC" firstAttribute="height" secondItem="HSd-u1-i9b" secondAttribute="height" id="0L3-Hg-GHn"/>
                                         <constraint firstItem="0I0-To-f3s" firstAttribute="top" secondItem="jxH-10-2Mo" secondAttribute="bottom" constant="6" id="3IN-qt-WHx">
@@ -1083,6 +1083,7 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="7BB-6L-Zx5" kind="show" id="MBa-Rg-5Xk"/>
                                 </connections>
@@ -1653,7 +1654,7 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.91234821081161499" green="0.58999025821685791" blue="0.32082986831665039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1715,7 +1716,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="peu-TI-RGR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3876" y="-3002.25"/>
+            <point key="canvasLocation" x="4021.5" y="-3123.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="o7G-tH-qUl">
@@ -1730,13 +1731,10 @@
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="sdj-NM-hHt">
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
-                    <connections>
-                        <segue destination="UAD-H0-Z6M" kind="relationship" relationship="rootViewController" id="9mq-14-VYX"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ad3-a2-VR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2739" y="-3028.5"/>
+            <point key="canvasLocation" x="2881.5" y="-3091.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hGZ-2n-lfX">
@@ -1754,7 +1752,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G6F-mW-jnc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3282" y="-3028.5"/>
+            <point key="canvasLocation" x="3376.5" y="-3132"/>
         </scene>
         <!--User Profile View Controller-->
         <scene sceneID="73x-zW-iXo">
@@ -1793,7 +1791,7 @@
                                             <constraint firstAttribute="width" secondItem="dCf-55-GFq" secondAttribute="height" multiplier="239:21" id="FMb-LY-Ge4"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -1848,13 +1846,13 @@
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="k9T-3K-c2t"/>
+                                        <exclude reference="m75-8S-soj"/>
+                                        <exclude reference="sMu-ER-cwW"/>
+                                        <exclude reference="V3C-F1-rit"/>
+                                        <exclude reference="cBS-BT-cef"/>
                                         <exclude reference="165-zi-jMa"/>
                                         <exclude reference="goS-58-Oc1"/>
                                         <exclude reference="mk2-hh-jc6"/>
-                                        <exclude reference="V3C-F1-rit"/>
-                                        <exclude reference="cBS-BT-cef"/>
-                                        <exclude reference="m75-8S-soj"/>
-                                        <exclude reference="sMu-ER-cwW"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -1865,13 +1863,13 @@
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="k9T-3K-c2t"/>
+                                        <include reference="m75-8S-soj"/>
+                                        <include reference="sMu-ER-cwW"/>
+                                        <include reference="V3C-F1-rit"/>
+                                        <include reference="cBS-BT-cef"/>
                                         <include reference="165-zi-jMa"/>
                                         <include reference="goS-58-Oc1"/>
                                         <include reference="mk2-hh-jc6"/>
-                                        <include reference="V3C-F1-rit"/>
-                                        <include reference="cBS-BT-cef"/>
-                                        <include reference="m75-8S-soj"/>
-                                        <include reference="sMu-ER-cwW"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1883,6 +1881,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rEM-NA-Yvn" id="7sb-ds-gHe">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="66"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location-icon" translatesAutoresizingMaskIntoConstraints="NO" id="TAv-I4-F9m">
@@ -1913,7 +1912,7 @@
                                                         <constraint firstAttribute="width" secondItem="yH3-ib-BQS" secondAttribute="height" multiplier="10:1" id="Scf-hc-hLA"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
@@ -1984,14 +1983,14 @@
                                                     <exclude reference="4aV-ZL-CVn"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="1p3-Qg-rOn"/>
-                                                    <exclude reference="7eg-eX-uIO"/>
-                                                    <exclude reference="AH1-Ng-iqe"/>
-                                                    <exclude reference="clk-Sf-FRD"/>
-                                                    <exclude reference="eO7-N3-gpc"/>
                                                     <exclude reference="UFq-Sm-EoQ"/>
                                                     <exclude reference="kvq-Qn-adN"/>
                                                     <exclude reference="vYw-ON-ca2"/>
+                                                    <exclude reference="clk-Sf-FRD"/>
+                                                    <exclude reference="eO7-N3-gpc"/>
+                                                    <exclude reference="1p3-Qg-rOn"/>
+                                                    <exclude reference="7eg-eX-uIO"/>
+                                                    <exclude reference="AH1-Ng-iqe"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -2001,18 +2000,18 @@
                                                     <include reference="4aV-ZL-CVn"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="1p3-Qg-rOn"/>
-                                                    <include reference="7eg-eX-uIO"/>
-                                                    <include reference="AH1-Ng-iqe"/>
-                                                    <include reference="clk-Sf-FRD"/>
-                                                    <include reference="eO7-N3-gpc"/>
                                                     <include reference="UFq-Sm-EoQ"/>
                                                     <include reference="kvq-Qn-adN"/>
                                                     <include reference="vYw-ON-ca2"/>
+                                                    <include reference="clk-Sf-FRD"/>
+                                                    <include reference="eO7-N3-gpc"/>
+                                                    <include reference="1p3-Qg-rOn"/>
+                                                    <include reference="7eg-eX-uIO"/>
+                                                    <include reference="AH1-Ng-iqe"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="0.42637512329999999" blue="0.13681530289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="imageIcon" destination="TAv-I4-F9m" id="XgE-Db-VYB"/>
                                             <outlet property="moreBtn" destination="4aV-ZL-CVn" id="vCs-Gy-1vt"/>
@@ -2042,13 +2041,13 @@
                                 <exclude reference="mi8-Ec-gN0"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="8F5-bZ-TCJ"/>
-                                <exclude reference="9ih-Mg-aVt"/>
-                                <exclude reference="J3e-Kb-N20"/>
+                                <exclude reference="pfl-8d-Fa5"/>
                                 <exclude reference="EXm-o9-9pv"/>
                                 <exclude reference="SOa-al-nUg"/>
                                 <exclude reference="Uf9-dW-aIK"/>
-                                <exclude reference="pfl-8d-Fa5"/>
+                                <exclude reference="8F5-bZ-TCJ"/>
+                                <exclude reference="9ih-Mg-aVt"/>
+                                <exclude reference="J3e-Kb-N20"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -2057,13 +2056,13 @@
                                 <include reference="mi8-Ec-gN0"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="8F5-bZ-TCJ"/>
-                                <include reference="9ih-Mg-aVt"/>
-                                <include reference="J3e-Kb-N20"/>
+                                <include reference="pfl-8d-Fa5"/>
                                 <include reference="EXm-o9-9pv"/>
                                 <include reference="SOa-al-nUg"/>
                                 <include reference="Uf9-dW-aIK"/>
-                                <include reference="pfl-8d-Fa5"/>
+                                <include reference="8F5-bZ-TCJ"/>
+                                <include reference="9ih-Mg-aVt"/>
+                                <include reference="J3e-Kb-N20"/>
                             </mask>
                         </variation>
                     </view>
@@ -2110,8 +2109,7 @@
         <image name="user-profile" width="434" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="E2T-2X-c2W"/>
         <segue reference="1Jr-sS-mlQ"/>
-        <segue reference="9mq-14-VYX"/>
+        <segue reference="RYD-Eh-5LV"/>
     </inferredMetricsTieBreakers>
 </document>
