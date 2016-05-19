@@ -2,17 +2,17 @@
 //  UserProfileCell.swift
 //  eShopKart
 //
-//  Created by mac on 16/05/16.
-//  Copyright © 2016 kloudRac.com. All rights reserved.
+//  Created by Apple on 29/02/1938 Saka.
+//  Copyright © 1938 Saka Kloudrac. All rights reserved.
 //
 
 import UIKit
 
 class UserProfileCell: UITableViewCell {
 
-    @IBOutlet var moreBtn: UIButton!
-    @IBOutlet var profileLbl: UILabel!
     @IBOutlet var imageIcon: UIImageView!
+    @IBOutlet var profileLbl: UILabel!
+    @IBOutlet var moreBtn: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -1,9 +1,9 @@
 //
-//  myCartDetailCell.swift
+//  MyCartDetailCell.swift
 //  eShopKart
 //
-//  Created by mac on 16/05/16.
-//  Copyright © 2016 kloudRac.com. All rights reserved.
+//  Created by Apple on 29/02/1938 Saka.
+//  Copyright © 1938 Saka Kloudrac. All rights reserved.
 //
 
 import UIKit
