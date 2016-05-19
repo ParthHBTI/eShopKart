@@ -11,14 +11,25 @@ import UIKit
 class UserProfileViewController: BaseViewController , UITableViewDelegate{
 
    
+    @IBOutlet var logibBtn: UIButton!
     @IBOutlet var tableView: UITableView!
      @IBOutlet var profileArray: NSArray! = ["My Orders" , "My Returns" , "My Favourites" , "Rate Your Purchase" , "Customer Support" ,"My Account", " Notifications", "Rate the App","Give Feedback","Share Our App","Sell With Us","More"]
     
     @IBOutlet var imageArray: NSMutableArray! = []
     
+    @IBAction func loginAction(sender: AnyObject) {
+        
+        let storyboard = UIStoryboard(name: "Login" , bundle:  nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("LoginViewIdentifire") as? ESKLoginSignUpVC
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    
+    @IBOutlet var profileView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem  =  UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: "invitePeople")
+        navigationItem.leftBarButtonItem  =  UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: "")
+        
       imageArray[0] = UIImage(named: "kart_icon.png" )!
         imageArray[1] = UIImage(named: "my_return.png" )!
         imageArray[2] = UIImage(named: "favourite.png" )!

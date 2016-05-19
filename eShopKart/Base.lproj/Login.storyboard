@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WKU-3m-vCa">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -12,7 +12,7 @@
         <!--ESK View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="ESK View Controller" customClass="ViewController" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewIdentifire" id="BYZ-38-t0r" userLabel="ESK View Controller" customClass="ESKLoginSignUpVC" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -51,8 +51,7 @@
                                         <exclude reference="8mi-6J-v2s"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="106" y="120" width="188" height="188"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="8mi-6J-v2s"/>
                                     </mask>
@@ -132,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1587" y="-598.5"/>
+            <point key="canvasLocation" x="2505" y="-598.5"/>
         </scene>
         <!--User RegistrationVC-->
         <scene sceneID="9bH-sJ-mlB">
@@ -194,8 +193,7 @@
                                         <exclude reference="okf-TN-oVG"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="106" y="83" width="188" height="188"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="okf-TN-oVG"/>
                                     </mask>
@@ -242,29 +240,29 @@
                                 <exclude reference="Owp-fl-HOR"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="WNq-gl-YTt"/>
-                                <exclude reference="783-vr-xc7"/>
-                                <exclude reference="ZbP-qL-2hr"/>
                                 <exclude reference="2bk-04-XfN"/>
-                                <exclude reference="BPS-bt-3rw"/>
                                 <exclude reference="7sC-cH-L0i"/>
-                                <exclude reference="mvb-hd-d2h"/>
-                                <exclude reference="YKS-h5-jhg"/>
-                                <exclude reference="PZC-2s-Uz2"/>
-                                <exclude reference="ui1-2K-4AO"/>
+                                <exclude reference="BPS-bt-3rw"/>
+                                <exclude reference="KEZ-M3-J9X"/>
+                                <exclude reference="lDq-AV-UL9"/>
+                                <exclude reference="qEX-a5-2my"/>
+                                <exclude reference="Gv2-ex-rbc"/>
+                                <exclude reference="NDb-BQ-ra7"/>
                                 <exclude reference="PWF-Zg-NHU"/>
                                 <exclude reference="auc-jz-nJQ"/>
                                 <exclude reference="gZB-0O-3kO"/>
-                                <exclude reference="NDb-BQ-ra7"/>
-                                <exclude reference="Gv2-ex-rbc"/>
-                                <exclude reference="KEZ-M3-J9X"/>
-                                <exclude reference="qEX-a5-2my"/>
-                                <exclude reference="lDq-AV-UL9"/>
+                                <exclude reference="783-vr-xc7"/>
+                                <exclude reference="WNq-gl-YTt"/>
+                                <exclude reference="ZbP-qL-2hr"/>
+                                <exclude reference="mvb-hd-d2h"/>
+                                <exclude reference="PZC-2s-Uz2"/>
+                                <exclude reference="YKS-h5-jhg"/>
+                                <exclude reference="ui1-2K-4AO"/>
                                 <exclude reference="Ihh-zC-58n"/>
-                                <exclude reference="PYa-82-gyN"/>
                                 <exclude reference="NAz-Cw-xra"/>
-                                <exclude reference="k6c-Mh-cWE"/>
+                                <exclude reference="PYa-82-gyN"/>
                                 <exclude reference="R0V-nT-gng"/>
+                                <exclude reference="k6c-Mh-cWE"/>
                                 <exclude reference="p2b-pH-Ibv"/>
                             </mask>
                         </variation>
@@ -279,29 +277,29 @@
                                 <include reference="Owp-fl-HOR"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="WNq-gl-YTt"/>
-                                <include reference="783-vr-xc7"/>
-                                <include reference="ZbP-qL-2hr"/>
                                 <include reference="2bk-04-XfN"/>
-                                <include reference="BPS-bt-3rw"/>
                                 <include reference="7sC-cH-L0i"/>
-                                <include reference="mvb-hd-d2h"/>
-                                <include reference="YKS-h5-jhg"/>
-                                <include reference="PZC-2s-Uz2"/>
-                                <include reference="ui1-2K-4AO"/>
+                                <include reference="BPS-bt-3rw"/>
+                                <include reference="KEZ-M3-J9X"/>
+                                <include reference="lDq-AV-UL9"/>
+                                <include reference="qEX-a5-2my"/>
+                                <include reference="Gv2-ex-rbc"/>
+                                <include reference="NDb-BQ-ra7"/>
                                 <include reference="PWF-Zg-NHU"/>
                                 <include reference="auc-jz-nJQ"/>
                                 <include reference="gZB-0O-3kO"/>
-                                <include reference="NDb-BQ-ra7"/>
-                                <include reference="Gv2-ex-rbc"/>
-                                <include reference="KEZ-M3-J9X"/>
-                                <include reference="qEX-a5-2my"/>
-                                <include reference="lDq-AV-UL9"/>
+                                <include reference="783-vr-xc7"/>
+                                <include reference="WNq-gl-YTt"/>
+                                <include reference="ZbP-qL-2hr"/>
+                                <include reference="mvb-hd-d2h"/>
+                                <include reference="PZC-2s-Uz2"/>
+                                <include reference="YKS-h5-jhg"/>
+                                <include reference="ui1-2K-4AO"/>
                                 <include reference="Ihh-zC-58n"/>
-                                <include reference="PYa-82-gyN"/>
                                 <include reference="NAz-Cw-xra"/>
-                                <include reference="k6c-Mh-cWE"/>
+                                <include reference="PYa-82-gyN"/>
                                 <include reference="R0V-nT-gng"/>
+                                <include reference="k6c-Mh-cWE"/>
                                 <include reference="p2b-pH-Ibv"/>
                             </mask>
                         </variation>
@@ -319,7 +317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZaJ-we-aJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3150" y="-604.5"/>
+            <point key="canvasLocation" x="4068" y="-604.5"/>
         </scene>
         <!--ESK SignIn View Controller-->
         <scene sceneID="4fB-vs-fqI">
@@ -343,8 +341,7 @@
                                         <exclude reference="NgJ-I9-ktL"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="105" y="104" width="188" height="188"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="NgJ-I9-ktL"/>
                                     </mask>
@@ -353,16 +350,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njB-aM-QYD">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" image="sign_in_button_facebook"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="82" y="443" width="236" height="51"/>
-                                </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSw-xF-NG0">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" image="sign_in_with_email"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="82" y="561" width="236" height="51"/>
-                                </variation>
                                 <connections>
                                     <segue destination="OwU-jQ-ooT" kind="show" id="MR7-R8-Dwe"/>
                                 </connections>
@@ -381,8 +372,7 @@
                                         <exclude reference="hP1-FP-Aty"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="19" y="336" width="360" height="2"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="hP1-FP-Aty"/>
                                     </mask>
@@ -391,9 +381,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4S-A7-doP">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" image="sign_in_button_twitter"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="82" y="502" width="236" height="51"/>
-                                </variation>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -498,7 +485,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="shX-vc-Nyz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2509.5" y="-598.5"/>
+            <point key="canvasLocation" x="3427.5" y="-598.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gbW-qN-oZz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WKU-3m-vCa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PGA-Ld-eet">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="16H-gs-voX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="avW-75-XCa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1587" y="-598.5"/>
         </scene>
     </scenes>
     <resources>

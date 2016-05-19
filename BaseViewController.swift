@@ -26,13 +26,13 @@ class BaseViewController: UIViewController  {
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
        
         let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_icon"), style: .Plain, target: self, action: "")
-        let homeBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "building"), style: .Plain, target: self, action: "")
+        let homeBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "building"), style: .Plain, target: self, action: "myCardDetail")
         self.navigationItem.setLeftBarButtonItems([backBarButtonItem , homeBarButtonItem], animated: true)
         
         let searchBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_search"), style: .Plain, target: self, action: "")
         self.navigationController?.navigationBarHidden = false
-        let writeAddBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "market"), style: .Plain, target: self, action: "")
-        let showSearchBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "landlord"), style: .Plain, target: self, action: Selector("showMessages"))
+        let writeAddBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "market"), style: .Plain, target: self, action: "myCardDetail")
+        let showSearchBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "landlord"), style: .Plain, target: self, action: Selector("showUserProfile"))
         self.navigationItem.setRightBarButtonItems([showSearchBarButtonItem,writeAddBarButtonItem, searchBarButtonItem], animated: true)
         
         // Do any additional setup after loading the view.
@@ -42,16 +42,38 @@ class BaseViewController: UIViewController  {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+   func  showUserProfile(){
     
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as? UserProfileViewController
+      self.navigationController?.pushViewController(vc!, animated: true)
+    
+    }
+    
+    func myCardDetail() {
+        let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as? MyCartDetailVC
+        self.navigationController?.pushViewController(vc!, animated: true)
 
-    /*
-    // MARK: - Navigation
+    }
+    
+    func homeView() {
+        let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("MyHomeDetailIdentifire") as? ESKCategoryTableVC
+        self.navigationController?.pushViewController(vc!, animated: true)
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+       
+    }
+   
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+    showSearchBarbuttonItem?.action
     }
-    */
+ 
 
 }

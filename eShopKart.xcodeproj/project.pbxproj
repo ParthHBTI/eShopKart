@@ -14,8 +14,8 @@
 		043694691CE48F1E000868CE /* ESKCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043694681CE48F1E000868CE /* ESKCategoryCell.swift */; };
 		0436946B1CE4A261000868CE /* SimillerProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0436946A1CE4A261000868CE /* SimillerProductDetailVC.swift */; };
 		045739071CE30EDF00EB0FC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045739061CE30EDF00EB0FC9 /* AppDelegate.swift */; };
-		045739091CE30EDF00EB0FC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045739081CE30EDF00EB0FC9 /* ViewController.swift */; };
 		0457390C1CE30EDF00EB0FC9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0457390A1CE30EDF00EB0FC9 /* Login.storyboard */; };
+		046B8EC31CEDD2470024EF0E /* ESKLoginSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */; };
 		046C45DB1CE5E40F00C8D13C /* CartItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */; };
 		04A022421CEC47690002B3D1 /* EKartSideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */; };
 		04B700731CE9A0E900C4E292 /* MyCartDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B700721CE9A0E900C4E292 /* MyCartDetailVC.swift */; };
@@ -35,9 +35,9 @@
 		0436946A1CE4A261000868CE /* SimillerProductDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimillerProductDetailVC.swift; path = ../SimillerProductDetailVC.swift; sourceTree = "<group>"; };
 		045739031CE30EDF00EB0FC9 /* eShopKart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eShopKart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045739061CE30EDF00EB0FC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		045739081CE30EDF00EB0FC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0457390B1CE30EDF00EB0FC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		045739121CE30EDF00EB0FC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ESKLoginSignUpVC.swift; path = ../ESKLoginSignUpVC.swift; sourceTree = "<group>"; };
 		046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartItemDetailVC.swift; path = ../CartItemDetailVC.swift; sourceTree = "<group>"; };
 		04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKartSideMenuManager.swift; path = ../EKartSideMenuManager.swift; sourceTree = "<group>"; };
 		04B700721CE9A0E900C4E292 /* MyCartDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyCartDetailVC.swift; path = ../MyCartDetailVC.swift; sourceTree = "<group>"; };
@@ -106,11 +106,11 @@
 		04EEB2301CEC52500069A877 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				045739061CE30EDF00EB0FC9 /* AppDelegate.swift */,
-				045739081CE30EDF00EB0FC9 /* ViewController.swift */,
 				043694621CE465DC000868CE /* BaseViewController.swift */,
+				046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */,
 				043694661CE4877D000868CE /* ESKCategoryTableVC.swift */,
 				046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */,
+				045739061CE30EDF00EB0FC9 /* AppDelegate.swift */,
 				0436946A1CE4A261000868CE /* SimillerProductDetailVC.swift */,
 				04B700721CE9A0E900C4E292 /* MyCartDetailVC.swift */,
 				04B700761CE9D48900C4E292 /* UserProfileViewController.swift */,
@@ -270,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				046B8EC31CEDD2470024EF0E /* ESKLoginSignUpVC.swift in Sources */,
 				04B700751CE9B04800C4E292 /* MyCartDetailCell.swift in Sources */,
 				04B700771CE9D48900C4E292 /* UserProfileViewController.swift in Sources */,
 				043694631CE465DC000868CE /* BaseViewController.swift in Sources */,
@@ -278,7 +279,6 @@
 				04A022421CEC47690002B3D1 /* EKartSideMenuManager.swift in Sources */,
 				043694671CE4877D000868CE /* ESKCategoryTableVC.swift in Sources */,
 				04B700731CE9A0E900C4E292 /* MyCartDetailVC.swift in Sources */,
-				045739091CE30EDF00EB0FC9 /* ViewController.swift in Sources */,
 				0436946B1CE4A261000868CE /* SimillerProductDetailVC.swift in Sources */,
 				045739071CE30EDF00EB0FC9 /* AppDelegate.swift in Sources */,
 				046C45DB1CE5E40F00C8D13C /* CartItemDetailVC.swift in Sources */,
