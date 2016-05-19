@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class ESKCategoryTableVC: UITableViewController {
+class ESKCategoryTableVC: BaseViewController , UITableViewDelegate {
     @IBOutlet var categoryArray: NSArray! = ["ELECTRONICS" , "HOME & APPLIANCES" , "LIFESTYLE" , "AUTOMOTIVE" , "BOOKS & MORE" , " DAILY NEEDS", "SPORTS & OUTDOORS"]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,19 +22,19 @@ class ESKCategoryTableVC: UITableViewController {
 
 
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
         return categoryArray.count
     }
 
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ESKCategoryCell {
+     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ESKCategoryCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Identifier", forIndexPath: indexPath) as! ESKCategoryCell
          cell.TextLabel?.text = categoryArray.objectAtIndex(indexPath.row) as!  String
         // Configure the cell...

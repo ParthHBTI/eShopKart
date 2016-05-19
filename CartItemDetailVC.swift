@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CartItemDetailVC: UITableViewController {
+class CartItemDetailVC: BaseViewController , UITableViewDelegate {
 
   
     override func viewDidLoad() {
@@ -17,24 +17,24 @@ class CartItemDetailVC: UITableViewController {
        
     }
 
-   
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
      
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+ func numberOfSectionsInTableView(tableView: UITableView) -> Int {
  
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         return 10
     }
 
    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCellWithIdentifier("Cartcell", forIndexPath: indexPath)
 
         return cell

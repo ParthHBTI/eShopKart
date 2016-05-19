@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserProfileViewController: UIViewController , UITableViewDelegate{
+class UserProfileViewController: BaseViewController , UITableViewDelegate{
 
    
     @IBOutlet var tableView: UITableView!
@@ -18,6 +18,7 @@ class UserProfileViewController: UIViewController , UITableViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.leftBarButtonItem  =  UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: "invitePeople")
       imageArray[0] = UIImage(named: "kart_icon.png" )!
         imageArray[1] = UIImage(named: "my_return.png" )!
         imageArray[2] = UIImage(named: "favourite.png" )!
