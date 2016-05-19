@@ -39,6 +39,12 @@ class UserProfileViewController: BaseViewController , UITableViewDelegate{
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.leftItemsSupplementBackButton = true
+        
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         return 1

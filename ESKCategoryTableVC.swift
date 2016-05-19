@@ -19,7 +19,10 @@ class ESKCategoryTableVC: BaseViewController , UITableViewDelegate {
        
     }
 
-
+    override func viewDidAppear(animated: Bool) {
+  
+        self.navigationItem.leftItemsSupplementBackButton = true
+    }
 
 
      func numberOfSectionsInTableView(tableView: UITableView) -> Int {

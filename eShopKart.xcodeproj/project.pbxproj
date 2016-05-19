@@ -23,7 +23,6 @@
 		04B700771CE9D48900C4E292 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B700761CE9D48900C4E292 /* UserProfileViewController.swift */; };
 		04B700791CE9D56900C4E292 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B700781CE9D56900C4E292 /* UserProfileCell.swift */; };
 		04FF2CD71CE35253003BAF3D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FF2CD61CE35253003BAF3D /* Launch Screen.storyboard */; };
-		04FF2CD91CE35817003BAF3D /* small-1849-5732e902935c1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FF2CD81CE35817003BAF3D /* small-1849-5732e902935c1.png */; };
 		EF5A8FF00115E42769A5060A /* libPods-eShopKart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B06BF8A141B70899D9CB68F /* libPods-eShopKart.a */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +45,6 @@
 		04B700761CE9D48900C4E292 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = ../UserProfileViewController.swift; sourceTree = "<group>"; };
 		04B700781CE9D56900C4E292 /* UserProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileCell.swift; path = ../UserProfileCell.swift; sourceTree = "<group>"; };
 		04FF2CD61CE35253003BAF3D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		04FF2CD81CE35817003BAF3D /* small-1849-5732e902935c1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-1849-5732e902935c1.png"; sourceTree = "<group>"; };
 		1B06BF8A141B70899D9CB68F /* libPods-eShopKart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-eShopKart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50006981A1E3CEC4EB0C9DB4 /* Pods-eShopKart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eShopKart.release.xcconfig"; path = "Pods/Target Support Files/Pods-eShopKart/Pods-eShopKart.release.xcconfig"; sourceTree = "<group>"; };
 		6EE584E76184347F99C756F4 /* Pods-eShopKart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eShopKart.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eShopKart/Pods-eShopKart.debug.xcconfig"; sourceTree = "<group>"; };
@@ -85,11 +83,11 @@
 		045739051CE30EDF00EB0FC9 /* eShopKart */ = {
 			isa = PBXGroup;
 			children = (
-				045739061CE30EDF00EB0FC9 /* AppDelegate.swift */,
 				04EEB2301CEC52500069A877 /* Model */,
 				04EEB2311CEC52800069A877 /* Cell */,
 				0457390A1CE30EDF00EB0FC9 /* Login.storyboard */,
 				0436945E1CE450A7000868CE /* Main.storyboard */,
+				04FF2CD61CE35253003BAF3D /* Launch Screen.storyboard */,
 				045739191CE30F0800EB0FC9 /* Support */,
 				045739041CE30EDF00EB0FC9 /* Products */,
 			);
@@ -99,8 +97,6 @@
 		045739191CE30F0800EB0FC9 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				04FF2CD61CE35253003BAF3D /* Launch Screen.storyboard */,
-				04FF2CD81CE35817003BAF3D /* small-1849-5732e902935c1.png */,
 				041B69041CE3337F0010328C /* Images1.xcassets */,
 				045739121CE30EDF00EB0FC9 /* Info.plist */,
 			);
@@ -110,6 +106,7 @@
 		04EEB2301CEC52500069A877 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				045739061CE30EDF00EB0FC9 /* AppDelegate.swift */,
 				045739081CE30EDF00EB0FC9 /* ViewController.swift */,
 				043694621CE465DC000868CE /* BaseViewController.swift */,
 				043694661CE4877D000868CE /* ESKCategoryTableVC.swift */,
@@ -214,7 +211,6 @@
 				0457390C1CE30EDF00EB0FC9 /* Login.storyboard in Resources */,
 				0436945F1CE450A7000868CE /* Main.storyboard in Resources */,
 				04FF2CD71CE35253003BAF3D /* Launch Screen.storyboard in Resources */,
-				04FF2CD91CE35817003BAF3D /* small-1849-5732e902935c1.png in Resources */,
 				041B69051CE3337F0010328C /* Images1.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

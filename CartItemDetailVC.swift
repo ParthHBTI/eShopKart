@@ -23,6 +23,11 @@ class CartItemDetailVC: BaseViewController , UITableViewDelegate {
      
     }
 
+    override func viewDidAppear(animated: Bool) {
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.leftItemsSupplementBackButton = true
+    }
+    
  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
  
         return 1

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SimillerProductDetailVC: UITableViewController {
+class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,21 +25,22 @@ class SimillerProductDetailVC: UITableViewController {
     }
    
     override func viewDidAppear(animated: Bool) {
+        self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftItemsSupplementBackButton = true
 
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
         return 10
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath)
 
 
