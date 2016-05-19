@@ -24,7 +24,10 @@ class SimillerProductDetailVC: UITableViewController {
 
     }
    
-    
+    override func viewDidAppear(animated: Bool) {
+        self.navigationItem.leftItemsSupplementBackButton = true
+
+    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     
