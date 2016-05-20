@@ -1,14 +1,14 @@
 //
-//  MyCartDetailCell.swift
+//  SimillerProductViewCell.swift
 //  eShopKart
 //
-//  Created by Apple on 29/02/1938 Saka.
-//  Copyright © 1938 Saka Kloudrac. All rights reserved.
+//  Created by mac on 20/05/16.
+//  Copyright © 2016 kloudRac.com. All rights reserved.
 //
 
 import UIKit
 
-class MyCartDetailCell: UITableViewCell {
+class SimillerProductViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

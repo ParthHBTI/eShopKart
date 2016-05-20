@@ -30,18 +30,18 @@ class UserProfileViewController: BaseViewController , UITableViewDelegate{
         super.viewDidLoad()
         navigationItem.leftBarButtonItem  =  UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: "")
         
-      imageArray[0] = UIImage(named: "kart_icon.png" )!
-        imageArray[1] = UIImage(named: "my_return.png" )!
-        imageArray[2] = UIImage(named: "favourite.png" )!
-        imageArray[3] = UIImage(named: "purchase.png" )!
-        imageArray[4] = UIImage(named: "support.png" )!
-        imageArray[5] = UIImage(named: "my_account.png" )!
-        imageArray[6] = UIImage(named: "notify.png" )!
-        imageArray[7] = UIImage(named: "rate_app.png" )!
-        imageArray[8] = UIImage(named: "feedback.png" )!
-        imageArray[9] = UIImage(named: "share.png" )!
-        imageArray[10] = UIImage(named: "sell.png" )!
-        imageArray[11] = UIImage(named: "plus.png" )!
+      imageArray[0] = UIImage(named: "market.png" )!
+        imageArray[1] = UIImage(named: "back_icon.png" )!
+        imageArray[2] = UIImage(named: "Oval 39 + Shape Copy 2.png" )!
+        imageArray[3] = UIImage(named: "market.png" )!
+        imageArray[4] = UIImage(named: "market.png" )!
+        imageArray[5] = UIImage(named: "market.png" )!
+        imageArray[6] = UIImage(named: "market.png" )!
+        imageArray[7] = UIImage(named: "market.png" )!
+        imageArray[8] = UIImage(named: "market.png" )!
+        imageArray[9] = UIImage(named: "market.png" )!
+        imageArray[10] = UIImage(named: "market.png" )!
+        imageArray[11] = UIImage(named: "market.png" )!
         // Do any additional setup after loading the view.
     }
 

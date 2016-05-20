@@ -30,21 +30,21 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
 
     }
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     
         return 1
     }
 
-     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
         return 10
     }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> SimillerProductViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath) as? SimillerProductViewCell
 
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath)
 
-
-        return cell
+        return cell!
     }
 
 

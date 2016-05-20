@@ -52,7 +52,7 @@ class BaseViewController: UIViewController  {
     
     func myCardDetail() {
         let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as? MyCartDetailVC
+        let vc = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as? CartItemDetailVC
         self.navigationController?.pushViewController(vc!, animated: true)
 
     }
