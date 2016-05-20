@@ -7,27 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		041B69051CE3337F0010328C /* Images1.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041B69041CE3337F0010328C /* Images1.xcassets */; };
 		0436945F1CE450A7000868CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0436945E1CE450A7000868CE /* Main.storyboard */; };
 		043694631CE465DC000868CE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043694621CE465DC000868CE /* BaseViewController.swift */; };
 		043694671CE4877D000868CE /* ESKCategoryTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043694661CE4877D000868CE /* ESKCategoryTableVC.swift */; };
 		043694691CE48F1E000868CE /* ESKCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043694681CE48F1E000868CE /* ESKCategoryCell.swift */; };
 		0436946B1CE4A261000868CE /* SimillerProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0436946A1CE4A261000868CE /* SimillerProductDetailVC.swift */; };
 		045739071CE30EDF00EB0FC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045739061CE30EDF00EB0FC9 /* AppDelegate.swift */; };
-		0457390C1CE30EDF00EB0FC9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0457390A1CE30EDF00EB0FC9 /* Login.storyboard */; };
 		046B8EC31CEDD2470024EF0E /* ESKLoginSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */; };
 		046C45DB1CE5E40F00C8D13C /* CartItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */; };
 		04A022421CEC47690002B3D1 /* EKartSideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */; };
+		04B564181CEED4F6001E9792 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 04B564171CEED4F6001E9792 /* Podfile */; };
+		04B5641A1CEED884001E9792 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04B564191CEED884001E9792 /* Images.xcassets */; };
+		04B5641C1CEED89E001E9792 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B5641B1CEED89E001E9792 /* Launch Screen.storyboard */; };
 		04B700731CE9A0E900C4E292 /* MyCartDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B700721CE9A0E900C4E292 /* MyCartDetailVC.swift */; };
 		04B700751CE9B04800C4E292 /* MyCartDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B700741CE9B04800C4E292 /* MyCartDetailCell.swift */; };
 		04B700771CE9D48900C4E292 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B700761CE9D48900C4E292 /* UserProfileViewController.swift */; };
 		04B700791CE9D56900C4E292 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B700781CE9D56900C4E292 /* UserProfileCell.swift */; };
-		04FF2CD71CE35253003BAF3D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FF2CD61CE35253003BAF3D /* Launch Screen.storyboard */; };
-		EF5A8FF00115E42769A5060A /* libPods-eShopKart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B06BF8A141B70899D9CB68F /* libPods-eShopKart.a */; };
+		D149FAF0E49B0B1BD8BCF4E8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C75B534FBDE8EA774984ADE /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		041B69041CE3337F0010328C /* Images1.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images1.xcassets; sourceTree = "<group>"; };
 		0436945E1CE450A7000868CE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		043694621CE465DC000868CE /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = ../BaseViewController.swift; sourceTree = "<group>"; };
 		043694661CE4877D000868CE /* ESKCategoryTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ESKCategoryTableVC.swift; path = ../ESKCategoryTableVC.swift; sourceTree = "<group>"; };
@@ -35,19 +34,20 @@
 		0436946A1CE4A261000868CE /* SimillerProductDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimillerProductDetailVC.swift; path = ../SimillerProductDetailVC.swift; sourceTree = "<group>"; };
 		045739031CE30EDF00EB0FC9 /* eShopKart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eShopKart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045739061CE30EDF00EB0FC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0457390B1CE30EDF00EB0FC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		045739121CE30EDF00EB0FC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ESKLoginSignUpVC.swift; path = ../ESKLoginSignUpVC.swift; sourceTree = "<group>"; };
 		046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartItemDetailVC.swift; path = ../CartItemDetailVC.swift; sourceTree = "<group>"; };
 		04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKartSideMenuManager.swift; path = ../EKartSideMenuManager.swift; sourceTree = "<group>"; };
+		04B564171CEED4F6001E9792 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		04B564191CEED884001E9792 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		04B5641B1CEED89E001E9792 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
 		04B700721CE9A0E900C4E292 /* MyCartDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyCartDetailVC.swift; path = ../MyCartDetailVC.swift; sourceTree = "<group>"; };
 		04B700741CE9B04800C4E292 /* MyCartDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyCartDetailCell.swift; path = ../MyCartDetailCell.swift; sourceTree = "<group>"; };
 		04B700761CE9D48900C4E292 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = ../UserProfileViewController.swift; sourceTree = "<group>"; };
 		04B700781CE9D56900C4E292 /* UserProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileCell.swift; path = ../UserProfileCell.swift; sourceTree = "<group>"; };
-		04FF2CD61CE35253003BAF3D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		1B06BF8A141B70899D9CB68F /* libPods-eShopKart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-eShopKart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		50006981A1E3CEC4EB0C9DB4 /* Pods-eShopKart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eShopKart.release.xcconfig"; path = "Pods/Target Support Files/Pods-eShopKart/Pods-eShopKart.release.xcconfig"; sourceTree = "<group>"; };
-		6EE584E76184347F99C756F4 /* Pods-eShopKart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eShopKart.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eShopKart/Pods-eShopKart.debug.xcconfig"; sourceTree = "<group>"; };
+		4C75B534FBDE8EA774984ADE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		77F1DE39874FE306DBBCF16E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DDADDD317C91AF9EACBAF282 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF5A8FF00115E42769A5060A /* libPods-eShopKart.a in Frameworks */,
+				D149FAF0E49B0B1BD8BCF4E8 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,8 +66,8 @@
 			isa = PBXGroup;
 			children = (
 				045739051CE30EDF00EB0FC9 /* eShopKart */,
-				B8946AD4D17733AF8E943D40 /* Pods */,
-				916812F0C8198B721C2CFB49 /* Frameworks */,
+				60AE7E50D9800F792DAC240A /* Pods */,
+				D48A0526576398153FC56E00 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,9 +85,8 @@
 			children = (
 				04EEB2301CEC52500069A877 /* Model */,
 				04EEB2311CEC52800069A877 /* Cell */,
-				0457390A1CE30EDF00EB0FC9 /* Login.storyboard */,
 				0436945E1CE450A7000868CE /* Main.storyboard */,
-				04FF2CD61CE35253003BAF3D /* Launch Screen.storyboard */,
+				04B5641B1CEED89E001E9792 /* Launch Screen.storyboard */,
 				045739191CE30F0800EB0FC9 /* Support */,
 				045739041CE30EDF00EB0FC9 /* Products */,
 			);
@@ -97,7 +96,7 @@
 		045739191CE30F0800EB0FC9 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				041B69041CE3337F0010328C /* Images1.xcassets */,
+				04B564191CEED884001E9792 /* Images.xcassets */,
 				045739121CE30EDF00EB0FC9 /* Info.plist */,
 			);
 			name = Support;
@@ -129,21 +128,22 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
-		916812F0C8198B721C2CFB49 /* Frameworks */ = {
+		60AE7E50D9800F792DAC240A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1B06BF8A141B70899D9CB68F /* libPods-eShopKart.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B8946AD4D17733AF8E943D40 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6EE584E76184347F99C756F4 /* Pods-eShopKart.debug.xcconfig */,
-				50006981A1E3CEC4EB0C9DB4 /* Pods-eShopKart.release.xcconfig */,
+				04B564171CEED4F6001E9792 /* Podfile */,
+				77F1DE39874FE306DBBCF16E /* Pods.debug.xcconfig */,
+				DDADDD317C91AF9EACBAF282 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D48A0526576398153FC56E00 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C75B534FBDE8EA774984ADE /* libPods.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,10 +208,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0457390C1CE30EDF00EB0FC9 /* Login.storyboard in Resources */,
+				04B564181CEED4F6001E9792 /* Podfile in Resources */,
 				0436945F1CE450A7000868CE /* Main.storyboard in Resources */,
-				04FF2CD71CE35253003BAF3D /* Launch Screen.storyboard in Resources */,
-				041B69051CE3337F0010328C /* Images1.xcassets in Resources */,
+				04B5641C1CEED89E001E9792 /* Launch Screen.storyboard in Resources */,
+				04B5641A1CEED884001E9792 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +230,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-eShopKart/Pods-eShopKart-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9318B109307239B643F3597A /* Embed Pods Frameworks */ = {
@@ -245,7 +245,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-eShopKart/Pods-eShopKart-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		973530DB44212B42FDD88127 /* Check Pods Manifest.lock */ = {
@@ -286,17 +286,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		0457390A1CE30EDF00EB0FC9 /* Login.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0457390B1CE30EDF00EB0FC9 /* Base */,
-			);
-			name = Login.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		045739131CE30EDF00EB0FC9 /* Debug */ = {
@@ -386,7 +375,7 @@
 		};
 		045739161CE30EDF00EB0FC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6EE584E76184347F99C756F4 /* Pods-eShopKart.debug.xcconfig */;
+			baseConfigurationReference = 77F1DE39874FE306DBBCF16E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = eShopKart/Info.plist;
@@ -402,7 +391,7 @@
 		};
 		045739171CE30EDF00EB0FC9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50006981A1E3CEC4EB0C9DB4 /* Pods-eShopKart.release.xcconfig */;
+			baseConfigurationReference = DDADDD317C91AF9EACBAF282 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = eShopKart/Info.plist;
