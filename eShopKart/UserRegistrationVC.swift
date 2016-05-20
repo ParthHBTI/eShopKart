@@ -23,13 +23,13 @@ class UserRegistrationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.firstNameTextField.setLeftImage(UIImage(named: "person_icon.png")!)
-        self.lastNameTextField.setLeftImage(UIImage(named: "person_icon.png")!)
-        self.mailTextField.setLeftImage(UIImage(named: "mail")!)
+       // self.firstNameTextField.setLeftImage(UIImage(named: "person_icon.png")!)
+       //self.lastNameTextField.setLeftImage(UIImage(named: "person_icon.png")!)
+        //self.mailTextField.setLeftImage(UIImage(named: "mail")!)
         //self.contactNumberTextField.setLeftImage(UIImage(named: "contact_img2.png")!)
-        self.passwordTextField.setLeftImage(UIImage(named: "password_icon.png")!)
-        self.confirmPassTextField.setLeftImage(UIImage(named: "password_icon.png")!)
-        self.DoneBtn.layer.cornerRadius = 20
+       // self.passwordTextField.setLeftImage(UIImage(named: "password_icon.png")!)
+//self.confirmPassTextField.setLeftImage(UIImage(named: "password_icon.png")!)
+      //  self.DoneBtn.layer.cornerRadius = 20
 //        self.doneBtn.setCornerRadius(10.0, width: 0.0, color: UIColor.clearColor())
         // Do any additional setup after loading the view.
     }
@@ -40,21 +40,21 @@ class UserRegistrationVC: UIViewController {
     }
     
     @IBAction func submitAction(sender: AnyObject) {
-        let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+     //   let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
         if firstNameTextField.text!.isEmpty == true || lastNameTextField.text!.isEmpty == true || mailTextField.text!.isEmpty == true || contactNumberTextField.text!.isEmpty == true || passwordTextField.text!.isEmpty == true || confirmPassTextField.text!.isEmpty == true {
         
-                loading.mode = MBProgressHUDMode .Text
-                loading.detailsLabelText = "please enter all values here!"
-                loading.hide(true, afterDelay: 2)
-                loading.removeFromSuperViewOnHide = true
+          //      loading.mode = MBProgressHUDMode .Text
+             //   loading.detailsLabelText = "please enter all values here!"
+             //   loading.hide(true, afterDelay: 2)
+             //   loading.removeFromSuperViewOnHide = true
         }
         else if (passwordTextField.text!.characters.count) < 5 {
         
-            loading.mode = MBProgressHUDMode.Text
-            loading.detailsLabelText = "password length must be of 5 characters!"
-            loading.hide(true, afterDelay: 2)
-            loading.removeFromSuperViewOnHide = true
+           // loading.mode = MBProgressHUDMode.Text
+//loading.detailsLabelText = "password length must be of 5 characters!"
+//loading.hide(true, afterDelay: 2)
+          //  loading.removeFromSuperViewOnHide = true
             
         }else{
             
