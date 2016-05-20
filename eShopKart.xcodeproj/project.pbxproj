@@ -96,7 +96,6 @@
 				04EEB2301CEC52500069A877 /* Model */,
 				04EEB2311CEC52800069A877 /* Cell */,
 				0436945E1CE450A7000868CE /* Main.storyboard */,
-				04B5641B1CEED89E001E9792 /* Launch Screen.storyboard */,
 				04B564291CEF1050001E9792 /* Login.storyboard */,
 				045739191CE30F0800EB0FC9 /* Support */,
 				045739041CE30EDF00EB0FC9 /* Products */,
@@ -108,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				04B564191CEED884001E9792 /* Images.xcassets */,
+				04B5641B1CEED89E001E9792 /* Launch Screen.storyboard */,
 				045739121CE30EDF00EB0FC9 /* Info.plist */,
 			);
 			name = Support;
@@ -116,12 +116,12 @@
 		04EEB2301CEC52500069A877 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				045739061CE30EDF00EB0FC9 /* AppDelegate.swift */,
 				043694621CE465DC000868CE /* BaseViewController.swift */,
 				046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */,
 				043694661CE4877D000868CE /* ESKCategoryTableVC.swift */,
 				046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */,
 				04B5641D1CEEF122001E9792 /* CategoryItemListVC.swift */,
-				045739061CE30EDF00EB0FC9 /* AppDelegate.swift */,
 				04B5642B1CEF1312001E9792 /* UserRegistrationVC.swift */,
 				0436946A1CE4A261000868CE /* SimillerProductDetailVC.swift */,
 				04B564251CEEFB79001E9792 /* ItemDetailVC.swift */,

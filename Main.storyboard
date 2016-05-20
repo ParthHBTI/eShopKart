@@ -119,7 +119,7 @@
                         <color key="sectionIndexBackgroundColor" red="0.52156862749999999" green="0.62745098040000002" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ProductCell" rowHeight="145" id="RWv-CU-Lxb" customClass="SimillerProductViewCell" customModule="eShopKart" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="145"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="145"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RWv-CU-Lxb" id="Aye-yp-UZy">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="144"/>
@@ -434,7 +434,7 @@
                         <color key="sectionIndexBackgroundColor" red="0.52156862749999999" green="0.62745098040000002" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cartcell" rowHeight="116" id="EXw-Hr-oCd">
-                                <rect key="frame" x="0.0" y="28" width="600" height="116"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="116"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EXw-Hr-oCd" id="Fhg-xc-69H">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="115"/>
@@ -1210,7 +1210,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VGc-wu-nRc" id="BUH-EM-utf">
-                                            <rect key="frame" x="0.0" y="0.0" width="207" height="69"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="207" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="subcategory Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gky-R6-ngj">
@@ -1226,8 +1226,7 @@
                                                             <exclude reference="zUQ-GO-ase"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="16" y="29" width="171" height="11"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="zUQ-GO-ase"/>
                                                         </mask>
@@ -1603,9 +1602,6 @@
                                         <color key="backgroundColor" red="0.45410338890000002" green="0.59442843450000005" blue="0.66357742200000003" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="28" width="420" height="716"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="Efw-So-kl8" id="WIg-fY-CDM"/>
                                     <outlet property="delegate" destination="Efw-So-kl8" id="IkZ-MV-Ewv"/>
