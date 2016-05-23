@@ -25,15 +25,21 @@ class BaseViewController: UIViewController  {
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
        
-        let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_icon"), style: .Plain, target: self, action: "")
+      
         let homeBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "building"), style: .Plain, target: self, action: "myCardDetail")
-        self.navigationItem.setLeftBarButtonItems([backBarButtonItem , homeBarButtonItem], animated: true)
+        self.navigationItem.setLeftBarButtonItem( homeBarButtonItem , animated: true)
         
         let searchBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_search"), style: .Plain, target: self, action: "")
         self.navigationController?.navigationBarHidden = false
         let writeAddBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "market"), style: .Plain, target: self, action: "myCardDetail")
         let showSearchBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "landlord"), style: .Plain, target: self, action: Selector("showUserProfile"))
         self.navigationItem.setRightBarButtonItems([showSearchBarButtonItem,writeAddBarButtonItem, searchBarButtonItem], animated: true)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "UINotificationUpdateMsgBadge", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "getNotifications", name: "UINotificationUpdateMsgBadge", object: nil)
+        
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)
+        
+
         
         // Do any additional setup after loading the view.
     }
@@ -48,13 +54,18 @@ class BaseViewController: UIViewController  {
     let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as? UserProfileViewController
       self.navigationController?.pushViewController(vc!, animated: true)
     
+    
     }
     
     func myCardDetail() {
         let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as? CartItemDetailVC
         self.navigationController?.pushViewController(vc!, animated: true)
-
+        if(cartItemArray.count == 0){
+            let alert: UIAlertView = UIAlertView.init(title: "Sorry", message: "Your card is Empty, Shopping Something", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
+        }
+       
     }
     
     func homeView() {

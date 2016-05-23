@@ -20,7 +20,7 @@ class UserProfileViewController: BaseViewController , UITableViewDelegate{
     @IBAction func loginAction(sender: AnyObject) {
         
         let storyboard = UIStoryboard(name: "Login" , bundle:  nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("LoginViewIdentifire") as? ESKLoginSignUpVC
+        let vc = storyboard.instantiateViewControllerWithIdentifier("LandingViewController") as? ESKLoginSignUpVC
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     

@@ -10,6 +10,7 @@ import UIKit
 
 class CartItemDetailVC: BaseViewController , UITableViewDelegate {
 
+    @IBOutlet var tableView: UITableView!
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +36,31 @@ class CartItemDetailVC: BaseViewController , UITableViewDelegate {
 
    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 10
+        return cartItemArray.count
     }
 
-   
+    @IBAction func removeItemFromCart(sender: AnyObject) {
+        
+        let button = sender as! UIButton
+        let tagValue : Int = button.tag
+        
+        if (cartItemArray.count > tagValue){
+            cartItemArray.removeObjectAtIndex(tagValue)
+        }
+        self.tableView.reloadData()
+        print("Testing remove item from cart")
+       
+    }
+  
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+     print("You selected cell #\(indexPath.row)!")
+     
+     let indexPath = tableView.indexPathForSelectedRow!;
+     let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!;
+     
+     }
+    
    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCellWithIdentifier("Cartcell", forIndexPath: indexPath)
 

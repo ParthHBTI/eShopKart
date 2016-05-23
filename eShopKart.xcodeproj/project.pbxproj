@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0436945F1CE450A7000868CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0436945E1CE450A7000868CE /* Main.storyboard */; };
 		043694631CE465DC000868CE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043694621CE465DC000868CE /* BaseViewController.swift */; };
 		043694671CE4877D000868CE /* ESKCategoryTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043694661CE4877D000868CE /* ESKCategoryTableVC.swift */; };
 		043694691CE48F1E000868CE /* ESKCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043694681CE48F1E000868CE /* ESKCategoryCell.swift */; };
@@ -26,13 +25,13 @@
 		04B564281CEEFBD5001E9792 /* ItemDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B564271CEEFBD5001E9792 /* ItemDetailViewCell.swift */; };
 		04B5642A1CEF1050001E9792 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B564291CEF1050001E9792 /* Login.storyboard */; };
 		04B5642C1CEF1312001E9792 /* UserRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5642B1CEF1312001E9792 /* UserRegistrationVC.swift */; };
+		04B5642E1CEF32F1001E9792 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B5642D1CEF32F1001E9792 /* Main.storyboard */; };
 		04B700771CE9D48900C4E292 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B700761CE9D48900C4E292 /* UserProfileViewController.swift */; };
 		04B700791CE9D56900C4E292 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B700781CE9D56900C4E292 /* UserProfileCell.swift */; };
 		D149FAF0E49B0B1BD8BCF4E8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C75B534FBDE8EA774984ADE /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0436945E1CE450A7000868CE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		043694621CE465DC000868CE /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = ../BaseViewController.swift; sourceTree = "<group>"; };
 		043694661CE4877D000868CE /* ESKCategoryTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ESKCategoryTableVC.swift; path = ../ESKCategoryTableVC.swift; sourceTree = "<group>"; };
 		043694681CE48F1E000868CE /* ESKCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ESKCategoryCell.swift; path = ../ESKCategoryCell.swift; sourceTree = "<group>"; };
@@ -53,6 +52,7 @@
 		04B564271CEEFBD5001E9792 /* ItemDetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemDetailViewCell.swift; path = ../../../../Downloads/ItemDetailViewCell.swift; sourceTree = "<group>"; };
 		04B564291CEF1050001E9792 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = ../../../Login.storyboard; sourceTree = "<group>"; };
 		04B5642B1CEF1312001E9792 /* UserRegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationVC.swift; sourceTree = "<group>"; };
+		04B5642D1CEF32F1001E9792 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../../.Trash/Main.storyboard; sourceTree = "<group>"; };
 		04B700761CE9D48900C4E292 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = ../UserProfileViewController.swift; sourceTree = "<group>"; };
 		04B700781CE9D56900C4E292 /* UserProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileCell.swift; path = ../UserProfileCell.swift; sourceTree = "<group>"; };
 		4C75B534FBDE8EA774984ADE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,9 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				04EEB2301CEC52500069A877 /* Model */,
-				04EEB2311CEC52800069A877 /* Cell */,
-				0436945E1CE450A7000868CE /* Main.storyboard */,
 				04B564291CEF1050001E9792 /* Login.storyboard */,
+				04B5642D1CEF32F1001E9792 /* Main.storyboard */,
 				045739191CE30F0800EB0FC9 /* Support */,
 				045739041CE30EDF00EB0FC9 /* Products */,
 			);
@@ -121,12 +120,13 @@
 				046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */,
 				043694661CE4877D000868CE /* ESKCategoryTableVC.swift */,
 				046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */,
-				04B5641D1CEEF122001E9792 /* CategoryItemListVC.swift */,
 				04B5642B1CEF1312001E9792 /* UserRegistrationVC.swift */,
 				0436946A1CE4A261000868CE /* SimillerProductDetailVC.swift */,
+				04B5641D1CEEF122001E9792 /* CategoryItemListVC.swift */,
 				04B564251CEEFB79001E9792 /* ItemDetailVC.swift */,
 				04B700761CE9D48900C4E292 /* UserProfileViewController.swift */,
 				04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */,
+				04EEB2311CEC52800069A877 /* Cell */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -224,7 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B564181CEED4F6001E9792 /* Podfile in Resources */,
-				0436945F1CE450A7000868CE /* Main.storyboard in Resources */,
+				04B5642E1CEF32F1001E9792 /* Main.storyboard in Resources */,
 				04B5641C1CEED89E001E9792 /* Launch Screen.storyboard in Resources */,
 				04B5642A1CEF1050001E9792 /* Login.storyboard in Resources */,
 				04B5641A1CEED884001E9792 /* Images.xcassets in Resources */,

@@ -7,11 +7,12 @@
 //
 
 import UIKit
-class ESKCategoryTableVC: BaseViewController , UITableViewDelegate {
-    @IBOutlet var categoryArray: NSArray! = ["ELECTRONICS" , "HOME & APPLIANCES" , "LIFESTYLE" , "AUTOMOTIVE" , "BOOKS & MORE" , " DAILY NEEDS", "SPORTS & OUTDOORS"]
+class ESKCategoryTableVC: BaseViewController , UITableViewDelegate  {
+    @IBOutlet var categoryArray: NSArray? = ["ELECTRONICS" , "HOME & APPLIANCES" , "LIFESTYLE" , "AUTOMOTIVE" , "BOOKS & MORE" , " DAILY NEEDS", "SPORTS & OUTDOORS"]
+    @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,14 +33,14 @@ class ESKCategoryTableVC: BaseViewController , UITableViewDelegate {
 
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
-        return categoryArray.count
+        return categoryArray!.count
     }
 
 
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ESKCategoryCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Identifier", forIndexPath: indexPath) as! ESKCategoryCell
-         cell.TextLabel?.text = categoryArray.objectAtIndex(indexPath.row) as!  String
+         cell.TextLabel?.text = categoryArray!.objectAtIndex(indexPath.row) as?  String
         // Configure the cell...
 
         return cell
@@ -81,14 +82,29 @@ class ESKCategoryTableVC: BaseViewController , UITableViewDelegate {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "mySegue"){
+             let indexPath = tableView.indexPathForSelectedRow
+            let  viewController = segue.destinationViewController as! CategoryItemListVC
+           viewController.categoryName?.text = "Category"
+            print("test")
+        }
     }
-    */
 
+ /*   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("You selected cell #\(indexPath.row)!")
+        
+        // Get Cell Label
+        let indexPath = tableView.indexPathForSelectedRow!;
+        let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!;
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var viewController = storyboard.instantiateViewControllerWithIdentifier("MyHomeDetailIdentifire") as! ESKCategoryTableVC
+        
+        self.presentViewController(viewController, animated: true , completion: nil)
+    }*/
+    
 }

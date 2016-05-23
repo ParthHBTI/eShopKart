@@ -10,6 +10,7 @@ import UIKit
 
 class CategoryItemListVC: UIViewController,UITableViewDelegate{
     
+    @IBOutlet var categoryName: UILabel?
     var categoryItemsArr: NSArray = ["Mobiles","Mobile Accessories","Televisions","Large Appliances","Networking & Peripherals","Kitchen Appliances","Healthcare Appliances","Audio & Videos","Gaming","Laptops"]
 
     @IBOutlet var cteagoryItemsTblView: UITableView!
