@@ -8,24 +8,32 @@
 
 import UIKit
 class ESKCategoryTableVC: BaseViewController , UITableViewDelegate {
+    
+    @IBOutlet var categoryTblView: UITableView!
     @IBOutlet var categoryArray: NSArray! = ["ELECTRONICS" , "HOME & APPLIANCES" , "LIFESTYLE" , "AUTOMOTIVE" , "BOOKS & MORE" , " DAILY NEEDS", "SPORTS & OUTDOORS"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.categoryTblView.rowHeight = 60
 
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        self.navigationItem.leftItemsSupplementBackButton = false
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
        
-    }
+   }
+//
+//    override func viewDidAppear(animated: Bool) {
+//  
+//        self.navigationItem.leftItemsSupplementBackButton = false
+//    }
 
-    override func viewDidAppear(animated: Bool) {
-  
-        self.navigationItem.leftItemsSupplementBackButton = true
-    }
-
-
-     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     
         return 1
     }
@@ -35,16 +43,32 @@ class ESKCategoryTableVC: BaseViewController , UITableViewDelegate {
         return categoryArray.count
     }
 
-
-    
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ESKCategoryCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ESKCategoryCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Identifier", forIndexPath: indexPath) as! ESKCategoryCell
-         cell.TextLabel?.text = categoryArray.objectAtIndex(indexPath.row) as!  String
-        // Configure the cell...
+            cell.textLabel!.text = categoryArray.objectAtIndex(indexPath.row) as?  String
+            //CategoryItemListVC.categoryNameLabel?.text
+        
 
         return cell
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let destinationVC = segue.destinationViewController as! CategoryItemListVC
+        let cell = sender as! ESKCategoryCell
+        print(cell.textLabel!.text)
+        destinationVC.categoryName = cell.textLabel!.text
+    }
+    
+    
+    
+//    optional func tableView(_ tableView: UITableView,
+//                              didSelectRowAtIndexPath indexPath: NSIndexPath)
+//    {
+//    
+//        
+//    }
+//    
 
     /*
     // Override to support conditional editing of the table view.

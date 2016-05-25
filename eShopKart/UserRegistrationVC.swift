@@ -23,14 +23,15 @@ class UserRegistrationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       // self.firstNameTextField.setLeftImage(UIImage(named: "person_icon.png")!)
-       //self.lastNameTextField.setLeftImage(UIImage(named: "person_icon.png")!)
-        //self.mailTextField.setLeftImage(UIImage(named: "mail")!)
-        //self.contactNumberTextField.setLeftImage(UIImage(named: "contact_img2.png")!)
-       // self.passwordTextField.setLeftImage(UIImage(named: "password_icon.png")!)
-//self.confirmPassTextField.setLeftImage(UIImage(named: "password_icon.png")!)
-      //  self.DoneBtn.layer.cornerRadius = 20
-//        self.doneBtn.setCornerRadius(10.0, width: 0.0, color: UIColor.clearColor())
+        self.firstNameTextField.setLeftImage(UIImage(named: "person_icon.png")!)
+       self.lastNameTextField.setLeftImage(UIImage(named: "person_icon.png")!)
+        self.mailTextField.setLeftImage(UIImage(named: "mail")!)
+        self.contactNumberTextField.setLeftImage(UIImage(named: "contact_img2.png")!)
+        self.passwordTextField.setLeftImage(UIImage(named: "password_icon.png")!)
+self.confirmPassTextField.setLeftImage(UIImage(named: "password_icon.png")!)
+        self.DoneBtn.layer.cornerRadius = 20
+        //self.doneBtn.setCornerRadius(10.0, width: 0.0, color: UIColor.clearColor())
+        
         // Do any additional setup after loading the view.
     }
 
@@ -51,17 +52,12 @@ class UserRegistrationVC: UIViewController {
         }
         else if (passwordTextField.text!.characters.count) < 5 {
         
-           // loading.mode = MBProgressHUDMode.Text
-//loading.detailsLabelText = "password length must be of 5 characters!"
-//loading.hide(true, afterDelay: 2)
-          //  loading.removeFromSuperViewOnHide = true
+            // loading.mode = MBProgressHUDMode.Text
+            //loading.detailsLabelText = "password length must be of 5 characters!"
+            //loading.hide(true, afterDelay: 2)
+            //  loading.removeFromSuperViewOnHide = true
             
-        }else{
-            
-//            if{
-//            
-//                    //mailTextField.text!
-//            }
+        
         }
     }
     

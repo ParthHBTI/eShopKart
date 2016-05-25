@@ -8,13 +8,17 @@
 
 import UIKit
 
-class CategoryItemListVC: UIViewController,UITableViewDelegate{
+class CategoryItemListVC: BaseViewController,UITableViewDelegate{
     
-    var categoryItemsArr: NSArray = ["Mobiles","Mobile Accessories","Televisions","Large Appliances","Networking & Peripherals","Kitchen Appliances","Healthcare Appliances","Audio & Videos","Gaming","Laptops"]
+    var categoryName: String!
+    @IBOutlet var categoryNameLabel: UILabel!
+    var subcategoryItemsArr: NSArray = ["Mobiles","Mobile Accessories","Televisions","Large Appliances","Networking & Peripherals","Kitchen Appliances","Healthcare Appliances","Audio & Videos","Gaming","Laptops"]
 
     @IBOutlet var cteagoryItemsTblView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        categoryNameLabel!.text = categoryName!
+        self.cteagoryItemsTblView.rowHeight = 50
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -37,19 +41,20 @@ class CategoryItemListVC: UIViewController,UITableViewDelegate{
 
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
-        return categoryItemsArr.count
+        return subcategoryItemsArr.count
     }
 
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> CategoryItemsViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("categoryItemsCell", forIndexPath: indexPath) as! CategoryItemsViewCell
-        cell.subCategoryItemName?.text = categoryItemsArr.objectAtIndex(indexPath.row)as? String
+        cell.subCategoryItemName?.text = subcategoryItemsArr.objectAtIndex(indexPath.row)as? String
 
         // Configure the cell...
 
         return cell
     }
+    
     
 
     /*
