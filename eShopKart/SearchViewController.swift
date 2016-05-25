@@ -1,75 +1,51 @@
 //
-//  CartItemDetailVC.swift
+//  SearchViewController.swift
 //  eShopKart
 //
-//  Created by mac on 13/05/16.
-//  Copyright © 2016 kloudRac.com. All rights reserved.
+//  Created by Apple on 03/03/1938 Saka.
+//  Copyright © 1938 Saka kloudRac.com. All rights reserved.
 //
 
 import UIKit
 
-class CartItemDetailVC: BaseViewController {
+class SearchViewController: UITableViewController {
 
-    @IBOutlet var tableView: UITableView!
-  
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationItem.leftItemsSupplementBackButton = true
-       
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        
-        self.navigationItem.leftItemsSupplementBackButton = false
-    }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-     
+        // Dispose of any resources that can be recreated.
     }
 
-    override func viewDidAppear(animated: Bool) {
-        self.navigationItem.leftBarButtonItem = nil
-//        self.navigationItem.leftItemsSupplementBackButton = true
-    }
-    
- func numberOfSectionsInTableView(tableView: UITableView) -> Int {
- 
-        return 1
+    // MARK: - Table view data source
+
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 0
     }
 
-   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return cartItemArray.count
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 0
     }
 
-    @IBAction func removeItemFromCart(sender: AnyObject) {
-        
-        let button = sender as! UIButton
-        let tagValue : Int = button.tag
-        
-        if (cartItemArray.count > tagValue){
-            cartItemArray.removeObjectAtIndex(tagValue)
-        }
-        self.tableView.reloadData()
-        print("Testing remove item from cart")
-       
-    }
-  
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-     print("You selected cell #\(indexPath.row)!")
-     
-     let indexPath = tableView.indexPathForSelectedRow!;
-     let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!;
-     
-     }
-    
-   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-       let cell = tableView.dequeueReusableCellWithIdentifier("Cartcell", forIndexPath: indexPath)
+    /*
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+
+        // Configure the cell...
+
         return cell
     }
-
+    */
 
     /*
     // Override to support conditional editing of the table view.

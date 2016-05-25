@@ -7,45 +7,68 @@
 //
 
 import UIKit
-class ESKCategoryTableVC: BaseViewController , UITableViewDelegate  {
-    @IBOutlet var categoryArray: NSArray? = ["ELECTRONICS" , "HOME & APPLIANCES" , "LIFESTYLE" , "AUTOMOTIVE" , "BOOKS & MORE" , " DAILY NEEDS", "SPORTS & OUTDOORS"]
-    @IBOutlet var tableView: UITableView!
+class ESKCategoryTableVC: BaseViewController , UITableViewDelegate {
+    
+    @IBOutlet var categoryTblView: UITableView!
+    @IBOutlet var categoryArray: NSArray! = ["ELECTRONICS" , "HOME & APPLIANCES" , "LIFESTYLE" , "AUTOMOTIVE" , "BOOKS & MORE" , " DAILY NEEDS", "SPORTS & OUTDOORS"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        //self.categoryTblView.rowHeight = 60
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        self.navigationItem.leftItemsSupplementBackButton = false
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
        
-    }
+   }
+//
+//    override func viewDidAppear(animated: Bool) {
+//  
+//        self.navigationItem.leftItemsSupplementBackButton = false
+//    }
 
-    override func viewDidAppear(animated: Bool) {
-  
-        self.navigationItem.leftItemsSupplementBackButton = true
-    }
-
-
-     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     
         return 1
     }
 
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
-        return categoryArray!.count
+        return categoryArray.count
     }
 
-
-    
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ESKCategoryCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ESKCategoryCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Identifier", forIndexPath: indexPath) as! ESKCategoryCell
-         cell.TextLabel?.text = categoryArray!.objectAtIndex(indexPath.row) as?  String
-        // Configure the cell...
+            cell.textLabel!.text = categoryArray.objectAtIndex(indexPath.row) as?  String
+            //CategoryItemListVC.categoryNameLabel?.text
+        
 
         return cell
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let destinationVC = segue.destinationViewController as! CategoryItemListVC
+        let cell = sender as! ESKCategoryCell
+        print(cell.textLabel!.text)
+        destinationVC.categoryName = cell.textLabel!.text
+    }
+    
+    
+    
+//    optional func tableView(_ tableView: UITableView,
+//                              didSelectRowAtIndexPath indexPath: NSIndexPath)
+//    {
+//    
+//        
+//    }
+//    
 
     /*
     // Override to support conditional editing of the table view.
@@ -82,28 +105,14 @@ class ESKCategoryTableVC: BaseViewController , UITableViewDelegate  {
     }
     */
 
-
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "mySegue"){
-             let indexPath = tableView.indexPathForSelectedRow
-            let  viewController = segue.destinationViewController as! CategoryItemListVC
-           viewController.categoryName?.text = categoryArray?.objectAtIndex(indexPath!.row) as? String;           print("test")
-        }
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
+    */
 
- /*   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("You selected cell #\(indexPath.row)!")
-        
-        // Get Cell Label
-        let indexPath = tableView.indexPathForSelectedRow!;
-        let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!;
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        var viewController = storyboard.instantiateViewControllerWithIdentifier("MyHomeDetailIdentifire") as! ESKCategoryTableVC
-        
-        self.presentViewController(viewController, animated: true , completion: nil)
-    }*/
-    
 }

@@ -4,30 +4,35 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>eShopKart.xcscheme</key>
+		<key>AFNetworking.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
+		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>045739021CE30EDF00EB0FC9</key>
+		<key>085761E92D348B04323231DD65BAF88D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>182823AE1CE34C8C00EEE469</key>
+		<key>410B25DF16EA5C5B3E2698F74F9625FB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>182823C21CE34C8C00EEE469</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>182823CD1CE34C8C00EEE469</key>
+		<key>FE2F1D7B9D9FCEA148517E4657B243F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
