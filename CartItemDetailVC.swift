@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CartItemDetailVC: BaseViewController {
+class CartItemDetailVC: BaseViewController,UITableViewDelegate {
 
   
     override func viewDidLoad() {
@@ -19,7 +19,6 @@ class CartItemDetailVC: BaseViewController {
     
     override func viewWillAppear(animated: Bool) {
         
-        self.navigationItem.leftItemsSupplementBackButton = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,8 +27,8 @@ class CartItemDetailVC: BaseViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
-        self.navigationItem.leftBarButtonItem = nil
-//        self.navigationItem.leftItemsSupplementBackButton = true
+        //self.navigationItem.leftBarButtonItem = nil
+
     }
     
  func numberOfSectionsInTableView(tableView: UITableView) -> Int {

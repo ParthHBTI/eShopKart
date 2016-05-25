@@ -25,8 +25,8 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
     }
    
     override func viewDidAppear(animated: Bool) {
-        self.navigationItem.leftBarButtonItem = nil
-        self.navigationItem.leftItemsSupplementBackButton = true
+        //self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.leftItemsSupplementBackButton = false
 
     }
 

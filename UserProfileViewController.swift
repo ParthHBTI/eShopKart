@@ -24,11 +24,11 @@ class UserProfileViewController: BaseViewController , UITableViewDelegate{
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
-    
     @IBOutlet var profileView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem  =  UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: "")
+       // navigationItem.leftBarButtonItem  =  UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: "")
         
       imageArray[0] = UIImage(named: "market.png" )!
         imageArray[1] = UIImage(named: "back_icon.png" )!
@@ -51,8 +51,8 @@ class UserProfileViewController: BaseViewController , UITableViewDelegate{
     }
     
     override func viewDidAppear(animated: Bool) {
-        self.navigationItem.leftBarButtonItem = nil
-        self.navigationItem.leftItemsSupplementBackButton = true
+//        self.navigationItem.leftBarButtonItem = nil
+//        self.navigationItem.leftItemsSupplementBackButton = true
         
     }
     

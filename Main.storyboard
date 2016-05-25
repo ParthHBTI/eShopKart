@@ -109,7 +109,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qVD-bu-rXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2607" y="-2572.5"/>
+            <point key="canvasLocation" x="2506.5" y="-2511.75"/>
         </scene>
         <!--Similler Product DetailVC-->
         <scene sceneID="get-g5-fyG">
@@ -1765,7 +1765,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axN-cb-HQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1888.5" y="-3127.5"/>
+            <point key="canvasLocation" x="1885.5" y="-3174"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="czU-zS-OYN">
@@ -1801,6 +1801,7 @@
                                     <constraint firstAttribute="width" secondItem="SlN-vD-RTK" secondAttribute="height" multiplier="240:37" id="hml-Pb-LYx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="tintColor" red="0.015162497840163377" green="0.0034712876591223921" blue="0.05883413461538467" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Explore Categories Here"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -1839,6 +1840,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Search your today's special " textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Cfj-Ln-MQ9">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.97899247290479574" blue="0.96700266662295031" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0087659057269999993" green="0.0095194346470000007" blue="0.18094951919999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Cfj-Ln-MQ9" secondAttribute="height" multiplier="348:41" id="dGw-Tl-vpb"/>
                                 </constraints>

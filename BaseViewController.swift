@@ -16,7 +16,9 @@ class BaseViewController: UIViewController  {
         
         self.navigationController?.navigationBarHidden = false
         let nav = self.navigationController?.navigationBar
-        nav?.barStyle = UIBarStyle.Black
+        nav?.barStyle = UIBarStyle.BlackOpaque
+        //nav?.barStyle = UIBarStyle.init(rawValue: 285893)!
+//       nav?.backgroundColor = UIColor.init(colorLiteralRed: 16.0, green: 33.0, blue: 53.0, alpha: 1.0)
         nav?.tintColor = UIColor.whiteColor()
         
         self.title = "eShopKart"
@@ -57,6 +59,7 @@ class BaseViewController: UIViewController  {
     
     // Go to user's card detail page
     func myCardDetail() {
+        
         let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as? CartItemDetailVC
         self.navigationController?.pushViewController(vc!, animated: true)
@@ -65,8 +68,9 @@ class BaseViewController: UIViewController  {
     
     // Go to home page
     func showHomePage() {
-            //let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
-            //let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
+        
+        //let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
+        //let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
         self.navigationController?.popToRootViewControllerAnimated(true)
 
     }
@@ -77,12 +81,18 @@ class BaseViewController: UIViewController  {
         self.navigationController?.popViewControllerAnimated(true)
     
     }
+    //Go to next page
+    func nextAction(){
+        
+        let storyboard = UIStoryboard(name: "main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("") as? UserRegistrationVC
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
     
     override func viewDidAppear(animated: Bool) {
        
     }
     
-   
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
