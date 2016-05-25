@@ -429,7 +429,7 @@
         <!--Cart Item DetailVC-->
         <scene sceneID="Wmu-hk-7N6">
             <objects>
-                <tableViewController id="UAD-H0-Z6M" customClass="CartItemDetailVC" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MyCardDetailIdentifire" id="UAD-H0-Z6M" customClass="CartItemDetailVC" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="116" sectionHeaderHeight="28" sectionFooterHeight="28" id="LBH-gw-oiB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -565,6 +565,9 @@
                                                     <include reference="QYq-Sg-Rcg"/>
                                                 </mask>
                                             </variation>
+                                            <connections>
+                                                <action selector="removeItemFromCart:" destination="UAD-H0-Z6M" eventType="touchUpInside" id="cil-mt-5f5"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pb-ze-A0h">
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -823,10 +826,13 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="4SL-Ab-DKW"/>
+                    <connections>
+                        <outlet property="tableView" destination="LBH-gw-oiB" id="G3h-p1-Va0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GcE-aI-dGo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5631" y="-2547"/>
+            <point key="canvasLocation" x="5458.5" y="-2552.25"/>
         </scene>
         <!--User Profile View Controller-->
         <scene sceneID="73x-zW-iXo">
@@ -1660,6 +1666,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
+                                    <action selector="addToCart:" destination="Efw-So-kl8" eventType="touchUpInside" id="rvO-h1-Jfs"/>
                                     <segue destination="UAD-H0-Z6M" kind="push" id="w5x-mT-Zny"/>
                                 </connections>
                             </button>

@@ -7,11 +7,11 @@
 //
 
 import UIKit
-
+var cartItemArray: NSMutableArray = ["", ""]
 class CartItemDetailVC: BaseViewController {
 
     @IBOutlet var tableView: UITableView!
-  
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.navigationItem.leftItemsSupplementBackButton = true
