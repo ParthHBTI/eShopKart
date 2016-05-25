@@ -90,8 +90,7 @@ class ESKCategoryTableVC: BaseViewController , UITableViewDelegate  {
         if (segue.identifier == "mySegue"){
              let indexPath = tableView.indexPathForSelectedRow
             let  viewController = segue.destinationViewController as! CategoryItemListVC
-           viewController.categoryName?.text = "Category"
-            print("test")
+           viewController.categoryName?.text = categoryArray?.objectAtIndex(indexPath!.row) as? String;           print("test")
         }
     }
 
