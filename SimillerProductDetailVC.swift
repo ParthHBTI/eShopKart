@@ -17,6 +17,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         self.navigationController?.navigationBar.shadowImage = UIImage (named: "memo-views")
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.view.backgroundColor = UIColor .blueColor()
+        self.title = ""
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,14 +84,17 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "sameProdIdentifire"){
+           let vc = segue.destinationViewController as? SimillerProductDetailVC
+        
+            
+        }
     }
-    */
+    
 
 }

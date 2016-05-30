@@ -55,6 +55,12 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
         return cell
     }
     
+    @IBAction func crossAction(sender: AnyObject) {
+        
+            self.navigationController?.popViewControllerAnimated(false)
+    }
+    
+    
     
 
     /*

@@ -8,8 +8,10 @@
 
 import UIKit
 
-class BaseViewController: UIViewController  {
+class BaseViewController: UIViewController, UINavigationControllerDelegate  {
     var showSearchBarbuttonItem: UIBarButtonItem?
+    var unreadCartItemDetailLabel: UILabel?
+    var unreadCartNotificationCount: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,18 +24,17 @@ class BaseViewController: UIViewController  {
         nav?.tintColor = UIColor.whiteColor()
         
         self.title = "eShopKart"
-        
-        self.navigationController?.navigationBarHidden = false
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         
-        let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_icon"), style: .Plain, target: self, action: #selector(BaseViewController.backAction))
+        let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(BaseViewController.backAction))
         let homeBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "building"), style: .Plain, target: self, action: #selector(BaseViewController.showHomePage))
         self.navigationItem.setLeftBarButtonItems([backBarButtonItem , homeBarButtonItem], animated: true)
         
         let searchBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_search"), style: .Plain, target: self, action: Selector(""))
         self.navigationController?.navigationBarHidden = false
-        let writeAddBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "market"), style: .Plain, target: self, action: #selector(BaseViewController.myCardDetail))
+      
+       let writeAddBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "market"), style: .Plain, target: self, action: #selector(BaseViewController.myCardDetail))
         let showSearchBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "landlord"), style: .Plain, target: self, action: #selector(BaseViewController.showUserProfile))
         self.navigationItem.setRightBarButtonItems([showSearchBarButtonItem,writeAddBarButtonItem, searchBarButtonItem], animated: true)
         
@@ -45,25 +46,42 @@ class BaseViewController: UIViewController  {
         // Dispose of any resources that can be recreated.
     }
     
+   /* func getCartNotifications() {
+        
+        let navArr = self.navigationController?.navigationBar.items as NSArray!
+            //self.navigationController.
+        if navArr != nil {
+            let navItem = navArr.objectAtIndex(3) as! UINavigationItem
+            if self.unreadChatMessages == 0 {
+                navItem.badgeValue = nil
+            } else {
+                navItem.badgeValue = String(self.unreadChatMessages)
+            }
+        }
+        self.navigationItem.rightBarButtonItem?.badgeValue = "1"
+    }*/
+    
     //Show user's profile
    func  showUserProfile(){
-    
-        if ((self.navigationController?.topViewController?.isKindOfClass(UserProfileViewController)) == false) {
+        //self.navigationController?.navigationBar.hidden = true
+        if (self.navigationController?.topViewController?.isKindOfClass(UserProfileViewController)) == false{
         
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as? UserProfileViewController
-            self.navigationController?.pushViewController(vc!, animated: true)
-
+            let navVC = UINavigationController.init(rootViewController: vc!)
+            self.navigationController?.presentViewController(navVC, animated: false, completion: nil)
         }
     }
     
     // Go to user's card detail page
     func myCardDetail() {
         
-        let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as? CartItemDetailVC
-        self.navigationController?.pushViewController(vc!, animated: true)
-
+        if (self.navigationController?.topViewController?.isKindOfClass(CartItemDetailVC)) == false{
+            
+            let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as? CartItemDetailVC
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     // Go to home page

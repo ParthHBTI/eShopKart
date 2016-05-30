@@ -5,16 +5,14 @@
 //  Created by Apple on 23/02/1938 Saka.
 //  Copyright © 1938 Saka Kloudrac. All rights reserved.
 //
-
 import UIKit
-
 class ItemDetailVC: BaseViewController{
     
     @IBOutlet var ItemDetailTblView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.ItemDetailTblView.rowHeight = 170
-
+       
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -105,5 +103,21 @@ class ItemDetailVC: BaseViewController{
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func addToCart(sender: AnyObject) {
+     cartItemArray.addObject("")
+       let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        loading.mode = MBProgressHUDModeText
+        loading.detailsLabelText = "Product has been added to your cart successfully!"
+        loading.hide(true, afterDelay: 2)
+        loading.removeFromSuperViewOnHide = true
+        //self.navigationItem.rightBarButtonItem?.badgeValue = "1"
+    }
+    
+//    func clearChatBadge() {
+//        // Set bacdge for Chat
+//        let navArray = self.navigationController?.navigationBar.items as NSArray!
+//        let navItem = navArray.objectAtIndex(3) as! UINavigationItem
+//         navItem.rightBarButtonItem?.badgeValue = nil
+//    }
 
 }

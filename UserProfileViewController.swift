@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserProfileViewController: BaseViewController , UITableViewDelegate{
+class UserProfileViewController: UIViewController , UITableViewDelegate{
 
    
     @IBOutlet var logibBtn: UIButton!
@@ -20,7 +20,7 @@ class UserProfileViewController: BaseViewController , UITableViewDelegate{
     @IBAction func loginAction(sender: AnyObject) {
         
         let storyboard = UIStoryboard(name: "Login" , bundle:  nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("LoginViewIdentifire") as? ESKLoginSignUpVC
+        let vc = storyboard.instantiateViewControllerWithIdentifier("LandingViewController") as? ESKLoginSignUpVC
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
@@ -28,6 +28,17 @@ class UserProfileViewController: BaseViewController , UITableViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+            self.navigationController?.navigationBarHidden = false
+            let nav = self.navigationController?.navigationBar
+            nav?.barStyle = UIBarStyle.BlackOpaque
+            nav?.tintColor = UIColor.whiteColor()
+            self.title = "Profile"
+            self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+        
+            let crossBtnIcon: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(UserProfileViewController.crossBtnAction))
+            self.navigationItem.setRightBarButtonItem(crossBtnIcon, animated: true)
+        
        // navigationItem.leftBarButtonItem  =  UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: "")
         
       imageArray[0] = UIImage(named: "market.png" )!
@@ -43,6 +54,11 @@ class UserProfileViewController: BaseViewController , UITableViewDelegate{
         imageArray[10] = UIImage(named: "market.png" )!
         imageArray[11] = UIImage(named: "market.png" )!
         // Do any additional setup after loading the view.
+    }
+    
+    func crossBtnAction() {
+        
+        self.navigationController?.dismissViewControllerAnimated(false, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
