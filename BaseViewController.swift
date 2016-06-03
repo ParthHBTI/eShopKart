@@ -15,7 +15,6 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationController?.navigationBarHidden = false
         let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.BlackOpaque
