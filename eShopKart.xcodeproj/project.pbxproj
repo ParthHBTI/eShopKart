@@ -26,6 +26,10 @@
 		04B5642C1CEF1312001E9792 /* UserRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5642B1CEF1312001E9792 /* UserRegistrationVC.swift */; };
 		04B700771CE9D48900C4E292 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B700761CE9D48900C4E292 /* UserProfileViewController.swift */; };
 		04B700791CE9D56900C4E292 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B700781CE9D56900C4E292 /* UserProfileCell.swift */; };
+		04F100181D01902900B22E79 /* SignUpCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F100171D01902900B22E79 /* SignUpCodeViewController.swift */; };
+		04F1001A1D01913400B22E79 /* VerificationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F100191D01913400B22E79 /* VerificationCodeViewController.swift */; };
+		04F1001C1D0191C800B22E79 /* SignUpPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F1001B1D0191C800B22E79 /* SignUpPassViewController.swift */; };
+		04F1001E1D01920300B22E79 /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F1001D1D01920300B22E79 /* SignUPViewController.swift */; };
 		1800CB061CF6E0940094727B /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800CB051CF6E0940094727B /* UIBarButtonItem+Badge.m */; };
 		180B482D1CF2C74100B5808C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B482C1CF2C74100B5808C /* HomeViewController.swift */; };
 		18A93DF31CEF32680046F78D /* ItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A93DF21CEF32680046F78D /* ItemDetailVC.swift */; };
@@ -65,6 +69,10 @@
 		04B5642B1CEF1312001E9792 /* UserRegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationVC.swift; sourceTree = "<group>"; };
 		04B700761CE9D48900C4E292 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = ../UserProfileViewController.swift; sourceTree = "<group>"; };
 		04B700781CE9D56900C4E292 /* UserProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileCell.swift; path = ../UserProfileCell.swift; sourceTree = "<group>"; };
+		04F100171D01902900B22E79 /* SignUpCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpCodeViewController.swift; path = Model/SignUpCodeViewController.swift; sourceTree = "<group>"; };
+		04F100191D01913400B22E79 /* VerificationCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerificationCodeViewController.swift; path = Model/VerificationCodeViewController.swift; sourceTree = "<group>"; };
+		04F1001B1D0191C800B22E79 /* SignUpPassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpPassViewController.swift; path = Model/SignUpPassViewController.swift; sourceTree = "<group>"; };
+		04F1001D1D01920300B22E79 /* SignUPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUPViewController.swift; path = Model/SignUPViewController.swift; sourceTree = "<group>"; };
 		1800CB041CF6E0940094727B /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
 		1800CB051CF6E0940094727B /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
 		180B482C1CF2C74100B5808C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -125,7 +133,7 @@
 		045739051CE30EDF00EB0FC9 /* eShopKart */ = {
 			isa = PBXGroup;
 			children = (
-				04EEB2301CEC52500069A877 /* Model */,
+				04EEB2301CEC52500069A877 /* Controller */,
 				18A93DF61CEF36120046F78D /* Helpers */,
 				04EEB2311CEC52800069A877 /* Cell */,
 				0436945E1CE450A7000868CE /* Main.storyboard */,
@@ -148,16 +156,20 @@
 			name = Support;
 			sourceTree = "<group>";
 		};
-		04EEB2301CEC52500069A877 /* Model */ = {
+		04EEB2301CEC52500069A877 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				18EDD7F81CFC5962007AE91E /* GeneralWebViewController.swift */,
 				043694621CE465DC000868CE /* BaseViewController.swift */,
 				18FB3F371CF444FE00C2E3D5 /* SearchViewController.swift */,
+				04F100171D01902900B22E79 /* SignUpCodeViewController.swift */,
 				180B482C1CF2C74100B5808C /* HomeViewController.swift */,
+				04F1001D1D01920300B22E79 /* SignUPViewController.swift */,
+				04F1001B1D0191C800B22E79 /* SignUpPassViewController.swift */,
 				045739061CE30EDF00EB0FC9 /* AppDelegate.swift */,
 				18A93DF21CEF32680046F78D /* ItemDetailVC.swift */,
 				046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */,
+				04F100191D01913400B22E79 /* VerificationCodeViewController.swift */,
 				043694661CE4877D000868CE /* ESKCategoryTableVC.swift */,
 				046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */,
 				04B5641D1CEEF122001E9792 /* CategoryItemListVC.swift */,
@@ -168,7 +180,7 @@
 				18D3DA901CFEBBED006938DE /* LoginViewController.swift */,
 				18D3DA921CFEE7F9006938DE /* SignUPViewController.swift */,
 			);
-			name = Model;
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		04EEB2311CEC52800069A877 /* Cell */ = {
@@ -356,6 +368,8 @@
 				043694631CE465DC000868CE /* BaseViewController.swift in Sources */,
 				180B482D1CF2C74100B5808C /* HomeViewController.swift in Sources */,
 				18F87F751CF5B3AC0079750F /* MBProgressHUD.m in Sources */,
+				04F100181D01902900B22E79 /* SignUpCodeViewController.swift in Sources */,
+				04F1001E1D01920300B22E79 /* SignUPViewController.swift in Sources */,
 				04B700791CE9D56900C4E292 /* UserProfileCell.swift in Sources */,
 				04B5642C1CEF1312001E9792 /* UserRegistrationVC.swift in Sources */,
 				043694691CE48F1E000868CE /* ESKCategoryCell.swift in Sources */,
@@ -366,10 +380,12 @@
 				043694671CE4877D000868CE /* ESKCategoryTableVC.swift in Sources */,
 				18A93DF81CEF36DF0046F78D /* ImageWithTextField.swift in Sources */,
 				0436946B1CE4A261000868CE /* SimillerProductDetailVC.swift in Sources */,
+				04F1001A1D01913400B22E79 /* VerificationCodeViewController.swift in Sources */,
 				045739071CE30EDF00EB0FC9 /* AppDelegate.swift in Sources */,
 				18F56BA91CFD5A6500CFB052 /* BaseOperation.swift in Sources */,
 				04B5641E1CEEF122001E9792 /* CategoryItemListVC.swift in Sources */,
 				046C45DB1CE5E40F00C8D13C /* CartItemDetailVC.swift in Sources */,
+				04F1001C1D0191C800B22E79 /* SignUpPassViewController.swift in Sources */,
 				18EDD7F91CFC5962007AE91E /* GeneralWebViewController.swift in Sources */,
 				18A93DF31CEF32680046F78D /* ItemDetailVC.swift in Sources */,
 				04B564221CEEF326001E9792 /* SimillerProductViewCell.swift in Sources */,
@@ -506,6 +522,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = KloudRac.eShopKart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "eShopKart-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};

@@ -2,13 +2,13 @@
 //  SignUpCodeViewController.swift
 //  eShopKart
 //
-//  Created by mac on 25/05/16.
+//  Created by mac on 03/06/16.
 //  Copyright © 2016 kloudRac.com. All rights reserved.
 //
 
 import UIKit
 
-class SignUpCodeViewController: UIViewController , UITextFieldDelegate {
+class SignUpCodeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var textCode1: UITextField!
     @IBOutlet var textCode2: UITextField!
     @IBOutlet var textCode3: UITextField!
@@ -26,15 +26,10 @@ class SignUpCodeViewController: UIViewController , UITextFieldDelegate {
         textCode6.delegate = self
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         if (textField.text?.characters.count < 1 && string.characters.count > 0) {
-                    let nextTag = textField.tag + 1
+            let nextTag = textField.tag + 1
             var nextResponder = textField.superview?.viewWithTag(nextTag)
             if (nextResponder == nil) {
                 nextResponder = textField.superview?.viewWithTag(1)
@@ -79,6 +74,13 @@ class SignUpCodeViewController: UIViewController , UITextFieldDelegate {
         }
         return true
     }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
     /*
     // MARK: - Navigation
 

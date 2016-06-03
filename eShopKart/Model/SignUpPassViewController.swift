@@ -2,18 +2,16 @@
 //  SignUpPassViewController.swift
 //  eShopKart
 //
-//  Created by mac on 25/05/16.
+//  Created by mac on 03/06/16.
 //  Copyright © 2016 kloudRac.com. All rights reserved.
 //
 
 import UIKit
 
-class SignUpPassViewController: UIViewController , UITextFieldDelegate {
+class SignUpPassViewController: UIViewController {
 
-    @IBOutlet var setPassTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setPassTextField.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -23,10 +21,7 @@ class SignUpPassViewController: UIViewController , UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return true
-    }
+
     /*
     // MARK: - Navigation
 

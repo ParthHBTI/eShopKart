@@ -8,11 +8,13 @@
 
 import UIKit
 
-class SignUPViewController: UIViewController {
+class SignUPViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet var mobileNumberTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "SignUP"
+        mobileNumberTextField.delegate = self
         let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(backAction))
         self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
         // Do any additional setup after loading the view.
@@ -34,6 +36,11 @@ class SignUPViewController: UIViewController {
 
     func backAction() {
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
     /*
     // MARK: - Navigation

@@ -8,10 +8,14 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet var emailMobileTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailMobileTextField.delegate = self
+        passwordTextField.delegate = self
         navigationController?.navigationBarHidden = false
         let nav = navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.BlackOpaque
@@ -36,6 +40,10 @@ class LoginViewController: UIViewController {
         
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
 
     /*
     // MARK: - Navigation

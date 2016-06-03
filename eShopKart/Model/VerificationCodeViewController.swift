@@ -2,18 +2,17 @@
 //  VerificationCodeViewController.swift
 //  eShopKart
 //
-//  Created by mac on 25/05/16.
+//  Created by mac on 03/06/16.
 //  Copyright © 2016 kloudRac.com. All rights reserved.
 //
 
 import UIKit
 
-class VerificationCodeViewController: UIViewController , UITextFieldDelegate {
+class VerificationCodeViewController: UIViewController {
 
-    @IBOutlet var verifyCodeField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.verifyCodeField.delegate = self
+
         // Do any additional setup after loading the view.
     }
 
@@ -22,14 +21,8 @@ class VerificationCodeViewController: UIViewController , UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return true
-    }
-    @IBAction func crossAction(sender: AnyObject) {
-        
-    }
-        /*
+
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
