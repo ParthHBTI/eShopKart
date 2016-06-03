@@ -14,7 +14,7 @@ class ESKCategoryTableVC: BaseViewController , UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.categoryTblView.rowHeight = 90
+        self.categoryTblView.rowHeight = 85
 
     }
     

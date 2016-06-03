@@ -26,9 +26,9 @@ class UserRegistrationVC: UIViewController {
         self.firstNameTextField.setLeftImage(UIImage(named: "person_icon.png")!)
        self.lastNameTextField.setLeftImage(UIImage(named: "person_icon.png")!)
         self.mailTextField.setLeftImage(UIImage(named: "mail")!)
-        self.contactNumberTextField.setLeftImage(UIImage(named: "contact_img2.png")!)
+//       self.contactNumberTextField.setLeftImage(UIImage(named: "contact_img.png")!)
         self.passwordTextField.setLeftImage(UIImage(named: "password_icon.png")!)
-self.confirmPassTextField.setLeftImage(UIImage(named: "password_icon.png")!)
+       self.confirmPassTextField.setLeftImage(UIImage(named: "password_icon.png")!)
         self.DoneBtn.layer.cornerRadius = 20
         //self.doneBtn.setCornerRadius(10.0, width: 0.0, color: UIColor.clearColor())
         
