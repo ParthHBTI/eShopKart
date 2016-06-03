@@ -1,25 +1,18 @@
 //
-//  CategoryItemsVC.swift
+//  ItemDetailVC.swift
 //  eShopKart
 //
-//  Created by Apple on 22/02/1938 Saka.
+//  Created by Apple on 23/02/1938 Saka.
 //  Copyright © 1938 Saka Kloudrac. All rights reserved.
 //
-
 import UIKit
-
-class CategoryItemListVC: BaseViewController,UITableViewDelegate{
+class ItemDetailVC: BaseViewController{
     
-    var categoryName: String!
-    @IBOutlet var categoryNameLabel: UILabel!
-    var subcategoryItemsArr: NSArray = ["Mobiles","Mobile Accessories","Televisions","Large Appliances","Networking & Peripherals","Kitchen Appliances","Healthcare Appliances","Audio & Videos","Gaming","Laptops"]
-
-    @IBOutlet var cteagoryItemsTblView: UITableView!
+    @IBOutlet var ItemDetailTblView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        categoryNameLabel!.text = categoryName!
-        self.cteagoryItemsTblView.rowHeight = 55
-
+        self.ItemDetailTblView.rowHeight = 170
+       
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -34,33 +27,36 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
 
     // MARK: - Table view data source
 
-      func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-       
+     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
-        return subcategoryItemsArr.count
+        // #warning Incomplete implementation, return the number of rows
+        return 3
     }
 
-    
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> CategoryItemsViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("categoryItemsCell", forIndexPath: indexPath) as! CategoryItemsViewCell
-        cell.subCategoryItemName?.text = subcategoryItemsArr.objectAtIndex(indexPath.row)as? String
+
+     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if(indexPath.row == 0){
+        let cell1 = tableView.dequeueReusableCellWithIdentifier("ImageViewCellIdentifier", forIndexPath: indexPath) as! ItemDetailViewCell
 
         // Configure the cell...
 
-        return cell
-    }
-    
-    @IBAction func crossAction(sender: AnyObject) {
+        return cell1
+        }
+        else if(indexPath.row == 1){
+        let cell2 = tableView.dequeueReusableCellWithIdentifier("PriceViewCellIdentifier", forIndexPath: indexPath) as! ItemDetailViewCell
         
-            self.navigationController?.popViewControllerAnimated(false)
+        return cell2
+        }
+        
+        let cell3 = tableView.dequeueReusableCellWithIdentifier("DetailViewCellIdentifier", forIndexPath: indexPath) as! ItemDetailViewCell
+        
+        return cell3
+        
     }
-    
-    
     
 
     /*
@@ -107,5 +103,21 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func addToCart(sender: AnyObject) {
+     cartItemArray.addObject("")
+       let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        loading.mode = MBProgressHUDModeText
+        loading.detailsLabelText = "Product has been added to your cart successfully!"
+        loading.hide(true, afterDelay: 2)
+        loading.removeFromSuperViewOnHide = true
+        //self.navigationItem.rightBarButtonItem?.badgeValue = "1"
+    }
+    
+//    func clearChatBadge() {
+//        // Set bacdge for Chat
+//        let navArray = self.navigationController?.navigationBar.items as NSArray!
+//        let navItem = navArray.objectAtIndex(3) as! UINavigationItem
+//         navItem.rightBarButtonItem?.badgeValue = nil
+//    }
 
 }

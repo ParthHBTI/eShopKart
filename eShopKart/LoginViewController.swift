@@ -2,50 +2,40 @@
 //  LoginViewController.swift
 //  eShopKart
 //
-//  Created by mac on 25/05/16.
-//  Copyright © 2016 kloudRac.com. All rights reserved.
+//  Created by Apple on 11/03/1938 Saka.
+//  Copyright © 1938 Saka kloudRac.com. All rights reserved.
 //
 
 import UIKit
-import SinchVerification
-class LoginViewController: UIViewController , UITextFieldDelegate {
-    
-    var verification: Verification!
-    var applicationKey = "a15ab125-a121-4dc9-b4d7-cbd6874262e2"
 
-    @IBOutlet var phoneNumber: UITextField!
-    @IBOutlet var passwordField: UITextField!
+class LoginViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.phoneNumber.delegate = self
-        self.passwordField.delegate = self
-        // Do any additional setup after loading the view.
-    }
-
-    @IBAction func crossAction(sender: AnyObject) {
+        navigationController?.navigationBarHidden = false
+        let nav = navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.BlackOpaque
+        nav?.tintColor = UIColor.whiteColor()
+        //if
+        title = "Login"
+        navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+        //
+        let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(crossBtnAction))
+        //
+        self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
         
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func forgetVerificationSend(sender: AnyObject) {
-        verification = SMSVerification(applicationKey: applicationKey, phoneNumber: phoneNumber.text!);        verification.initiate { (success:Bool, error:NSError?) -> Void in
-            print("\(success)")
-           // self.disableUI(false);
-           let text = (success ? "Verified" : error?.description);
-              print("\(text)")
-        }
+     func crossBtnAction(sender: AnyObject) {
+        self.navigationController?.dismissViewControllerAnimated(false, completion: nil)
         
     }
     
-
-     func textFieldShouldReturn(textField: UITextField) -> Bool{
-        self.view.endEditing(true)
-        return true;
-    }
-   
 
     /*
     // MARK: - Navigation

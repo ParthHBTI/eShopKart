@@ -1,67 +1,50 @@
 //
-//  CategoryItemsVC.swift
+//  CartItemDetailVC.swift
 //  eShopKart
 //
-//  Created by Apple on 22/02/1938 Saka.
-//  Copyright © 1938 Saka Kloudrac. All rights reserved.
+//  Created by mac on 13/05/16.
+//  Copyright © 2016 kloudRac.com. All rights reserved.
 //
 
 import UIKit
 
-class CategoryItemListVC: BaseViewController,UITableViewDelegate{
-    
-    var categoryName: String!
-    @IBOutlet var categoryNameLabel: UILabel!
-    var subcategoryItemsArr: NSArray = ["Mobiles","Mobile Accessories","Televisions","Large Appliances","Networking & Peripherals","Kitchen Appliances","Healthcare Appliances","Audio & Videos","Gaming","Laptops"]
+class CartItemDetailVC: BaseViewController , UITableViewDelegate {
 
-    @IBOutlet var cteagoryItemsTblView: UITableView!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-        categoryNameLabel!.text = categoryName!
-        self.cteagoryItemsTblView.rowHeight = 55
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+       
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+     
     }
 
-    // MARK: - Table view data source
-
-      func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-       
+    override func viewDidAppear(animated: Bool) {
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.leftItemsSupplementBackButton = true
+    }
+    
+ func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+ 
         return 1
     }
 
-     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
-        return subcategoryItemsArr.count
+   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+        return 10
     }
 
-    
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> CategoryItemsViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("categoryItemsCell", forIndexPath: indexPath) as! CategoryItemsViewCell
-        cell.subCategoryItemName?.text = subcategoryItemsArr.objectAtIndex(indexPath.row)as? String
-
-        // Configure the cell...
+   
+   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+       let cell = tableView.dequeueReusableCellWithIdentifier("Cartcell", forIndexPath: indexPath)
 
         return cell
     }
-    
-    @IBAction func crossAction(sender: AnyObject) {
-        
-            self.navigationController?.popViewControllerAnimated(false)
-    }
-    
-    
-    
+
 
     /*
     // Override to support conditional editing of the table view.

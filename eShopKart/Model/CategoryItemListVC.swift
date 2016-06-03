@@ -18,7 +18,7 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         categoryNameLabel!.text = categoryName!
-        self.cteagoryItemsTblView.rowHeight = 55
+        self.cteagoryItemsTblView.rowHeight = 50
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

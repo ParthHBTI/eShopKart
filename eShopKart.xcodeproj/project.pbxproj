@@ -26,12 +26,6 @@
 		04B5642C1CEF1312001E9792 /* UserRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5642B1CEF1312001E9792 /* UserRegistrationVC.swift */; };
 		04B700771CE9D48900C4E292 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B700761CE9D48900C4E292 /* UserProfileViewController.swift */; };
 		04B700791CE9D56900C4E292 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B700781CE9D56900C4E292 /* UserProfileCell.swift */; };
-		04FAED491CFD55320066155A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FAED481CFD55320066155A /* LoginViewController.swift */; };
-		04FAED4B1CFD55470066155A /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FAED4A1CFD55470066155A /* ResetPasswordViewController.swift */; };
-		04FAED4D1CFD55500066155A /* SignUpCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FAED4C1CFD55500066155A /* SignUpCodeViewController.swift */; };
-		04FAED4F1CFD555E0066155A /* SignUpPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FAED4E1CFD555E0066155A /* SignUpPassViewController.swift */; };
-		04FAED511CFD556D0066155A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FAED501CFD556D0066155A /* SignUpViewController.swift */; };
-		04FAED531CFD55C10066155A /* VerificationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FAED521CFD55C10066155A /* VerificationCodeViewController.swift */; };
 		1800CB061CF6E0940094727B /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800CB051CF6E0940094727B /* UIBarButtonItem+Badge.m */; };
 		180B482D1CF2C74100B5808C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B482C1CF2C74100B5808C /* HomeViewController.swift */; };
 		18A93DF31CEF32680046F78D /* ItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A93DF21CEF32680046F78D /* ItemDetailVC.swift */; };
@@ -39,6 +33,11 @@
 		18A93DF81CEF36DF0046F78D /* ImageWithTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A93DF71CEF36DF0046F78D /* ImageWithTextField.swift */; };
 		18B49E851CF5AAD300B728BF /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B49E841CF5AAD300B728BF /* AFNetworking.framework */; };
 		18B49E871CF5AAF900B728BF /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B49E861CF5AAF900B728BF /* MBProgressHUD.framework */; };
+		18D3DA911CFEBBED006938DE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3DA901CFEBBED006938DE /* LoginViewController.swift */; };
+		18D3DA931CFEE7F9006938DE /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3DA921CFEE7F9006938DE /* SignUPViewController.swift */; };
+		18EDD7F71CFC2AEA007AE91E /* cartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDD7F61CFC2AEA007AE91E /* cartItemCell.swift */; };
+		18EDD7F91CFC5962007AE91E /* GeneralWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDD7F81CFC5962007AE91E /* GeneralWebViewController.swift */; };
+		18F56BA91CFD5A6500CFB052 /* BaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F56BA81CFD5A6500CFB052 /* BaseOperation.swift */; };
 		18F87F751CF5B3AC0079750F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F87F741CF5B3AC0079750F /* MBProgressHUD.m */; };
 		18FB3F381CF444FE00C2E3D5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB3F371CF444FE00C2E3D5 /* SearchViewController.swift */; };
 		D149FAF0E49B0B1BD8BCF4E8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C75B534FBDE8EA774984ADE /* libPods.a */; };
@@ -66,12 +65,6 @@
 		04B5642B1CEF1312001E9792 /* UserRegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationVC.swift; sourceTree = "<group>"; };
 		04B700761CE9D48900C4E292 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = ../UserProfileViewController.swift; sourceTree = "<group>"; };
 		04B700781CE9D56900C4E292 /* UserProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileCell.swift; path = ../UserProfileCell.swift; sourceTree = "<group>"; };
-		04FAED481CFD55320066155A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		04FAED4A1CFD55470066155A /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
-		04FAED4C1CFD55500066155A /* SignUpCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpCodeViewController.swift; sourceTree = "<group>"; };
-		04FAED4E1CFD555E0066155A /* SignUpPassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpPassViewController.swift; sourceTree = "<group>"; };
-		04FAED501CFD556D0066155A /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		04FAED521CFD55C10066155A /* VerificationCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationCodeViewController.swift; sourceTree = "<group>"; };
 		1800CB041CF6E0940094727B /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
 		1800CB051CF6E0940094727B /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
 		180B482C1CF2C74100B5808C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +73,11 @@
 		18A93DF71CEF36DF0046F78D /* ImageWithTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageWithTextField.swift; sourceTree = "<group>"; };
 		18B49E841CF5AAD300B728BF /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "Pods/../build/Debug-iphoneos/AFNetworking.framework"; sourceTree = "<group>"; };
 		18B49E861CF5AAF900B728BF /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = "Pods/../build/Debug-iphoneos/MBProgressHUD.framework"; sourceTree = "<group>"; };
+		18D3DA901CFEBBED006938DE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		18D3DA921CFEE7F9006938DE /* SignUPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUPViewController.swift; sourceTree = "<group>"; };
+		18EDD7F61CFC2AEA007AE91E /* cartItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cartItemCell.swift; sourceTree = "<group>"; };
+		18EDD7F81CFC5962007AE91E /* GeneralWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralWebViewController.swift; sourceTree = "<group>"; };
+		18F56BA81CFD5A6500CFB052 /* BaseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseOperation.swift; sourceTree = "<group>"; };
 		18F87F721CF5B3AB0079750F /* eShopKart-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "eShopKart-Bridging-Header.h"; sourceTree = "<group>"; };
 		18F87F731CF5B3AC0079750F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../MBProgressHUD.h; sourceTree = "<group>"; };
 		18F87F741CF5B3AC0079750F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../MBProgressHUD.m; sourceTree = "<group>"; };
@@ -153,6 +151,7 @@
 		04EEB2301CEC52500069A877 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				18EDD7F81CFC5962007AE91E /* GeneralWebViewController.swift */,
 				043694621CE465DC000868CE /* BaseViewController.swift */,
 				18FB3F371CF444FE00C2E3D5 /* SearchViewController.swift */,
 				180B482C1CF2C74100B5808C /* HomeViewController.swift */,
@@ -160,18 +159,14 @@
 				18A93DF21CEF32680046F78D /* ItemDetailVC.swift */,
 				046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */,
 				043694661CE4877D000868CE /* ESKCategoryTableVC.swift */,
-				04FAED481CFD55320066155A /* LoginViewController.swift */,
 				046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */,
-				04FAED4A1CFD55470066155A /* ResetPasswordViewController.swift */,
-				04FAED4E1CFD555E0066155A /* SignUpPassViewController.swift */,
-				04FAED501CFD556D0066155A /* SignUpViewController.swift */,
-				04FAED4C1CFD55500066155A /* SignUpCodeViewController.swift */,
 				04B5641D1CEEF122001E9792 /* CategoryItemListVC.swift */,
-				04B5642B1CEF1312001E9792 /* UserRegistrationVC.swift */,
-				04FAED521CFD55C10066155A /* VerificationCodeViewController.swift */,
 				0436946A1CE4A261000868CE /* SimillerProductDetailVC.swift */,
-				04B700761CE9D48900C4E292 /* UserProfileViewController.swift */,
 				04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */,
+				04B5642B1CEF1312001E9792 /* UserRegistrationVC.swift */,
+				04B700761CE9D48900C4E292 /* UserProfileViewController.swift */,
+				18D3DA901CFEBBED006938DE /* LoginViewController.swift */,
+				18D3DA921CFEE7F9006938DE /* SignUPViewController.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -179,6 +174,7 @@
 		04EEB2311CEC52800069A877 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				18EDD7F61CFC2AEA007AE91E /* cartItemCell.swift */,
 				04B5641F1CEEF144001E9792 /* CategoryItemsViewCell.swift */,
 				18A93DF41CEF32DE0046F78D /* ItemDetailViewCell.swift */,
 				04B564211CEEF326001E9792 /* SimillerProductViewCell.swift */,
@@ -191,10 +187,19 @@
 		18A93DF61CEF36120046F78D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				18F56BA71CFD599800CFB052 /* Webservices */,
 				18A93DF71CEF36DF0046F78D /* ImageWithTextField.swift */,
 			);
 			name = Helpers;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		18F56BA71CFD599800CFB052 /* Webservices */ = {
+			isa = PBXGroup;
+			children = (
+				18F56BA81CFD5A6500CFB052 /* BaseOperation.swift */,
+			);
+			name = Webservices;
 			sourceTree = "<group>";
 		};
 		60AE7E50D9800F792DAC240A /* Pods */ = {
@@ -342,32 +347,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04FAED4F1CFD555E0066155A /* SignUpPassViewController.swift in Sources */,
 				18A93DF51CEF32DE0046F78D /* ItemDetailViewCell.swift in Sources */,
 				046B8EC31CEDD2470024EF0E /* ESKLoginSignUpVC.swift in Sources */,
 				04B564201CEEF144001E9792 /* CategoryItemsViewCell.swift in Sources */,
 				04B700771CE9D48900C4E292 /* UserProfileViewController.swift in Sources */,
+				18D3DA931CFEE7F9006938DE /* SignUPViewController.swift in Sources */,
 				18FB3F381CF444FE00C2E3D5 /* SearchViewController.swift in Sources */,
 				043694631CE465DC000868CE /* BaseViewController.swift in Sources */,
 				180B482D1CF2C74100B5808C /* HomeViewController.swift in Sources */,
 				18F87F751CF5B3AC0079750F /* MBProgressHUD.m in Sources */,
 				04B700791CE9D56900C4E292 /* UserProfileCell.swift in Sources */,
-				04FAED4D1CFD55500066155A /* SignUpCodeViewController.swift in Sources */,
 				04B5642C1CEF1312001E9792 /* UserRegistrationVC.swift in Sources */,
-				04FAED531CFD55C10066155A /* VerificationCodeViewController.swift in Sources */,
-				04FAED491CFD55320066155A /* LoginViewController.swift in Sources */,
 				043694691CE48F1E000868CE /* ESKCategoryCell.swift in Sources */,
 				04A022421CEC47690002B3D1 /* EKartSideMenuManager.swift in Sources */,
+				18EDD7F71CFC2AEA007AE91E /* cartItemCell.swift in Sources */,
+				18D3DA911CFEBBED006938DE /* LoginViewController.swift in Sources */,
 				1800CB061CF6E0940094727B /* UIBarButtonItem+Badge.m in Sources */,
 				043694671CE4877D000868CE /* ESKCategoryTableVC.swift in Sources */,
 				18A93DF81CEF36DF0046F78D /* ImageWithTextField.swift in Sources */,
 				0436946B1CE4A261000868CE /* SimillerProductDetailVC.swift in Sources */,
-				04FAED4B1CFD55470066155A /* ResetPasswordViewController.swift in Sources */,
 				045739071CE30EDF00EB0FC9 /* AppDelegate.swift in Sources */,
+				18F56BA91CFD5A6500CFB052 /* BaseOperation.swift in Sources */,
 				04B5641E1CEEF122001E9792 /* CategoryItemListVC.swift in Sources */,
 				046C45DB1CE5E40F00C8D13C /* CartItemDetailVC.swift in Sources */,
+				18EDD7F91CFC5962007AE91E /* GeneralWebViewController.swift in Sources */,
 				18A93DF31CEF32680046F78D /* ItemDetailVC.swift in Sources */,
-				04FAED511CFD556D0066155A /* SignUpViewController.swift in Sources */,
 				04B564221CEEF326001E9792 /* SimillerProductViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,7 +484,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "eShopKart-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -503,7 +506,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = KloudRac.eShopKart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "eShopKart-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

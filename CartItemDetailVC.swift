@@ -59,16 +59,16 @@ class CartItemDetailVC: BaseViewController {
     }
   
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-     print("You selected cell #\(indexPath.row)!")
-     
-     let indexPath = tableView.indexPathForSelectedRow!;
-     let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!;
-     
-     }
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//     print("You selected cell #\(indexPath.row)!")
+//     
+//     let indexPath = tableView.indexPathForSelectedRow!
+//     let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!
+//     
+//     }
     
    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-       let cell = tableView.dequeueReusableCellWithIdentifier("Cartcell", forIndexPath: indexPath)
+       let cell = tableView.dequeueReusableCellWithIdentifier("Cartcell", forIndexPath: indexPath) 
         return cell
     }
 

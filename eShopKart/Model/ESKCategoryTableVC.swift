@@ -1,67 +1,73 @@
 //
-//  CategoryItemsVC.swift
+//  ESKCategoryTableVC.swift
 //  eShopKart
 //
-//  Created by Apple on 22/02/1938 Saka.
-//  Copyright © 1938 Saka Kloudrac. All rights reserved.
+//  Created by mac on 12/05/16.
+//  Copyright © 2016 kloudRac.com. All rights reserved.
 //
 
 import UIKit
-
-class CategoryItemListVC: BaseViewController,UITableViewDelegate{
+class ESKCategoryTableVC: BaseViewController , UITableViewDelegate {
     
-    var categoryName: String!
-    @IBOutlet var categoryNameLabel: UILabel!
-    var subcategoryItemsArr: NSArray = ["Mobiles","Mobile Accessories","Televisions","Large Appliances","Networking & Peripherals","Kitchen Appliances","Healthcare Appliances","Audio & Videos","Gaming","Laptops"]
-
-    @IBOutlet var cteagoryItemsTblView: UITableView!
+    @IBOutlet var categoryTblView: UITableView!
+    var categoryArray: NSArray = ["ELECTRONICS" , "HOME & APPLIANCES" , "LIFESTYLE" , "AUTOMOTIVE" , "BOOKS & MORE" , " DAILY NEEDS", "SPORTS & OUTDOORS"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        categoryNameLabel!.text = categoryName!
-        self.cteagoryItemsTblView.rowHeight = 55
+        self.categoryTblView.rowHeight = 90
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        self.navigationItem.leftItemsSupplementBackButton = false
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-      func numberOfSectionsInTableView(tableView: UITableView) -> Int {
        
+   }
+//
+//    override func viewDidAppear(animated: Bool) {
+//  
+//        self.navigationItem.leftItemsSupplementBackButton = false
+//    }
+
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    
         return 1
     }
 
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
-        return subcategoryItemsArr.count
+        return categoryArray.count
     }
 
-    
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> CategoryItemsViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ESKCategoryCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Identifier", forIndexPath: indexPath) as! ESKCategoryCell
+            cell.TextLabel!.text = categoryArray.objectAtIndex(indexPath.row) as?  String
+            //CategoryItemListVC.categoryNameLabel?.text
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("categoryItemsCell", forIndexPath: indexPath) as! CategoryItemsViewCell
-        cell.subCategoryItemName?.text = subcategoryItemsArr.objectAtIndex(indexPath.row)as? String
-
-        // Configure the cell...
 
         return cell
     }
     
-    @IBAction func crossAction(sender: AnyObject) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-            self.navigationController?.popViewControllerAnimated(false)
+        let destinationVC = segue.destinationViewController as! CategoryItemListVC
+        let cell = sender as! ESKCategoryCell
+        destinationVC.categoryName = cell.TextLabel!.text
     }
     
     
     
+//    optional func tableView(_ tableView: UITableView,
+//                              didSelectRowAtIndexPath indexPath: NSIndexPath)
+//    {
+//    
+//        
+//    }
+//    
 
     /*
     // Override to support conditional editing of the table view.

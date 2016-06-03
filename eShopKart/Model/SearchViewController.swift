@@ -1,24 +1,17 @@
 //
-//  CategoryItemsVC.swift
+//  SearchViewController.swift
 //  eShopKart
 //
-//  Created by Apple on 22/02/1938 Saka.
-//  Copyright © 1938 Saka Kloudrac. All rights reserved.
+//  Created by Apple on 03/03/1938 Saka.
+//  Copyright © 1938 Saka kloudRac.com. All rights reserved.
 //
 
 import UIKit
 
-class CategoryItemListVC: BaseViewController,UITableViewDelegate{
-    
-    var categoryName: String!
-    @IBOutlet var categoryNameLabel: UILabel!
-    var subcategoryItemsArr: NSArray = ["Mobiles","Mobile Accessories","Televisions","Large Appliances","Networking & Peripherals","Kitchen Appliances","Healthcare Appliances","Audio & Videos","Gaming","Laptops"]
+class SearchViewController: UITableViewController {
 
-    @IBOutlet var cteagoryItemsTblView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        categoryNameLabel!.text = categoryName!
-        self.cteagoryItemsTblView.rowHeight = 55
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -34,34 +27,25 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
 
     // MARK: - Table view data source
 
-      func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-       
-        return 1
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 0
     }
 
-     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
-        return subcategoryItemsArr.count
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 0
     }
 
-    
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> CategoryItemsViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("categoryItemsCell", forIndexPath: indexPath) as! CategoryItemsViewCell
-        cell.subCategoryItemName?.text = subcategoryItemsArr.objectAtIndex(indexPath.row)as? String
+    /*
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
         // Configure the cell...
 
         return cell
     }
-    
-    @IBAction func crossAction(sender: AnyObject) {
-        
-            self.navigationController?.popViewControllerAnimated(false)
-    }
-    
-    
-    
+    */
 
     /*
     // Override to support conditional editing of the table view.

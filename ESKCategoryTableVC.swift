@@ -7,48 +7,47 @@
 //
 
 import UIKit
-class ESKCategoryTableVC: BaseViewController , UITableViewDelegate {
+class ESKCategoryTableVC: BaseViewController ,UITableViewDelegate {
     
     @IBOutlet var categoryTblView: UITableView!
     var categoryArray: NSArray = ["ELECTRONICS" , "HOME & APPLIANCES" , "LIFESTYLE" , "AUTOMOTIVE" , "BOOKS & MORE" , " DAILY NEEDS", "SPORTS & OUTDOORS"]
-    
+    var data = NSMutableData()
+    var tableData = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.categoryTblView.rowHeight = 90
-
+        self.callingWebservice("")
+        self.categoryTblView.rowHeight = 85
     }
     
     override func viewWillAppear(animated: Bool) {
         
         self.navigationItem.leftItemsSupplementBackButton = false
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-       
-   }
-//
-//    override func viewDidAppear(animated: Bool) {
-//  
-//        self.navigationItem.leftItemsSupplementBackButton = false
-//    }
-
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
+    }
+    //
+    //    override func viewDidAppear(animated: Bool) {
+    //
+    //        self.navigationItem.leftItemsSupplementBackButton = false
+    //    }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
         return 1
     }
-
-     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return categoryArray.count
     }
-
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ESKCategoryCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Identifier", forIndexPath: indexPath) as! ESKCategoryCell
-            cell.TextLabel!.text = categoryArray.objectAtIndex(indexPath.row) as?  String
-            //CategoryItemListVC.categoryNameLabel?.text
-        
-
+        cell.TextLabel!.text = categoryArray.objectAtIndex(indexPath.row) as?  String
+        //CategoryItemListVC.categoryNameLabel?.text
         return cell
     }
     
@@ -59,59 +58,43 @@ class ESKCategoryTableVC: BaseViewController , UITableViewDelegate {
         destinationVC.categoryName = cell.TextLabel!.text
     }
     
+    func callingWebservice(searchTerm: String){
+        let itunesSearchTerm = searchTerm.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
+        if let escapedSearchTerm = itunesSearchTerm.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
+            let urlPath = "http://192.168.0.13/eshopkart/webservices/select_category"
+            let url = NSURL(string: urlPath)
+            
+            let request: NSURLRequest = NSURLRequest(URL: url!)
+            let connection: NSURLConnection = NSURLConnection(request: request, delegate: self, startImmediately: false)!
+            connection.start()
+            
+        }
+    }
     
+    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse)
+    {
+        self.data = NSMutableData()
+    }
     
-//    optional func tableView(_ tableView: UITableView,
-//                              didSelectRowAtIndexPath indexPath: NSIndexPath)
-//    {
-//    
-//        
-//    }
-//    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    func connection(connection: NSURLConnection, didReceiveData data: NSData)
+    {
+        self.data.appendData(data)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    func connectionDidFinishLoading(connection: NSURLConnection)
+    {
+        do{
+            if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
+                
+                if let results: NSArray = jsonResult["id"] as? NSArray {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.tableData = results
+                        self.categoryTblView!.reloadData()
+                    })
+                }
+            }
+        }
+        catch{
+            print("Somthing wrong")
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
