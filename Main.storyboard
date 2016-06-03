@@ -349,7 +349,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" red="0.52156862749999999" green="0.62745098040000002" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cartcell" rowHeight="116" id="EXw-Hr-oCd">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cartcell" rowHeight="116" id="EXw-Hr-oCd" customClass="cartItemCell" customModule="eShopKart" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="116"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EXw-Hr-oCd" id="Fhg-xc-69H">
@@ -374,29 +374,6 @@
                                             <variation key="heightClass=regular-widthClass=compact">
                                                 <mask key="constraints">
                                                     <include reference="lE9-9Z-227"/>
-                                                </mask>
-                                            </variation>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yxf-bD-wQ8">
-                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="39" id="W2X-KR-nz3"/>
-                                                <constraint firstAttribute="width" secondItem="Yxf-bD-wQ8" secondAttribute="height" multiplier="39:19" id="cel-XN-LLU">
-                                                    <variation key="heightClass=regular-widthClass=compact" constant="4.1052631578947327"/>
-                                                </constraint>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="W2X-KR-nz3"/>
-                                                    <exclude reference="cel-XN-LLU"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="heightClass=regular-widthClass=compact">
-                                                <mask key="constraints">
-                                                    <include reference="W2X-KR-nz3"/>
-                                                    <include reference="cel-XN-LLU"/>
                                                 </mask>
                                             </variation>
                                         </label>
@@ -578,6 +555,29 @@
                                                 </mask>
                                             </variation>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yxf-bD-wQ8">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="39" id="W2X-KR-nz3"/>
+                                                <constraint firstAttribute="width" secondItem="Yxf-bD-wQ8" secondAttribute="height" multiplier="39:19" id="cel-XN-LLU">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="4.1052631578947327"/>
+                                                </constraint>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="W2X-KR-nz3"/>
+                                                    <exclude reference="cel-XN-LLU"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="W2X-KR-nz3"/>
+                                                    <include reference="cel-XN-LLU"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -633,7 +633,6 @@
                                     <variation key="default">
                                         <mask key="subviews">
                                             <exclude reference="lmB-cg-ZFv"/>
-                                            <exclude reference="Yxf-bD-wQ8"/>
                                             <exclude reference="0I0-To-f3s"/>
                                             <exclude reference="ryx-Qt-vpC"/>
                                             <exclude reference="dVO-gT-6zD"/>
@@ -643,6 +642,7 @@
                                             <exclude reference="cZG-34-30r"/>
                                             <exclude reference="jxH-10-2Mo"/>
                                             <exclude reference="HSd-u1-i9b"/>
+                                            <exclude reference="Yxf-bD-wQ8"/>
                                         </mask>
                                         <mask key="constraints">
                                             <exclude reference="LXX-ls-AqY"/>
@@ -682,7 +682,6 @@
                                     <variation key="heightClass=regular-widthClass=compact">
                                         <mask key="subviews">
                                             <include reference="lmB-cg-ZFv"/>
-                                            <include reference="Yxf-bD-wQ8"/>
                                             <include reference="0I0-To-f3s"/>
                                             <include reference="ryx-Qt-vpC"/>
                                             <include reference="dVO-gT-6zD"/>
@@ -692,6 +691,7 @@
                                             <include reference="cZG-34-30r"/>
                                             <include reference="jxH-10-2Mo"/>
                                             <include reference="HSd-u1-i9b"/>
+                                            <include reference="Yxf-bD-wQ8"/>
                                         </mask>
                                         <mask key="constraints">
                                             <include reference="LXX-ls-AqY"/>
@@ -979,8 +979,7 @@
                                                             <exclude reference="rJp-VF-gjR"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="198" y="23" width="19" height="20"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="JvB-qp-5Vq"/>
                                                             <include reference="rJp-VF-gjR"/>
@@ -1400,11 +1399,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageViewCellIdentifier" rowHeight="144" id="NJa-hY-rNU" customClass="ItemDetailViewCell" customModule="eShopKart" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ImageViewCellIdentifier" rowHeight="144" id="NJa-hY-rNU" customClass="ItemDetailViewCell" customModule="eShopKart" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NJa-hY-rNU" id="Zdj-xP-UI0">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="143"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="207" height="143"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mobileImage1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="5pC-h2-LrP">
