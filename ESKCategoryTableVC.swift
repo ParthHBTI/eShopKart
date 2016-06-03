@@ -7,16 +7,32 @@
 //
 
 import UIKit
-class ESKCategoryTableVC: BaseViewController ,UITableViewDelegate {
+import AFNetworking
+
+class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
     
-    @IBOutlet var categoryTblView: UITableView!
-    var categoryArray: NSArray = ["ELECTRONICS" , "HOME & APPLIANCES" , "LIFESTYLE" , "AUTOMOTIVE" , "BOOKS & MORE" , " DAILY NEEDS", "SPORTS & OUTDOORS"]
-    var data = NSMutableData()
+    var responseArr:AnyObject = []
     var tableData = []
+    var data = NSMutableData()
+    @IBOutlet var categoryTblView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.callingWebservice("")
         self.categoryTblView.rowHeight = 85
+        let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
+        manager.requestSerializer = requestSerializer
+        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
+        manager.POST("http://192.168.0.17/eshopkart/webservices/select_category", parameters: nil, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            print("Response: \(response!)")
+            self.responseArr = response
+            self.categoryTblView.reloadData()
+            
+        }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
+            
+            print("error: \(error!)")
+            
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -28,11 +44,6 @@ class ESKCategoryTableVC: BaseViewController ,UITableViewDelegate {
         super.didReceiveMemoryWarning()
         
     }
-    //
-    //    override func viewDidAppear(animated: Bool) {
-    //
-    //        self.navigationItem.leftItemsSupplementBackButton = false
-    //    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
@@ -41,13 +52,12 @@ class ESKCategoryTableVC: BaseViewController ,UITableViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return categoryArray.count
+        return responseArr.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ESKCategoryCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Identifier", forIndexPath: indexPath) as! ESKCategoryCell
-        cell.TextLabel!.text = categoryArray.objectAtIndex(indexPath.row) as?  String
-        //CategoryItemListVC.categoryNameLabel?.text
+        cell.TextLabel!.text = responseArr.objectAtIndex(indexPath.row)["category_name"] as?  String
         return cell
     }
     
@@ -56,45 +66,5 @@ class ESKCategoryTableVC: BaseViewController ,UITableViewDelegate {
         let destinationVC = segue.destinationViewController as! CategoryItemListVC
         let cell = sender as! ESKCategoryCell
         destinationVC.categoryName = cell.TextLabel!.text
-    }
-    
-    func callingWebservice(searchTerm: String){
-        let itunesSearchTerm = searchTerm.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
-        if let escapedSearchTerm = itunesSearchTerm.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
-            let urlPath = "http://192.168.0.13/eshopkart/webservices/select_category"
-            let url = NSURL(string: urlPath)
-            
-            let request: NSURLRequest = NSURLRequest(URL: url!)
-            let connection: NSURLConnection = NSURLConnection(request: request, delegate: self, startImmediately: false)!
-            connection.start()
-            
-        }
-    }
-    
-    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse)
-    {
-        self.data = NSMutableData()
-    }
-    
-    func connection(connection: NSURLConnection, didReceiveData data: NSData)
-    {
-        self.data.appendData(data)
-    }
-    func connectionDidFinishLoading(connection: NSURLConnection)
-    {
-        do{
-            if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
-                
-                if let results: NSArray = jsonResult["id"] as? NSArray {
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.tableData = results
-                        self.categoryTblView!.reloadData()
-                    })
-                }
-            }
-        }
-        catch{
-            print("Somthing wrong")
-        }
     }
 }

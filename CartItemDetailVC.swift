@@ -8,10 +8,8 @@
 
 import UIKit
 var cartItemArray: NSMutableArray = ["", ""]
-class CartItemDetailVC: BaseViewController {
-
+class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.navigationItem.leftItemsSupplementBackButton = true
@@ -58,18 +56,11 @@ class CartItemDetailVC: BaseViewController {
         self.tableView.reloadData()
     }
   
-    
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//     print("You selected cell #\(indexPath.row)!")
-//     
-//     let indexPath = tableView.indexPathForSelectedRow!
-//     let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!
-//     
-//     }
-    
-   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-       let cell = tableView.dequeueReusableCellWithIdentifier("Cartcell", forIndexPath: indexPath) 
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> cartItemCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cartcell", forIndexPath: indexPath) as! cartItemCell
+        cell.backgroundColor = UIColor.whiteColor()
         return cell
+        
     }
 
 
