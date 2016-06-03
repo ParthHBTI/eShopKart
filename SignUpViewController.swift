@@ -1,14 +1,14 @@
 //
-//  SignUpViewController.swift
+//  SignUPViewController.swift
 //  eShopKart
 //
-//  Created by mac on 25/05/16.
+//  Created by mac on 03/06/16.
 //  Copyright © 2016 kloudRac.com. All rights reserved.
 //
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUPViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
