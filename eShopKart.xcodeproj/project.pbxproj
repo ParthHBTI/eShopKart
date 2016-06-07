@@ -125,7 +125,7 @@
 		045739051CE30EDF00EB0FC9 /* eShopKart */ = {
 			isa = PBXGroup;
 			children = (
-				04EEB2301CEC52500069A877 /* Model */,
+				04EEB2301CEC52500069A877 /* Controller */,
 				18A93DF61CEF36120046F78D /* Helpers */,
 				04EEB2311CEC52800069A877 /* Cell */,
 				0436945E1CE450A7000868CE /* Main.storyboard */,
@@ -148,7 +148,7 @@
 			name = Support;
 			sourceTree = "<group>";
 		};
-		04EEB2301CEC52500069A877 /* Model */ = {
+		04EEB2301CEC52500069A877 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				18EDD7F81CFC5962007AE91E /* GeneralWebViewController.swift */,
@@ -168,7 +168,7 @@
 				18D3DA901CFEBBED006938DE /* LoginViewController.swift */,
 				18D3DA921CFEE7F9006938DE /* SignUPViewController.swift */,
 			);
-			name = Model;
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		04EEB2311CEC52800069A877 /* Cell */ = {
