@@ -1414,7 +1414,7 @@
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="81" y="50" width="45" height="43"/>
+                                                        <rect key="frame" x="81" y="51" width="45" height="41"/>
                                                         <mask key="constraints">
                                                             <include reference="H7W-2h-3Fe"/>
                                                         </mask>
@@ -1570,7 +1570,8 @@
                                                             <exclude reference="rTO-I7-qpX"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="64" y="13" width="112" height="12"/>
                                                         <mask key="constraints">
                                                             <include reference="rTO-I7-qpX"/>
                                                         </mask>
@@ -1846,7 +1847,8 @@
                                         <exclude reference="Zo9-11-dc5"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="98" y="165" width="204" height="203"/>
                                     <mask key="constraints">
                                         <include reference="Zo9-11-dc5"/>
                                     </mask>
