@@ -13,7 +13,7 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
     
     var responseArr:AnyObject = []
     @IBOutlet var categoryTblView: UITableView!
-    
+    ///
     override func viewDidLoad() {
         super.viewDidLoad()
         self.categoryTblView.rowHeight = 85
