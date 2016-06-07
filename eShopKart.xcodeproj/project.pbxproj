@@ -16,6 +16,7 @@
 		045739071CE30EDF00EB0FC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045739061CE30EDF00EB0FC9 /* AppDelegate.swift */; };
 		046B8EC31CEDD2470024EF0E /* ESKLoginSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */; };
 		046C45DB1CE5E40F00C8D13C /* CartItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */; };
+		046FB5E81D0160D60059F904 /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FB5E71D0160D60059F904 /* SignUPViewController.swift */; };
 		04A022421CEC47690002B3D1 /* EKartSideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */; };
 		04B564181CEED4F6001E9792 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 04B564171CEED4F6001E9792 /* Podfile */; };
 		04B5641A1CEED884001E9792 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04B564191CEED884001E9792 /* Images.xcassets */; };
@@ -26,10 +27,6 @@
 		04B5642C1CEF1312001E9792 /* UserRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5642B1CEF1312001E9792 /* UserRegistrationVC.swift */; };
 		04B700771CE9D48900C4E292 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B700761CE9D48900C4E292 /* UserProfileViewController.swift */; };
 		04B700791CE9D56900C4E292 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B700781CE9D56900C4E292 /* UserProfileCell.swift */; };
-		04F100181D01902900B22E79 /* SignUpCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F100171D01902900B22E79 /* SignUpCodeViewController.swift */; };
-		04F1001A1D01913400B22E79 /* VerificationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F100191D01913400B22E79 /* VerificationCodeViewController.swift */; };
-		04F1001C1D0191C800B22E79 /* SignUpPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F1001B1D0191C800B22E79 /* SignUpPassViewController.swift */; };
-		04F100221D0197D900B22E79 /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F100211D0197D900B22E79 /* SignUPViewController.swift */; };
 		1800CB061CF6E0940094727B /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800CB051CF6E0940094727B /* UIBarButtonItem+Badge.m */; };
 		180B482D1CF2C74100B5808C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B482C1CF2C74100B5808C /* HomeViewController.swift */; };
 		18A93DF31CEF32680046F78D /* ItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A93DF21CEF32680046F78D /* ItemDetailVC.swift */; };
@@ -58,6 +55,7 @@
 		045739121CE30EDF00EB0FC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ESKLoginSignUpVC.swift; path = ../ESKLoginSignUpVC.swift; sourceTree = "<group>"; };
 		046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartItemDetailVC.swift; path = ../CartItemDetailVC.swift; sourceTree = "<group>"; };
+		046FB5E71D0160D60059F904 /* SignUPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUPViewController.swift; path = ../SignUPViewController.swift; sourceTree = "<group>"; };
 		04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKartSideMenuManager.swift; path = ../EKartSideMenuManager.swift; sourceTree = "<group>"; };
 		04B564171CEED4F6001E9792 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		04B564191CEED884001E9792 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -68,10 +66,6 @@
 		04B5642B1CEF1312001E9792 /* UserRegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationVC.swift; sourceTree = "<group>"; };
 		04B700761CE9D48900C4E292 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = ../UserProfileViewController.swift; sourceTree = "<group>"; };
 		04B700781CE9D56900C4E292 /* UserProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileCell.swift; path = ../UserProfileCell.swift; sourceTree = "<group>"; };
-		04F100171D01902900B22E79 /* SignUpCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpCodeViewController.swift; path = Model/SignUpCodeViewController.swift; sourceTree = "<group>"; };
-		04F100191D01913400B22E79 /* VerificationCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerificationCodeViewController.swift; path = Model/VerificationCodeViewController.swift; sourceTree = "<group>"; };
-		04F1001B1D0191C800B22E79 /* SignUpPassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpPassViewController.swift; path = Model/SignUpPassViewController.swift; sourceTree = "<group>"; };
-		04F100211D0197D900B22E79 /* SignUPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUPViewController.swift; path = ../../../SignUPViewController.swift; sourceTree = "<group>"; };
 		1800CB041CF6E0940094727B /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
 		1800CB051CF6E0940094727B /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
 		180B482C1CF2C74100B5808C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +168,7 @@
 				0436946A1CE4A261000868CE /* SimillerProductDetailVC.swift */,
 				04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */,
 				04B5642B1CEF1312001E9792 /* UserRegistrationVC.swift */,
+				046FB5E71D0160D60059F904 /* SignUPViewController.swift */,
 				04B700761CE9D48900C4E292 /* UserProfileViewController.swift */,
 				18D3DA901CFEBBED006938DE /* LoginViewController.swift */,
 			);
@@ -360,6 +355,7 @@
 				046B8EC31CEDD2470024EF0E /* ESKLoginSignUpVC.swift in Sources */,
 				04B564201CEEF144001E9792 /* CategoryItemsViewCell.swift in Sources */,
 				04B700771CE9D48900C4E292 /* UserProfileViewController.swift in Sources */,
+				046FB5E81D0160D60059F904 /* SignUPViewController.swift in Sources */,
 				18FB3F381CF444FE00C2E3D5 /* SearchViewController.swift in Sources */,
 				043694631CE465DC000868CE /* BaseViewController.swift in Sources */,
 				180B482D1CF2C74100B5808C /* HomeViewController.swift in Sources */,
@@ -375,8 +371,6 @@
 				043694671CE4877D000868CE /* ESKCategoryTableVC.swift in Sources */,
 				18A93DF81CEF36DF0046F78D /* ImageWithTextField.swift in Sources */,
 				0436946B1CE4A261000868CE /* SimillerProductDetailVC.swift in Sources */,
-				04F1001A1D01913400B22E79 /* VerificationCodeViewController.swift in Sources */,
-				04F100221D0197D900B22E79 /* SignUPViewController.swift in Sources */,
 				045739071CE30EDF00EB0FC9 /* AppDelegate.swift in Sources */,
 				18F56BA91CFD5A6500CFB052 /* BaseOperation.swift in Sources */,
 				04B5641E1CEEF122001E9792 /* CategoryItemListVC.swift in Sources */,

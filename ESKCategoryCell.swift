@@ -11,6 +11,9 @@ import UIKit
 class ESKCategoryCell: UITableViewCell {
 
     @IBOutlet var TextLabel: UILabel!
+    
+    @IBOutlet weak var cellId: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

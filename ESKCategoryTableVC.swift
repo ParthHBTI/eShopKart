@@ -12,8 +12,6 @@ import AFNetworking
 class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
     
     var responseArr:AnyObject = []
-    var tableData = []
-    var data = NSMutableData()
     @IBOutlet var categoryTblView: UITableView!
     
     override func viewDidLoad() {
@@ -23,7 +21,7 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
         let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
         manager.requestSerializer = requestSerializer
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-        manager.POST("http://192.168.0.17/eshopkart/webservices/select_category", parameters: nil, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.13/eshopkart/webservices/get_categories", parameters: nil, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("Response: \(response!)")
             self.responseArr = response
             self.categoryTblView.reloadData()
@@ -58,6 +56,8 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ESKCategoryCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Identifier", forIndexPath: indexPath) as! ESKCategoryCell
         cell.TextLabel!.text = responseArr.objectAtIndex(indexPath.row)["category_name"] as?  String
+        cell.cellId!.text = responseArr.objectAtIndex(indexPath.row)["id"] as?  String
+        cell.cellId!.accessibilityElementsHidden = true
         return cell
     }
     
@@ -66,5 +66,7 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
         let destinationVC = segue.destinationViewController as! CategoryItemListVC
         let cell = sender as! ESKCategoryCell
         destinationVC.categoryName = cell.TextLabel!.text
+        destinationVC.categoryId = cell.cellId!.text
+        
     }
 }

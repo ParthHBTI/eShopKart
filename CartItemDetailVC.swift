@@ -58,7 +58,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
   
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> cartItemCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cartcell", forIndexPath: indexPath) as! cartItemCell
-        cell.backgroundColor = UIColor.whiteColor()
+        cell.contentView.backgroundColor = UIColor.whiteColor()
         return cell
         
     }
