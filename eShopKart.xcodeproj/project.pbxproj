@@ -16,6 +16,7 @@
 		045739071CE30EDF00EB0FC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045739061CE30EDF00EB0FC9 /* AppDelegate.swift */; };
 		046B8EC31CEDD2470024EF0E /* ESKLoginSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */; };
 		046C45DB1CE5E40F00C8D13C /* CartItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */; };
+		046FB5E81D0160D60059F904 /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FB5E71D0160D60059F904 /* SignUPViewController.swift */; };
 		04A022421CEC47690002B3D1 /* EKartSideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */; };
 		04B564181CEED4F6001E9792 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 04B564171CEED4F6001E9792 /* Podfile */; };
 		04B5641A1CEED884001E9792 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04B564191CEED884001E9792 /* Images.xcassets */; };
@@ -34,7 +35,6 @@
 		18B49E851CF5AAD300B728BF /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B49E841CF5AAD300B728BF /* AFNetworking.framework */; };
 		18B49E871CF5AAF900B728BF /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B49E861CF5AAF900B728BF /* MBProgressHUD.framework */; };
 		18D3DA911CFEBBED006938DE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3DA901CFEBBED006938DE /* LoginViewController.swift */; };
-		18D3DA931CFEE7F9006938DE /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3DA921CFEE7F9006938DE /* SignUPViewController.swift */; };
 		18EDD7F71CFC2AEA007AE91E /* cartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDD7F61CFC2AEA007AE91E /* cartItemCell.swift */; };
 		18EDD7F91CFC5962007AE91E /* GeneralWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDD7F81CFC5962007AE91E /* GeneralWebViewController.swift */; };
 		18F56BA91CFD5A6500CFB052 /* BaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F56BA81CFD5A6500CFB052 /* BaseOperation.swift */; };
@@ -55,6 +55,7 @@
 		045739121CE30EDF00EB0FC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ESKLoginSignUpVC.swift; path = ../ESKLoginSignUpVC.swift; sourceTree = "<group>"; };
 		046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartItemDetailVC.swift; path = ../CartItemDetailVC.swift; sourceTree = "<group>"; };
+		046FB5E71D0160D60059F904 /* SignUPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUPViewController.swift; path = ../SignUPViewController.swift; sourceTree = "<group>"; };
 		04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKartSideMenuManager.swift; path = ../EKartSideMenuManager.swift; sourceTree = "<group>"; };
 		04B564171CEED4F6001E9792 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		04B564191CEED884001E9792 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -74,7 +75,6 @@
 		18B49E841CF5AAD300B728BF /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "Pods/../build/Debug-iphoneos/AFNetworking.framework"; sourceTree = "<group>"; };
 		18B49E861CF5AAF900B728BF /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = "Pods/../build/Debug-iphoneos/MBProgressHUD.framework"; sourceTree = "<group>"; };
 		18D3DA901CFEBBED006938DE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		18D3DA921CFEE7F9006938DE /* SignUPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUPViewController.swift; sourceTree = "<group>"; };
 		18EDD7F61CFC2AEA007AE91E /* cartItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cartItemCell.swift; sourceTree = "<group>"; };
 		18EDD7F81CFC5962007AE91E /* GeneralWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralWebViewController.swift; sourceTree = "<group>"; };
 		18F56BA81CFD5A6500CFB052 /* BaseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseOperation.swift; sourceTree = "<group>"; };
@@ -164,9 +164,9 @@
 				0436946A1CE4A261000868CE /* SimillerProductDetailVC.swift */,
 				04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */,
 				04B5642B1CEF1312001E9792 /* UserRegistrationVC.swift */,
+				046FB5E71D0160D60059F904 /* SignUPViewController.swift */,
 				04B700761CE9D48900C4E292 /* UserProfileViewController.swift */,
 				18D3DA901CFEBBED006938DE /* LoginViewController.swift */,
-				18D3DA921CFEE7F9006938DE /* SignUPViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -351,7 +351,7 @@
 				046B8EC31CEDD2470024EF0E /* ESKLoginSignUpVC.swift in Sources */,
 				04B564201CEEF144001E9792 /* CategoryItemsViewCell.swift in Sources */,
 				04B700771CE9D48900C4E292 /* UserProfileViewController.swift in Sources */,
-				18D3DA931CFEE7F9006938DE /* SignUPViewController.swift in Sources */,
+				046FB5E81D0160D60059F904 /* SignUPViewController.swift in Sources */,
 				18FB3F381CF444FE00C2E3D5 /* SearchViewController.swift in Sources */,
 				043694631CE465DC000868CE /* BaseViewController.swift in Sources */,
 				180B482D1CF2C74100B5808C /* HomeViewController.swift in Sources */,
@@ -506,6 +506,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = KloudRac.eShopKart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "eShopKart-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};

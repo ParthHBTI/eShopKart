@@ -9,7 +9,8 @@
 import UIKit
 
 class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
-
+    @IBOutlet var tableview: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
