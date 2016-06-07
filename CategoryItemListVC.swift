@@ -63,6 +63,4 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
         
         self.navigationController?.popViewControllerAnimated(false)
     }
-    
-    
 }
