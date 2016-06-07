@@ -29,7 +29,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
         
     }
+    @IBAction func loginACtion(sender: UIButton) {
+        if (emailMobileTextField.text == "" || passwordTextField.text == "") {
+            let alert = UIAlertView.init(title: "Sorry", message: "Please enter both fields", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
+           
+        } else if(emailMobileTextField == "" && passwordTextField == "") {
+            
+        }
+    }
 
+    @IBAction func forgetAction(sender: AnyObject) {
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
