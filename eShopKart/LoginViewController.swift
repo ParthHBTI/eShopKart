@@ -15,18 +15,6 @@ class LoginViewController: TextFieldViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-        let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
-        manager.requestSerializer = requestSerializer
-        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-        manager.POST("http://192.168.0.13/eshopkart/webservices/login_user", parameters: nil, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-            print("Response: \(response!)")
-            
-        }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
-            
-            print("error: \(error!)")
-            
-        }
 
         self.emailMobileTextField.setLeftImage(UIImage(named: "icon_user.png")!)
         self.passwordTextField.setLeftImage(UIImage(named: "icon_password.png")!)
@@ -62,7 +50,20 @@ class LoginViewController: TextFieldViewController {
             loading.removeFromSuperViewOnHide = true
         } else {
             if emailMobileTextField.text!.isValidEmail() == true {
-                
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                let userInfo  = [
+                    "email" : emailMobileTextField!.text!,
+                    "password" : passwordTextField!.text!,
+                ]
+                loading.mode = MBProgressHUDModeIndeterminate
+                loading.yOffset = -55.0
+                loading.hide(true, afterDelay: 2)
+            }
+            else {
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = "Please enter valid email id"
+                loading.yOffset = -55.0
+                loading.hide(true, afterDelay: 2)
             }
             let myUrl = NSURL(string: "http://192.168.0.13/eshopkart/webservices/login_user")
             let request = NSMutableURLRequest(URL:myUrl!);
@@ -89,6 +90,19 @@ class LoginViewController: TextFieldViewController {
     }
     
     @IBAction func forgetAction(sender: AnyObject) {
+        let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
+        manager.requestSerializer = requestSerializer
+        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
+        manager.POST("http://192.168.0.13/eshopkart/webservices/changepassword", parameters: nil, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            print("Response: \(response!)")
+            
+        }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
+            
+            print("error: \(error!)")
+            
+        }
+
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("VerificationCodeIdentifire") as? VerificationCodeViewController
         self.navigationController?.pushViewController(vc!, animated: true)

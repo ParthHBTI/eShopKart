@@ -1,6 +1,5 @@
 //
-//  VerificationCodeViewController.swift
-//  eShopKart
+//  VerificationCodeViewController.swiftchangepassword//  eShopKart
 //
 //  Created by mac on 07/06/16.
 //  Copyright © 2016 kloudRac.com. All rights reserved.
