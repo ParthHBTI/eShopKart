@@ -10,10 +10,9 @@ import UIKit
 
 class SimillerProductViewCell: UITableViewCell {
     @IBOutlet weak var productImgView: UIImageView!
-    @IBOutlet weak var productnameLbl: UILabel!
-    @IBOutlet weak  var rsLbl: UILabel!
-    @IBOutlet weak var priceLbl: UILabel!
-    
+    @IBOutlet weak var productname: UILabel!
+    @IBOutlet weak var rs: UILabel!
+    @IBOutlet weak var amount: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

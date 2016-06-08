@@ -11,6 +11,7 @@ import UIKit
 class CategoryItemsViewCell: UITableViewCell {
 
     @IBOutlet var subCategoryItemName: UILabel!
+    @IBOutlet var subCatId: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

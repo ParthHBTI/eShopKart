@@ -262,6 +262,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="55" y="336" width="490" height="30"/>
+                                </variation>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RPG-RP-Mp7">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -270,6 +273,9 @@
                                 <state key="normal" title="LOG IN">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="55" y="397" width="490" height="30"/>
+                                </variation>
                                 <connections>
                                     <action selector="loginACtion:" destination="wtZ-43-3EA" eventType="touchUpInside" id="TQf-wC-hqr"/>
                                 </connections>
@@ -286,7 +292,8 @@
                                         <exclude reference="AdN-cr-BKe"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="191" y="3" width="218" height="209"/>
                                     <mask key="constraints">
                                         <include reference="AdN-cr-BKe"/>
                                     </mask>
@@ -306,7 +313,8 @@
                                         <exclude reference="VWY-so-G3t"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="141" y="434" width="318" height="34"/>
                                     <mask key="constraints">
                                         <include reference="VWY-so-G3t"/>
                                     </mask>
@@ -330,7 +338,8 @@
                                         <exclude reference="epu-DU-X30"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="488" y="371" width="57" height="16"/>
                                     <mask key="constraints">
                                         <include reference="RDx-Za-ehg"/>
                                         <include reference="epu-DU-X30"/>
@@ -345,6 +354,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="55" y="285" width="490" height="30"/>
+                                </variation>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.41960784309999999" green="0.56862745100000001" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -761,6 +773,9 @@
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="122" y="285" width="357" height="30"/>
+                                </variation>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="headTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgO-HQ-HSj">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -777,7 +792,8 @@
                                         <exclude reference="Xq1-vK-8EC"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="122" y="368" width="357" height="24"/>
                                     <mask key="constraints">
                                         <include reference="Xq1-vK-8EC"/>
                                     </mask>
@@ -799,7 +815,7 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="127" y="173" width="145" height="139"/>
+                                    <rect key="frame" x="191" y="3" width="218" height="209"/>
                                     <mask key="constraints">
                                         <include reference="Glh-9S-dz0"/>
                                     </mask>
@@ -812,6 +828,9 @@
                                 <state key="normal" title="CONTINUE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="122" y="330" width="357" height="30"/>
+                                </variation>
                                 <connections>
                                     <action selector="continueAction:" destination="ptn-3i-2UG" eventType="touchUpInside" id="QBD-T6-JX3"/>
                                     <segue destination="4TE-g9-XYr" kind="show" id="pkR-If-OdB"/>
@@ -1664,6 +1683,9 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="51" y="691" width="131" height="59"/>
+                                </variation>
                                 <connections>
                                     <segue destination="aVW-UC-KfU" kind="show" id="u9w-qq-uLk"/>
                                 </connections>

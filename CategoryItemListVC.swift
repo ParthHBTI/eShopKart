@@ -56,11 +56,21 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
         
         let cell = tableView.dequeueReusableCellWithIdentifier("categoryItemsCell", forIndexPath: indexPath) as! CategoryItemsViewCell
         cell.subCategoryItemName?.text = subcatResponseArr.objectAtIndex(indexPath.row)["category_name"] as? String
+        cell.subCatId?.text = subcatResponseArr.objectAtIndex(indexPath.row)["id"] as? String
+        
         return cell
     }
     
     @IBAction func crossAction(sender: AnyObject) {
         
         self.navigationController?.popViewControllerAnimated(false)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let destinationVC = segue.destinationViewController as! SimillerProductDetailVC
+        let cell = sender as! CategoryItemsViewCell
+        destinationVC.getsubCategoryId = cell.subCatId!.text
+        
     }
 }
