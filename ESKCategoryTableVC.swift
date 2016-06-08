@@ -31,8 +31,28 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
             print("error: \(error!)")
             
         }
+        // The output below is limited by 1 KB.
+        // Please Sign Up (Free!) to remove this limitation.
+        
+        let url = NSURL(string: "files/thumbs100x100/")!
+        let imageData = NSData(contentsOfURL: url)
+       // NSLog("data length %d\(imageData.characters.count())")
+        // UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+        if imageData != nil {
+            let filenames: String = String(format: "Deal.png")
+            //set name here
+            NSLog("%@", filenames)
+            let urlString: String = "http://localhost/php-admin//receiveFile.php"
+            let request: NSMutableURLRequest = NSMutableURLRequest()
+            request.URL = NSURL(string: urlString)!
+            request.HTTPMethod = "POST"
+            let boundary: String = "---------------------------14737809831466499882746641449"
+            let contentType: String = "multipart/form-data; boundary=\(boundary)"
+            request.addValue(contentType, forHTTPHeaderField: "Content-Type")
+            let body = NSMutableData()
+            body.appendData("\r\n--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
     }
-    
+    }
     override func viewWillAppear(animated: Bool) {
         
         self.navigationItem.leftItemsSupplementBackButton = false
@@ -52,6 +72,7 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
         
         return responseArr.count
     }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ESKCategoryCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Identifier", forIndexPath: indexPath) as! ESKCategoryCell
