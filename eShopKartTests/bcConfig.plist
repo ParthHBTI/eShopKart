@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>WebServiceUrl</key>
+	<dict>
+		<key>signup</key>
+		<string>webservices/signup/</string>
+		<key>login</key>
+		<string>webservices/login_user/</string>
+		<key>forgotPassword</key>
+		<string>webservices/verification/</string>
+	</dict>
+</dict>
+</plist>

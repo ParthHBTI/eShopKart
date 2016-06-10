@@ -24,10 +24,15 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBarHidden = false
+        let nav = navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.BlackOpaque
+        nav?.tintColor = UIColor.whiteColor()
+        navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+        let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(TextFieldViewController.crossBtnAction))
+        self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
         let tapRecognizer = UITapGestureRecognizer.init(target: self, action: "handleTap:")
         self.view .addGestureRecognizer(tapRecognizer)
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,6 +40,11 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func crossBtnAction() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
     
     func handleTap (tapGesture: UIGestureRecognizer) {
         self.view .endEditing(true)
@@ -93,4 +103,10 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate {
     }
     */
 
+}
+extension String {
+    func isValidEmail() -> Bool {
+        let regex = try? NSRegularExpression(pattern: "^[A-Z0-9._%+]+@(?:[A-Z0-9]+\\.)+[A-Z]{2,}$", options: .CaseInsensitive)
+        return regex?.firstMatchInString(self, options: [], range: NSMakeRange(0, self.characters.count)) != nil
+    }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResetPasswordViewController: UIViewController , UITextFieldDelegate {
+class ResetPasswordViewController:TextFieldViewController {
     @IBOutlet private var newPassTextField: UITextField!
     
     override func viewDidLoad() {
@@ -22,7 +22,22 @@ class ResetPasswordViewController: UIViewController , UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    @IBAction func resetPassAction(sender: AnyObject) {
+        let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        loading.mode = MBProgressHUDModeText
+        if newPassTextField.text!.isEmpty == true {
+            loading.labelText = "Password can not be empty"
+            loading.yOffset = -55.0
+            loading.hide(true, afterDelay: 2)
+            loading.removeFromSuperViewOnHide = true
+        } else {
+                let storyboard = UIStoryboard(name: "Main" , bundle: nil)
+                let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as? UserProfileViewController
+                self.navigationController?.pushViewController(vc!, animated: true)
+        }
+    }
+    
+    override func textFieldShouldReturn(textField: UITextField) -> Bool {
         view.endEditing(true)
         return true
     }

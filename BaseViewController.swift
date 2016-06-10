@@ -85,11 +85,9 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
     
     // Go to home page
     func showHomePage() {
-        
-        //let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
-        //let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
-        self.navigationController?.popToRootViewControllerAnimated(true)
-
+        let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     // Go back to previous page

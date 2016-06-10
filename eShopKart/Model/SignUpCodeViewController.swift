@@ -8,73 +8,44 @@
 
 import UIKit
 
-class SignUpCodeViewController: UIViewController, UITextFieldDelegate {
-    @IBOutlet var textCode1: UITextField!
-    @IBOutlet var textCode2: UITextField!
-    @IBOutlet var textCode3: UITextField!
-    @IBOutlet var textCode4: UITextField!
-    @IBOutlet var textCode5: UITextField!
-    @IBOutlet var textCode6: UITextField!
+class SignUpCodeViewController: TextFieldViewController {
+    @IBOutlet var codeTextField: UITextField!
     
-    override func viewDidLoad() {
+        override func viewDidLoad() {
         super.viewDidLoad()
-        textCode1.delegate = self
-        textCode2.delegate = self
-        textCode3.delegate = self
-        textCode4.delegate = self
-        textCode5.delegate = self
-        textCode6.delegate = self
-        // Do any additional setup after loading the view.
+            codeTextField.delegate = self
+    // Do any additional setup after loading the view.
     }
-    
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        if (textField.text?.characters.count < 1 && string.characters.count > 0) {
-            let nextTag = textField.tag + 1
-            var nextResponder = textField.superview?.viewWithTag(nextTag)
-            if (nextResponder == nil) {
-                nextResponder = textField.superview?.viewWithTag(1)
-            }
-            textField.text = string
-            nextResponder?.becomeFirstResponder()
-            return false
-        } else if (textField.text?.characters.count >= 1 && string.characters.count == 0) {
-            let previousTag = textField.tag - 1
-            var previousResponder = textField.superview?.viewWithTag(previousTag)
-            if (previousResponder == nil) {
-                previousResponder = textField.superview?.viewWithTag(1)
-            }
-            textField.text = ""
-            previousResponder?.becomeFirstResponder()
-            return false
-        }
-        return true
-    }
-    
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if (textField == textCode1) {
-            textField.resignFirstResponder()
-            textCode2.becomeFirstResponder()
-        } else if (textField == textCode2) {
-            textField.resignFirstResponder()
-            textCode3.becomeFirstResponder()
-        } else if (textField == textCode3) {
-            textField.resignFirstResponder()
-            textCode4.becomeFirstResponder()
-        } else if (textField == textCode4) {
-            textField.resignFirstResponder()
-            textCode5.becomeFirstResponder()
-        } else if (textField == textCode5) {
-            textField.resignFirstResponder()
-            textCode6.becomeFirstResponder()
+   
+    @IBAction func submitAction(sender: AnyObject) {
+        let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        loading.mode = MBProgressHUDModeText
+        if codeTextField.text!.isEmpty == true {
+            loading.labelText = "Code can not be empty"
+            loading.yOffset = -55.0
+            loading.hide(true, afterDelay: 2)
+            loading.removeFromSuperViewOnHide = true
+        } else if (codeTextField.text != "123456") {
+            loading.labelText = "You enter wrong code, Please try again"
+            loading.yOffset = -55.0
+            loading.hide(true, afterDelay: 2)
+            loading.removeFromSuperViewOnHide = true
         } else {
-            textField.resignFirstResponder()
-            textCode6.becomeFirstResponder()
-            self.view.endEditing(true)
+            let storyboard = UIStoryboard(name: "Login" , bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("SetPassID") as? SignUpPassViewController
+            self.navigationController?.pushViewController(vc!, animated: true)
         }
-        return true
+        
     }
-
+    
+    @IBAction func resendAction(sender: AnyObject) {
+        let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        loading.mode = MBProgressHUDModeText
+        loading.labelText = "Successfully send code in your Email ID"
+        loading.yOffset = -55.0
+        loading.hide(true, afterDelay: 2)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

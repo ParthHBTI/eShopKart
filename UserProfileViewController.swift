@@ -8,13 +8,15 @@
 
 import UIKit
 
-class UserProfileViewController: UIViewController,UITableViewDelegate {
+class UserProfileViewController: UIViewController,UITableViewDelegate, UIImagePickerControllerDelegate {
+    var flag = Bool()
+    @IBOutlet var userPhoto: UIImageView!
+    @IBOutlet var inOutLbl: UILabel!
     @IBOutlet var profileView: UIView!
     @IBOutlet var logibBtn: UIButton!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var imageArray: NSMutableArray! = []
     @IBOutlet var profileArray: NSArray! = ["My Orders" , "My Returns" , "My Favourites" , "Rate Your Purchase" , "Customer Support" ,"My Account", " Notifications", "Rate the App","Give Feedback","Share Our App","Sell With Us","More"]
-    
     @IBAction func loginAction(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Login", bundle:  nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("loginVC") as? LoginViewController
@@ -25,6 +27,18 @@ class UserProfileViewController: UIViewController,UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(UserProfileViewController.handleTap))
+        userPhoto.addGestureRecognizer(tapRecognizer)
+        let nitification = NSNotificationCenter()
+        nitification.postNotificationName("Login Successfully", object: self)
+        if (flag ) {
+            inOutLbl.text = "Login"
+            
+        } else {
+            inOutLbl.text = "Logout"
+            flag = true
+        }
+        
         navigationController?.navigationBarHidden = false
         let nav = navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.BlackOpaque
@@ -51,6 +65,41 @@ class UserProfileViewController: UIViewController,UITableViewDelegate {
         imageArray[10] = UIImage(named: "market.png" )!
         imageArray[11] = UIImage(named: "market.png" )!
     }
+    func handleTap() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
+            print("Button capture")
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
+                print("Button capture")
+                imagePicker.allowsEditing = false
+                imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+                imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+                self.presentViewController(imagePicker, animated: true, completion: nil)
+            }
+
+            userPhoto.contentMode = .ScaleAspectFit
+            userPhoto.image = pickedImage
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     
     func crossBtnAction() {
         self.navigationController?.dismissViewControllerAnimated(false, completion: nil)
@@ -69,6 +118,13 @@ class UserProfileViewController: UIViewController,UITableViewDelegate {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
+    }
+    @IBAction func changePassAction(sender: AnyObject) {
+        
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("VerificationCodeIdentifire") as? VerificationCodeViewController
+        self.navigationController?.pushViewController(vc!, animated: true)
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

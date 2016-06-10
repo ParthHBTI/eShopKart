@@ -15,24 +15,11 @@ class LoginViewController: TextFieldViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.emailMobileTextField.setLeftImage(UIImage(named: "icon_user.png")!)
         self.passwordTextField.setLeftImage(UIImage(named: "icon_password.png")!)
         emailMobileTextField.delegate = self
         passwordTextField.delegate = self
-        navigationController?.navigationBarHidden = false
-        let nav = navigationController?.navigationBar
-        nav?.barStyle = UIBarStyle.BlackOpaque
-        nav?.tintColor = UIColor.whiteColor()
-        //if
-        title = "Login"
-        navigationController?.navigationBar.barTintColor = UIColor.blackColor()
-        //
-        let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(crossBtnAction))
-        //
-        self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
-        
-    }
+           }
     
     @IBAction func loginACtion(sender: UIButton) {
         let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -42,71 +29,70 @@ class LoginViewController: TextFieldViewController {
             loading.yOffset = -55.0
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
-        }
-        else if passwordTextField.text!.isEmpty == true {
+        } else if passwordTextField.text!.isEmpty == true {
             loading.labelText = "Password can not be empty"
             loading.yOffset = -55.0
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
         } else {
             if emailMobileTextField.text!.isValidEmail() == true {
-                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                let userInfo  = [
-                    "email" : emailMobileTextField!.text!,
-                    "password" : passwordTextField!.text!,
-                ]
                 loading.mode = MBProgressHUDModeIndeterminate
                 loading.yOffset = -55.0
                 loading.hide(true, afterDelay: 2)
-            }
-            else {
+                let myUrl = NSURL(string: "http://192.168.0.3/eshopkart/webservices/login_user")
+                let request = NSMutableURLRequest(URL:myUrl!);
+                request.HTTPMethod = "POST";
+                let emailID = emailMobileTextField.text! as String
+                let pass = passwordTextField.text! as String
+                let form1 = "email=\(emailID)&password=\(pass)"
+                print(form1)
+                request.HTTPBody = form1.dataUsingEncoding(NSUTF8StringEncoding)
+                let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+                    data, response, error in
+                    if error != nil
+                    {
+                        print("error=\(error)")
+                        return
+                    }
+                    print("response = \(response)")
+                    let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                    print("responseString = \(responseString)")
+                }
+                task.resume()
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as? UserProfileViewController
+                self.navigationController?.pushViewController(vc!, animated: true)
+            } else {
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = "Please enter valid email id"
                 loading.yOffset = -55.0
                 loading.hide(true, afterDelay: 2)
             }
-            let myUrl = NSURL(string: "http://192.168.0.13/eshopkart/webservices/login_user")
-            let request = NSMutableURLRequest(URL:myUrl!);
-            request.HTTPMethod = "POST";
-            let emailID = emailMobileTextField.text! as String
-            let pass = passwordTextField.text! as String
-            let form1 = "email=\(emailID)&password=\(pass)"
-            print(form1)
-            request.HTTPBody = form1.dataUsingEncoding(NSUTF8StringEncoding)
-            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-                data, response, error in
-                if error != nil
-                {
-                    print("error=\(error)")
-                    return
-                }
-                print("response = \(response)")
-                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print("responseString = \(responseString)")
-            }
-            task.resume()
-            
-                }
+        }
     }
     
     @IBAction func forgetAction(sender: AnyObject) {
-        let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-        let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
-        manager.requestSerializer = requestSerializer
-        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-        manager.POST("http://192.168.0.13/eshopkart/webservices/changepassword", parameters: nil, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-            print("Response: \(response!)")
-            
-        }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
-            
-            print("error: \(error!)")
-            
+        let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        loading.mode = MBProgressHUDModeText
+        if emailMobileTextField.text!.isEmpty == true {
+            loading.labelText = "Email can not be empty"
+            loading.yOffset = -55.0
+            loading.hide(true, afterDelay: 2)
+            loading.removeFromSuperViewOnHide = true
+        } else {
+            if emailMobileTextField.text!.isValidEmail() == true {
+                let storyboard = UIStoryboard(name: "Login" , bundle: nil)
+                let vc = storyboard.instantiateViewControllerWithIdentifier("VerificationCodeIdentifire") as? VerificationCodeViewController
+                self.navigationController?.pushViewController(vc!, animated: true)
+            } else {
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = "Please enter valid email id"
+                loading.yOffset = -55.0
+                loading.hide(true, afterDelay: 2)
+            }
         }
-
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("VerificationCodeIdentifire") as? VerificationCodeViewController
-        self.navigationController?.pushViewController(vc!, animated: true)
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -137,14 +123,3 @@ class LoginViewController: TextFieldViewController {
    
 }
 
-extension String {
-    
-    
-    
-    func isValidEmail() -> Bool {
-        //  let regex = try? NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .CaseInsensitive)
-        let regex = try? NSRegularExpression(pattern: "^[A-Z0-9._%+]+@(?:[A-Z0-9]+\\.)+[A-Z]{2,}$", options: .CaseInsensitive)
-        return regex?.firstMatchInString(self, options: [], range: NSMakeRange(0, self.characters.count)) != nil
-    }
-    
-}

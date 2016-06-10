@@ -8,17 +8,37 @@
 
 import UIKit
 
+let UIAppDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var currentUser : User?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let data = NSUserDefaults.standardUserDefaults().valueForKey("CurrentUser") as? NSData
+        if data != nil {
+            let admin = NSKeyedUnarchiver.unarchiveObjectWithData( data!) as! User
+            currentUser  = admin;
+            
+        }
+        
+        let token = 	NSUserDefaults.standardUserDefaults().valueForKey("token_id") as? String
+        if token == nil {
+            showLandingPage()
+        }
         // Override point for customization after application launch.
         return true
     }
-
+    
+    func showLandingPage() {
+        print("User is Logged In")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc: UserProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as! UserProfileViewController
+        let navigationController:UINavigationController = UINavigationController(rootViewController: vc)
+        self.window?.rootViewController = navigationController
+    }
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

@@ -8,14 +8,31 @@
 
 import UIKit
 
-class SignUpPassViewController: UIViewController {
+class SignUpPassViewController:TextFieldViewController {
+    @IBOutlet var setPassTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setPassTextField.delegate = self
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func finalAction(sender: AnyObject) {
+        let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        loading.mode = MBProgressHUDModeText
+        if setPassTextField.text!.isEmpty == true {
+            loading.labelText = "Password can not be empty"
+            loading.yOffset = -55.0
+            loading.hide(true, afterDelay: 2)
+            loading.removeFromSuperViewOnHide = true
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
