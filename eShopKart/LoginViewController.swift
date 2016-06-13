@@ -36,32 +36,45 @@ class LoginViewController: TextFieldViewController {
             loading.removeFromSuperViewOnHide = true
         } else {
             if emailMobileTextField.text!.isValidEmail() == true {
-                loading.mode = MBProgressHUDModeIndeterminate
-                loading.yOffset = -55.0
-                loading.hide(true, afterDelay: 2)
-                let myUrl = NSURL(string: "http://192.168.0.3/eshopkart/webservices/login_user")
-                let request = NSMutableURLRequest(URL:myUrl!);
-                request.HTTPMethod = "POST";
-                let emailID = emailMobileTextField.text! as String
-                let pass = passwordTextField.text! as String
-                let form1 = "email=\(emailID)&password=\(pass)"
-                print(form1)
-                request.HTTPBody = form1.dataUsingEncoding(NSUTF8StringEncoding)
-                let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-                    data, response, error in
-                    if error != nil
-                    {
-                        print("error=\(error)")
-                        return
-                    }
-                    print("response = \(response)")
-                    let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                    print("responseString = \(responseString)")
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                var token = appDelegate.deviceTokenString as? String
+                if token == nil {
+                    token = "786e246f17d1a0684d499b390b8"
                 }
-                task.resume()
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as? UserProfileViewController
-                self.navigationController?.pushViewController(vc!, animated: true)
+                 let userInfo = [
+                    "email" : emailMobileTextField!.text!,
+                    "password" : passwordTextField!.text!,
+                    "token_id" : token!
+                ]
+                loading.mode = MBProgressHUDModeIndeterminate
+                SigninOperaion.signin(userInfo, completionClosure: { (response: AnyObject) -> () in
+                    let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
+                    let user: User  = User.initWithArray(admin)[0] as! User
+                    appDelegate.currentUser = user
+                   appDelegate.saveCurrentUserDetails()
+                    if let tokenId: AnyObject = response.valueForKey("User")?.valueForKey("token_id") {
+                        let userId =	response.valueForKey("User")?.valueForKey("id") as! String
+                        NSUserDefaults.standardUserDefaults().setValue(userId, forKey: "User")
+                        NSUserDefaults.standardUserDefaults().setValue(tokenId, forKey: "token_id")
+                        NSUserDefaults.standardUserDefaults().synchronize()
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            //appDelegate.window?.rootViewController = appDelegate.baseView
+                            //self.placeViewClosed()
+                            //NSNotificationCenter.defaultCenter().postNotificationName("UINotificationLoginCalled", object: nil)
+                            //NSNotificationCenter.defaultCenter().postNotificationName(Eboard_MemoRefresh_Notification, object: nil)
+                            //NSNotificationCenter.defaultCenter().postNotificationName(Eboard_Login_Notification, object: nil)
+                        })
+                    } else {
+                        loading.mode = MBProgressHUDModeText
+                        loading.detailsLabelText = "Exceptional error occured. Please try again after some time"
+                        loading.hide(true, afterDelay: 2)
+                    }
+                }) { (error: NSError) -> () in
+                    loading.mode = MBProgressHUDModeText
+                    loading.detailsLabelText = error.localizedDescription
+                    loading.hide(true, afterDelay: 2)
+                }
+                
             } else {
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = "Please enter valid email id"
@@ -81,6 +94,44 @@ class LoginViewController: TextFieldViewController {
             loading.removeFromSuperViewOnHide = true
         } else {
             if emailMobileTextField.text!.isValidEmail() == true {
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                var token =	appDelegate.deviceTokenString as? String
+                if token == nil {
+                    token = "786e246f17d1a0684d499b390b8"
+                }
+                let userInfo  = [
+                    "email" : emailMobileTextField!.text!,
+                    "token_id" : token!
+                ]
+                loading.mode = MBProgressHUDModeIndeterminate
+                SigninOperaion.forgotPassword(userInfo, completionClosure: { (response: AnyObject) -> () in
+                    let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
+                    let user: User  = User.initWithArray(admin)[0] as! User
+                    appDelegate.currentUser = user
+                    appDelegate.saveCurrentUserDetails()
+                    if let tokenId: AnyObject = response.valueForKey("User")?.valueForKey("token_id") {
+                        let userId =	response.valueForKey("User")?.valueForKey("id") as! String
+                        NSUserDefaults.standardUserDefaults().setValue(userId, forKey: "User")
+                        NSUserDefaults.standardUserDefaults().setValue(tokenId, forKey: "token_id")
+                        NSUserDefaults.standardUserDefaults().synchronize()
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            //appDelegate.window?.rootViewController = appDelegate.baseView
+                            //self.placeViewClosed()
+                            //NSNotificationCenter.defaultCenter().postNotificationName("UINotificationLoginCalled", object: nil)
+                            //NSNotificationCenter.defaultCenter().postNotificationName(Eboard_MemoRefresh_Notification, object: nil)
+                            //NSNotificationCenter.defaultCenter().postNotificationName(Eboard_Login_Notification, object: nil)
+                        })
+                    } else {
+                        loading.mode = MBProgressHUDModeText
+                        loading.detailsLabelText = "Exceptional error occured. Please try again after some time"
+                        loading.hide(true, afterDelay: 2)
+                    }
+                }) { (error: NSError) -> () in
+                    loading.mode = MBProgressHUDModeText
+                    loading.detailsLabelText = error.localizedDescription
+                    loading.hide(true, afterDelay: 2)
+                }
+
                 let storyboard = UIStoryboard(name: "Login" , bundle: nil)
                 let vc = storyboard.instantiateViewControllerWithIdentifier("VerificationCodeIdentifire") as? VerificationCodeViewController
                 self.navigationController?.pushViewController(vc!, animated: true)

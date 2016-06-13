@@ -6,7 +6,7 @@
 	<dict>
 		<key>signup</key>
 		<string>webservices/signup/</string>
-		<key>login</key>
+		<key>signin</key>
 		<string>webservices/login_user/</string>
 		<key>forgotPassword</key>
 		<string>webservices/verification/</string>

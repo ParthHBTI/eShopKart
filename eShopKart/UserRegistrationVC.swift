@@ -64,43 +64,54 @@ class UserRegistrationVC: TextFieldViewController {
             loading.hide(true, afterDelay: 2)
              loading.removeFromSuperViewOnHide = true
         } else {
-            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            loading.mode = MBProgressHUDModeIndeterminate
-            loading.hide(true, afterDelay: 2)
-            if mailTextField.text!.isValidEmail() == true {
-                    let firstname = firstNameTextField.text! as String
-                    let lastname = lastNameTextField.text! as String
-                    let emailID = mailTextField.text! as String
-                    let password = passwordTextField.text! as String
-                    let mobile = contactNumberTextField.text! as String
-                        let myUrl = NSURL(string: "http://192.168.0.3/eshopkart/webservices/signup")
-                    let request = NSMutableURLRequest(URL:myUrl!);
-                    request.HTTPMethod = "POST";
-                    let form1 = "firstname=\(firstname)&lastname=\(lastname)&email=\(emailID)&password=\(password)&mobile=\(mobile)"
-                    //let form1 = "email=kamleshhbti@hotmail.com"
-                    request.HTTPBody = form1.dataUsingEncoding(NSUTF8StringEncoding)
-                    let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-                        data, response, error in
-                        if error != nil
-                        {
-                            print("error=\(error)")
-                            return
+            if  mailTextField.text!.isValidEmail() == true {
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                var token =	appDelegate.deviceTokenString as? String
+                if token == nil {
+                    token = "786e246f17d1a0684d499b390b8c15e0"
+                }
+                let userInfo :[String : String] = [
+                    "firstname" : firstNameTextField!.text!,
+                    "lastname" : lastNameTextField!.text!,
+                    "email" : mailTextField!.text!,
+                    "password" : passwordTextField!.text!,
+                    "mobile" : contactNumberTextField!.text!,
+                    "token_id" : token!
+                ]
+                if passwordTextField.text == confirmPassTextField.text{
+                    SigninOperaion.signup(userInfo, completionClosure: { response in
+                        let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
+                        let user: User  = User.initWithArray(admin)[0] as! User
+                        appDelegate.currentUser = user
+                        appDelegate.saveCurrentUserDetails()
+                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isSettingupBuilding")
+                        if let tokenId: AnyObject = user.token_id {
+                            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "LoggedInUser")
+                            NSUserDefaults.standardUserDefaults().setValue(tokenId, forKey: "token_id")
+                            NSUserDefaults.standardUserDefaults().synchronize()
+                            loading.hide(true)
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as! UserProfileViewController
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        } else {
+                            loading.mode = MBProgressHUDModeText
+                            loading.detailsLabelText = "Exceptional error occured. Please try again after some time"
+                            loading.hide(true, afterDelay: 2)
                         }
-                        print("response = \(response)")
-                        let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                        print("responseString = \(responseString)")
+                    }) { (error: NSError) -> () in
+                        loading.mode = MBProgressHUDModeText
+                        loading.detailsLabelText = error.localizedDescription
+                        loading.hide(true, afterDelay: 2)
                     }
-                    task.resume()
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as? UserProfileViewController
-                self.navigationController?.pushViewController(vc!, animated: true)
-                    print(form1)
-
+                } else {
+                    loading.mode = MBProgressHUDModeText
+                    loading.detailsLabelText = "Password and Confirm password does not match"
+                    loading.hide(true, afterDelay: 2)
+                }
             } else {
                 loading.mode = MBProgressHUDModeText
-                loading.detailsLabelText = "Please Enter Valid Email ID!"
+                loading.labelText = "Please enter valid email id"
                 loading.hide(true, afterDelay: 2)
-                loading.removeFromSuperViewOnHide = true
             }
         }
     }

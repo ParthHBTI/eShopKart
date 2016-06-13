@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserProfileViewController: UIViewController,UITableViewDelegate, UIImagePickerControllerDelegate {
+class UserProfileViewController: UIViewController,UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     var flag = Bool()
     @IBOutlet var userPhoto: UIImageView!
     @IBOutlet var inOutLbl: UILabel!
@@ -66,8 +66,9 @@ class UserProfileViewController: UIViewController,UITableViewDelegate, UIImagePi
         imageArray[11] = UIImage(named: "market.png" )!
     }
     func handleTap() {
-        let imagePicker = UIImagePickerController()
+        var imagePicker = UIImagePickerController()
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        imagePicker.delegate = self
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
             print("Button capture")
             imagePicker.allowsEditing = false

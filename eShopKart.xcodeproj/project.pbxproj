@@ -18,6 +18,8 @@
 		045719581D06CE08003C46E3 /* VerificationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045719571D06CE08003C46E3 /* VerificationCodeViewController.swift */; };
 		0457195A1D06E43D003C46E3 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045719591D06E43D003C46E3 /* ResetPasswordViewController.swift */; };
 		045739071CE30EDF00EB0FC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045739061CE30EDF00EB0FC9 /* AppDelegate.swift */; };
+		045BDD201D0E6BD00087996C /* SigninOperaion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BDD1F1D0E6BD00087996C /* SigninOperaion.swift */; };
+		045BDD221D0E6CD70087996C /* bcConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BDD211D0E6CD70087996C /* bcConfig.swift */; };
 		046B8EC31CEDD2470024EF0E /* ESKLoginSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */; };
 		046C45DB1CE5E40F00C8D13C /* CartItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */; };
 		046FB5E81D0160D60059F904 /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FB5E71D0160D60059F904 /* SignUPViewController.swift */; };
@@ -64,6 +66,8 @@
 		045739031CE30EDF00EB0FC9 /* eShopKart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eShopKart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045739061CE30EDF00EB0FC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		045739121CE30EDF00EB0FC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		045BDD1F1D0E6BD00087996C /* SigninOperaion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SigninOperaion.swift; path = eShopKart/ESKHelper/SigninOperaion.swift; sourceTree = "<group>"; };
+		045BDD211D0E6CD70087996C /* bcConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = bcConfig.swift; path = eShopKart/ESKHelper/bcConfig.swift; sourceTree = "<group>"; };
 		046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ESKLoginSignUpVC.swift; path = ../ESKLoginSignUpVC.swift; sourceTree = "<group>"; };
 		046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartItemDetailVC.swift; path = ../CartItemDetailVC.swift; sourceTree = "<group>"; };
 		046FB5E71D0160D60059F904 /* SignUPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUPViewController.swift; path = ../SignUPViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +222,8 @@
 		18F56BA71CFD599800CFB052 /* Webservices */ = {
 			isa = PBXGroup;
 			children = (
+				045BDD211D0E6CD70087996C /* bcConfig.swift */,
+				045BDD1F1D0E6BD00087996C /* SigninOperaion.swift */,
 				18F56BA81CFD5A6500CFB052 /* BaseOperation.swift */,
 			);
 			name = Webservices;
@@ -371,6 +377,7 @@
 			files = (
 				18A93DF51CEF32DE0046F78D /* ItemDetailViewCell.swift in Sources */,
 				046B8EC31CEDD2470024EF0E /* ESKLoginSignUpVC.swift in Sources */,
+				045BDD221D0E6CD70087996C /* bcConfig.swift in Sources */,
 				04B564201CEEF144001E9792 /* CategoryItemsViewCell.swift in Sources */,
 				04B700771CE9D48900C4E292 /* UserProfileViewController.swift in Sources */,
 				046FB5E81D0160D60059F904 /* SignUPViewController.swift in Sources */,
@@ -398,6 +405,7 @@
 				04B8CAF11D095197005610A2 /* SignUpCodeViewController.swift in Sources */,
 				18EDD7F91CFC5962007AE91E /* GeneralWebViewController.swift in Sources */,
 				18A93DF31CEF32680046F78D /* ItemDetailVC.swift in Sources */,
+				045BDD201D0E6BD00087996C /* SigninOperaion.swift in Sources */,
 				04B564221CEEF326001E9792 /* SimillerProductViewCell.swift in Sources */,
 				0457195A1D06E43D003C46E3 /* ResetPasswordViewController.swift in Sources */,
 				04307D5F1D07FE580087B07D /* TextFieldViewController.swift in Sources */,
