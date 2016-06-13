@@ -10,10 +10,11 @@ import UIKit
 import AFNetworking
 
 class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
-
+    
     @IBOutlet var tableview: UITableView!
     var getsubCategoryId: String!
     var productsArr = NSArray()
+    var galleryArr:AnyObject = []
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.shadowImage = UIImage (named: "memo-views")
@@ -36,36 +37,47 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
             
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-
+        
     }
-   
+    
     override func viewDidAppear(animated: Bool) {
         //self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftItemsSupplementBackButton = false
-
+        
     }
-
-   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
         return 1
     }
-
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
+        
         return productsArr.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> SimillerProductViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath) as! SimillerProductViewCell
         let itemInfoDic  = productsArr.objectAtIndex(indexPath.row) as! Dictionary<String,AnyObject>
-        
-        let url = NSURL(string:("http://192.168.0.13/eshopkart/files/thumbs100x100/" + (itemInfoDic["image"] as? String)!))
+        galleryArr = itemInfoDic["Gallery"] as! Array<AnyObject>
+        //print(galleryArr)
+        let url = NSURL(string:("http://192.168.0.13/eshopkart/files/thumbs100x100/" + (galleryArr.objectAtIndex(0)["images"] as? String)!))
+        //let url = NSURL(string:("http://192.168.0.13/eshopkart/files/thumbs100x100/" + (itemInfoDic["image"] as? String)!))
         cell.productname?.text = itemInfoDic["name"] as? String
         cell.productImgView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         return cell
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let destinationVC = segue.destinationViewController as! ItemDetailVC
+        let cell = sender as! SimillerProductViewCell
+        destinationVC.getProductName = cell.productname?.text
+        destinationVC.getProductImg = cell.productImgView?.image
+        
+    }
+    
 }
