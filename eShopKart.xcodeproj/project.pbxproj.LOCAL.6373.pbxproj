@@ -20,7 +20,6 @@
 		045739071CE30EDF00EB0FC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045739061CE30EDF00EB0FC9 /* AppDelegate.swift */; };
 		045BDD201D0E6BD00087996C /* SigninOperaion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BDD1F1D0E6BD00087996C /* SigninOperaion.swift */; };
 		045BDD221D0E6CD70087996C /* bcConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BDD211D0E6CD70087996C /* bcConfig.swift */; };
-		045BDD241D0EA34A0087996C /* collectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BDD231D0EA34A0087996C /* collectionCell.swift */; };
 		046B8EC31CEDD2470024EF0E /* ESKLoginSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */; };
 		046C45DB1CE5E40F00C8D13C /* CartItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */; };
 		046FB5E81D0160D60059F904 /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FB5E71D0160D60059F904 /* SignUPViewController.swift */; };
@@ -69,7 +68,6 @@
 		045739121CE30EDF00EB0FC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		045BDD1F1D0E6BD00087996C /* SigninOperaion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SigninOperaion.swift; path = eShopKart/ESKHelper/SigninOperaion.swift; sourceTree = "<group>"; };
 		045BDD211D0E6CD70087996C /* bcConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = bcConfig.swift; path = eShopKart/ESKHelper/bcConfig.swift; sourceTree = "<group>"; };
-		045BDD231D0EA34A0087996C /* collectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = collectionCell.swift; sourceTree = "<group>"; };
 		046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ESKLoginSignUpVC.swift; path = ../ESKLoginSignUpVC.swift; sourceTree = "<group>"; };
 		046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartItemDetailVC.swift; path = ../CartItemDetailVC.swift; sourceTree = "<group>"; };
 		046FB5E71D0160D60059F904 /* SignUPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUPViewController.swift; path = ../SignUPViewController.swift; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 				180B482C1CF2C74100B5808C /* HomeViewController.swift */,
 				045739061CE30EDF00EB0FC9 /* AppDelegate.swift */,
 				045719571D06CE08003C46E3 /* VerificationCodeViewController.swift */,
-				045BDD231D0EA34A0087996C /* collectionCell.swift */,
 				18A93DF21CEF32680046F78D /* ItemDetailVC.swift */,
 				046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */,
 				043694661CE4877D000868CE /* ESKCategoryTableVC.swift */,
@@ -411,7 +408,6 @@
 				045BDD201D0E6BD00087996C /* SigninOperaion.swift in Sources */,
 				04B564221CEEF326001E9792 /* SimillerProductViewCell.swift in Sources */,
 				0457195A1D06E43D003C46E3 /* ResetPasswordViewController.swift in Sources */,
-				045BDD241D0EA34A0087996C /* collectionCell.swift in Sources */,
 				04307D5F1D07FE580087B07D /* TextFieldViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

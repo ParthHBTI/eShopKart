@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var currentUser : User?
     var deviceTokenString: NSString?
+    var baseView = UIViewController?()
+
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let data = NSUserDefaults.standardUserDefaults().valueForKey("CurrentUser") as? NSData
         if data != nil {

@@ -10,6 +10,8 @@
 		<string>webservices/login_user/</string>
 		<key>forgotPassword</key>
 		<string>webservices/verification/</string>
+		<key>getOtp</key>
+		<string>webservices/check_otp/</string>
 	</dict>
 </dict>
 </plist>

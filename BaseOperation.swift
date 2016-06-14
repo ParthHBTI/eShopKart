@@ -9,7 +9,7 @@
 import UIKit
 import AFNetworking
 
-let hostURL = "http://192.168.0.5/eshopkart/"
+let hostURL = "http://192.168.0.7/eshopkart/eshopkart/"
 let contentURL = hostURL + "webservices/"
 let imageBaseURL = hostURL + "files"
 let dev_env = false

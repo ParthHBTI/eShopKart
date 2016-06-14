@@ -47,6 +47,7 @@ class LoginViewController: TextFieldViewController {
                     "token_id" : token!
                 ]
                 loading.mode = MBProgressHUDModeIndeterminate
+                loading.hide(true, afterDelay: 2)
                 SigninOperaion.signin(userInfo, completionClosure: { (response: AnyObject) -> () in
                     let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
                     let user: User  = User.initWithArray(admin)[0] as! User
@@ -64,6 +65,10 @@ class LoginViewController: TextFieldViewController {
                             //NSNotificationCenter.defaultCenter().postNotificationName(Eboard_MemoRefresh_Notification, object: nil)
                             //NSNotificationCenter.defaultCenter().postNotificationName(Eboard_Login_Notification, object: nil)
                         })
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as! UserProfileViewController
+                        self.navigationController?.pushViewController(vc, animated: true)
+
                     } else {
                         loading.mode = MBProgressHUDModeText
                         loading.detailsLabelText = "Exceptional error occured. Please try again after some time"
@@ -74,7 +79,6 @@ class LoginViewController: TextFieldViewController {
                     loading.detailsLabelText = error.localizedDescription
                     loading.hide(true, afterDelay: 2)
                 }
-                
             } else {
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = "Please enter valid email id"
@@ -121,6 +125,8 @@ class LoginViewController: TextFieldViewController {
                             //NSNotificationCenter.defaultCenter().postNotificationName(Eboard_MemoRefresh_Notification, object: nil)
                             //NSNotificationCenter.defaultCenter().postNotificationName(Eboard_Login_Notification, object: nil)
                         })
+                        self.performSegueWithIdentifier("forgotSegue", sender: nil)
+                        
                     } else {
                         loading.mode = MBProgressHUDModeText
                         loading.detailsLabelText = "Exceptional error occured. Please try again after some time"
@@ -131,10 +137,6 @@ class LoginViewController: TextFieldViewController {
                     loading.detailsLabelText = error.localizedDescription
                     loading.hide(true, afterDelay: 2)
                 }
-
-                let storyboard = UIStoryboard(name: "Login" , bundle: nil)
-                let vc = storyboard.instantiateViewControllerWithIdentifier("VerificationCodeIdentifire") as? VerificationCodeViewController
-                self.navigationController?.pushViewController(vc!, animated: true)
             } else {
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = "Please enter valid email id"
@@ -161,16 +163,15 @@ class LoginViewController: TextFieldViewController {
         textField.resignFirstResponder()
         return true
     }
-   /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "forgotSegue") {
+            let detailVC = segue.destinationViewController as! VerificationCodeViewController
+            detailVC.emailText = emailMobileTextField.text! as String
+        }
     }
-    */
-    
-   
 }
 

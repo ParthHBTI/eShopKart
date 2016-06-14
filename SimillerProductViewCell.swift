@@ -18,6 +18,10 @@ class SimillerProductViewCell: UITableViewCell {
         // Initialization code
     }
     
+    func configureCell()  {
+        
+    }
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         

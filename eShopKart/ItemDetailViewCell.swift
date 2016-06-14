@@ -8,17 +8,18 @@
 
 import UIKit
 
-class ItemDetailViewCell: UITableViewCell {
-
+class ItemDetailViewCell: UITableViewCell,UICollectionViewDelegate {
+    
+    @IBOutlet var collectionView: UICollectionView!
+    //@IBOutlet weak var productImg: UIImageView!
+    @IBOutlet weak var productName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
+    
 }
+

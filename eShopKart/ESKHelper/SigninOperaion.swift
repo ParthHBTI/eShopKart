@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 
 class SigninOperaion: BaseOperation, OperationDelegate {
+    
     class func signup(userInfo: NSDictionary, completionClosure: (AnyObject) -> (), havingError:(NSError) -> ()) -> () {
         let urlstr = bcConfig.sharedInstance.urlForKey("signup")
         print("\(urlstr)")
@@ -24,6 +25,8 @@ class SigninOperaion: BaseOperation, OperationDelegate {
     }
     
     class func signin(userInfo: NSDictionary,completionClosure: (AnyObject) -> (), havingError: (NSError) -> ()) ->() {
+        let urlstr = bcConfig.sharedInstance.urlForKey("signin")
+        print("\(urlstr)")
         let urlString = NSString(format:  bcConfig.sharedInstance.urlForKey("signin"))
         let URL: NSURL = NSURL(string: urlString as String)!
         
@@ -46,4 +49,15 @@ class SigninOperaion: BaseOperation, OperationDelegate {
         })
     }
 
+    class func getOtp(userInfo: NSDictionary,completionClosure: (AnyObject) -> (), havingError:(NSError) -> ()) ->() {
+        let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("getOtp"))
+        let URL:NSURL = NSURL(string: urlString as String)!
+        BaseOperation.initOperation(URL, userInfo: userInfo, onSuccess: { (onSuccess:AnyObject) -> () in
+            let dic = onSuccess as! NSDictionary
+            completionClosure(dic)
+            }, onError: { (error:NSError) -> () in
+                havingError(error)
+        })
+    }
+    
 }
