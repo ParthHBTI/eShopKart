@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResetPasswordViewController:TextFieldViewController, UINavigationControllerDelegate {
+class ResetPasswordViewController:TextFieldViewController {
     @IBOutlet private var newPassTextField: UITextField!
     
     override func viewDidLoad() {

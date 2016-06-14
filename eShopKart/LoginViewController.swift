@@ -163,7 +163,15 @@ class LoginViewController: TextFieldViewController {
         textField.resignFirstResponder()
         return true
     }
-
+    
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if identifier == "forgotSegue" {
+            return false
+        }
+        return true
+    }
+/*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -172,6 +180,6 @@ class LoginViewController: TextFieldViewController {
             let detailVC = segue.destinationViewController as! VerificationCodeViewController
             detailVC.emailText = emailMobileTextField.text! as String
         }
-    }
+    }*/
 }
 
