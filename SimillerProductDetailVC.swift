@@ -63,7 +63,6 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath) as! SimillerProductViewCell
         let itemInfoDic  = productsArr.objectAtIndex(indexPath.row) as! Dictionary<String,AnyObject>
         galleryArr = itemInfoDic["Gallery"] as! Array<AnyObject>
-        //print(galleryArr)
         let url = NSURL(string:("http://192.168.0.13/eshopkart/files/thumbs100x100/" + (galleryArr.objectAtIndex(0)["images"] as? String)!))
         //let url = NSURL(string:("http://192.168.0.13/eshopkart/files/thumbs100x100/" + (itemInfoDic["image"] as? String)!))
         cell.productname?.text = itemInfoDic["name"] as? String
@@ -71,12 +70,14 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         return cell
     }
     
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         let destinationVC = segue.destinationViewController as! ItemDetailVC
         let cell = sender as! SimillerProductViewCell
         destinationVC.getProductName = cell.productname?.text
         destinationVC.getProductImg = cell.productImgView?.image
+        destinationVC.productImgArr = galleryArr as! NSArray
         
     }
     

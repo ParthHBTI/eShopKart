@@ -980,7 +980,8 @@
                                                             <exclude reference="rJp-VF-gjR"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="198" y="23" width="19" height="20"/>
                                                         <mask key="constraints">
                                                             <include reference="JvB-qp-5Vq"/>
                                                             <include reference="rJp-VF-gjR"/>
@@ -1459,7 +1460,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ImageViewCellIdentifier" rowHeight="144" id="NJa-hY-rNU" customClass="ItemDetailViewCell" customModule="eShopKart" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ImageViewCellIdentifier" rowHeight="175" id="NJa-hY-rNU" customClass="ItemDetailViewCell" customModule="eShopKart" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NJa-hY-rNU" id="Zdj-xP-UI0">
@@ -1470,7 +1471,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LRr-R5-Fpg">
-                                                        <size key="itemSize" width="150" height="93"/>
+                                                        <size key="itemSize" width="148" height="114"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1480,32 +1481,45 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="93"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="148" height="114"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nZw-9D-HLt">
                                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                                         <color key="backgroundColor" red="0.93482041859999998" green="0.63634314970000005" blue="0.32271642890000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="148" id="DUo-vE-DS1"/>
+                                                                            <constraint firstAttribute="height" constant="114" id="QpW-mj-OWY"/>
+                                                                        </constraints>
+                                                                        <variation key="default">
+                                                                            <mask key="constraints">
+                                                                                <exclude reference="DUo-vE-DS1"/>
+                                                                                <exclude reference="QpW-mj-OWY"/>
+                                                                            </mask>
+                                                                        </variation>
+                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                            <mask key="constraints">
+                                                                                <include reference="DUo-vE-DS1"/>
+                                                                                <include reference="QpW-mj-OWY"/>
+                                                                            </mask>
+                                                                        </variation>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
                                                             <color key="backgroundColor" red="0.41960784309999999" green="0.56862745100000001" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstItem="nZw-9D-HLt" firstAttribute="leading" secondItem="p2Z-A0-4dF" secondAttribute="leading" id="1PQ-sJ-Q3z"/>
-                                                                <constraint firstItem="nZw-9D-HLt" firstAttribute="top" secondItem="p2Z-A0-4dF" secondAttribute="top" id="4Gb-eD-pCq"/>
-                                                                <constraint firstAttribute="bottom" secondItem="nZw-9D-HLt" secondAttribute="bottom" id="HS3-Dh-Gnh"/>
-                                                                <constraint firstAttribute="trailing" secondItem="nZw-9D-HLt" secondAttribute="trailing" id="rtG-gD-WOS"/>
+                                                                <constraint firstItem="nZw-9D-HLt" firstAttribute="leading" secondItem="p2Z-A0-4dF" secondAttribute="leading" id="5vT-xD-fov"/>
+                                                                <constraint firstItem="nZw-9D-HLt" firstAttribute="top" secondItem="p2Z-A0-4dF" secondAttribute="top" id="XB8-92-RHe"/>
                                                             </constraints>
+                                                            <size key="customSize" width="148" height="114"/>
                                                             <variation key="default">
                                                                 <mask key="subviews">
                                                                     <exclude reference="nZw-9D-HLt"/>
                                                                 </mask>
                                                                 <mask key="constraints">
-                                                                    <exclude reference="1PQ-sJ-Q3z"/>
-                                                                    <exclude reference="4Gb-eD-pCq"/>
-                                                                    <exclude reference="HS3-Dh-Gnh"/>
-                                                                    <exclude reference="rtG-gD-WOS"/>
+                                                                    <exclude reference="5vT-xD-fov"/>
+                                                                    <exclude reference="XB8-92-RHe"/>
                                                                 </mask>
                                                             </variation>
                                                             <variation key="heightClass=regular-widthClass=compact">
@@ -1513,10 +1527,8 @@
                                                                     <include reference="nZw-9D-HLt"/>
                                                                 </mask>
                                                                 <mask key="constraints">
-                                                                    <include reference="1PQ-sJ-Q3z"/>
-                                                                    <include reference="4Gb-eD-pCq"/>
-                                                                    <include reference="HS3-Dh-Gnh"/>
-                                                                    <include reference="rtG-gD-WOS"/>
+                                                                    <include reference="5vT-xD-fov"/>
+                                                                    <include reference="XB8-92-RHe"/>
                                                                 </mask>
                                                             </variation>
                                                             <connections>
@@ -1525,7 +1537,7 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="136" y="22" width="149" height="99"/>
+                                                        <rect key="frame" x="119" y="19" width="149" height="127"/>
                                                     </variation>
                                                     <connections>
                                                         <outlet property="dataSource" destination="Efw-So-kl8" id="LUC-tZ-jiZ"/>
@@ -1777,7 +1789,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="32N-wR-vhj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4821" y="-2626.5"/>
+            <point key="canvasLocation" x="4798.5" y="-2664.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fhf-M3-TaI">

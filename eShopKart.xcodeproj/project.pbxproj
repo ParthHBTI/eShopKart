@@ -180,9 +180,9 @@
 			isa = PBXGroup;
 			children = (
 				18EB45711D0AE6AD00179B54 /* collectionCell.swift */,
+				18A93DF41CEF32DE0046F78D /* ItemDetailViewCell.swift */,
 				18EDD7F61CFC2AEA007AE91E /* cartItemCell.swift */,
 				04B5641F1CEEF144001E9792 /* CategoryItemsViewCell.swift */,
-				18A93DF41CEF32DE0046F78D /* ItemDetailViewCell.swift */,
 				04B564211CEEF326001E9792 /* SimillerProductViewCell.swift */,
 				043694681CE48F1E000868CE /* ESKCategoryCell.swift */,
 				04B700781CE9D56900C4E292 /* UserProfileCell.swift */,
