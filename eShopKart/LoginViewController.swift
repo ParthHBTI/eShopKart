@@ -19,7 +19,7 @@ class LoginViewController: TextFieldViewController {
         self.passwordTextField.setLeftImage(UIImage(named: "icon_password.png")!)
         emailMobileTextField.delegate = self
         passwordTextField.delegate = self
-           }
+    }
     
     @IBAction func loginACtion(sender: UIButton) {
         let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -41,34 +41,31 @@ class LoginViewController: TextFieldViewController {
                 if token == nil {
                     token = "786e246f17d1a0684d499b390b8"
                 }
-                 let userInfo = [
+                print("\n\(token)\n")
+                let userInfo = [
                     "email" : emailMobileTextField!.text!,
                     "password" : passwordTextField!.text!,
                     "token_id" : token!
                 ]
                 loading.mode = MBProgressHUDModeIndeterminate
-                loading.hide(true, afterDelay: 2)
                 SigninOperaion.signin(userInfo, completionClosure: { (response: AnyObject) -> () in
                     let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
                     let user: User  = User.initWithArray(admin)[0] as! User
                     appDelegate.currentUser = user
-                   appDelegate.saveCurrentUserDetails()
+                    appDelegate.saveCurrentUserDetails()
                     if let tokenId: AnyObject = response.valueForKey("User")?.valueForKey("token_id") {
-                        let userId =	response.valueForKey("User")?.valueForKey("id") as! String
-                        NSUserDefaults.standardUserDefaults().setValue(userId, forKey: "User")
+                        let username =	response.valueForKey("User")?.valueForKey("username") as! String
+                        let email =	response.valueForKey("User")?.valueForKey("email") as! String
+                        let mobile = response.valueForKey("User")?.valueForKey("mobile") as! String
                         NSUserDefaults.standardUserDefaults().setValue(tokenId, forKey: "token_id")
+                        NSUserDefaults.standardUserDefaults().setValue(username, forKey: "username")
+                        NSUserDefaults.standardUserDefaults().setValue(email, forKey: "email")
+                        NSUserDefaults.standardUserDefaults().setValue(mobile, forKey: "mobile")
                         NSUserDefaults.standardUserDefaults().synchronize()
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            //appDelegate.window?.rootViewController = appDelegate.baseView
-                            //self.placeViewClosed()
-                            //NSNotificationCenter.defaultCenter().postNotificationName("UINotificationLoginCalled", object: nil)
-                            //NSNotificationCenter.defaultCenter().postNotificationName(Eboard_MemoRefresh_Notification, object: nil)
-                            //NSNotificationCenter.defaultCenter().postNotificationName(Eboard_Login_Notification, object: nil)
-                        })
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        loading.hide(true)
+                        let storyboard = UIStoryboard(name: "Login", bundle: nil)
                         let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as! UserProfileViewController
                         self.navigationController?.pushViewController(vc, animated: true)
-
                     } else {
                         loading.mode = MBProgressHUDModeText
                         loading.detailsLabelText = "Exceptional error occured. Please try again after some time"
@@ -108,24 +105,24 @@ class LoginViewController: TextFieldViewController {
                     "token_id" : token!
                 ]
                 loading.mode = MBProgressHUDModeIndeterminate
-                SigninOperaion.forgotPassword(userInfo, completionClosure: { (response: AnyObject) -> () in
+                SigninOperaion.verification(userInfo, completionClosure: { (response: AnyObject) -> () in
                     let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
                     let user: User  = User.initWithArray(admin)[0] as! User
                     appDelegate.currentUser = user
                     appDelegate.saveCurrentUserDetails()
                     if let tokenId: AnyObject = response.valueForKey("User")?.valueForKey("token_id") {
                         let userId =	response.valueForKey("User")?.valueForKey("id") as! String
+                        let email =	response.valueForKey("User")?.valueForKey("email") as! String
+                        NSUserDefaults.standardUserDefaults().setValue(email, forKey: "email")
                         NSUserDefaults.standardUserDefaults().setValue(userId, forKey: "User")
                         NSUserDefaults.standardUserDefaults().setValue(tokenId, forKey: "token_id")
                         NSUserDefaults.standardUserDefaults().synchronize()
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            //appDelegate.window?.rootViewController = appDelegate.baseView
-                            //self.placeViewClosed()
-                            //NSNotificationCenter.defaultCenter().postNotificationName("UINotificationLoginCalled", object: nil)
-                            //NSNotificationCenter.defaultCenter().postNotificationName(Eboard_MemoRefresh_Notification, object: nil)
-                            //NSNotificationCenter.defaultCenter().postNotificationName(Eboard_Login_Notification, object: nil)
                         })
-                        self.performSegueWithIdentifier("forgotSegue", sender: nil)
+                        loading.hide(true)
+                        let storyboard = UIStoryboard(name: "Login" , bundle: nil)
+                        let vc = storyboard.instantiateViewControllerWithIdentifier("VerificationCodeIdentifire") as? VerificationCodeViewController
+                        self.navigationController?.pushViewController(vc!, animated: true)
                         
                     } else {
                         loading.mode = MBProgressHUDModeText
@@ -151,7 +148,7 @@ class LoginViewController: TextFieldViewController {
         // Dispose of any resources that can be recreated.
     }
     
-     func crossBtnAction(sender: AnyObject) {
+    func crossBtnAction(sender: AnyObject) {
         self.navigationController?.dismissViewControllerAnimated(false, completion: nil)
         
     }
@@ -164,22 +161,15 @@ class LoginViewController: TextFieldViewController {
         return true
     }
     
-    
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if identifier == "forgotSegue" {
-            return false
-        }
-        return true
-    }
-/*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "forgotSegue") {
-            let detailVC = segue.destinationViewController as! VerificationCodeViewController
-            detailVC.emailText = emailMobileTextField.text! as String
-        }
-    }*/
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     if (segue.identifier == "forgotSegue") {
+     let detailVC = segue.destinationViewController as! VerificationCodeViewController
+     detailVC.emailText = emailMobileTextField.text! as String
+     }
+     }*/
 }
 

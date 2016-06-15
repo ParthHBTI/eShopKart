@@ -60,4 +60,30 @@ class SigninOperaion: BaseOperation, OperationDelegate {
         })
     }
     
+    class func verification(userInfo: NSDictionary,completionClosure: (AnyObject) -> (), havingError:(NSError) -> ()) ->() {
+        let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("verification"))
+        let URL:NSURL = NSURL(string: urlString as String)!
+        BaseOperation.initOperation(URL, userInfo: userInfo, onSuccess: { (onSuccess:AnyObject) -> () in
+            let dic = onSuccess as! NSDictionary
+            completionClosure(dic)
+            }, onError: { (error:NSError) -> () in
+                havingError(error)
+        })
+    }
+    
+    class func logoutUser(userInfo: NSDictionary,completionClosure: (AnyObject) -> (), havingError: (NSError) -> ()) ->() {
+        let urlstr = bcConfig.sharedInstance.urlForKey("logoutUser")
+        print("\(urlstr)")
+        let urlString = NSString(format:  bcConfig.sharedInstance.urlForKey("logoutUser"))
+        let URL: NSURL = NSURL(string: urlString as String)!
+        
+        BaseOperation.initOperation(URL, userInfo: userInfo, onSuccess: {(onSuccess:AnyObject) -> () in
+            let dic = onSuccess as! NSDictionary
+            completionClosure(dic)
+            }, onError: {(error: NSError) -> () in
+                havingError(error)
+        })
+    }
+
+    
 }

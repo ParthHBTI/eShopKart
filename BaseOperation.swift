@@ -12,7 +12,6 @@ import AFNetworking
 let hostURL = "http://192.168.0.7/eshopkart/"
 let contentURL = hostURL + "webservices/"
 let imageBaseURL = hostURL + "files"
-let dev_env = false
 @objc protocol OperationDelegate {
     
 }
@@ -23,7 +22,6 @@ class BaseOperation {
         print("userinfo: \(userInfo)")
         let postDic = NSMutableDictionary(dictionary: userInfo)
         postDic.setValue(NSUserDefaults.standardUserDefaults().valueForKey("token_id") as? String ?? "12345", forKey: "token_id")
-        postDic.setValue(dev_env ? "1" : "0", forKey: "is_dev")
         let del = UIApplication.sharedApplication().delegate as? AppDelegate
         print("token id sent is: ", del?.currentUser?.token_id)
         print("userinfo: \(postDic)")

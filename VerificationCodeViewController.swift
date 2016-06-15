@@ -30,66 +30,59 @@ class VerificationCodeViewController: TextFieldViewController {
             alert.show()
         } else  {
             
-                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                var token =	appDelegate.deviceTokenString as? String
-                if token == nil {
-                    token = "786e246f17d1a0684d499b390b8"
-                }
-                let userInfo  = [
-                    "otp" : verificationTextField!.text!,
-                    "token_id" : token!
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            var token =	appDelegate.deviceTokenString as? String
+            if token == nil {
+                token = "786e246f17d1a0684d499b390b8"
+            }
+            let userInfo  = [
+                "email" : NSUserDefaults.standardUserDefaults().valueForKey("email") as! String,
+                "otp" : verificationTextField!.text!,
                 ]
-                loading.mode = MBProgressHUDModeIndeterminate
-                loading.hide(true, afterDelay: 2)
-                SigninOperaion.getOtp(userInfo, completionClosure: { (response: AnyObject) -> () in
-                    let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
-                    let user: User  = User.initWithArray(admin)[0] as! User
-                    appDelegate.currentUser = user
-                    appDelegate.saveCurrentUserDetails()
-                    if let tokenId: AnyObject = response.valueForKey("User")?.valueForKey("token_id") {
-                        let userId =	response.valueForKey("User")?.valueForKey("id") as! String
-                        NSUserDefaults.standardUserDefaults().setValue(userId, forKey: "User")
-                        NSUserDefaults.standardUserDefaults().setValue(tokenId, forKey: "token_id")
-                        NSUserDefaults.standardUserDefaults().synchronize()
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            // appDelegate.window?.rootViewController = appDelegate.baseView
-                            //self.placeViewClosed()
-                            //NSNotificationCenter.defaultCenter().postNotificationName("UINotificationLoginCalled", object: nil)
-                            //NSNotificationCenter.defaultCenter().postNotificationName(Eboard_MemoRefresh_Notification, object: nil)
-                            //NSNotificationCenter.defaultCenter().postNotificationName(Eboard_Login_Notification, object: nil)
-                        })
-                        
-                        let storyboard = UIStoryboard(name: "Login" , bundle: nil)
-                        let vc = storyboard.instantiateViewControllerWithIdentifier("ResetPasswordIdentifire") as? ResetPasswordViewController
-                        self.navigationController?.pushViewController(vc!, animated: true)
-                        
-                    } else {
-                        loading.mode = MBProgressHUDModeText
-                        loading.detailsLabelText = "Exceptional error occured. Please try again after some time"
-                        loading.hide(true, afterDelay: 2)
-                    }
-                }) { (error: NSError) -> () in
+            loading.mode = MBProgressHUDModeIndeterminate
+            SigninOperaion.getOtp(userInfo, completionClosure: { (response: AnyObject) -> () in
+                let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
+                let user: User  = User.initWithArray(admin)[0] as! User
+                appDelegate.currentUser = user
+                appDelegate.saveCurrentUserDetails()
+                if let tokenId: AnyObject = response.valueForKey("User")?.valueForKey("token_id") {
+                    let userId =	response.valueForKey("User")?.valueForKey("id") as! String
+                    NSUserDefaults.standardUserDefaults().setValue(userId, forKey: "User")
+                    NSUserDefaults.standardUserDefaults().setValue(tokenId, forKey: "token_id")
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    })
+                    loading.hide(true)
+                    let storyboard = UIStoryboard(name: "Login" , bundle: nil)
+                    let vc = storyboard.instantiateViewControllerWithIdentifier("ResetPasswordIdentifire") as? ResetPasswordViewController
+                    self.navigationController?.pushViewController(vc!, animated: true)
+                } else {
                     loading.mode = MBProgressHUDModeText
-                    loading.detailsLabelText = error.localizedDescription
+                    loading.detailsLabelText = "Exceptional error occured. Please try again after some time"
                     loading.hide(true, afterDelay: 2)
                 }
+            }) { (error: NSError) -> () in
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = error.localizedDescription
+                loading.hide(true, afterDelay: 2)
             }
         }
-
-       override func didReceiveMemoryWarning() {
+    }
+    
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-   
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 

@@ -4,7 +4,6 @@
 //
 //  Created by mac on 03/06/16.
 //  Copyright © 2016 kloudRac.com. All rights reserved.
-//
 
 import UIKit
 import AFNetworking
@@ -18,10 +17,8 @@ class SignUPViewController: TextFieldViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
-
-        // Do any additional setup after loading the view
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -69,18 +66,18 @@ class SignUPViewController: TextFieldViewController {
             let emailID = emailTextField.text! as String
             let form1 = "email=\(emailID)"
             print(form1)
-            }
         }
     }
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+ // Get the new view controller using segue.destinationViewController.
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 

@@ -8,10 +8,14 @@
 		<string>webservices/signup/</string>
 		<key>signin</key>
 		<string>webservices/login_user/</string>
-		<key>forgotPassword</key>
+		<key>verification</key>
 		<string>webservices/verification/</string>
 		<key>getOtp</key>
 		<string>webservices/check_otp/</string>
+		<key>forgotPassword</key>
+		<string>webservices/forgetpassword/</string>
+		<key>logoutUser</key>
+		<string>webservices/user_logout/</string>
 	</dict>
 </dict>
 </plist>

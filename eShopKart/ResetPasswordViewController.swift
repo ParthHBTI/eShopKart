@@ -31,38 +31,36 @@ class ResetPasswordViewController:TextFieldViewController {
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
         } else {
-            
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             var token =	appDelegate.deviceTokenString as? String
             if token == nil {
                 token = "786e246f17d1a0684d499b390b8"
             }
             let userInfo  = [
+                "email" : NSUserDefaults.standardUserDefaults().valueForKey("email") as! String,
                 "password" : newPassTextField!.text!,
                 "token_id" : token!
             ]
             loading.mode = MBProgressHUDModeIndeterminate
-            loading.hide(true, afterDelay: 2)
-            SigninOperaion.getOtp(userInfo, completionClosure: { (response: AnyObject) -> () in
+            SigninOperaion.forgotPassword(userInfo, completionClosure: { (response: AnyObject) -> () in
                 let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
                 let user: User  = User.initWithArray(admin)[0] as! User
                 appDelegate.currentUser = user
                 appDelegate.saveCurrentUserDetails()
                 if let tokenId: AnyObject = response.valueForKey("User")?.valueForKey("token_id") {
-                    let userId =	response.valueForKey("User")?.valueForKey("id") as! String
-                    NSUserDefaults.standardUserDefaults().setValue(userId, forKey: "User")
+                    let username =	response.valueForKey("User")?.valueForKey("username") as! String
+                    let email =	response.valueForKey("User")?.valueForKey("email") as! String
+                    let mobile = response.valueForKey("User")?.valueForKey("mobile") as! String
                     NSUserDefaults.standardUserDefaults().setValue(tokenId, forKey: "token_id")
+                    NSUserDefaults.standardUserDefaults().setValue(username, forKey: "username")
+                    NSUserDefaults.standardUserDefaults().setValue(email, forKey: "email")
+                    NSUserDefaults.standardUserDefaults().setValue(mobile, forKey: "mobile")
                     NSUserDefaults.standardUserDefaults().synchronize()
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        // appDelegate.window?.rootViewController = appDelegate.baseView
-                        //self.placeViewClosed()
-                        //NSNotificationCenter.defaultCenter().postNotificationName("UINotificationLoginCalled", object: nil)
-                        //NSNotificationCenter.defaultCenter().postNotificationName(Eboard_MemoRefresh_Notification, object: nil)
-                        //NSNotificationCenter.defaultCenter().postNotificationName(Eboard_Login_Notification, object: nil)
                     })
-                    
-                    let storyboard = UIStoryboard(name: "Login" , bundle: nil)
-                    let vc = storyboard.instantiateViewControllerWithIdentifier("ResetPasswordIdentifire") as? ResetPasswordViewController
+                    loading.hide(true)
+                    let storyboard = UIStoryboard(name: "Main" , bundle: nil)
+                    let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
                     self.navigationController?.pushViewController(vc!, animated: true)
                     
                 } else {

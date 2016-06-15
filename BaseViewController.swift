@@ -9,6 +9,7 @@
 import UIKit
 
 class BaseViewController: UIViewController, UINavigationControllerDelegate  {
+    var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
     var showSearchBarbuttonItem: UIBarButtonItem?
     var unreadCartItemDetailLabel: UILabel?
     var unreadCartNotificationCount: Int = 0
@@ -40,27 +41,10 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
         // Dispose of any resources that can be recreated.
     }
     
-   /* func getCartNotifications() {
-        
-        let navArr = self.navigationController?.navigationBar.items as NSArray!
-            //self.navigationController.
-        if navArr != nil {
-            let navItem = navArr.objectAtIndex(3) as! UINavigationItem
-            if self.unreadChatMessages == 0 {
-                navItem.badgeValue = nil
-            } else {
-                navItem.badgeValue = String(self.unreadChatMessages)
-            }
-        }
-        self.navigationItem.rightBarButtonItem?.badgeValue = "1"
-    }*/
-    
     //Show user's profile
    func  showUserProfile(){
-        //self.navigationController?.navigationBar.hidden = true
         if (self.navigationController?.topViewController?.isKindOfClass(UserProfileViewController)) == false{
-        
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as? UserProfileViewController
             let navVC = UINavigationController.init(rootViewController: vc!)
             self.navigationController?.presentViewController(navVC, animated: false, completion: nil)
@@ -71,7 +55,6 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
     func myCardDetail() {
         
         if (self.navigationController?.topViewController?.isKindOfClass(CartItemDetailVC)) == false{
-            
             let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as? CartItemDetailVC
             self.navigationController?.pushViewController(vc!, animated: true)
@@ -80,9 +63,11 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
     
     // Go to home page
     func showHomePage() {
-        let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
-        self.navigationController?.pushViewController(vc!, animated: true)
+        if (self.navigationController?.topViewController?.isKindOfClass(HomeViewController)) == false{
+            let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     // Go back to previous page

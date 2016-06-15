@@ -19,32 +19,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var baseView = UIViewController?()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let data = NSUserDefaults.standardUserDefaults().valueForKey("CurrentUser") as? NSData
+        let data = NSUserDefaults.standardUserDefaults().objectForKey("User") as? NSData
+        print("\n\(data)\n")
         if data != nil {
             let admin = NSKeyedUnarchiver.unarchiveObjectWithData( data!) as! User
             currentUser  = admin;
-            
         }
-        
-        let token = 	NSUserDefaults.standardUserDefaults().valueForKey("token_id") as? String
+        let token = NSUserDefaults.standardUserDefaults().valueForKey("token_id") as? String
+        print("\n\(token)\n")
+
         if token == nil {
-            showLandingPage()
+            showUserPage()
         }
         // Override point for customization after application launch.
         return true
     }
     
-    func showLandingPage() {
+    func showUserPage() {
         print("User is Logged In")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc: UserProfileViewController = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as! UserProfileViewController
+        let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as! HomeViewController
         let navigationController:UINavigationController = UINavigationController(rootViewController: vc)
         self.window?.rootViewController = navigationController
     }
     
     func saveCurrentUserDetails() {
+        
         if let _ = currentUser {
-            NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject( currentUser!), forKey: "CurrentUser")
+            NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject( currentUser!), forKey: "User")
         }
         
     func applicationWillResignActive(application: UIApplication) {
