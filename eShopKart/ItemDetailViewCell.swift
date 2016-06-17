@@ -11,7 +11,8 @@ import UIKit
 class ItemDetailViewCell: UITableViewCell,UICollectionViewDelegate {
     
     @IBOutlet var collectionView: UICollectionView!
-    //@IBOutlet weak var productImg: UIImageView!
+    
+    @IBOutlet weak var desTextView: UITextView!
     @IBOutlet weak var productName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

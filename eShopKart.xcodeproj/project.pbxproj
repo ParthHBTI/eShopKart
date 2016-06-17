@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0408167C1CF592670006B85C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0408167B1CF592670006B85C /* Login.storyboard */; };
-		0436945F1CE450A7000868CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0436945E1CE450A7000868CE /* Main.storyboard */; };
 		043694631CE465DC000868CE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043694621CE465DC000868CE /* BaseViewController.swift */; };
 		043694671CE4877D000868CE /* ESKCategoryTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043694661CE4877D000868CE /* ESKCategoryTableVC.swift */; };
 		043694691CE48F1E000868CE /* ESKCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043694681CE48F1E000868CE /* ESKCategoryCell.swift */; };
@@ -42,6 +41,7 @@
 		18F56BA91CFD5A6500CFB052 /* BaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F56BA81CFD5A6500CFB052 /* BaseOperation.swift */; };
 		18F87F751CF5B3AC0079750F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F87F741CF5B3AC0079750F /* MBProgressHUD.m */; };
 		18FB3F381CF444FE00C2E3D5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB3F371CF444FE00C2E3D5 /* SearchViewController.swift */; };
+		730879431D12ABDD00F4EFBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0436945E1CE450A7000868CE /* Main.storyboard */; };
 		BF46C2C6ECD8331AB7EE5F01 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B7E42343524F180F2EE1E5 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -179,12 +179,12 @@
 		04EEB2311CEC52800069A877 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				18EB45711D0AE6AD00179B54 /* collectionCell.swift */,
 				18A93DF41CEF32DE0046F78D /* ItemDetailViewCell.swift */,
 				18EDD7F61CFC2AEA007AE91E /* cartItemCell.swift */,
 				04B5641F1CEEF144001E9792 /* CategoryItemsViewCell.swift */,
 				04B564211CEEF326001E9792 /* SimillerProductViewCell.swift */,
 				043694681CE48F1E000868CE /* ESKCategoryCell.swift */,
+				18EB45711D0AE6AD00179B54 /* collectionCell.swift */,
 				04B700781CE9D56900C4E292 /* UserProfileCell.swift */,
 			);
 			name = Cell;
@@ -291,9 +291,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B564181CEED4F6001E9792 /* Podfile in Resources */,
-				0436945F1CE450A7000868CE /* Main.storyboard in Resources */,
 				04B5641C1CEED89E001E9792 /* Launch Screen.storyboard in Resources */,
 				0408167C1CF592670006B85C /* Login.storyboard in Resources */,
+				730879431D12ABDD00F4EFBB /* Main.storyboard in Resources */,
 				184820EC1D0939EB00C9A35D /* LaunchScreen.xib in Resources */,
 				04B5641A1CEED884001E9792 /* Images.xcassets in Resources */,
 			);
