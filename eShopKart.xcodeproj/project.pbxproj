@@ -24,6 +24,7 @@
 		046B8EC31CEDD2470024EF0E /* ESKLoginSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */; };
 		046C45DB1CE5E40F00C8D13C /* CartItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */; };
 		046FB5E81D0160D60059F904 /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FB5E71D0160D60059F904 /* SignUPViewController.swift */; };
+		048B4EB01D13E37E00548B95 /* searchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B4EAF1D13E37E00548B95 /* searchData.swift */; };
 		04A022421CEC47690002B3D1 /* EKartSideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */; };
 		04B564181CEED4F6001E9792 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 04B564171CEED4F6001E9792 /* Podfile */; };
 		04B5641A1CEED884001E9792 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04B564191CEED884001E9792 /* Images.xcassets */; };
@@ -73,6 +74,7 @@
 		046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ESKLoginSignUpVC.swift; path = ../ESKLoginSignUpVC.swift; sourceTree = "<group>"; };
 		046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartItemDetailVC.swift; path = ../CartItemDetailVC.swift; sourceTree = "<group>"; };
 		046FB5E71D0160D60059F904 /* SignUPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUPViewController.swift; path = ../SignUPViewController.swift; sourceTree = "<group>"; };
+		048B4EAF1D13E37E00548B95 /* searchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = searchData.swift; path = ../searchData.swift; sourceTree = "<group>"; };
 		04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKartSideMenuManager.swift; path = ../EKartSideMenuManager.swift; sourceTree = "<group>"; };
 		04B564171CEED4F6001E9792 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		04B564191CEED884001E9792 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -86,8 +88,8 @@
 		04B8CAEE1D093EB6005610A2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		04B8CAF01D095197005610A2 /* SignUpCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpCodeViewController.swift; path = Model/SignUpCodeViewController.swift; sourceTree = "<group>"; };
 		04B8CAF21D0959D0005610A2 /* SignUpPassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpPassViewController.swift; path = Model/SignUpPassViewController.swift; sourceTree = "<group>"; };
-		1800CB041CF6E0940094727B /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
-		1800CB051CF6E0940094727B /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
+		1800CB041CF6E0940094727B /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+Badge.h"; path = "../UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
+		1800CB051CF6E0940094727B /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+Badge.m"; path = "../UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
 		180B482C1CF2C74100B5808C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18A93DF21CEF32680046F78D /* ItemDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailVC.swift; sourceTree = "<group>"; };
 		18A93DF41CEF32DE0046F78D /* ItemDetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewCell.swift; sourceTree = "<group>"; };
@@ -124,8 +126,6 @@
 		045738FA1CE30EDF00EB0FC9 = {
 			isa = PBXGroup;
 			children = (
-				1800CB041CF6E0940094727B /* UIBarButtonItem+Badge.h */,
-				1800CB051CF6E0940094727B /* UIBarButtonItem+Badge.m */,
 				045739051CE30EDF00EB0FC9 /* eShopKart */,
 				60AE7E50D9800F792DAC240A /* Pods */,
 				D48A0526576398153FC56E00 /* Frameworks */,
@@ -163,6 +163,8 @@
 				04B5641B1CEED89E001E9792 /* Launch Screen.storyboard */,
 				04365F0D1D0A9C9C000753E3 /* bcConfig.plist */,
 				045739121CE30EDF00EB0FC9 /* Info.plist */,
+				1800CB041CF6E0940094727B /* UIBarButtonItem+Badge.h */,
+				1800CB051CF6E0940094727B /* UIBarButtonItem+Badge.m */,
 				18F87F731CF5B3AC0079750F /* MBProgressHUD.h */,
 				18F87F741CF5B3AC0079750F /* MBProgressHUD.m */,
 			);
@@ -176,6 +178,7 @@
 				18EDD7F81CFC5962007AE91E /* GeneralWebViewController.swift */,
 				043694621CE465DC000868CE /* BaseViewController.swift */,
 				04B8CAEE1D093EB6005610A2 /* User.swift */,
+				048B4EAF1D13E37E00548B95 /* searchData.swift */,
 				18FB3F371CF444FE00C2E3D5 /* SearchViewController.swift */,
 				180B482C1CF2C74100B5808C /* HomeViewController.swift */,
 				045739061CE30EDF00EB0FC9 /* AppDelegate.swift */,
@@ -389,6 +392,7 @@
 				043694631CE465DC000868CE /* BaseViewController.swift in Sources */,
 				180B482D1CF2C74100B5808C /* HomeViewController.swift in Sources */,
 				04B8CAEF1D093EB6005610A2 /* User.swift in Sources */,
+				048B4EB01D13E37E00548B95 /* searchData.swift in Sources */,
 				18F87F751CF5B3AC0079750F /* MBProgressHUD.m in Sources */,
 				04B700791CE9D56900C4E292 /* UserProfileCell.swift in Sources */,
 				04B5642C1CEF1312001E9792 /* UserRegistrationVC.swift in Sources */,

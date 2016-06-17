@@ -69,19 +69,18 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
                     token = "786e246f17d1a0684d499b390b8"
                 }
                 let userInfo = [
-                    "email" : "kamleshhbti@hotmail.com" as String,
-                    "password" : "123" as String
+                    "keyword" : searchText as String
             ]
                 loading.mode = MBProgressHUDModeIndeterminate
-                SigninOperaion.signin(userInfo, completionClosure: { (response: AnyObject) -> () in
-                    let product = NSArray(object: response.valueForKey("User") as! NSDictionary)
+                SigninOperaion.search(userInfo, completionClosure: { (response: AnyObject) -> () in
+                    let product = NSArray(object: response.valueForKey("keyword") as! NSDictionary)
                     let user: User  = User.initWithArray(product)[0] as! User
                     appDelegate.currentUser = user
                     appDelegate.saveCurrentUserDetails()
                     if (true) {
                         loading.hide(true, afterDelay: 2)
-                        let dara = NSUserDefaults.standardUserDefaults().valueForKey("User")! as AnyObject as! [String]
-                        self.filteredData = dara.filter({(dataItem: String) -> Bool in
+                        let productData = NSUserDefaults.standardUserDefaults().valueForKey("keyword")! as! [String]
+                        self.filteredData = productData.filter({(dataItem: String) -> Bool in
                             if dataItem.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil {
                                 return true
                             } else {
