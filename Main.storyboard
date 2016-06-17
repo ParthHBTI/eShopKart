@@ -1703,19 +1703,19 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="v5p-8a-sRF" secondAttribute="height" multiplier="157:57" id="3Zu-Uo-91G"/>
+                                                        <constraint firstAttribute="width" secondItem="v5p-8a-sRF" secondAttribute="height" multiplier="157:59" id="w68-iN-WQ8"/>
                                                     </constraints>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="3Zu-Uo-91G"/>
+                                                            <exclude reference="w68-iN-WQ8"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
-                                                            <include reference="3Zu-Uo-91G"/>
+                                                            <include reference="w68-iN-WQ8"/>
                                                         </mask>
                                                     </variation>
                                                 </textView>
@@ -1723,9 +1723,9 @@
                                             <constraints>
                                                 <constraint firstItem="v5p-8a-sRF" firstAttribute="centerX" secondItem="jz4-cP-FTD" secondAttribute="centerX" id="ChS-pG-5j3"/>
                                                 <constraint firstItem="jz4-cP-FTD" firstAttribute="width" secondItem="gTM-G1-kon" secondAttribute="width" multiplier="0.586" id="Oq2-0b-5ij"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="v5p-8a-sRF" secondAttribute="bottom" constant="6" id="baV-72-JiK"/>
                                                 <constraint firstItem="v5p-8a-sRF" firstAttribute="width" secondItem="gTM-G1-kon" secondAttribute="width" multiplier="0.749" id="dU6-BC-HZ5"/>
-                                                <constraint firstItem="v5p-8a-sRF" firstAttribute="top" secondItem="jz4-cP-FTD" secondAttribute="bottom" constant="5" id="gXS-6C-uQv"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="v5p-8a-sRF" secondAttribute="bottom" constant="6" id="ipD-Ql-CH5"/>
+                                                <constraint firstItem="v5p-8a-sRF" firstAttribute="top" secondItem="jz4-cP-FTD" secondAttribute="bottom" constant="8" id="gXS-6C-uQv"/>
                                                 <constraint firstItem="jz4-cP-FTD" firstAttribute="top" secondItem="gTM-G1-kon" secondAttribute="topMargin" constant="5" id="kVB-Zg-hPv"/>
                                                 <constraint firstItem="jz4-cP-FTD" firstAttribute="centerX" secondItem="gTM-G1-kon" secondAttribute="centerX" id="l1y-o8-PKH"/>
                                             </constraints>
@@ -1735,13 +1735,13 @@
                                                     <exclude reference="v5p-8a-sRF"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <exclude reference="ChS-pG-5j3"/>
+                                                    <exclude reference="baV-72-JiK"/>
+                                                    <exclude reference="dU6-BC-HZ5"/>
+                                                    <exclude reference="gXS-6C-uQv"/>
                                                     <exclude reference="Oq2-0b-5ij"/>
                                                     <exclude reference="kVB-Zg-hPv"/>
                                                     <exclude reference="l1y-o8-PKH"/>
-                                                    <exclude reference="ChS-pG-5j3"/>
-                                                    <exclude reference="dU6-BC-HZ5"/>
-                                                    <exclude reference="gXS-6C-uQv"/>
-                                                    <exclude reference="ipD-Ql-CH5"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -1750,13 +1750,13 @@
                                                     <include reference="v5p-8a-sRF"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <include reference="ChS-pG-5j3"/>
+                                                    <include reference="baV-72-JiK"/>
+                                                    <include reference="dU6-BC-HZ5"/>
+                                                    <include reference="gXS-6C-uQv"/>
                                                     <include reference="Oq2-0b-5ij"/>
                                                     <include reference="kVB-Zg-hPv"/>
                                                     <include reference="l1y-o8-PKH"/>
-                                                    <include reference="ChS-pG-5j3"/>
-                                                    <include reference="dU6-BC-HZ5"/>
-                                                    <include reference="gXS-6C-uQv"/>
-                                                    <include reference="ipD-Ql-CH5"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -2022,6 +2022,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="dFL-t1-zOe"/>
                     <connections>
+                        <outlet property="barSearchItem" destination="U8S-Tc-jKA" id="Roz-yi-VKR"/>
                         <outlet property="searchDisplayController" destination="TdR-Re-Rsy" id="bjn-SV-XK9"/>
                     </connections>
                 </viewController>

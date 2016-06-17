@@ -58,37 +58,41 @@ class ItemDetailVC: BaseViewController    {
     @IBAction func addToCart(sender: AnyObject) {
         
         if (( NSUserDefaults.standardUserDefaults().valueForKey("User")) != nil) {
+            
             productId = getProductInfoDic["id"] as! String
             let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
             let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
             manager.requestSerializer = requestSerializer
             manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-            let params: [NSObject : AnyObject] = ["category_id": productId!]
+            let userId = (NSUserDefaults.standardUserDefaults().valueForKey("id"))
+            let params: [NSObject : AnyObject] = ["user_id": userId!,"product_id": productId!,"quantity": 1]
             manager.POST("http://192.168.0.14/eshopkart/webservices/add_to_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
                 print("response: \(response!)")
                 //self.subcatResponseArr = response
                 self.ItemDetailTblView.reloadData()
                 cartItemArray.addObject("")
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = response["message"] as! String
+                loading.hide(true, afterDelay: 2)
+                loading.removeFromSuperViewOnHide = true
+                
             }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
                 
                 print("error: \(error!)")
                 
             }
-            if (self.navigationController?.topViewController?.isKindOfClass(CartItemDetailVC)) == false{
-                let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
-                let vc = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as? CartItemDetailVC
-                self.navigationController?.pushViewController(vc!, animated: true)
-            }
+            //            if (self.navigationController?.topViewController?.isKindOfClass(CartItemDetailVC)) == false{
+            //                let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
+            //                let vc = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as? CartItemDetailVC
+            //                self.navigationController?.pushViewController(vc!, animated: true)
+            //            }
         } else {
             let storyboard = UIStoryboard(name: "Login" , bundle:  nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("loginVC") as? LoginViewController
             self.navigationController?.pushViewController(vc!, animated: true)
         }
-        let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        loading.mode = MBProgressHUDModeText
-        loading.detailsLabelText = "Product has been added to your cart successfully!"
-        loading.hide(true, afterDelay: 2)
-        loading.removeFromSuperViewOnHide = true
+        
         //self.navigationItem.rightBarButtonItem?.badgeValue = "1"
     }
 }
