@@ -280,7 +280,8 @@
                                         <exclude reference="AdN-cr-BKe"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="128" y="172" width="144" height="140"/>
                                     <mask key="constraints">
                                         <include reference="AdN-cr-BKe"/>
                                     </mask>
@@ -361,6 +362,7 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.41960784309999999" green="0.56862745100000001" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.41960784309999999" green="0.56862745100000001" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="jWz-kO-kll" firstAttribute="centerX" secondItem="Qam-Mz-1B7" secondAttribute="centerX" id="05l-g9-9rn"/>
                             <constraint firstItem="dCa-ER-974" firstAttribute="top" secondItem="GW3-nU-Z2t" secondAttribute="bottom" constant="-20" id="2fs-H4-yPF"/>
@@ -1856,7 +1858,9 @@
                                             </constraint>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                        <state key="normal" title="Change Password"/>
+                                        <state key="normal" title="Change Password">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="dx9-cY-3EI"/>
@@ -2113,7 +2117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esj-jN-v3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7417.5" y="-24"/>
+            <point key="canvasLocation" x="7272" y="10.5"/>
         </scene>
     </scenes>
     <resources>

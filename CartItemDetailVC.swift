@@ -7,11 +7,13 @@
 //
 
 import UIKit
-var cartItemArray: NSMutableArray = ["", ""]
+var cartItemArray: NSMutableArray = [""]
 class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "My Cart"
         //self.navigationItem.leftItemsSupplementBackButton = true
        
     }

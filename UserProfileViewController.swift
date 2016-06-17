@@ -24,8 +24,7 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
     @IBAction func loginAction(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Login", bundle:  nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("loginVC") as? LoginViewController
-        let navVC = UINavigationController.init(rootViewController: vc!)
-        self.navigationController?.presentViewController(navVC, animated: false, completion: nil)
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     override func viewDidLoad() {
@@ -58,21 +57,21 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
         title = "Profile"
         navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(UserProfileViewController.crossBtnAction))
-        let profileEditBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Edit-1"), style: . Plain, target: self, action: Selector(""))
+        //let profileEditBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Edit-1"), style: . Plain, target: self, action: Selector(""))
         navigationItem.setLeftBarButtonItem(crossBtnItem,animated: true)
-        navigationItem.setRightBarButtonItem(profileEditBtnItem, animated: true)
-        imageArray[0] = UIImage(named: "market.png" )!
-        imageArray[1] = UIImage(named: "back_icon.png" )!
-        imageArray[2] = UIImage(named: "Oval 39 + Shape Copy 2.png" )!
-        imageArray[3] = UIImage(named: "market.png" )!
-        imageArray[4] = UIImage(named: "market.png" )!
-        imageArray[5] = UIImage(named: "market.png" )!
-        imageArray[6] = UIImage(named: "market.png" )!
-        imageArray[7] = UIImage(named: "market.png" )!
-        imageArray[8] = UIImage(named: "market.png" )!
-        imageArray[9] = UIImage(named: "market.png" )!
-        imageArray[10] = UIImage(named: "market.png" )!
-        imageArray[11] = UIImage(named: "market.png" )!
+        //navigationItem.setRightBarButtonItem(profileEditBtnItem, animated: true)
+        imageArray[0] = UIImage(named: "my_orders.png" )!
+        imageArray[1] = UIImage(named: "my_returns.png" )!
+        imageArray[2] = UIImage(named: "favourites.png" )!
+        imageArray[3] = UIImage(named: "purchase.png" )!
+        imageArray[4] = UIImage(named: "customer.png" )!
+        imageArray[5] = UIImage(named: "my_account.png" )!
+        imageArray[6] = UIImage(named: "notification.png" )!
+        imageArray[7] = UIImage(named: "rate_app.png" )!
+        imageArray[8] = UIImage(named: "feedback.png" )!
+        imageArray[9] = UIImage(named: "share_app.png" )!
+        imageArray[10] = UIImage(named: "sell.png" )!
+        imageArray[11] = UIImage(named: "more-1.png" )!
     }
     
     @IBAction func logoutAction() {
@@ -114,15 +113,17 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
     
     
     func handleTap() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        imagePicker.delegate = self
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
-            print("Button capture")
-            imagePicker.allowsEditing = false
-            imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
-            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+        if(NSUserDefaults.standardUserDefaults().valueForKey("User") != nil) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            imagePicker.delegate = self
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
+                print("Button capture")
+                imagePicker.allowsEditing = false
+                imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+                imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+                self.presentViewController(imagePicker, animated: true, completion: nil)
+            }
         }
     }
     

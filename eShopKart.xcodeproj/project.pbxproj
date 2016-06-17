@@ -180,7 +180,6 @@
 				180B482C1CF2C74100B5808C /* HomeViewController.swift */,
 				045739061CE30EDF00EB0FC9 /* AppDelegate.swift */,
 				045719571D06CE08003C46E3 /* VerificationCodeViewController.swift */,
-				045BDD231D0EA34A0087996C /* collectionCell.swift */,
 				18A93DF21CEF32680046F78D /* ItemDetailVC.swift */,
 				046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */,
 				043694661CE4877D000868CE /* ESKCategoryTableVC.swift */,
@@ -204,6 +203,7 @@
 			children = (
 				18EDD7F61CFC2AEA007AE91E /* cartItemCell.swift */,
 				04B5641F1CEEF144001E9792 /* CategoryItemsViewCell.swift */,
+				045BDD231D0EA34A0087996C /* collectionCell.swift */,
 				18A93DF41CEF32DE0046F78D /* ItemDetailViewCell.swift */,
 				04B564211CEEF326001E9792 /* SimillerProductViewCell.swift */,
 				043694681CE48F1E000868CE /* ESKCategoryCell.swift */,
@@ -456,7 +456,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -496,8 +496,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -516,16 +517,19 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = eShopKart/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = KloudRac.eShopKart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a9ecd37b-8e2f-4b24-94d5-1e146bb076ab";
 				SWIFT_OBJC_BRIDGING_HEADER = "eShopKart-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				"VALID_ARCHS[sdk=*]" = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -541,11 +545,13 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = eShopKart/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = KloudRac.eShopKart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a9ecd37b-8e2f-4b24-94d5-1e146bb076ab";

@@ -9,7 +9,7 @@ import UIKit
 
 class VerificationCodeViewController: TextFieldViewController {
     @IBOutlet var verificationTextField: UITextField!
-    var emailText: String = String()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         verificationTextField.delegate = self

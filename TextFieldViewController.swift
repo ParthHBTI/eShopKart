@@ -20,8 +20,7 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate {
     
     var animateDistance: CGFloat = 0
     var frameView: UIView!
-
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBarHidden = false
@@ -31,10 +30,10 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate {
         navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(TextFieldViewController.crossBtnAction))
         self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
-        let tapRecognizer = UITapGestureRecognizer.init(target: self, action: "handleTap:")
+        let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(TextFieldViewController.handleTap(_:)))
         self.view .addGestureRecognizer(tapRecognizer)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -48,6 +47,7 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate {
     
     func handleTap (tapGesture: UIGestureRecognizer) {
         self.view .endEditing(true)
+        
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -92,17 +92,17 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return true
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 extension String {
     func isValidEmail() -> Bool {

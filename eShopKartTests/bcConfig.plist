@@ -16,6 +16,8 @@
 		<string>webservices/forgetpassword/</string>
 		<key>logoutUser</key>
 		<string>webservices/user_logout/</string>
+		<key>search</key>
+		<string>webservices/search/</string>
 	</dict>
 </dict>
 </plist>

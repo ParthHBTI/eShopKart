@@ -84,6 +84,15 @@ class SigninOperaion: BaseOperation, OperationDelegate {
                 havingError(error)
         })
     }
-
+    class func search(userInfo: NSDictionary,completionClosure: (AnyObject) -> (), havingError:(NSError) -> ()) ->() {
+        let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("search"))
+        let URL:NSURL = NSURL(string: urlString as String)!
+        BaseOperation.initOperation(URL, userInfo: userInfo, onSuccess: { (onSuccess:AnyObject) -> () in
+            let dic = onSuccess as! NSDictionary
+            completionClosure(dic)
+            }, onError: { (error:NSError) -> () in
+                havingError(error)
+        })
+    }
     
 }
