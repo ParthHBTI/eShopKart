@@ -1721,11 +1721,10 @@
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="v5p-8a-sRF" firstAttribute="centerX" secondItem="jz4-cP-FTD" secondAttribute="centerX" id="ChS-pG-5j3"/>
                                                 <constraint firstItem="jz4-cP-FTD" firstAttribute="width" secondItem="gTM-G1-kon" secondAttribute="width" multiplier="0.586" id="Oq2-0b-5ij"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="v5p-8a-sRF" secondAttribute="bottom" constant="6" id="baV-72-JiK"/>
+                                                <constraint firstItem="v5p-8a-sRF" firstAttribute="top" secondItem="jz4-cP-FTD" secondAttribute="bottom" constant="7" id="adi-Tv-Thc"/>
                                                 <constraint firstItem="v5p-8a-sRF" firstAttribute="width" secondItem="gTM-G1-kon" secondAttribute="width" multiplier="0.749" id="dU6-BC-HZ5"/>
-                                                <constraint firstItem="v5p-8a-sRF" firstAttribute="top" secondItem="jz4-cP-FTD" secondAttribute="bottom" constant="8" id="gXS-6C-uQv"/>
+                                                <constraint firstItem="v5p-8a-sRF" firstAttribute="centerX" secondItem="jz4-cP-FTD" secondAttribute="centerX" id="hpS-qx-qIe"/>
                                                 <constraint firstItem="jz4-cP-FTD" firstAttribute="top" secondItem="gTM-G1-kon" secondAttribute="topMargin" constant="5" id="kVB-Zg-hPv"/>
                                                 <constraint firstItem="jz4-cP-FTD" firstAttribute="centerX" secondItem="gTM-G1-kon" secondAttribute="centerX" id="l1y-o8-PKH"/>
                                             </constraints>
@@ -1735,10 +1734,9 @@
                                                     <exclude reference="v5p-8a-sRF"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="ChS-pG-5j3"/>
-                                                    <exclude reference="baV-72-JiK"/>
+                                                    <exclude reference="adi-Tv-Thc"/>
                                                     <exclude reference="dU6-BC-HZ5"/>
-                                                    <exclude reference="gXS-6C-uQv"/>
+                                                    <exclude reference="hpS-qx-qIe"/>
                                                     <exclude reference="Oq2-0b-5ij"/>
                                                     <exclude reference="kVB-Zg-hPv"/>
                                                     <exclude reference="l1y-o8-PKH"/>
@@ -1750,10 +1748,9 @@
                                                     <include reference="v5p-8a-sRF"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="ChS-pG-5j3"/>
-                                                    <include reference="baV-72-JiK"/>
+                                                    <include reference="adi-Tv-Thc"/>
                                                     <include reference="dU6-BC-HZ5"/>
-                                                    <include reference="gXS-6C-uQv"/>
+                                                    <include reference="hpS-qx-qIe"/>
                                                     <include reference="Oq2-0b-5ij"/>
                                                     <include reference="kVB-Zg-hPv"/>
                                                     <include reference="l1y-o8-PKH"/>
