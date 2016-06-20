@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResetPasswordViewController:TextFieldViewController {
+class ResetPasswordViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet private var newPassTextField: UITextField!
     
     override func viewDidLoad() {
@@ -22,61 +22,7 @@ class ResetPasswordViewController:TextFieldViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func resetPassAction(sender: AnyObject) {
-        let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        loading.mode = MBProgressHUDModeText
-        if newPassTextField.text!.isEmpty == true {
-            loading.labelText = "Password can not be empty"
-            loading.yOffset = -55.0
-            loading.hide(true, afterDelay: 2)
-            loading.removeFromSuperViewOnHide = true
-        } else {
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            var token =	appDelegate.deviceTokenString as? String
-            if token == nil {
-                token = "786e246f17d1a0684d499b390b8"
-            }
-            let userInfo  = [
-                "email" : NSUserDefaults.standardUserDefaults().valueForKey("email") as! String,
-                "password" : newPassTextField!.text!,
-                "token_id" : token!
-            ]
-            loading.mode = MBProgressHUDModeIndeterminate
-            SigninOperaion.forgotPassword(userInfo, completionClosure: { (response: AnyObject) -> () in
-                let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
-                let user: User  = User.initWithArray(admin)[0] as! User
-                appDelegate.currentUser = user
-                appDelegate.saveCurrentUserDetails()
-                if let tokenId: AnyObject = response.valueForKey("User")?.valueForKey("token_id") {
-                    let username =	response.valueForKey("User")?.valueForKey("username") as! String
-                    let email =	response.valueForKey("User")?.valueForKey("email") as! String
-                    let mobile = response.valueForKey("User")?.valueForKey("mobile") as! String
-                    NSUserDefaults.standardUserDefaults().setValue(tokenId, forKey: "token_id")
-                    NSUserDefaults.standardUserDefaults().setValue(username, forKey: "username")
-                    NSUserDefaults.standardUserDefaults().setValue(email, forKey: "email")
-                    NSUserDefaults.standardUserDefaults().setValue(mobile, forKey: "mobile")
-                    NSUserDefaults.standardUserDefaults().synchronize()
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    })
-                    loading.hide(true)
-                    let storyboard = UIStoryboard(name: "Main" , bundle: nil)
-                    let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
-                    self.navigationController?.pushViewController(vc!, animated: true)
-                    
-                } else {
-                    loading.mode = MBProgressHUDModeText
-                    loading.detailsLabelText = "Exceptional error occured. Please try again after some time"
-                    loading.hide(true, afterDelay: 2)
-                }
-            }) { (error: NSError) -> () in
-                loading.mode = MBProgressHUDModeText
-                loading.detailsLabelText = error.localizedDescription
-                loading.hide(true, afterDelay: 2)
-            }
-        }
-    }
-    
-    override func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         view.endEditing(true)
         return true
     }

@@ -31,7 +31,7 @@ class UserRegistrationVC: TextFieldViewController {
         passwordTextField.delegate = self
         self.firstNameTextField.setLeftImage(UIImage(named: "person_icon.png")!)
         self.lastNameTextField.setLeftImage(UIImage(named: "person_icon.png")!)
-        self.contactNumberTextField.setLeftImage(UIImage(named: "mobile.png")!)
+        self.contactNumberTextField.setLeftImage(UIImage(named: "person_icon.png")!)
         self.mailTextField.setLeftImage(UIImage(named: "mail")!)
         self.passwordTextField.setLeftImage(UIImage(named: "password_icon.png")!)
         self.confirmPassTextField.setLeftImage(UIImage(named: "password_icon.png")!)

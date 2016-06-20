@@ -280,8 +280,7 @@
                                         <exclude reference="AdN-cr-BKe"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="128" y="172" width="144" height="140"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="AdN-cr-BKe"/>
                                     </mask>

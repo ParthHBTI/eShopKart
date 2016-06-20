@@ -26,7 +26,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         manager.requestSerializer = requestSerializer
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
         let params: [NSObject : AnyObject] = ["category_id": getsubCategoryId]
-        manager.POST("http://192.168.0.4/eshopkart/webservices/get_products", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.14/eshopkart/webservices/get_products", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("response: \(response!)")
             self.productsArr = (response as? NSArray)!
             self.tableview.reloadData()
@@ -62,23 +62,33 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> SimillerProductViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath) as! SimillerProductViewCell
         let itemInfoDic  = productsArr.objectAtIndex(indexPath.row) as! Dictionary<String,AnyObject>
-        galleryArr = itemInfoDic["Gallery"] as! Array<AnyObject>
-        let url = NSURL(string:("http://192.168.0.4/eshopkart/files/thumbs100x100/" + (galleryArr.objectAtIndex(0)["images"] as? String)!))
-        //let url = NSURL(string:("http://192.168.0.13/eshopkart/files/thumbs100x100/" + (itemInfoDic["image"] as? String)!))
+        
+        //galleryArr = itemInfoDic["Gallery"] as! Array<AnyObject>
+        //let url = NSURL(string:("http://192.168.0.13/eshopkart/files/thumbs100x100/" + (galleryArr.objectAtIndex(0)["images"] as? String)!))
+        
+        let url = NSURL(string:("http://192.168.0.14/eshopkart/files/thumbs100x100/" + (itemInfoDic["Gallery"]?.objectAtIndex(0)["images"] as? String)!))
         cell.productname?.text = itemInfoDic["name"] as? String
         cell.productImgView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        let destinationVC = segue.destinationViewController as! ItemDetailVC
-        let cell = sender as! SimillerProductViewCell
-        destinationVC.getProductName = cell.productname?.text
-        destinationVC.getProductImg = cell.productImgView?.image
-        destinationVC.productImgArr = galleryArr as! NSArray
-        
+        let itemInfoDic  = productsArr.objectAtIndex(indexPath.row) as! Dictionary<String,AnyObject>
+        let destinationVC = storyboard!.instantiateViewControllerWithIdentifier("ItemDetailVCIdentifier") as! ItemDetailVC
+            destinationVC.getProductInfoDic = itemInfoDic
+        self.navigationController?.pushViewController(destinationVC, animated: true)
     }
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        
+//        if(segue.identifier == "ItemDetailVCIdentifier") {
+//            
+//            let destinationVC = segue.destinationViewController as! ItemDetailVC
+//            let cell = sender as! SimillerProductViewCell
+//            destinationVC.getProductName = cell.productname?.text
+//            destinationVC.getProductImg = cell.productImgView?.image
+//        }
+//    }
     
 }
