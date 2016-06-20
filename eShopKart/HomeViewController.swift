@@ -13,14 +13,9 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     @IBOutlet weak var barSearchItem: UISearchBar!
     var searchController: UISearchController!
     var tableViewController: UITableViewController!
-    var filteredData: [String]!
-    
-    var data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
-                "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
-                "Dallas, TX", "Detroit, MI", "San Jose, CA", "Indianapolis, IN",
-                "Jacksonville, FL", "San Francisco, CA", "Columbus, OH", "Austin, TX",
-                "Memphis, TN", "Baltimore, MD", "Charlotte, ND", "Fort Worth, TX"
-    ]
+    var filteredData = [String]()
+    var active1 = true
+    var data = ["One","Two","Three","Twenty-One"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +47,12 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int
     {
-        return filteredData.count
+        if (!self.searchController.active) {
+            return self.filteredData.count
+        }
+        else {
+            return self.data.count
+        }
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
@@ -106,7 +106,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell:UITableViewCell=UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "mycell")
-        cell.textLabel?.text = filteredData[indexPath.row]
+        //cell.textLabel?.text = filteredData[indexPath.row]
         return cell
     }
     

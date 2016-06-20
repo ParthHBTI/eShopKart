@@ -1496,7 +1496,8 @@
                                         <exclude reference="Zo9-11-dc5"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="98" y="164" width="204" height="203"/>
                                     <mask key="constraints">
                                         <include reference="Zo9-11-dc5"/>
                                     </mask>
@@ -1533,19 +1534,19 @@
                                 <exclude reference="oil-y0-xMB"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="UZe-uN-GGD"/>
+                                <exclude reference="6Ax-3b-D6m"/>
+                                <exclude reference="IaW-xc-fb9"/>
+                                <exclude reference="emg-b3-bTv"/>
                                 <exclude reference="4ez-Qw-i6z"/>
                                 <exclude reference="8hh-4c-Pqj"/>
                                 <exclude reference="C5K-44-0ZQ"/>
                                 <exclude reference="IJ3-Ck-FNt"/>
                                 <exclude reference="w5k-J7-0oH"/>
+                                <exclude reference="56E-PW-eaD"/>
                                 <exclude reference="9NX-Dp-dEF"/>
                                 <exclude reference="JA7-OG-ra9"/>
                                 <exclude reference="Qpc-Va-FuD"/>
-                                <exclude reference="56E-PW-eaD"/>
-                                <exclude reference="6Ax-3b-D6m"/>
-                                <exclude reference="IaW-xc-fb9"/>
-                                <exclude reference="emg-b3-bTv"/>
-                                <exclude reference="UZe-uN-GGD"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1556,19 +1557,19 @@
                                 <include reference="oil-y0-xMB"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="UZe-uN-GGD"/>
+                                <include reference="6Ax-3b-D6m"/>
+                                <include reference="IaW-xc-fb9"/>
+                                <include reference="emg-b3-bTv"/>
                                 <include reference="4ez-Qw-i6z"/>
                                 <include reference="8hh-4c-Pqj"/>
                                 <exclude reference="C5K-44-0ZQ"/>
                                 <include reference="IJ3-Ck-FNt"/>
                                 <include reference="w5k-J7-0oH"/>
+                                <include reference="56E-PW-eaD"/>
                                 <include reference="9NX-Dp-dEF"/>
                                 <include reference="JA7-OG-ra9"/>
                                 <include reference="Qpc-Va-FuD"/>
-                                <include reference="56E-PW-eaD"/>
-                                <include reference="6Ax-3b-D6m"/>
-                                <include reference="IaW-xc-fb9"/>
-                                <include reference="emg-b3-bTv"/>
-                                <include reference="UZe-uN-GGD"/>
                             </mask>
                         </variation>
                     </view>

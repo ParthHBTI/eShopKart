@@ -77,7 +77,7 @@ extension ItemDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
                 //cell.contentView.addSubview(imageview)
            //cell.imageView.image = getProductImg
         //cell.imageView.image = productImgArr.objectAtIndex(2)["images"] as? UIImage
-        let url = NSURL(string:("http://192.168.0.13/eshopkart/files/thumbs100x100/" + (productImgArr.objectAtIndex(0)["images"] as? String)!))
+        let url = NSURL(string:("http://192.168.0.4/eshopkart/files/thumbs100x100/" + (productImgArr.objectAtIndex(0)["images"] as? String)!))
         cell.imageView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         
         return cell

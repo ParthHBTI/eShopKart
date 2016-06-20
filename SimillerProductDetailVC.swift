@@ -26,7 +26,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         manager.requestSerializer = requestSerializer
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
         let params: [NSObject : AnyObject] = ["category_id": getsubCategoryId]
-        manager.POST("http://192.168.0.13/eshopkart/webservices/get_products", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.4/eshopkart/webservices/get_products", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("response: \(response!)")
             self.productsArr = (response as? NSArray)!
             self.tableview.reloadData()
@@ -63,7 +63,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath) as! SimillerProductViewCell
         let itemInfoDic  = productsArr.objectAtIndex(indexPath.row) as! Dictionary<String,AnyObject>
         galleryArr = itemInfoDic["Gallery"] as! Array<AnyObject>
-        let url = NSURL(string:("http://192.168.0.13/eshopkart/files/thumbs100x100/" + (galleryArr.objectAtIndex(0)["images"] as? String)!))
+        let url = NSURL(string:("http://192.168.0.4/eshopkart/files/thumbs100x100/" + (galleryArr.objectAtIndex(0)["images"] as? String)!))
         //let url = NSURL(string:("http://192.168.0.13/eshopkart/files/thumbs100x100/" + (itemInfoDic["image"] as? String)!))
         cell.productname?.text = itemInfoDic["name"] as? String
         cell.productImgView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
