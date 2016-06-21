@@ -8,7 +8,6 @@
 
 import UIKit
 import AFNetworking
-
 class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
     
     var responseArr:AnyObject = []

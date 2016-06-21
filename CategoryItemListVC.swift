@@ -8,7 +8,6 @@
 
 import UIKit
 import AFNetworking
-
 class CategoryItemListVC: BaseViewController,UITableViewDelegate{
     var subcatResponseArr:AnyObject = []
     var categoryId: String!

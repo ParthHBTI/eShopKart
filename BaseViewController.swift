@@ -7,14 +7,12 @@
 //
 
 import UIKit
-
 class BaseViewController: UIViewController, UINavigationControllerDelegate  {
+    
     let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
     var unreadCartNotificationCount = 0
-    
     var showSearchBarbuttonItem: UIBarButtonItem!
     var unreadCartItemDetailLabel: UILabel!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +23,6 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
         self.title = "eShopKart"
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
-        
         let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(BaseViewController.backAction))
         let homeBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "building"), style: .Plain, target: self, action: #selector(BaseViewController.showHomePage))
         self.navigationItem.setLeftBarButtonItems([backBarButtonItem , homeBarButtonItem], animated: true)
@@ -34,9 +31,8 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
         let showSearchBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "landlord"), style: .Plain, target: self, action: #selector(BaseViewController.showUserProfile))
         self.navigationItem.setRightBarButtonItems([showSearchBarButtonItem,writeAddBarButtonItem], animated: true)
     }
-
     //Show user's profile
-   func  showUserProfile(){
+    func  showUserProfile() {
         if (self.navigationController?.topViewController?.isKindOfClass(UserProfileViewController)) == false{
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as? UserProfileViewController
@@ -47,27 +43,25 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
     // Go to user's card detail page
     func myCardDetail() {
         if (( NSUserDefaults.standardUserDefaults().valueForKey("User")) != nil) {
-        if (self.navigationController?.topViewController?.isKindOfClass(CartItemDetailVC)   ) == false{
-            let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as? CartItemDetailVC
-            self.navigationController?.pushViewController(vc!, animated: true)
+            if (self.navigationController?.topViewController?.isKindOfClass(CartItemDetailVC)   ) == false{
+                let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
+                let vc = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as? CartItemDetailVC
+                self.navigationController?.pushViewController(vc!, animated: true)
             }
-    } else {
+        } else {
             let storyboard = UIStoryboard(name: "Login" , bundle:  nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("loginVC") as? LoginViewController
             self.navigationController?.pushViewController(vc!, animated: true)
         }
-}
-    
+    }
     // Go to home page
     func showHomePage() {
         if (self.navigationController?.topViewController?.isKindOfClass(HomeViewController)) == false{
-            let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
-            self.navigationController?.pushViewController(vc!, animated: true)
+//            let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
+//            let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
+            self.navigationController?.popToRootViewControllerAnimated(true)
         }
     }
-    
     // Go back to previous page
     func backAction() {
         self.navigationController?.popViewControllerAnimated(true)
@@ -81,16 +75,14 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
     }
     
     override func viewDidAppear(animated: Bool) {
-       
+        
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-            showSearchBarbuttonItem?.action
+        showSearchBarbuttonItem?.action
     }
- 
-
 }
 
 

@@ -227,7 +227,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="cbJ-Q1-4b8" secondAttribute="height" multiplier="16:3" id="Aif-vO-YFy"/>
                                             </constraints>
-                                            <state key="normal" title="Get Code">
+                                            <state key="normal" title="Get Quote">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <variation key="default">
@@ -458,9 +458,6 @@
                                                     <include reference="QYq-Sg-Rcg"/>
                                                 </mask>
                                             </variation>
-                                            <connections>
-                                                <action selector="removeItemFromCart:" destination="UAD-H0-Z6M" eventType="touchUpInside" id="cil-mt-5f5"/>
-                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pb-ze-A0h">
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -730,6 +727,14 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="productColor" destination="dVO-gT-6zD" id="Ruf-Em-pPf"/>
+                                    <outlet property="productImg" destination="cZG-34-30r" id="w0O-UE-zYY"/>
+                                    <outlet property="productName" destination="lmB-cg-ZFv" id="hPN-Qr-LX0"/>
+                                    <outlet property="productPrice" destination="ryx-Qt-vpC" id="igN-1V-Kmu"/>
+                                    <outlet property="productQuantity" destination="HSd-u1-i9b" id="641-oB-2LP"/>
+                                    <outlet property="removBtn" destination="Fgq-Dk-YVp" id="JAq-Am-zLm"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -745,7 +750,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GcE-aI-dGo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5866.5" y="-2821.5"/>
+            <point key="canvasLocation" x="5713.5" y="-2820"/>
         </scene>
         <!--User Profile View Controller-->
         <scene sceneID="73x-zW-iXo">
@@ -979,7 +984,8 @@
                                                             <exclude reference="rJp-VF-gjR"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="198" y="23" width="19" height="20"/>
                                                         <mask key="constraints">
                                                             <include reference="JvB-qp-5Vq"/>
                                                             <include reference="rJp-VF-gjR"/>
@@ -1416,7 +1422,7 @@
                                     </constraint>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="GET CODE">
+                                <state key="normal" title="GET QUOTE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -1482,30 +1488,30 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="148" height="114"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nZw-9D-HLt">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nZw-9D-HLt">
                                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                                        <color key="backgroundColor" red="0.93482041859999998" green="0.63634314970000005" blue="0.32271642890000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="148" id="DUo-vE-DS1"/>
                                                                             <constraint firstAttribute="height" constant="114" id="QpW-mj-OWY"/>
+                                                                            <constraint firstAttribute="width" secondItem="nZw-9D-HLt" secondAttribute="height" multiplier="74:57" id="pgP-um-Qlw"/>
                                                                         </constraints>
                                                                         <variation key="default">
                                                                             <mask key="constraints">
-                                                                                <exclude reference="DUo-vE-DS1"/>
                                                                                 <exclude reference="QpW-mj-OWY"/>
+                                                                                <exclude reference="pgP-um-Qlw"/>
                                                                             </mask>
                                                                         </variation>
                                                                         <variation key="heightClass=regular-widthClass=compact">
                                                                             <mask key="constraints">
-                                                                                <include reference="DUo-vE-DS1"/>
                                                                                 <include reference="QpW-mj-OWY"/>
+                                                                                <include reference="pgP-um-Qlw"/>
                                                                             </mask>
                                                                         </variation>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
-                                                            <color key="backgroundColor" red="0.41960784309999999" green="0.56862745100000001" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="nZw-9D-HLt" firstAttribute="leading" secondItem="p2Z-A0-4dF" secondAttribute="leading" id="5vT-xD-fov"/>
                                                                 <constraint firstItem="nZw-9D-HLt" firstAttribute="top" secondItem="p2Z-A0-4dF" secondAttribute="top" id="XB8-92-RHe"/>
@@ -1734,12 +1740,12 @@
                                                     <exclude reference="v5p-8a-sRF"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="adi-Tv-Thc"/>
-                                                    <exclude reference="dU6-BC-HZ5"/>
-                                                    <exclude reference="hpS-qx-qIe"/>
                                                     <exclude reference="Oq2-0b-5ij"/>
                                                     <exclude reference="kVB-Zg-hPv"/>
                                                     <exclude reference="l1y-o8-PKH"/>
+                                                    <exclude reference="adi-Tv-Thc"/>
+                                                    <exclude reference="dU6-BC-HZ5"/>
+                                                    <exclude reference="hpS-qx-qIe"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -1748,12 +1754,12 @@
                                                     <include reference="v5p-8a-sRF"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="adi-Tv-Thc"/>
-                                                    <include reference="dU6-BC-HZ5"/>
-                                                    <include reference="hpS-qx-qIe"/>
                                                     <include reference="Oq2-0b-5ij"/>
                                                     <include reference="kVB-Zg-hPv"/>
                                                     <include reference="l1y-o8-PKH"/>
+                                                    <include reference="adi-Tv-Thc"/>
+                                                    <include reference="dU6-BC-HZ5"/>
+                                                    <include reference="hpS-qx-qIe"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -1929,7 +1935,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BC Logo" translatesAutoresizingMaskIntoConstraints="NO" id="oil-y0-xMB">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="oil-y0-xMB" secondAttribute="height" multiplier="204:203" id="Zo9-11-dc5"/>
+                                    <constraint firstAttribute="width" secondItem="oil-y0-xMB" secondAttribute="height" multiplier="204:203" id="Zo9-11-dc5">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="-1.0049261083744057"/>
+                                    </constraint>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">

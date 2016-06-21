@@ -7,7 +7,7 @@
 //
 import UIKit
 import AFNetworking
-class ItemDetailVC: BaseViewController    {
+class ItemDetailVC: BaseViewController {
     
     @IBOutlet var ItemDetailTblView: UITableView!
     var productImageArr:AnyObject = []
@@ -70,7 +70,7 @@ class ItemDetailVC: BaseViewController    {
                 print("response: \(response!)")
                 //self.subcatResponseArr = response
                 self.ItemDetailTblView.reloadData()
-                cartItemArray.addObject("")
+               // cartItemArray.addObject("")
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = response["message"] as! String
@@ -111,10 +111,17 @@ extension ItemDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
         //cell.contentView.addSubview(imageview)
         //cell.imageView.image = getProductImg
         //cell.imageView.image = productImgArr.objectAtIndex(2)["images"] as? UIImage
-        let url = NSURL(string:("http://192.168.0.14/eshopkart/files/thumbs100x100/" + (productImageArr.objectAtIndex(0)["images"] as? String)!))
+       // for i in 0 ..< productImageArr.count {
+            //let url = NSURL(string:("http://192.168.0.14/eshopkart/files/thumbs100x100/" + (productImageArr.objectAtIndex(i)["images"] as? String)!))
+            let url = NSURL(string:("http://192.168.0.14/eshopkart/files/thumbs100x100/" + (productImageArr[indexPath.row]["images"] as? String)!))
         cell.imageView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
-        
+        //}
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath ind: NSIndexPath) -> CGSize {
+        
+        return collectionView.frame.size;
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

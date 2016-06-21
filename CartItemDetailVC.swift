@@ -5,13 +5,11 @@
 //  Created by mac on 13/05/16.
 //  Copyright © 2016 kloudRac.com. All rights reserved.
 //
-
 import UIKit
 import AFNetworking
-
-var cartItemArray: NSMutableArray = [""]
 class CartItemDetailVC: BaseViewController,UITableViewDelegate {
-    var cartDetailResponseArr:AnyObject = []
+    //var cartDetailResponseArr:AnyObject = []
+    var cartDetailResponseArr = NSMutableArray()
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -24,22 +22,24 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
         let userId = (NSUserDefaults.standardUserDefaults().valueForKey("id"))
         let params: [NSObject : AnyObject] = ["user_id": userId!]
-        manager.POST("http://192.168.0.4/eshopkart/webservices/view_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.14/eshopkart/webservices/view_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("response: \(response!)")
-            self.cartDetailResponseArr = response
+            for var obj in response as! NSArray
+            {
+                self.cartDetailResponseArr.addObject(obj)
+            }
             self.tableView.reloadData()
-//            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-//            loading.mode = MBProgressHUDModeText
-//            loading.detailsLabelText = response["message"] as! String
-//            loading.hide(true, afterDelay: 2)
-//            loading.removeFromSuperViewOnHide = true
+            //            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            //            loading.mode = MBProgressHUDModeText
+            //            loading.detailsLabelText = response["message"] as! String
+            //            loading.hide(true, afterDelay: 2)
+            //            loading.removeFromSuperViewOnHide = true
             
         }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
             
             print("error: \(error!)")
             
         }
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -64,16 +64,33 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return cartItemArray.count
+        return cartDetailResponseArr.count
     }
     
     @IBAction func removeItemFromCart(sender: AnyObject) {
         
-        let button = sender as! UIButton
-        let tagValue : Int = button.tag
-        
-        if (cartItemArray.count > tagValue){
-            cartItemArray.removeObjectAtIndex(tagValue)
+        //       let button = sender as! UIButton
+        //       let tagValue : Int = button.tag
+        let currentRow = sender.tag
+        let productId = self.cartDetailResponseArr.objectAtIndex(currentRow)["id"] as! String
+        let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
+        manager.requestSerializer = requestSerializer
+        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
+        let userId = (NSUserDefaults.standardUserDefaults().valueForKey("id"))
+        let params: [NSObject : AnyObject] = ["user_id": userId!, "product_id": productId]
+        manager.POST("http://192.168.0.14/eshopkart/webservices/clear_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            print("response: \(response!)")
+            //self.cartDetailResponseArr = response
+            //self.tableView.reloadData()
+            
+        }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
+            
+            print("error: \(error!)")
+            
+        }
+        if (cartDetailResponseArr.count > currentRow){
+            cartDetailResponseArr.removeObjectAtIndex(currentRow)
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = "Removed successfully from your cart"
@@ -85,9 +102,30 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> cartItemCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cartcell", forIndexPath: indexPath) as! cartItemCell
         cell.contentView.backgroundColor = UIColor.whiteColor()
+        cell.productName?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["name"] as? String
+        cell.productColor?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["colour"] as? String
+        cell.productPrice?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["unitprice"] as? String
+        cell.productQuantity?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["quantity"] as? String
+        let url = NSURL(string:("http://192.168.0.14/eshopkart/files/thumbs100x100/" + (cartDetailResponseArr.objectAtIndex(indexPath.row)["image"] as? String)!))
+        cell.productImg?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
+        cell.removBtn.tag = indexPath.row
+        cell.removBtn.addTarget(self, action: #selector(CartItemDetailVC.removeItemFromCart),forControlEvents: .TouchUpInside)
         return cell
         
     }
+    
+    //func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    
+    //        let productId = cartDetailResponseArr.objectAtIndex(indexPath.row)["id"] as! String
+    //        getProductId(productId)
+    
+    
+    //}
+    
+    //    func getProductId(productId: String) -> String {
+    //        print(productId)
+    //        return productId
+    //    }
     
     
     /*

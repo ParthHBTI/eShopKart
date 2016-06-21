@@ -5,16 +5,15 @@
 //  Created by mac on 12/05/16.
 //  Copyright © 2016 kloudRac.com. All rights reserved.
 //
-
 import UIKit
 import AFNetworking
-
 class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
     
     @IBOutlet var tableview: UITableView!
     var getsubCategoryId: String!
     var productsArr = NSArray()
     var galleryArr:AnyObject = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.shadowImage = UIImage (named: "memo-views")
