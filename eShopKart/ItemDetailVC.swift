@@ -45,6 +45,7 @@ class ItemDetailVC: BaseViewController {
         if(indexPath.row == 1) {
             let cell2 = tableView.dequeueReusableCellWithIdentifier("PriceViewCellIdentifier", forIndexPath: indexPath) as! ItemDetailViewCell
             cell2.productName?.text = getProductInfoDic["name"] as? String
+            cell2.amount?.text = getProductInfoDic["price"] as? String
             return cell2
         }
         let cell3 = tableView.dequeueReusableCellWithIdentifier("DetailViewCellIdentifier", forIndexPath: indexPath) as! ItemDetailViewCell

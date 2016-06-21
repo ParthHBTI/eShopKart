@@ -324,7 +324,6 @@
                                     <outlet property="amount" destination="djA-w0-ED9" id="01q-4i-NYV"/>
                                     <outlet property="productImgView" destination="7ih-gy-oud" id="ibg-U3-ysI"/>
                                     <outlet property="productname" destination="yaB-0i-5aI" id="lDi-BO-K4E"/>
-                                    <outlet property="rs" destination="hp3-xz-XV8" id="Ieb-qr-8Br"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1471,13 +1470,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="207" height="174"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JCv-KA-ooy">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JCv-KA-ooy">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LRr-R5-Fpg">
                                                         <size key="itemSize" width="148" height="114"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="50" height="50"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
@@ -1540,6 +1539,9 @@
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
+                                                    <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="yP0-or-hwA">
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                    </collectionReusableView>
                                                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                                         <rect key="frame" x="119" y="19" width="149" height="127"/>
                                                     </variation>
@@ -1548,20 +1550,31 @@
                                                         <outlet property="delegate" destination="Efw-So-kl8" id="NWg-dU-axx"/>
                                                     </connections>
                                                 </collectionView>
+                                                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" defersCurrentPageDisplay="YES" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="4h3-Dr-o6f">
+                                                    <rect key="frame" x="-19" y="-18" width="39" height="37"/>
+                                                    <color key="pageIndicatorTintColor" red="0.65950096270000003" green="0.77297794149999999" blue="0.85477339659999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="138" y="137" width="111" height="37"/>
+                                                    </variation>
+                                                </pageControl>
                                             </subviews>
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="JCv-KA-ooy"/>
+                                                    <exclude reference="4h3-Dr-o6f"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
                                                 <mask key="subviews">
                                                     <include reference="JCv-KA-ooy"/>
+                                                    <include reference="4h3-Dr-o6f"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="ImgControl" destination="4h3-Dr-o6f" id="2hv-nP-gZM"/>
                                             <outlet property="collectionView" destination="JCv-KA-ooy" id="tpz-kb-f3b"/>
                                         </connections>
                                     </tableViewCell>
@@ -1575,19 +1588,19 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjO-8q-WD2">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="GjO-8q-WD2" secondAttribute="height" multiplier="131:21" id="Irc-2A-aDo"/>
+                                                        <constraint firstAttribute="width" secondItem="GjO-8q-WD2" secondAttribute="height" multiplier="58:21" id="6er-kD-lDx"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="Irc-2A-aDo"/>
+                                                            <exclude reference="6er-kD-lDx"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
-                                                            <include reference="Irc-2A-aDo"/>
+                                                            <include reference="6er-kD-lDx"/>
                                                         </mask>
                                                     </variation>
                                                 </label>
@@ -1629,6 +1642,25 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZR-zr-8YQ">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="oZR-zr-8YQ" secondAttribute="height" multiplier="17:3" id="yFJ-BK-Bw8"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="yFJ-BK-Bw8"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="yFJ-BK-Bw8"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="mJc-nP-lm9" secondAttribute="bottom" constant="41" id="Kw8-w5-tzs"/>
@@ -1639,6 +1671,8 @@
                                                     <variation key="heightClass=regular-widthClass=compact" constant="8"/>
                                                 </constraint>
                                                 <constraint firstItem="GId-Zy-Lip" firstAttribute="width" secondItem="wWE-nG-KN4" secondAttribute="width" multiplier="0.71" id="ZhG-uE-Fez"/>
+                                                <constraint firstItem="oZR-zr-8YQ" firstAttribute="centerY" secondItem="GjO-8q-WD2" secondAttribute="centerY" id="ck7-OT-WOU"/>
+                                                <constraint firstItem="oZR-zr-8YQ" firstAttribute="leading" secondItem="GjO-8q-WD2" secondAttribute="trailing" constant="5" id="jvE-JR-fYI"/>
                                                 <constraint firstItem="mJc-nP-lm9" firstAttribute="leading" secondItem="wWE-nG-KN4" secondAttribute="leadingMargin" constant="38" id="vSt-OL-Dmy"/>
                                             </constraints>
                                             <variation key="default">
@@ -1646,6 +1680,7 @@
                                                     <exclude reference="GjO-8q-WD2"/>
                                                     <exclude reference="mJc-nP-lm9"/>
                                                     <exclude reference="GId-Zy-Lip"/>
+                                                    <exclude reference="oZR-zr-8YQ"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <exclude reference="L80-tO-E4J"/>
@@ -1655,6 +1690,8 @@
                                                     <exclude reference="Kw8-w5-tzs"/>
                                                     <exclude reference="Wql-Ov-mVs"/>
                                                     <exclude reference="vSt-OL-Dmy"/>
+                                                    <exclude reference="ck7-OT-WOU"/>
+                                                    <exclude reference="jvE-JR-fYI"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -1662,6 +1699,7 @@
                                                     <include reference="GjO-8q-WD2"/>
                                                     <include reference="mJc-nP-lm9"/>
                                                     <include reference="GId-Zy-Lip"/>
+                                                    <include reference="oZR-zr-8YQ"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <include reference="L80-tO-E4J"/>
@@ -1671,11 +1709,14 @@
                                                     <include reference="Kw8-w5-tzs"/>
                                                     <include reference="Wql-Ov-mVs"/>
                                                     <include reference="vSt-OL-Dmy"/>
+                                                    <include reference="ck7-OT-WOU"/>
+                                                    <include reference="jvE-JR-fYI"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="amount" destination="oZR-zr-8YQ" id="VtH-2M-KYv"/>
                                             <outlet property="productName" destination="GId-Zy-Lip" id="A6M-Da-4eg"/>
                                         </connections>
                                     </tableViewCell>
@@ -1705,7 +1746,7 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5p-8a-sRF">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" editable="NO" text="textView" translatesAutoresizingMaskIntoConstraints="NO" id="v5p-8a-sRF">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -2067,7 +2108,7 @@
         <image name="down arrow" width="25" height="14"/>
         <image name="location-icon" width="9" height="14"/>
         <image name="minus" width="126" height="32"/>
-        <image name="mobImg" width="135" height="122"/>
+        <image name="mobImg" width="400" height="400"/>
         <image name="plus" width="128" height="127"/>
         <image name="upperAngularIcon2" width="128" height="128"/>
         <image name="user-profile" width="434" height="512"/>

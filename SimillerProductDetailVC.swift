@@ -67,6 +67,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         
         let url = NSURL(string:("http://192.168.0.14/eshopkart/files/thumbs100x100/" + (itemInfoDic["Gallery"]?.objectAtIndex(0)["images"] as? String)!))
         cell.productname?.text = itemInfoDic["name"] as? String
+        cell.amount?.text = itemInfoDic["price"] as? String
         cell.productImgView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         return cell
     }
