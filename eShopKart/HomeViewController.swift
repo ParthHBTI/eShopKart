@@ -7,16 +7,15 @@
 //
 
 import UIKit
-
+import AFNetworking
 class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDelegate, UISearchControllerDelegate, UISearchDisplayDelegate, UITableViewDataSource {
     
     @IBOutlet weak var barSearchItem: UISearchBar!
     var searchController: UISearchController!
-    var tableViewController: UITableViewController!
-    var filteredData = [String]()
-    var active1 = true
-    var data = ["One","Two","Three","Twenty-One"]
-
+    var tableViewController: UITableViewController?
+    var filteredData = NSMutableArray()
+    var tableView = UITableView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchController = UISearchController(searchResultsController: self.tableViewController)
@@ -25,7 +24,6 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         searchController.delegate = self
         searchController.searchBar.delegate = self
         barSearchItem.delegate = self
-        filteredData = data
         self.definesPresentationContext = true
         self.barSearchItem.autocorrectionType = .No
         self.barSearchItem.autocapitalizationType = .None
@@ -42,74 +40,53 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        
         barSearchItem.showsScopeBar = true;
     }
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int
     {
-        if (!self.searchController.active) {
-            return self.filteredData.count
-        }
-        else {
-            return self.data.count
-        }
+        return self.filteredData.count
+
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredData = searchText.isEmpty ? data : data.filter({(dataString: String) -> Bool in
-            return dataString.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
-        })
         if searchText.isEmpty {
-            filteredData = data
         } else {
-                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                var token = appDelegate.deviceTokenString as? String
-                if token == nil {
-                    token = "786e246f17d1a0684d499b390b8"
+            let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+            let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
+            manager.requestSerializer = requestSerializer
+            manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
+            let params: [NSObject : String] = ["keyword": searchText ]
+            manager.POST("http://192.168.0.4/eshopkart/webservices/search", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+                print(searchText)
+                 print("response: \(response!)")
+                var values: AnyObject = []
+                values = response
+                self.filteredData.removeAllObjects()
+                for var objDic in values as! NSArray
+                {
+                    self.filteredData.addObject(objDic)
                 }
-                let userInfo = [
-                    "keyword" : searchText as String
-            ]
-                loading.mode = MBProgressHUDModeIndeterminate
-                SigninOperaion.search(userInfo, completionClosure: { (response: AnyObject) -> () in
-                    let product = NSArray(object: response.valueForKey("keyword") as! NSDictionary)
-                    let user: User  = User.initWithArray(product)[0] as! User
-                    appDelegate.currentUser = user
-                    appDelegate.saveCurrentUserDetails()
-                    if (true) {
-                        loading.hide(true, afterDelay: 2)
-                        let productData = NSUserDefaults.standardUserDefaults().valueForKey("keyword")! as! [String]
-                        self.filteredData = productData.filter({(dataItem: String) -> Bool in
-                            if dataItem.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil {
-                                return true
-                            } else {
-                                return false
-                            }
-                        })
-                       
-                    } else {
-                        loading.mode = MBProgressHUDModeText
-                        loading.detailsLabelText = "Exceptional error occured. Please try again after some time"
-                        loading.hide(true, afterDelay: 2)
-                    }
-                }) { (error: NSError) -> () in
-                    loading.mode = MBProgressHUDModeText
-                    loading.detailsLabelText = error.localizedDescription
-                    loading.hide(true, afterDelay: 2)
-                }
+                self.tableView.reloadData()
+            }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
+                print("error: \(error!)")
             }
-        
-        
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell:UITableViewCell=UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "mycell")
-        //cell.textLabel?.text = filteredData[indexPath.row]
+        cell.textLabel?.text = filteredData[indexPath.row]["name"] as? String
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let storyboard = UIStoryboard.init(name:"Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("ItemDetailVCIdentifier") as! ItemDetailVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     /*
     // MARK: - Navigation
 

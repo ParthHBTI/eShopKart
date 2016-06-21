@@ -25,7 +25,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
         manager.requestSerializer = requestSerializer
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-        let params: [NSObject : AnyObject] = ["category_id": getsubCategoryId]
+        let params: [NSObject : AnyObject] = ["category_id": getsubCategoryId ]
         manager.POST("http://192.168.0.14/eshopkart/webservices/get_products", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("response: \(response!)")
             self.productsArr = (response as? NSArray)!

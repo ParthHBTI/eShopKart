@@ -20,14 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let data = NSUserDefaults.standardUserDefaults().objectForKey("User") as? NSData
-        print("\n\(data)\n")
         if data != nil {
             let admin = NSKeyedUnarchiver.unarchiveObjectWithData( data!) as! User
             currentUser  = admin;
         }
         let token = NSUserDefaults.standardUserDefaults().valueForKey("token_id") as? String
-        print("\n\(token)\n")
-
         if token == nil {
             showUserPage()
         }

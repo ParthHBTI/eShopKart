@@ -24,7 +24,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
         let userId = (NSUserDefaults.standardUserDefaults().valueForKey("id"))
         let params: [NSObject : AnyObject] = ["user_id": userId!]
-        manager.POST("http://192.168.0.4/eshopkart/webservices/view_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.14/eshopkart/webservices/view_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("response: \(response!)")
             self.cartDetailResponseArr = response
             self.tableView.reloadData()

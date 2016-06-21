@@ -48,6 +48,7 @@ class LoginViewController: TextFieldViewController {
                     "token_id" : token!
                 ]
                 loading.mode = MBProgressHUDModeIndeterminate
+                loading.yOffset = -55.0
                 SigninOperaion.signin(userInfo, completionClosure: { (response: AnyObject) -> () in
                     let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
                     let user: User  = User.initWithArray(admin)[0] as! User
@@ -107,6 +108,7 @@ class LoginViewController: TextFieldViewController {
                     "token_id" : token!
                 ]
                 loading.mode = MBProgressHUDModeIndeterminate
+                 loading.yOffset = -55.0
                 SigninOperaion.verification(userInfo, completionClosure: { (response: AnyObject) -> () in
                     let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
                     let user: User  = User.initWithArray(admin)[0] as! User
@@ -154,7 +156,7 @@ class LoginViewController: TextFieldViewController {
         self.navigationController?.dismissViewControllerAnimated(false, completion: nil)
         
     }
-    
+ 
     override func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField == self.emailMobileTextField{
             self.passwordTextField.becomeFirstResponder()

@@ -72,18 +72,7 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
     func backAction() {
         self.navigationController?.popViewControllerAnimated(true)
     }
-    //Go to next page
-    func nextAction(){
-        
-        let storyboard = UIStoryboard(name: "main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("") as? UserRegistrationVC
-        self.navigationController?.pushViewController(vc!, animated: true)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-       
-    }
-    
+   
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         

@@ -60,18 +60,18 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
         //let profileEditBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Edit-1"), style: . Plain, target: self, action: Selector(""))
         navigationItem.setLeftBarButtonItem(crossBtnItem,animated: true)
         //navigationItem.setRightBarButtonItem(profileEditBtnItem, animated: true)
-        imageArray[0] = UIImage(named: "market.png" )!
-        imageArray[1] = UIImage(named: "market.png" )!
-        imageArray[2] = UIImage(named: "market.png" )!
-        imageArray[3] = UIImage(named: "market.png" )!
-        imageArray[4] = UIImage(named: "market.png" )!
-        imageArray[5] = UIImage(named: "market.png" )!
-        imageArray[6] = UIImage(named: "market.png" )!
-        imageArray[7] = UIImage(named: "market.png" )!
-        imageArray[8] = UIImage(named: "market.png" )!
-        imageArray[9] = UIImage(named: "market.png" )!
-        imageArray[10] = UIImage(named: "market.png" )!
-        imageArray[11] = UIImage(named: "market.png" )!
+        imageArray[0] = UIImage(named: "my_orders.png" )!
+        imageArray[1] = UIImage(named: "my_returns.png" )!
+        imageArray[2] = UIImage(named: "favourites.png" )!
+        imageArray[3] = UIImage(named: "purchase.png" )!
+        imageArray[4] = UIImage(named: "customer.png" )!
+        imageArray[5] = UIImage(named: "my_account.png" )!
+        imageArray[6] = UIImage(named: "notification.png" )!
+        imageArray[7] = UIImage(named: "rate_app.png" )!
+        imageArray[8] = UIImage(named: "feedback.png" )!
+        imageArray[9] = UIImage(named: "share_app.png" )!
+        imageArray[10] = UIImage(named: "sell.png" )!
+        imageArray[11] = UIImage(named: "more-1.png" )!
     }
     
     @IBAction func logoutAction() {
@@ -81,7 +81,6 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
         if token == nil {
             token = "3e94849f5eb3922965e8df4dc2332d0e"
         }
-        print("\n\n\(token)\n\n")
         let userInfo = [
             "token_id" : token!
         ]
@@ -152,9 +151,9 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
     
     
     func crossBtnAction() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
-        self.navigationController?.pushViewController(vc!, animated: true)
+            let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
+            self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     override func didReceiveMemoryWarning() {

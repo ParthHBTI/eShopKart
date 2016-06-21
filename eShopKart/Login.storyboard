@@ -71,7 +71,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="bc_logo" translatesAutoresizingMaskIntoConstraints="NO" id="j80-zR-Wj1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="BC Logo" translatesAutoresizingMaskIntoConstraints="NO" id="j80-zR-Wj1">
                                 <rect key="frame" x="180" y="65" width="240" height="167"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="j80-zR-Wj1" secondAttribute="height" multiplier="1:1" id="hft-z7-PhL"/>
@@ -95,12 +95,14 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqY-0g-vQR">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="82" id="RNl-17-kc5"/>
+                                    <constraint firstAttribute="width" constant="82" id="RNl-17-kc5">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="94"/>
+                                    </constraint>
                                     <constraint firstAttribute="height" constant="42" id="dAr-26-6GA">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="37"/>
+                                        <variation key="heightClass=regular-widthClass=compact" constant="41"/>
                                     </constraint>
                                 </constraints>
-                                <state key="normal" image="Save"/>
+                                <state key="normal" image="Signup"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="RNl-17-kc5"/>
@@ -268,7 +270,7 @@
                                     <action selector="loginACtion:" destination="wtZ-43-3EA" eventType="touchUpInside" id="TQf-wC-hqr"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bc_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Sbn-ze-7pK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BC Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Sbn-ze-7pK">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Sbn-ze-7pK" secondAttribute="height" multiplier="145:139" id="AdN-cr-BKe">
@@ -461,7 +463,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2i4-fs-nhS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2826" y="0.0"/>
+            <point key="canvasLocation" x="2851.5" y="10.5"/>
         </scene>
         <!--Verification Code View Controller-->
         <scene sceneID="HDn-jq-Jgu">
@@ -486,7 +488,7 @@
                                     <action selector="verifyCodeAction:" destination="MRa-c0-sfq" eventType="touchUpInside" id="id3-12-qhd"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bc_logo" translatesAutoresizingMaskIntoConstraints="NO" id="zTh-5a-1Wx">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BC Logo" translatesAutoresizingMaskIntoConstraints="NO" id="zTh-5a-1Wx">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zTh-5a-1Wx" secondAttribute="height" multiplier="144:139" id="7bv-ic-4kW">
@@ -646,7 +648,7 @@
                                     </mask>
                                 </variation>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bc_logo" translatesAutoresizingMaskIntoConstraints="NO" id="DCD-E6-0EV">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BC Logo" translatesAutoresizingMaskIntoConstraints="NO" id="DCD-E6-0EV">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DCD-E6-0EV" secondAttribute="height" multiplier="36:35" id="NyQ-3S-CuJ"/>
@@ -670,7 +672,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="resetPassAction:" destination="JcG-rY-sKI" eventType="touchUpInside" id="r2x-k7-NL9"/>
+                                    <action selector="resetPassAction:" destination="JcG-rY-sKI" eventType="touchUpInside" id="khl-as-apw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -788,7 +790,7 @@
                                     <segue destination="wtZ-43-3EA" kind="show" id="kVU-E4-oM7"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bc_logo" translatesAutoresizingMaskIntoConstraints="NO" id="OgZ-1x-kRI">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BC Logo" translatesAutoresizingMaskIntoConstraints="NO" id="OgZ-1x-kRI">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="OgZ-1x-kRI" secondAttribute="height" multiplier="145:139" id="8bX-ed-ddK">
@@ -934,7 +936,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bc_logo" translatesAutoresizingMaskIntoConstraints="NO" id="9Jj-X7-Vt0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BC Logo" translatesAutoresizingMaskIntoConstraints="NO" id="9Jj-X7-Vt0">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9Jj-X7-Vt0" secondAttribute="height" multiplier="144:139" id="mgP-Py-mf9"/>
@@ -1147,7 +1149,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bc_logo" translatesAutoresizingMaskIntoConstraints="NO" id="gnh-DA-TrO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BC Logo" translatesAutoresizingMaskIntoConstraints="NO" id="gnh-DA-TrO">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gnh-DA-TrO" secondAttribute="height" multiplier="144:139" id="Dwb-78-mkn"/>
@@ -1614,7 +1616,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Vx-wE-stR" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1834.5" y="630"/>
+            <point key="canvasLocation" x="1608" y="693"/>
         </scene>
         <!--User Profile View Controller-->
         <scene sceneID="McD-ju-tsr">
@@ -2120,13 +2122,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BC Logo" width="800" height="800"/>
         <image name="Login" width="124" height="56"/>
-        <image name="Save" width="64" height="28"/>
         <image name="Signup" width="125" height="56"/>
         <image name="Triangle  left" width="238" height="277"/>
         <image name="Triangle Right" width="230" height="287"/>
         <image name="back_icon" width="20" height="32"/>
-        <image name="bc_logo" width="400" height="400"/>
         <image name="bg" width="750" height="1334"/>
         <image name="down arrow" width="25" height="14"/>
         <image name="location-icon" width="9" height="14"/>
