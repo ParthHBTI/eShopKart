@@ -43,18 +43,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        
-        self.navigationItem.leftItemsSupplementBackButton = false
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-               //self.navigationItem.leftBarButtonItem = nil
-        //        self.navigationItem.leftItemsSupplementBackButton = true
+               self.navigationItem.leftItemsSupplementBackButton = false
     }
     
     func buttonAction() {
@@ -63,7 +52,39 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if (cartDetailResponseArr.count == 0) {
+            let DynamicView=UIView(frame: CGRectMake(0, 100, 420, 400))
+            let goHomeAction = UIButton(frame: CGRect(x: 110, y: 250, width: 200, height: 60))
+            let detailLBL = UILabel(frame: CGRect(x: 100, y: 210, width: 300, height: 60))
+            let cartImage = UIImageView(frame: CGRectMake(120, 0, 200, 200))
+            cartImage.image = UIImage(named: "market.png")
+            detailLBL.textColor = UIColor.blackColor()
+            goHomeAction.backgroundColor = UIColor.whiteColor()
+            goHomeAction.setTitleColor(UIColor.blueColor() , forState: .Normal)
+            goHomeAction.setTitle("CONTINUE SHOPPING", forState: .Normal)
+            detailLBL.text = "Your Shopping Cart is Empty!"
+            goHomeAction.layer.cornerRadius=10
+            DynamicView.backgroundColor=UIColor.whiteColor()
+            DynamicView.layer.cornerRadius=25
+            DynamicView.layer.borderWidth=0
+            DynamicView.addSubview(detailLBL)
+            DynamicView.addSubview(cartImage)
+            DynamicView.addSubview(goHomeAction)
+            self.view.addSubview(DynamicView)
+            goHomeAction.addTarget(self, action: #selector(buttonAction), forControlEvents: .TouchUpInside)
+        }
+
+               //self.navigationItem.leftBarButtonItem = nil
+        //        self.navigationItem.leftItemsSupplementBackButton = true
+    }
+    
+           func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         return 1
     }
