@@ -24,9 +24,15 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
         manager.requestSerializer = requestSerializer
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
+<<<<<<< HEAD
+        let params: [NSObject : AnyObject] = ["category_id": getsubCategoryId ]
+        manager.POST("http://192.168.0.11/eshopkart/webservices/get_products", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            //print("response: \(response!)")
+=======
         let params: [NSObject : AnyObject] = ["category_id": getsubCategoryId]
         manager.POST("http://192.168.0.11/eshopkart/webservices/get_products", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("response: \(response!)")
+>>>>>>> 597d10ce4524d06e312c5b4d884484a81c8e5040
             self.productsArr = (response as? NSArray)!
             print(self.productsArr)
             self.tableview.reloadData()
@@ -66,7 +72,11 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         //galleryArr = itemInfoDic["Gallery"] as! Array<AnyObject>
         //let url = NSURL(string:("http://192.168.0.13/eshopkart/files/thumbs100x100/" + (galleryArr.objectAtIndex(0)["images"] as? String)!))
         
+<<<<<<< HEAD
+        let url = NSURL(string:("http://192.168.0.11/eshopkart/files/thumbs100x100/" + ((itemInfoDic["Gallery"]?.objectAtIndex(0)["images"] as? String))!))
+=======
         let url = NSURL(string:("http://192.168.0.11/eshopkart/files/thumbs100x100/" + (itemInfoDic["Gallery"]?.objectAtIndex(0)["images"] as? String)!))
+>>>>>>> 597d10ce4524d06e312c5b4d884484a81c8e5040
         cell.productname?.text = itemInfoDic["name"] as? String
         cell.amount?.text = itemInfoDic["price"] as? String
         cell.productImgView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))

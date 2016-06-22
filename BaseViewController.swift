@@ -33,6 +33,10 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
         let writeAddBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "market"), style: .Plain, target: self, action: #selector(BaseViewController.myCardDetail))
         let showSearchBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "landlord"), style: .Plain, target: self, action: #selector(BaseViewController.showUserProfile))
         self.navigationItem.setRightBarButtonItems([showSearchBarButtonItem,writeAddBarButtonItem], animated: true)
+         //self.navigationItem.rightBarButtonItem!.badgeValue = "1";
+//        let NavItemsArr = self.navigationController?.navigationBar.items as NSArray!
+//        let navItem = NavItemsArr.objectAtIndex(2) as! UINavigationItem
+        
     }
 
     //Show user's profile
