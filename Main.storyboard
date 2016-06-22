@@ -221,23 +221,24 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbJ-Q1-4b8">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbJ-Q1-4b8">
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                             <color key="backgroundColor" red="0.93482041857948717" green="0.63634314965298178" blue="0.32271642885333957" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="cbJ-Q1-4b8" secondAttribute="height" multiplier="16:3" id="Aif-vO-YFy"/>
+                                                <constraint firstAttribute="width" secondItem="cbJ-Q1-4b8" secondAttribute="height" multiplier="16:3" id="pto-VO-wH0"/>
                                             </constraints>
                                             <state key="normal" title="Get Quote">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="Aif-vO-YFy"/>
+                                                    <exclude reference="pto-VO-wH0"/>
                                                 </mask>
                                             </variation>
-                                            <variation key="heightClass=regular-widthClass=compact">
+                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="144" y="83" width="160" height="30"/>
                                                 <mask key="constraints">
-                                                    <include reference="Aif-vO-YFy"/>
+                                                    <include reference="pto-VO-wH0"/>
                                                 </mask>
                                             </variation>
                                         </button>
@@ -322,6 +323,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="amount" destination="djA-w0-ED9" id="01q-4i-NYV"/>
+                                    <outlet property="getQuoteBtn" destination="cbJ-Q1-4b8" id="dha-bl-Ckn"/>
                                     <outlet property="productImgView" destination="7ih-gy-oud" id="ibg-U3-ysI"/>
                                     <outlet property="productname" destination="yaB-0i-5aI" id="lDi-BO-K4E"/>
                                 </connections>
@@ -339,7 +341,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="61h-UR-xsU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4201.5" y="-2739"/>
+            <point key="canvasLocation" x="4288.5" y="-2787.75"/>
         </scene>
         <!--Cart Item DetailVC-->
         <scene sceneID="Wmu-hk-7N6">
@@ -578,7 +580,7 @@
                                             </variation>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="ryx-Qt-vpC" firstAttribute="height" secondItem="HSd-u1-i9b" secondAttribute="height" id="0L3-Hg-GHn"/>
                                         <constraint firstItem="0I0-To-f3s" firstAttribute="top" secondItem="jxH-10-2Mo" secondAttribute="bottom" constant="6" id="3IN-qt-WHx">
@@ -1157,7 +1159,73 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Njo-RL-M78" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7198.5" y="-2832"/>
+            <point key="canvasLocation" x="7279.5" y="-2951.25"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="YTo-Y1-z5y">
+            <objects>
+                <viewController id="hJH-cE-hBy" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zd1-mC-F9w"/>
+                        <viewControllerLayoutGuide type="bottom" id="d9r-Mu-3Ke"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2uQ-sX-GUw">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XwS-cT-Oof">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="514"/>
+                                </variation>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaP-sT-dAA">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="749" width="195" height="51"/>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTY-Xw-65h">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="203" y="749" width="197" height="51"/>
+                                </variation>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gTY-Xw-65h" firstAttribute="height" secondItem="SaP-sT-dAA" secondAttribute="height" id="24p-fs-otM"/>
+                            <constraint firstItem="gTY-Xw-65h" firstAttribute="width" secondItem="SaP-sT-dAA" secondAttribute="width" constant="2" id="hfy-1h-vrf"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="XwS-cT-Oof"/>
+                                <exclude reference="SaP-sT-dAA"/>
+                                <exclude reference="gTY-Xw-65h"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="24p-fs-otM"/>
+                                <exclude reference="hfy-1h-vrf"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="XwS-cT-Oof"/>
+                                <include reference="SaP-sT-dAA"/>
+                                <include reference="gTY-Xw-65h"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="24p-fs-otM"/>
+                                <include reference="hfy-1h-vrf"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ldj-QO-mB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8211" y="-2976"/>
         </scene>
         <!--Category Item ListVC-->
         <scene sceneID="f9i-3b-YID">
@@ -2108,7 +2176,7 @@
         <image name="down arrow" width="25" height="14"/>
         <image name="location-icon" width="9" height="14"/>
         <image name="minus" width="126" height="32"/>
-        <image name="mobImg" width="400" height="400"/>
+        <image name="mobImg" width="375" height="664"/>
         <image name="plus" width="128" height="127"/>
         <image name="upperAngularIcon2" width="128" height="128"/>
         <image name="user-profile" width="434" height="512"/>

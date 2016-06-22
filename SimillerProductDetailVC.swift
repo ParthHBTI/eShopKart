@@ -25,9 +25,10 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         manager.requestSerializer = requestSerializer
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
         let params: [NSObject : AnyObject] = ["category_id": getsubCategoryId]
-        manager.POST("http://192.168.0.14/eshopkart/webservices/get_products", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.11/eshopkart/webservices/get_products", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("response: \(response!)")
             self.productsArr = (response as? NSArray)!
+            print(self.productsArr)
             self.tableview.reloadData()
             
         }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
@@ -65,30 +66,59 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         //galleryArr = itemInfoDic["Gallery"] as! Array<AnyObject>
         //let url = NSURL(string:("http://192.168.0.13/eshopkart/files/thumbs100x100/" + (galleryArr.objectAtIndex(0)["images"] as? String)!))
         
-        let url = NSURL(string:("http://192.168.0.14/eshopkart/files/thumbs100x100/" + (itemInfoDic["Gallery"]?.objectAtIndex(0)["images"] as? String)!))
+        let url = NSURL(string:("http://192.168.0.11/eshopkart/files/thumbs100x100/" + (itemInfoDic["Gallery"]?.objectAtIndex(0)["images"] as? String)!))
         cell.productname?.text = itemInfoDic["name"] as? String
         cell.amount?.text = itemInfoDic["price"] as? String
         cell.productImgView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
+        cell.getQuoteBtn.tag = indexPath.row
+        cell.getQuoteBtn.addTarget(self, action: #selector(SimillerProductDetailVC.getQuoteAction),forControlEvents: .TouchUpInside
+        )
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    
+        
         let itemInfoDic  = productsArr.objectAtIndex(indexPath.row) as! Dictionary<String,AnyObject>
         let destinationVC = storyboard!.instantiateViewControllerWithIdentifier("ItemDetailVCIdentifier") as! ItemDetailVC
-            destinationVC.getProductInfoDic = itemInfoDic
+        destinationVC.getProductInfoDic = itemInfoDic
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        
-//        if(segue.identifier == "ItemDetailVCIdentifier") {
-//            
-//            let destinationVC = segue.destinationViewController as! ItemDetailVC
-//            let cell = sender as! SimillerProductViewCell
-//            destinationVC.getProductName = cell.productname?.text
-//            destinationVC.getProductImg = cell.productImgView?.image
-//        }
-//    }
+    //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    //
+    //        if(segue.identifier == "ItemDetailVCIdentifier") {
+    //
+    //            let destinationVC = segue.destinationViewController as! ItemDetailVC
+    //            let cell = sender as! SimillerProductViewCell
+    //            destinationVC.getProductName = cell.productname?.text
+    //            destinationVC.getProductImg = cell.productImgView?.image
+    //        }
+    //    }
     
+    @IBAction func getQuoteAction(sender: AnyObject) {
+        
+        let currentRow = sender.tag
+        let productId = self.productsArr.objectAtIndex(currentRow)["id"] as! String
+        let tokenId = (NSUserDefaults.standardUserDefaults().valueForKey("token_id"))
+        let params: [NSObject : AnyObject] = ["token_id": tokenId!, "product_id": productId]
+        let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
+        manager.requestSerializer = requestSerializer
+        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
+        manager.POST("http://192.168.0.11/eshopkart/webservices/request_for_code", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            print("response: \(response!)")
+            //self.cartDetailResponseArr = response
+            //self.tableView.reloadData()
+            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            loading.mode = MBProgressHUDModeText
+            loading.detailsLabelText = response["msg"] as! String
+            loading.hide(true, afterDelay: 2)
+            loading.removeFromSuperViewOnHide = true
+            
+        }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
+            
+            print("error: \(error!)")
+            
+        }
+    }
 }
