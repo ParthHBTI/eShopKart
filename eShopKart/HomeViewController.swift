@@ -15,6 +15,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     var tableViewController: UITableViewController?
     var filteredData = NSMutableArray()
     var tableView = UITableView()
+    var productsData = NSDictionary()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +43,11 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         
         barSearchItem.showsScopeBar = true;
+        print("this is searchText Begin\(filteredData.count)")
     }
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int
-    {
+    {   print("this is section\(filteredData.count)")
         return self.filteredData.count
 
     }
@@ -58,9 +60,8 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
             manager.requestSerializer = requestSerializer
             manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
             let params: [NSObject : String] = ["keyword": searchText ]
-            manager.POST("http://192.168.0.4/eshopkart/webservices/search", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-                print(searchText)
-                 print("response: \(response!)")
+            manager.POST("http://192.168.0.11/eshopkart/webservices/search", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+                print("response: \(response!)")
                 var values: AnyObject = []
                 values = response
                 self.filteredData.removeAllObjects()
@@ -68,8 +69,10 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
                 {
                     self.filteredData.addObject(objDic)
                 }
+                print("\(self.filteredData.count)")
                 self.tableView.reloadData()
-            }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
+            })
+            { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
                 print("error: \(error!)")
             }
         }
@@ -83,9 +86,27 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let storyboard = UIStoryboard.init(name:"Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("ItemDetailVCIdentifier") as! ItemDetailVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
+        manager.requestSerializer = requestSerializer
+        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
+        let id = filteredData.objectAtIndex(indexPath.row)["id"]
+        print("\(id)")
+        let params: [NSObject : String] = ["product_id": id as! String]
+        print("\(params)")
+        manager.POST("http://192.168.0.11/eshopkart/webservices/get_product_details", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+           print("response: \(response!)")
+            self.productsData = (response as! NSDictionary)
+            let itemInfoDic  = self.productsData as! Dictionary<String, AnyObject>
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("ItemDetailVCIdentifier") as! ItemDetailVC
+            destinationVC.getProductInfoDic = itemInfoDic
+            self.navigationController?.pushViewController(destinationVC, animated: true)
+        })
+        { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
+            print("error: \(error!)")
+        }
+        
     }
     /*
     // MARK: - Navigation

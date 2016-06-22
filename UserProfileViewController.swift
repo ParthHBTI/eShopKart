@@ -110,7 +110,6 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
         }
     }
     
-    
     func handleTap() {
         if(NSUserDefaults.standardUserDefaults().valueForKey("User") != nil) {
             let imagePicker = UIImagePickerController()

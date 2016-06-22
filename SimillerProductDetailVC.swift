@@ -5,16 +5,15 @@
 //  Created by mac on 12/05/16.
 //  Copyright © 2016 kloudRac.com. All rights reserved.
 //
-
 import UIKit
 import AFNetworking
-
 class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
     
     @IBOutlet var tableview: UITableView!
     var getsubCategoryId: String!
     var productsArr = NSArray()
     var galleryArr:AnyObject = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.shadowImage = UIImage (named: "memo-views")
@@ -26,8 +25,8 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         manager.requestSerializer = requestSerializer
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
         let params: [NSObject : AnyObject] = ["category_id": getsubCategoryId ]
-        manager.POST("http://192.168.0.14/eshopkart/webservices/get_products", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-            print("response: \(response!)")
+        manager.POST("http://192.168.0.11/eshopkart/webservices/get_products", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            //print("response: \(response!)")
             self.productsArr = (response as? NSArray)!
             self.tableview.reloadData()
             
@@ -66,7 +65,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         //galleryArr = itemInfoDic["Gallery"] as! Array<AnyObject>
         //let url = NSURL(string:("http://192.168.0.13/eshopkart/files/thumbs100x100/" + (galleryArr.objectAtIndex(0)["images"] as? String)!))
         
-        let url = NSURL(string:("http://192.168.0.14/eshopkart/files/thumbs100x100/" + (itemInfoDic["Gallery"]?.objectAtIndex(0)["images"] as? String)!))
+        let url = NSURL(string:("http://192.168.0.11/eshopkart/files/thumbs100x100/" + ((itemInfoDic["Gallery"]?.objectAtIndex(0)["images"] as? String))!))
         cell.productname?.text = itemInfoDic["name"] as? String
         cell.productImgView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         return cell

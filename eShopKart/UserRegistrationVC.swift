@@ -50,9 +50,9 @@ class UserRegistrationVC: TextFieldViewController {
             loading.detailsLabelText = "please enter all values here!"
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
-        } else if (passwordTextField.text!.characters.count) < 5 {
+        } else if (passwordTextField.text!.characters.count) < 6 {
             loading.mode = MBProgressHUDModeText
-            loading.detailsLabelText = "password length must be of 5 characters!"
+            loading.detailsLabelText = "password length must be of 6 characters!"
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
         } else {
@@ -81,10 +81,12 @@ class UserRegistrationVC: TextFieldViewController {
                             let username =	response.valueForKey("User")?.valueForKey("username") as! String
                             let email =	response.valueForKey("User")?.valueForKey("email") as! String
                             let mobile = response.valueForKey("User")?.valueForKey("mobile") as! String
+                            let user_id =	response.valueForKey("User")?.valueForKey("id") as! String
                             NSUserDefaults.standardUserDefaults().setValue(tokenId, forKey: "token_id")
                             NSUserDefaults.standardUserDefaults().setValue(username, forKey: "username")
                             NSUserDefaults.standardUserDefaults().setValue(email, forKey: "email")
                             NSUserDefaults.standardUserDefaults().setValue(mobile, forKey: "mobile")
+                            NSUserDefaults.standardUserDefaults().setValue(user_id, forKey: "id")
                             NSUserDefaults.standardUserDefaults().synchronize()
                             loading.hide(true)
                             let storyboard = UIStoryboard(name: "Login", bundle: nil)

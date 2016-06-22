@@ -7,26 +7,20 @@
 //
 import UIKit
 import AFNetworking
-class ItemDetailVC: BaseViewController    {
+class ItemDetailVC: BaseViewController {
     
     @IBOutlet var ItemDetailTblView: UITableView!
     var productImageArr:AnyObject = []
     var productId: String!
     var getProductInfoDic = Dictionary<String,AnyObject>()
-    //var productImgArr = NSArray()
     override func viewDidLoad() {
-        //print(getProductInfoDic)
         super.viewDidLoad()
         self.ItemDetailTblView.rowHeight = 170
         productImageArr = getProductInfoDic["Gallery"] as! Array<AnyObject>
-        //print(productImageArr)
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,11 +29,8 @@ class ItemDetailVC: BaseViewController    {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if(indexPath.row == 0) {
-            
             let cell1 = tableView.dequeueReusableCellWithIdentifier("ImageViewCellIdentifier", forIndexPath: indexPath) as! ItemDetailViewCell
-            //cell1.productImg?.image = getProductImg as UIImage!
             cell1.collectionView.reloadData()
-            
             return cell1
         }
         if(indexPath.row == 1) {
@@ -52,13 +43,10 @@ class ItemDetailVC: BaseViewController    {
         cell3.desTextView.layer.borderWidth = 0.5
         cell3.desTextView?.text = getProductInfoDic["product_description"] as? String
         return cell3
-        
     }
     
     @IBAction func addToCart(sender: AnyObject) {
-        
         if (( NSUserDefaults.standardUserDefaults().valueForKey("User")) != nil) {
-            
             productId = getProductInfoDic["id"] as! String
             let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
             let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
@@ -66,11 +54,11 @@ class ItemDetailVC: BaseViewController    {
             manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
             let userId = (NSUserDefaults.standardUserDefaults().valueForKey("id"))
             let params: [NSObject : AnyObject] = ["user_id": userId!,"product_id": productId!,"quantity": 1]
-            manager.POST("http://192.168.0.14/eshopkart/webservices/add_to_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            manager.POST("http://192.168.0.11/eshopkart/webservices/add_to_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
                 print("response: \(response!)")
                 //self.subcatResponseArr = response
                 self.ItemDetailTblView.reloadData()
-                cartItemArray.addObject("")
+                // cartItemArray.addObject("")
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = response["message"] as! String
@@ -82,24 +70,16 @@ class ItemDetailVC: BaseViewController    {
                 print("error: \(error!)")
                 
             }
-            //            if (self.navigationController?.topViewController?.isKindOfClass(CartItemDetailVC)) == false{
-            //                let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
-            //                let vc = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as? CartItemDetailVC
-            //                self.navigationController?.pushViewController(vc!, animated: true)
-            //            }
         } else {
             let storyboard = UIStoryboard(name: "Login" , bundle:  nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("loginVC") as? LoginViewController
             self.navigationController?.pushViewController(vc!, animated: true)
         }
-        
-        //self.navigationItem.rightBarButtonItem?.badgeValue = "1"
     }
 }
 
 extension ItemDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return productImageArr.count
     }
     
@@ -111,10 +91,17 @@ extension ItemDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
         //cell.contentView.addSubview(imageview)
         //cell.imageView.image = getProductImg
         //cell.imageView.image = productImgArr.objectAtIndex(2)["images"] as? UIImage
-        let url = NSURL(string:("http://192.168.0.14/eshopkart/files/thumbs100x100/" + (productImageArr.objectAtIndex(0)["images"] as? String)!))
+        // for i in 0 ..< productImageArr.count {
+        //let url = NSURL(string:("http://192.168.0.14/eshopkart/files/thumbs100x100/" + (productImageArr.objectAtIndex(i)["images"] as? String)!))
+        let url = NSURL(string:("http://192.168.0.11/eshopkart/files/thumbs100x100/" + (productImageArr[indexPath.row]["images"] as? String)!))
         cell.imageView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
-        
+        //}
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath ind: NSIndexPath) -> CGSize {
+        
+        return collectionView.frame.size;
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

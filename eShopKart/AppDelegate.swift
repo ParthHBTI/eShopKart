@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if token == nil {
             showUserPage()
         }
-        // Override point for customization after application launch.
+        // Override point for customization after application launch.m
         return true
     }
     
