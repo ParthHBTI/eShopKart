@@ -235,8 +235,7 @@
                                                     <exclude reference="pto-VO-wH0"/>
                                                 </mask>
                                             </variation>
-                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                <rect key="frame" x="144" y="83" width="160" height="30"/>
+                                            <variation key="heightClass=regular-widthClass=compact">
                                                 <mask key="constraints">
                                                     <include reference="pto-VO-wH0"/>
                                                 </mask>
@@ -1170,6 +1169,7 @@
                         <viewControllerLayoutGuide type="bottom" id="d9r-Mu-3Ke"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2uQ-sX-GUw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XwS-cT-Oof">
@@ -1350,7 +1350,8 @@
                                                             <exclude reference="zUQ-GO-ase"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="16" y="34" width="179" height="11"/>
                                                         <mask key="constraints">
                                                             <include reference="zUQ-GO-ase"/>
                                                         </mask>
@@ -1704,7 +1705,8 @@
                                                             <exclude reference="J0v-m6-1Ib"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="35" y="13" width="170" height="19"/>
                                                         <mask key="constraints">
                                                             <include reference="J0v-m6-1Ib"/>
                                                         </mask>
@@ -1808,7 +1810,8 @@
                                                             <exclude reference="uhh-ib-7RR"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="50" y="13" width="140" height="12"/>
                                                         <mask key="constraints">
                                                             <include reference="uhh-ib-7RR"/>
                                                         </mask>
@@ -1828,7 +1831,8 @@
                                                             <exclude reference="w68-iN-WQ8"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="30" y="32" width="180" height="68"/>
                                                         <mask key="constraints">
                                                             <include reference="w68-iN-WQ8"/>
                                                         </mask>
