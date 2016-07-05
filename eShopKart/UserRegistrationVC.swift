@@ -55,6 +55,11 @@ class UserRegistrationVC: TextFieldViewController {
             loading.detailsLabelText = "password length must be of 6 characters!"
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
+        } else if contactNumberTextField.text!.characters.count != 10 {
+            loading.mode = MBProgressHUDModeText
+            loading.detailsLabelText = "please enter a valid mobile number"
+            loading.hide(true, afterDelay: 2)
+            loading.removeFromSuperViewOnHide = true
         } else {
             if  mailTextField.text!.isValidEmail() == true {
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

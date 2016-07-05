@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class GeneralWebViewController: UIViewController {
 
@@ -20,10 +21,11 @@ class GeneralWebViewController: UIViewController {
         self.navigationController?.navigationBarHidden = false
         if pageId == 1{
             self.navigationItem.title = "About Us"
-        } else if pageId == 3 {
+        } else if pageId == 2 {
             self.navigationItem.title = "Privacy Policy"
-        } else {
-            self.navigationItem.title = "Terms and Conditions"
+        }
+        else {
+            self.navigationItem.title = "Customer Support"
         }
         let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.Black

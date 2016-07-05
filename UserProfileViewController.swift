@@ -20,7 +20,8 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
     @IBOutlet var changePass: UIButton!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var imageArray: NSMutableArray! = []
-    @IBOutlet var profileArray: NSArray! = ["My Orders" , "My Returns" , "My Favourites" , "Rate Your Purchase" , "Customer Support" ,"My Account", " Notifications", "Rate the App","Give Feedback","Share Our App","Sell With Us","More"]
+    @IBOutlet var profileArray: NSArray! = ["Customer Support","Share Our App"]
+    var profileArr2: NSArray = ["Customer Support","Share Our App","My Requests","My Profile","Feedback"]
     @IBAction func loginAction(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Login", bundle:  nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("loginVC") as? LoginViewController
@@ -29,8 +30,27 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let data = NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
-        if (data != nil) {
+        let btnstr = [
+            NSFontAttributeName : UIFont.systemFontOfSize(15.0),
+            NSForegroundColorAttributeName : UIColor.whiteColor(),
+            //NSUnderlineStyleAttributeName : NSUnderlineStyle.StyleSingle.rawValue
+        ]
+        let attributedString1 = NSMutableAttributedString(string:"")
+        let attributedString2 = NSMutableAttributedString(string:"")
+        
+        let logInStr = NSMutableAttributedString(string:"Log In", attributes:btnstr)
+        attributedString1.appendAttributedString(logInStr)
+        logibBtn!.setAttributedTitle(attributedString1, forState: .Normal)
+        logibBtn.addBorderWithColor(UIColor.whiteColor(), borderWidth: 1)
+        logibBtn.layer.cornerRadius = 5.0
+        let logOutStr = NSMutableAttributedString(string:"Log Out", attributes:btnstr)
+        attributedString2.appendAttributedString(logOutStr)
+        logoutBtn!.setAttributedTitle(attributedString2, forState: .Normal)
+        logoutBtn.addBorderWithColor(UIColor.whiteColor(), borderWidth: 1)
+        logoutBtn.layer.cornerRadius = 5.0
+        tableView.rowHeight = 55
+        //let data = NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
+        if self.isUserLogin! == true {
             logibBtn.hidden = true
             changePass.hidden = false
             let username = NSUserDefaults.standardUserDefaults().valueForKey("username")
@@ -60,18 +80,16 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
         //let profileEditBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Edit-1"), style: . Plain, target: self, action: Selector(""))
         navigationItem.setLeftBarButtonItem(crossBtnItem,animated: true)
         //navigationItem.setRightBarButtonItem(profileEditBtnItem, animated: true)
-        imageArray[0] = UIImage(named: "my_orders.png" )!
-        imageArray[1] = UIImage(named: "my_returns.png" )!
-        imageArray[2] = UIImage(named: "favourites.png" )!
-        imageArray[3] = UIImage(named: "purchase.png" )!
-        imageArray[4] = UIImage(named: "customer.png" )!
-        imageArray[5] = UIImage(named: "my_account.png" )!
-        imageArray[6] = UIImage(named: "notification.png" )!
-        imageArray[7] = UIImage(named: "rate_app.png" )!
-        imageArray[8] = UIImage(named: "feedback.png" )!
-        imageArray[9] = UIImage(named: "share_app.png" )!
-        imageArray[10] = UIImage(named: "sell.png" )!
-        imageArray[11] = UIImage(named: "more-1.png" )!
+        imageArray[0] = UIImage(named: "done.png" )!
+        imageArray[1] = UIImage(named: "done.png" )!
+        imageArray[2] = UIImage(named: "done.png" )!
+        imageArray[3] = UIImage(named: "done.png" )!
+        imageArray[4] = UIImage(named: "done.png" )!
+        imageArray[5] = UIImage(named: "done.png" )!
+        imageArray[6] = UIImage(named: "done.png" )!
+        imageArray[7] = UIImage(named: "done.png" )!
+        imageArray[8] = UIImage(named: "done.png" )!
+        imageArray[9] = UIImage(named: "done.png" )!
     }
     
     @IBAction func logoutAction() {
@@ -150,9 +168,9 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
     
     
     func crossBtnAction() {
-            let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
-            self.navigationController?.pushViewController(vc!, animated: true)
+        let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -211,17 +229,54 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profileArray.count
+        if self.isUserLogin == true {
+            return profileArr2.count
+        }else {
+            return profileArray.count
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UserProfileCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ProfileCell", forIndexPath: indexPath) as! UserProfileCell
         cell.moreBtn.hidden = true
-        cell.profileLbl.text = profileArray.objectAtIndex(indexPath.row) as? String
         cell.imageIcon.image = imageArray.objectAtIndex(indexPath.row) as? UIImage
-        if indexPath.row == 5 || indexPath.row == 11 {
-            cell.moreBtn.hidden = false
+        if self.isUserLogin == true{
+            cell.profileLbl.text = profileArr2.objectAtIndex(indexPath.row) as? String
+        }else {
+            cell.profileLbl.text = profileArray.objectAtIndex(indexPath.row) as? String
+            
         }
+        //        if indexPath.row == 5 || indexPath.row == 11 {
+        //            cell.moreBtn.hidden = false
+        //        }
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if(indexPath.row == 0) {
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("GeneralWebVCIdentifier") as! GeneralWebViewController
+            let	url = NSString(format: "%@/4", contentURL) as String
+            destinationVC.htmlString = url
+            destinationVC.pageId = 4
+            self.navigationController?.pushViewController(destinationVC, animated: true)
+            
+        } else if(indexPath.row == 1) {
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("")
+            self.navigationController?.pushViewController(destinationVC, animated: true)
+            
+        } else if(indexPath.row == 2) {
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as! CartItemDetailVC
+            self.navigationController?.pushViewController(destinationVC, animated: true)
+            
+        } else if(indexPath.row == 3) {
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("")
+            self.navigationController?.pushViewController(destinationVC, animated: true)
+            
+        } else {
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("")
+            self.navigationController?.pushViewController(destinationVC, animated: true)
+            
+        }
     }
 }

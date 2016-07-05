@@ -15,12 +15,12 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.categoryTblView.rowHeight = 85
+        self.categoryTblView.rowHeight = 55
         let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
         let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
         manager.requestSerializer = requestSerializer
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-        manager.POST("http://192.168.0.11/eshopkart/webservices/get_categories", parameters: nil, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.6/eshopkart/webservices/get_categories", parameters: nil, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("Response: \(response!)")
             self.responseArr = response
             self.categoryTblView.reloadData()
@@ -35,7 +35,7 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
         
         let url = NSURL(string: "files/thumbs100x100/")!
         let imageData = NSData(contentsOfURL: url)
-       // NSLog("data length %d\(imageData.characters.count())")
+        // NSLog("data length %d\(imageData.characters.count())")
         // UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
         if imageData != nil {
             let filenames: String = String(format: "Deal.png")
@@ -50,7 +50,7 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
             request.addValue(contentType, forHTTPHeaderField: "Content-Type")
             let body = NSMutableData()
             body.appendData("\r\n--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-    }
+        }
     }
     override func viewWillAppear(animated: Bool) {
         

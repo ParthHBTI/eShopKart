@@ -22,7 +22,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
         let userId = (NSUserDefaults.standardUserDefaults().valueForKey("id"))
         let params: [NSObject : AnyObject] = ["user_id": userId!]
-        manager.POST("http://192.168.0.11/eshopkart/webservices/view_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.6/eshopkart/webservices/view_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("response: \(response!)")
             for var obj in response as! NSArray
             {
@@ -43,7 +43,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-               self.navigationItem.leftItemsSupplementBackButton = false
+        self.navigationItem.leftItemsSupplementBackButton = false
     }
     
     func buttonAction() {
@@ -79,12 +79,12 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             self.view.addSubview(DynamicView)
             goHomeAction.addTarget(self, action: #selector(buttonAction), forControlEvents: .TouchUpInside)
         }
-
-               //self.navigationItem.leftBarButtonItem = nil
+        
+        //self.navigationItem.leftBarButtonItem = nil
         //        self.navigationItem.leftItemsSupplementBackButton = true
     }
     
-           func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         return 1
     }
@@ -106,7 +106,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
         let userId = (NSUserDefaults.standardUserDefaults().valueForKey("id"))
         let params: [NSObject : AnyObject] = ["user_id": userId!, "product_id": productId]
-        manager.POST("http://192.168.0.11/eshopkart/webservices/clear_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.6/eshopkart/webservices/clear_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("response: \(response!)")
             //self.cartDetailResponseArr = response
             //self.tableView.reloadData()
@@ -126,6 +126,63 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         self.tableView.reloadData()
     }
     
+    @IBAction func clearCartAction(sender: AnyObject) {
+        
+        let userId = (NSUserDefaults.standardUserDefaults().valueForKey("id"))
+        let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
+        manager.requestSerializer = requestSerializer
+        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
+        let params: [NSObject : AnyObject] = ["user_id": userId!]
+        manager.POST("http://192.168.0.6/eshopkart/webservices/clear_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            print("response: \(response!)")
+            //self.cartDetailResponseArr = response
+            //self.tableView.reloadData()
+            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            loading.mode = MBProgressHUDModeText
+            loading.detailsLabelText = response["message"] as! String
+            loading.hide(true, afterDelay:1)
+            
+        }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
+            
+            print("error: \(error!)")
+        }
+        cartDetailResponseArr.removeAllObjects()
+        self.tableView.reloadData()
+    }
+    
+    
+    @IBAction func getQuoteForAllItems(sender: AnyObject) {
+        
+        if((NSUserDefaults.standardUserDefaults().valueForKey("User")) != nil) {
+            let tokenId = (NSUserDefaults.standardUserDefaults().valueForKey("token_id"))
+            let params: [NSObject : AnyObject] = ["token_id": tokenId!]
+            let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+            let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
+            manager.requestSerializer = requestSerializer
+            manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
+            manager.POST("http://192.168.0.6/eshopkart/webservices/request_for_code", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+                print("response: \(response!)")
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = response["msg"] as! String
+                loading.hide(true, afterDelay: 2)
+                loading.removeFromSuperViewOnHide = true
+                
+            }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
+                
+                print("error: \(error!)")
+                
+            }
+        }
+        else {
+            
+            self.makeLoginAlert()
+        }
+        
+        
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> cartItemCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cartcell", forIndexPath: indexPath) as! cartItemCell
         cell.contentView.backgroundColor = UIColor.whiteColor()
@@ -133,7 +190,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         cell.productColor?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["colour"] as? String
         cell.productPrice?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["unitprice"] as? String
         cell.productQuantity?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["quantity"] as? String
-        let url = NSURL(string:("http://192.168.0.11/eshopkart/files/thumbs100x100/" + (cartDetailResponseArr.objectAtIndex(indexPath.row)["image"] as? String)!))
+        let url = NSURL(string:("http://192.168.0.6/eshopkart/files/thumbs100x100/" + (cartDetailResponseArr.objectAtIndex(indexPath.row)["image"] as? String)!))
         cell.productImg?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         cell.removBtn.tag = indexPath.row
         cell.removBtn.addTarget(self, action: #selector(CartItemDetailVC.removeItemFromCart),forControlEvents: .TouchUpInside)
