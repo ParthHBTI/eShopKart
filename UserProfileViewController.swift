@@ -15,7 +15,7 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
     @IBOutlet var emailLbl: UILabel!
     @IBOutlet var userPhoto: UIImageView!
     @IBOutlet var profileView: UIView!
-    @IBOutlet var logibBtn: UIButton!
+    @IBOutlet var loginBtn: UIButton!
     @IBOutlet var logoutBtn: UIButton!
     @IBOutlet var changePass: UIButton!
     @IBOutlet var tableView: UITableView!
@@ -40,9 +40,9 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
         
         let logInStr = NSMutableAttributedString(string:"Log In", attributes:btnstr)
         attributedString1.appendAttributedString(logInStr)
-        logibBtn!.setAttributedTitle(attributedString1, forState: .Normal)
-        logibBtn.addBorderWithColor(UIColor.whiteColor(), borderWidth: 1)
-        logibBtn.layer.cornerRadius = 5.0
+        loginBtn!.setAttributedTitle(attributedString1, forState: .Normal)
+        loginBtn.addBorderWithColor(UIColor.whiteColor(), borderWidth: 1)
+        loginBtn.layer.cornerRadius = 5.0
         let logOutStr = NSMutableAttributedString(string:"Log Out", attributes:btnstr)
         attributedString2.appendAttributedString(logOutStr)
         logoutBtn!.setAttributedTitle(attributedString2, forState: .Normal)
@@ -50,8 +50,8 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
         logoutBtn.layer.cornerRadius = 5.0
         tableView.rowHeight = 55
         //let data = NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
-        if self.isUserLogin! == true {
-            logibBtn.hidden = true
+        if self.isUserLogin == true {
+            loginBtn.hidden = true
             changePass.hidden = false
             let username = NSUserDefaults.standardUserDefaults().valueForKey("username")
             let email = NSUserDefaults.standardUserDefaults().valueForKey("email")
@@ -274,7 +274,7 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
         } else {
-            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("")
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("feedbackControllerIdentifier") as! FeedbackViewController
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
         }

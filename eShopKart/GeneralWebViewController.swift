@@ -19,6 +19,12 @@ class GeneralWebViewController: UIViewController {
         
         webView.loadRequest(NSURLRequest(URL: NSURL(string: htmlString!)!))
         self.navigationController?.navigationBarHidden = false
+        let nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.BlackOpaque
+        nav?.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+        let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(BaseViewController.backAction))
+        self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
         if pageId == 1{
             self.navigationItem.title = "About Us"
         } else if pageId == 2 {
@@ -27,14 +33,16 @@ class GeneralWebViewController: UIViewController {
         else {
             self.navigationItem.title = "Customer Support"
         }
-        let nav = self.navigationController?.navigationBar
-        nav?.barStyle = UIBarStyle.Black
-        nav?.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+       
     }
    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func backAction() {
+    
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
 

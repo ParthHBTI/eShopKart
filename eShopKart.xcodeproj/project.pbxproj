@@ -51,6 +51,7 @@
 		730078DE1D13FF1500ECFC91 /* SignUpCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730078DD1D13FF1500ECFC91 /* SignUpCodeViewController.swift */; };
 		730078E01D14023E00ECFC91 /* bcConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 730078DF1D14023E00ECFC91 /* bcConfig.plist */; };
 		730879431D12ABDD00F4EFBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0436945E1CE450A7000868CE /* Main.storyboard */; };
+		73C1260A1D2BA1E80048F986 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C126091D2BA1E80048F986 /* FeedbackViewController.swift */; };
 		73F0C21A1D252595005C48C6 /* PreSignUPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F0C2191D252595005C48C6 /* PreSignUPVC.swift */; };
 		BF46C2C6ECD8331AB7EE5F01 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B7E42343524F180F2EE1E5 /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -106,6 +107,7 @@
 		730078DB1D13FF0A00ECFC91 /* SignUpPassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpPassViewController.swift; sourceTree = "<group>"; };
 		730078DD1D13FF1500ECFC91 /* SignUpCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpCodeViewController.swift; sourceTree = "<group>"; };
 		730078DF1D14023E00ECFC91 /* bcConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bcConfig.plist; sourceTree = "<group>"; };
+		73C126091D2BA1E80048F986 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		73F0C2191D252595005C48C6 /* PreSignUPVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreSignUPVC.swift; sourceTree = "<group>"; };
 		77F1DE39874FE306DBBCF16E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DDADDD317C91AF9EACBAF282 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		04EEB2301CEC52500069A877 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				73C126091D2BA1E80048F986 /* FeedbackViewController.swift */,
 				043694621CE465DC000868CE /* BaseViewController.swift */,
 				180B482C1CF2C74100B5808C /* HomeViewController.swift */,
 				73F0C2191D252595005C48C6 /* PreSignUPVC.swift */,
@@ -412,6 +415,7 @@
 				0436946B1CE4A261000868CE /* SimillerProductDetailVC.swift in Sources */,
 				045739071CE30EDF00EB0FC9 /* AppDelegate.swift in Sources */,
 				18F56BA91CFD5A6500CFB052 /* BaseOperation.swift in Sources */,
+				73C1260A1D2BA1E80048F986 /* FeedbackViewController.swift in Sources */,
 				04B5641E1CEEF122001E9792 /* CategoryItemListVC.swift in Sources */,
 				18EB45721D0AE6AD00179B54 /* collectionCell.swift in Sources */,
 				730078D61D13FDFF00ECFC91 /* bcConfig.swift in Sources */,

@@ -17,7 +17,7 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
     var isUserLogin: Bool! = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        if((NSUserDefaults.standardUserDefaults().valueForKey("User")) != nil){
+        if((NSUserDefaults.standardUserDefaults().valueForKey("User")) != nil) {
             isUserLogin = true
         }
         self.navigationController?.navigationBarHidden = false
@@ -30,7 +30,7 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
         let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(BaseViewController.backAction))
         let homeBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "building"), style: .Plain, target: self, action: #selector(BaseViewController.showHomePage))
         self.navigationItem.setLeftBarButtonItems([backBarButtonItem , homeBarButtonItem], animated: true)
-        self.navigationController?.navigationBarHidden = false
+        //self.navigationController?.navigationBarHidden = false
         let writeAddBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "market"), style: .Plain, target: self, action: #selector(BaseViewController.myCardDetail))
         let showSearchBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "landlord"), style: .Plain, target: self, action: #selector(BaseViewController.showUserProfile))
         self.navigationItem.setRightBarButtonItems([showSearchBarButtonItem,writeAddBarButtonItem], animated: true)
