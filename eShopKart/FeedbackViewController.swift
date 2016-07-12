@@ -26,6 +26,8 @@ class FeedbackViewController: UIViewController {
         let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(BaseViewController.backAction))
         self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
         submitBtn.layer.cornerRadius = 5.0
+        submitBtn.layer.borderWidth = 1.0
+        feedbackTxtView.layer.borderWidth = 1.0
         // Do any additional setup after loading the view.
     }
     
@@ -40,22 +42,22 @@ class FeedbackViewController: UIViewController {
         loading.hide(true, afterDelay: 2)
         loading.removeFromSuperViewOnHide = true
         if subTxtField.text!.isEmpty == true || feedbackTxtView.text!.isEmpty == true {
-            
-            loading.detailsLabelText = "please enter all values here!"
-        }else {
-        
+            loading.detailsLabelText = "please give all values"
+            self.animateSubmitBtnOnWrongSubmit()
+        }
+        else {
             let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
-            let userInfo :[String : String] = [
+            let feedabackInfo :[String : String] = [
                 "user_id" : userId as! String,
                 "subject" : subTxtField.text!,
                 "message" : feedbackTxtView.text!
             ]
-            let params: [NSObject : AnyObject] = userInfo
+            let params: [NSObject : AnyObject] = feedabackInfo
             let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
             let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
             manager.requestSerializer = requestSerializer
             manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-            manager.POST("http://192.168.0.15/eshopkart/webservices/user_feedback", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            manager.POST("http://192.168.0.8/eshopkart/webservices/user_feedback", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
                 print("response: \(response!)")
                 //self.cartDetailResponseArr = response
                 //self.tableView.reloadData()
@@ -69,9 +71,18 @@ class FeedbackViewController: UIViewController {
         }
     }
     
-    func backAction(){
-    
+    func backAction() {
+        
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    
+    func animateSubmitBtnOnWrongSubmit(){
+        let bounds = self.submitBtn.bounds
+        UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: .CurveEaseOut, animations: {
+            self.submitBtn.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
+            self.submitBtn.enabled = true
+            }, completion: nil)
     }
     
     /*
@@ -83,5 +94,4 @@ class FeedbackViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
-    
 }

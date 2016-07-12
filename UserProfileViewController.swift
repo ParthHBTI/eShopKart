@@ -8,8 +8,10 @@
 
 import UIKit
 
-class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImagePickerControllerDelegate{
+class UserProfileViewController: UIViewController, UITableViewDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+    let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
     var currentUser : User?
+    var isuserLogin: Bool = false
     @IBOutlet var firstLastLbl: UILabel!
     @IBOutlet var mobileLbl: UILabel!
     @IBOutlet var emailLbl: UILabel!
@@ -20,8 +22,8 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
     @IBOutlet var changePass: UIButton!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var imageArray: NSMutableArray! = []
-    @IBOutlet var profileArray: NSArray! = ["Customer Support","Share Our App"]
-    var profileArr2: NSArray = ["Customer Support","Share Our App","My Requests","My Profile","Feedback"]
+    @IBOutlet var profileArray: NSArray! = ["Customer Support","Share Our App","Need Help","App Feedback"]
+    var profileArr2: NSArray = ["Customer Support","Share Our App","Need Help","App Feedback","My Profile","My Requests"]
     @IBAction func loginAction(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Login", bundle:  nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("loginVC") as? LoginViewController
@@ -30,6 +32,23 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBarHidden = false
+        let nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.BlackOpaque
+        nav?.tintColor = UIColor.whiteColor()
+        self.title = "Profile"
+        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+        self.navigationItem.setHidesBackButton(true, animated: true)
+//        let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(UserProfileViewController.backAction))
+        let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(UserProfileViewController.crossBtnAction))
+        //let profileEditBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Edit-1"), style: . Plain, target: self, action: Selector(""))
+//        self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
+        self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
+        
+        let userData = NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
+        if userData != nil {
+            isuserLogin = true
+        }
         let btnstr = [
             NSFontAttributeName : UIFont.systemFontOfSize(15.0),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
@@ -49,8 +68,9 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
         logoutBtn.addBorderWithColor(UIColor.whiteColor(), borderWidth: 1)
         logoutBtn.layer.cornerRadius = 5.0
         tableView.rowHeight = 55
-        //let data = NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
-        if self.isUserLogin == true {
+        //        let data = NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
+        //        if data != nil {
+        if self.isuserLogin == true {
             loginBtn.hidden = true
             changePass.hidden = false
             let username = NSUserDefaults.standardUserDefaults().valueForKey("username")
@@ -70,20 +90,11 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
         userPhoto.addGestureRecognizer(tapRecognizer)
         let nitification = NSNotificationCenter()
         nitification.postNotificationName("Login Successfully", object: self)
-        navigationController?.navigationBarHidden = false
-        let nav = navigationController?.navigationBar
-        nav?.barStyle = UIBarStyle.BlackOpaque
-        nav?.tintColor = UIColor.whiteColor()
-        title = "Profile"
-        navigationController?.navigationBar.barTintColor = UIColor.blackColor()
-        let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(UserProfileViewController.crossBtnAction))
-        //let profileEditBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Edit-1"), style: . Plain, target: self, action: Selector(""))
-        navigationItem.setLeftBarButtonItem(crossBtnItem,animated: true)
         //navigationItem.setRightBarButtonItem(profileEditBtnItem, animated: true)
         imageArray[0] = UIImage(named: "done.png" )!
         imageArray[1] = UIImage(named: "done.png" )!
-        imageArray[2] = UIImage(named: "done.png" )!
-        imageArray[3] = UIImage(named: "done.png" )!
+        imageArray[2] = UIImage(named: "helpIcon5" )!
+        imageArray[3] = UIImage(named: "feedbackIcon" )!
         imageArray[4] = UIImage(named: "done.png" )!
         imageArray[5] = UIImage(named: "done.png" )!
         imageArray[6] = UIImage(named: "done.png" )!
@@ -166,13 +177,6 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
-    func crossBtnAction() {
-        let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
-        self.navigationController?.pushViewController(vc!, animated: true)
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -229,7 +233,7 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.isUserLogin == true {
+        if self.isuserLogin == true {
             return profileArr2.count
         }else {
             return profileArray.count
@@ -240,7 +244,7 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
         let cell = tableView.dequeueReusableCellWithIdentifier("ProfileCell", forIndexPath: indexPath) as! UserProfileCell
         cell.moreBtn.hidden = true
         cell.imageIcon.image = imageArray.objectAtIndex(indexPath.row) as? UIImage
-        if self.isUserLogin == true{
+        if self.isuserLogin == true{
             cell.profileLbl.text = profileArr2.objectAtIndex(indexPath.row) as? String
         }else {
             cell.profileLbl.text = profileArray.objectAtIndex(indexPath.row) as? String
@@ -266,17 +270,29 @@ class UserProfileViewController: BaseViewController, UITableViewDelegate, UIImag
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
         } else if(indexPath.row == 2) {
-            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as! CartItemDetailVC
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("")
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
         } else if(indexPath.row == 3) {
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("feedbackControllerIdentifier") as! FeedbackViewController
+            self.navigationController?.pushViewController(destinationVC, animated: true)
+            
+        } else if (indexPath.row == 4) {
             let destinationVC = storyboard.instantiateViewControllerWithIdentifier("")
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
         } else {
-            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("feedbackControllerIdentifier") as! FeedbackViewController
+        
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as! CartItemDetailVC
             self.navigationController?.pushViewController(destinationVC, animated: true)
-            
         }
     }
+    
+    func crossBtnAction() {
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+//    func backAction() {
+//        self.navigationController?.popViewControllerAnimated(true)
+//    }
 }

@@ -16,7 +16,8 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     var filteredData = NSMutableArray()
     var tableView = UITableView()
     var productsData = NSDictionary()
-    
+    @IBOutlet weak var upArrowImgView: UIImageView!
+    @IBOutlet weak var searchProducts: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         searchController = UISearchController(searchResultsController: self.tableViewController)
@@ -31,6 +32,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         self.barSearchItem.autoresizingMask = .FlexibleWidth
         self.navigationItem.setHidesBackButton(true, animated: false)
         self.navigationItem.setLeftBarButtonItems(nil, animated: false)
+        self.upArrowImgView.fadeOut()
         //searchController.dimsBackgroundDuringPresentation = false
         self.configureSearchController()
 //        let frame = CGRect(x: 0, y: 0, width: 100, height: 44)
@@ -40,8 +42,12 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
 //        titleView.addSubview(searchController.searchBar)
 //        navigationItem.titleView = titleView
         // Do any additional setup after loading the view.
+        searchProducts.layer.cornerRadius = 5.0
+        searchProducts.layer.borderWidth = 1.0
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        upArrowImgView.fadeOut()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -68,7 +74,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
             manager.requestSerializer = requestSerializer
             manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
             let params: [NSObject : String] = ["keyword": searchText ]
-            manager.POST("http://192.168.0.15/eshopkart/webservices/search", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            manager.POST("http://192.168.0.8/eshopkart/webservices/search", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
                 print("response: \(response)")
                 var values: AnyObject = []
                 values = response
@@ -109,7 +115,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         print("\(id)")
         let params: [NSObject : String] = ["product_id": id as! String]
         print("\(params)")
-        manager.POST("http://192.168.0.15/eshopkart/webservices/get_product_details", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.8/eshopkart/webservices/get_product_details", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("response: \(response!)")
             self.productsData = (response as! NSDictionary)
             let itemInfoDic  = self.productsData as! Dictionary<String, AnyObject>
@@ -132,7 +138,17 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
      // Pass the selected object to the new view controller.
      }
      */
+}
+
+extension UIView {
     
+    func fadeOut(duration: NSTimeInterval = 1.0, delay: NSTimeInterval = 0.0, completion: (Bool) -> Void = {(finished: Bool) -> Void in
+        }) {
+        UIImageView.animateWithDuration(duration, delay: delay, options: UIViewAnimationOptions.Repeat, animations: {
+            self.bounds = CGRect(x: self.bounds.origin.x + 20, y: self.bounds.origin.y + 50 , width: self.bounds.size.width + 0, height: self.bounds.size.height + 10)
+            self.alpha = 1.0
+            }, completion: completion)
+    }
 }
 
 

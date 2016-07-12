@@ -23,13 +23,24 @@ class PreSignUPVC: UIViewController {
         let attributedString = NSMutableAttributedString(string:"")
         let attributedString2 = NSMutableAttributedString(string:"")
         
-        let aboutUsStr = NSMutableAttributedString(string:"Terms & Conditions", attributes:attrs)
+        let aboutUsStr = NSMutableAttributedString(string:"About Us,T&C", attributes:attrs)
         attributedString.appendAttributedString(aboutUsStr)
         aboutUsBtn!.setAttributedTitle(attributedString, forState: .Normal)
         
         let ppStr = NSMutableAttributedString(string:"Privacy Policy", attributes:attrs)
         attributedString2.appendAttributedString(ppStr)
         privacyPolicyBtn!.setAttributedTitle(attributedString2, forState: .Normal)
+        self.navigationController?.navigationBarHidden = false
+        let navBar = self.navigationController?.navigationBar
+        navBar?.barStyle = UIBarStyle.BlackOpaque
+        navBar?.tintColor = UIColor.whiteColor()
+        self.title = ""
+        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+        let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(PreSignUPVC.backAction))
+        self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
+        let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"),style: .Plain, target: self, action: #selector(PreSignUPVC.crossAction))
+        self.navigationItem
+        .setRightBarButtonItem(crossBtnItem, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,14 +54,12 @@ class PreSignUPVC: UIViewController {
     @IBAction func SigninWithFB(sender: AnyObject) {
         
         
-        
     }
     
     @IBAction func SigninWithTwitter(sender: AnyObject) {
         
         
     }
-    
     
     @IBAction func aboutUsAction(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -73,6 +82,14 @@ class PreSignUPVC: UIViewController {
         self.navigationController?.pushViewController(vc!, animated: false)
     }
     
+    func backAction() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func crossAction() {
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    
+    }
 
     /*
     // MARK: - Navigation

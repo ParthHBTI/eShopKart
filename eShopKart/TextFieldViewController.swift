@@ -28,7 +28,7 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate {
         nav?.barStyle = UIBarStyle.BlackOpaque
         nav?.tintColor = UIColor.whiteColor()
         navigationController?.navigationBar.barTintColor = UIColor.blackColor()
-         let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(TextFieldViewController.backAction))
+        let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(TextFieldViewController.backAction))
         let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(TextFieldViewController.crossBtnAction))
         self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
         self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
@@ -36,19 +36,9 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate {
         self.view .addGestureRecognizer(tapRecognizer)
     }
     
-    func backAction() {
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func crossBtnAction() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
-        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     func handleTap (tapGesture: UIGestureRecognizer) {
@@ -93,10 +83,17 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate {
         UIView.commitAnimations()
     }
     
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return true
+    }
+    
+    func backAction() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func crossBtnAction() {
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     /*

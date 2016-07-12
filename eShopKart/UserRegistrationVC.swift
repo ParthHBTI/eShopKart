@@ -50,16 +50,19 @@ class UserRegistrationVC: TextFieldViewController {
             loading.detailsLabelText = "please enter all values here!"
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
+            self.animateBtnOnWrongSubmit()
         } else if (passwordTextField.text!.characters.count) < 6 {
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = "password length must be of 6 characters!"
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
+            self.animateBtnOnWrongSubmit()
         } else if contactNumberTextField.text!.characters.count != 10 {
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = "please enter a valid mobile number"
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
+            self.animateBtnOnWrongSubmit()
         } else {
             if  mailTextField.text!.isValidEmail() == true {
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -111,14 +114,25 @@ class UserRegistrationVC: TextFieldViewController {
                     loading.mode = MBProgressHUDModeText
                     loading.detailsLabelText = "Password and Confirm password does not match"
                     loading.hide(true, afterDelay: 2)
+                    self.animateBtnOnWrongSubmit()
                 }
             } else {
                 loading.mode = MBProgressHUDModeText
                 loading.labelText = "Please enter valid email id"
                 loading.hide(true, afterDelay: 2)
+                self.animateBtnOnWrongSubmit()
             }
         }
     }
+    
+    func animateBtnOnWrongSubmit(){
+        let bounds = self.DoneBtn.bounds
+        UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: .CurveEaseOut, animations: {
+            self.DoneBtn.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
+            self.DoneBtn.enabled = true
+            }, completion: nil)
+    }
+    
 }
 
 /*

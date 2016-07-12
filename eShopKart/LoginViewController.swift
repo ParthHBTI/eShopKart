@@ -12,9 +12,12 @@ import AFNetworking
 class LoginViewController: TextFieldViewController {
     @IBOutlet var emailMobileTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
-    
+    @IBOutlet weak var logInBtn: UIButton!
+    @IBOutlet weak var forgetBtn: UIButton!
+    //var userLogin: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Log In"
         self.emailMobileTextField.setLeftImage(UIImage(named: "icon_user.png")!)
         self.passwordTextField.setLeftImage(UIImage(named: "icon_password.png")!)
         emailMobileTextField.delegate = self
@@ -24,17 +27,22 @@ class LoginViewController: TextFieldViewController {
     @IBAction func loginACtion(sender: UIButton) {
         let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         loading.mode = MBProgressHUDModeText
-        if emailMobileTextField.text!.isEmpty == true {
-            loading.labelText = "Email can not be empty"
+        if emailMobileTextField.text!.isEmpty == true || passwordTextField.text!.isEmpty == true {
+            loading.labelText = "Please give all values"
             loading.yOffset = -55.0
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
-        } else if passwordTextField.text!.isEmpty == true {
-            loading.labelText = "Password can not be empty"
-            loading.yOffset = -55.0
-            loading.hide(true, afterDelay: 2)
-            loading.removeFromSuperViewOnHide = true
-        } else {
+            self.animateLoginBtnOnWrongSubmit()
+        }
+            
+            //        } else if passwordTextField.text!.isEmpty == true {
+            //            loading.labelText = "Password can not be empty"
+            //            loading.yOffset = -55.0
+            //            loading.hide(true, afterDelay: 2)
+            //            loading.removeFromSuperViewOnHide = true
+            //            self.animateLoginBtnOnWrongSubmit()
+            //        }
+        else {
             if emailMobileTextField.text!.isValidEmail() == true {
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 var token = appDelegate.deviceTokenString as? String
@@ -66,9 +74,11 @@ class LoginViewController: TextFieldViewController {
                         NSUserDefaults.standardUserDefaults().setValue(user_id, forKey: "id")
                         NSUserDefaults.standardUserDefaults().synchronize()
                         loading.hide(true)
-                        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                        let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as! UserProfileViewController
-                        self.navigationController?.pushViewController(vc, animated: true)
+                        //                     let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                        //                     let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as! UserProfileViewController
+                        //                        self.navigationController?.pushViewController(vc, animated: true)
+                        //self.navigationController?.popToRootViewControllerAnimated(true)
+                        self.navigationController?.dismissViewControllerAnimated(false, completion: nil)
                     } else {
                         loading.mode = MBProgressHUDModeText
                         loading.detailsLabelText = "Exceptional error occured. Please try again after some time"
@@ -84,6 +94,7 @@ class LoginViewController: TextFieldViewController {
                 loading.detailsLabelText = "Please enter valid email id"
                 loading.yOffset = -55.0
                 loading.hide(true, afterDelay: 2)
+                self.animateLoginBtnOnWrongSubmit()
             }
         }
     }
@@ -96,6 +107,7 @@ class LoginViewController: TextFieldViewController {
             loading.yOffset = -55.0
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
+            self.animateForgetBtnOnWrongSubmit()
         } else {
             if emailMobileTextField.text!.isValidEmail() == true {
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -108,7 +120,7 @@ class LoginViewController: TextFieldViewController {
                     "token_id" : token!
                 ]
                 loading.mode = MBProgressHUDModeIndeterminate
-                 loading.yOffset = -55.0
+                loading.yOffset = -55.0
                 SigninOperaion.verification(userInfo, completionClosure: { (response: AnyObject) -> () in
                     let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
                     let user: User  = User.initWithArray(admin)[0] as! User
@@ -143,6 +155,7 @@ class LoginViewController: TextFieldViewController {
                 loading.detailsLabelText = "Please enter valid email id"
                 loading.yOffset = -55.0
                 loading.hide(true, afterDelay: 2)
+                self.animateForgetBtnOnWrongSubmit()
             }
         }
     }
@@ -156,7 +169,7 @@ class LoginViewController: TextFieldViewController {
         self.navigationController?.dismissViewControllerAnimated(false, completion: nil)
         
     }
- 
+    
     override func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField == self.emailMobileTextField{
             self.passwordTextField.becomeFirstResponder()
@@ -175,5 +188,22 @@ class LoginViewController: TextFieldViewController {
      detailVC.emailText = emailMobileTextField.text! as String
      }
      }*/
+    
+    func animateLoginBtnOnWrongSubmit(){
+        let bounds = self.logInBtn.bounds
+        UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: .CurveEaseOut, animations: {
+            self.logInBtn.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
+            self.logInBtn.enabled = true
+            }, completion: nil)
+    }
+    
+    func animateForgetBtnOnWrongSubmit(){
+        let bounds = self.forgetBtn.bounds
+        UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: .CurveEaseOut, animations: {
+            self.forgetBtn.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
+            self.forgetBtn.enabled = true
+            }, completion: nil)
+    }
+    
 }
 

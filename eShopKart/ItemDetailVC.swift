@@ -10,16 +10,25 @@ import AFNetworking
 class ItemDetailVC: BaseViewController {
     
     @IBOutlet var ItemDetailTblView: UITableView!
+    @IBOutlet weak var AddToCartBtn: UIButton!
+    @IBOutlet weak var GetQuoteBtn: UIButton!
     var productImageArr:AnyObject = []
     var productId: String!
     var getProductInfoDic = Dictionary<String,AnyObject>()
     //var productImgArr = NSArray()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Product Detail"
         self.ItemDetailTblView.rowHeight = 170
         productImageArr = getProductInfoDic["Gallery"] as! Array<AnyObject>
         //print(productImageArr)
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        AddToCartBtn.layer.borderWidth = 1.0
+        AddToCartBtn.layer.borderColor = UIColor.init(colorLiteralRed: 6/255.0, green: 135/255.0, blue: 255/255.0, alpha: 1.0).CGColor
+        AddToCartBtn.layer.cornerRadius = 5.0
+        GetQuoteBtn.layer.borderWidth = 1.0
+        GetQuoteBtn.layer.cornerRadius = 5.0
+        GetQuoteBtn.layer.borderColor = UIColor.init(colorLiteralRed: 6/255.0, green: 135/255.0, blue: 255/255.0, alpha: 1.0).CGColor
         
     }
     
@@ -56,17 +65,16 @@ class ItemDetailVC: BaseViewController {
     }
     
     @IBAction func addToCart(sender: AnyObject) {
-        
-        if (( NSUserDefaults.standardUserDefaults().valueForKey("User")) != nil) {
-            
+        let userData = NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
+        if userData != nil {
             productId = getProductInfoDic["id"] as! String
             let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
             let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
             manager.requestSerializer = requestSerializer
             manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-            let userId = (NSUserDefaults.standardUserDefaults().valueForKey("id"))
+            let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
             let params: [NSObject : AnyObject] = ["user_id": userId!,"product_id": productId!,"quantity": 1]
-            manager.POST("http://192.168.0.15/eshopkart/webservices/add_to_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            manager.POST("http://192.168.0.8/eshopkart/webservices/add_to_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
                 print("response: \(response!)")
                 //self.subcatResponseArr = response
                 self.ItemDetailTblView.reloadData()
@@ -96,8 +104,8 @@ class ItemDetailVC: BaseViewController {
     }
     //
     @IBAction func getCodeAction(sender: AnyObject) {
-        
-        if(( NSUserDefaults.standardUserDefaults().valueForKey("User")) != nil) {
+        let userData = NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
+        if userData != nil {
             productId = getProductInfoDic["id"] as! String
             let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
             let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
@@ -105,7 +113,7 @@ class ItemDetailVC: BaseViewController {
             manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
             let tokenId = (NSUserDefaults.standardUserDefaults().valueForKey("token_id"))
             let params: [NSObject : AnyObject] = ["token_id": tokenId!,"product_id": productId!]
-            manager.POST("http://192.168.0.15/eshopkart/webservices/request_for_code", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            manager.POST("http://192.168.0.8/eshopkart/webservices/request_for_code", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
                 print("response: \(response!)")
                 //self.subcatResponseArr = response
                 self.ItemDetailTblView.reloadData()
@@ -146,7 +154,7 @@ extension ItemDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
         //cell.imageView.image = productImgArr.objectAtIndex(2)["images"] as? UIImage
         // for i in 0 ..< productImageArr.count {
         //let url = NSURL(string:("http://192.168.0.14/eshopkart/files/thumbs100x100/" + (productImageArr.objectAtIndex(i)["images"] as? String)!))
-        let url = NSURL(string:("http://192.168.0.15/eshopkart/files/thumbs100x100/" + (productImageArr[indexPath.row]["images"] as? String)!))
+        let url = NSURL(string:("http://192.168.0.8/eshopkart/files/thumbs100x100/" + (productImageArr[indexPath.row]["images"] as? String)!))
         cell.imageView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         //}
         return cell

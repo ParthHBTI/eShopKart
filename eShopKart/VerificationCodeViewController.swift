@@ -8,8 +8,9 @@
 import UIKit
 
 class VerificationCodeViewController: TextFieldViewController {
+    
     @IBOutlet var verificationTextField: UITextField!
-
+    @IBOutlet weak var verifyAccBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         verificationTextField.delegate = self
@@ -27,7 +28,9 @@ class VerificationCodeViewController: TextFieldViewController {
         loading.mode = MBProgressHUDModeText
         if (verificationTextField.text == "" ) {
             let alert = UIAlertView.init(title: "Oppss", message: "Please Enter Your Verify Code", delegate: self, cancelButtonTitle: "GO")
+              //alert.dismissWithClickedButtonIndex(1, animated: true)
             alert.show()
+            //self.makeVerifyAlert()
         } else  {
             
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -39,6 +42,7 @@ class VerificationCodeViewController: TextFieldViewController {
                 "email" : NSUserDefaults.standardUserDefaults().valueForKey("email") as! String,
                 "otp" : verificationTextField!.text!,
                 ]
+            print(userInfo["email"])
             loading.mode = MBProgressHUDModeIndeterminate
             SigninOperaion.getOtp(userInfo, completionClosure: { (response: AnyObject) -> () in
                 let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
@@ -74,6 +78,14 @@ class VerificationCodeViewController: TextFieldViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func animateVerifyAccBtnOnWrongSubmit(){
+        let bounds = self.verifyAccBtn.bounds
+        UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: .CurveEaseOut, animations: {
+            self.verifyAccBtn.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
+            self.verifyAccBtn.enabled = true
+            }, completion: nil)
+    }
+    
     /*
      // MARK: - Navigation
      
@@ -83,6 +95,21 @@ class VerificationCodeViewController: TextFieldViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
+    func makeVerifyAlert()
+    {
+        let refreshAlert = UIAlertController(title: "Please Login", message: "To make this action, please login first.", preferredStyle: UIAlertControllerStyle.Alert)
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            //let storyboard = UIStoryboard(name: "Login" , bundle:  nil)
+            let vc = self//storyboard.instantiateViewControllerWithIdentifier("VerificationCodeIdentifire") as?
+            self.navigationController?.pushViewController(vc, animated: true)
+        }))
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+            refreshAlert .dismissViewControllerAnimated(true, completion: nil)
+        }))
+        self.presentViewController(refreshAlert, animated: true, completion: nil)
+    }
+
     
 }
 

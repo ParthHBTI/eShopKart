@@ -14,15 +14,15 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "My Cart"
+        self.title = "Cart Detail"
         //self.navigationItem.leftItemsSupplementBackButton = true
         let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
         let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
         manager.requestSerializer = requestSerializer
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-        let userId = (NSUserDefaults.standardUserDefaults().valueForKey("id"))
+        let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
         let params: [NSObject : AnyObject] = ["user_id": userId!]
-        manager.POST("http://192.168.0.15/eshopkart/webservices/view_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.8/eshopkart/webservices/view_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("response: \(response!)")
             for var obj in response as! NSArray
             {
@@ -104,9 +104,9 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
         manager.requestSerializer = requestSerializer
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-        let userId = (NSUserDefaults.standardUserDefaults().valueForKey("id"))
+        let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
         let params: [NSObject : AnyObject] = ["user_id": userId!, "product_id": productId]
-        manager.POST("http://192.168.0.15/eshopkart/webservices/clear_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.8/eshopkart/webservices/clear_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("response: \(response!)")
             //self.cartDetailResponseArr = response
             //self.tableView.reloadData()
@@ -128,13 +128,13 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     
     @IBAction func clearCartAction(sender: AnyObject) {
         
-        let userId = (NSUserDefaults.standardUserDefaults().valueForKey("id"))
+        let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
         let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
         let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
         manager.requestSerializer = requestSerializer
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
         let params: [NSObject : AnyObject] = ["user_id": userId!]
-        manager.POST("http://192.168.0.15/eshopkart/webservices/clear_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.8/eshopkart/webservices/clear_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("response: \(response!)")
             //self.cartDetailResponseArr = response
             //self.tableView.reloadData()
@@ -154,32 +154,30 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     
     @IBAction func getQuoteForAllItems(sender: AnyObject) {
         
-        if((NSUserDefaults.standardUserDefaults().valueForKey("User")) != nil) {
-            let tokenId = (NSUserDefaults.standardUserDefaults().valueForKey("token_id"))
-            let params: [NSObject : AnyObject] = ["token_id": tokenId!]
-            let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-            let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
-            manager.requestSerializer = requestSerializer
-            manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-            manager.POST("http://192.168.0.15/eshopkart/webservices/request_for_code", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-                print("response: \(response!)")
-                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-                loading.mode = MBProgressHUDModeText
-                loading.detailsLabelText = response["msg"] as! String
-                loading.hide(true, afterDelay: 2)
-                loading.removeFromSuperViewOnHide = true
-                
-            }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
-                
-                print("error: \(error!)")
-                
-            }
-        }
-        else {
+        let tokenId = NSUserDefaults.standardUserDefaults().valueForKey("token_id")
+        let params: [NSObject : AnyObject] = ["token_id": tokenId!]
+        let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
+        manager.requestSerializer = requestSerializer
+        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
+        manager.POST("http://192.168.0.8/eshopkart/webservices/request_for_code", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            print("response: \(response!)")
+            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            loading.mode = MBProgressHUDModeText
+            loading.detailsLabelText = response["msg"] as! String
+            loading.hide(true, afterDelay: 2)
+            loading.removeFromSuperViewOnHide = true
             
-            self.makeLoginAlert()
+        }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
+            
+            print("error: \(error!)")
+            
         }
-        
+        //        }
+        //        else {
+        //
+        //            self.makeLoginAlert()
+        //        }
         
     }
     
@@ -190,7 +188,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         cell.productColor?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["colour"] as? String
         cell.productPrice?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["unitprice"] as? String
         cell.productQuantity?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["quantity"] as? String
-        let url = NSURL(string:("http://192.168.0.15/eshopkart/files/thumbs100x100/" + (cartDetailResponseArr.objectAtIndex(indexPath.row)["image"] as? String)!))
+        let url = NSURL(string:("http://192.168.0.8/eshopkart/files/thumbs100x100/" + (cartDetailResponseArr.objectAtIndex(indexPath.row)["image"] as? String)!))
         cell.productImg?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         cell.removBtn.tag = indexPath.row
         cell.removBtn.addTarget(self, action: #selector(CartItemDetailVC.removeItemFromCart),forControlEvents: .TouchUpInside)

@@ -23,7 +23,7 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
         manager.requestSerializer = requestSerializer
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
         let params: [NSObject : AnyObject] = ["category_id": categoryId]
-        manager.POST("http://192.168.0.15/eshopkart/webservices/get_categories", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.8/eshopkart/webservices/get_categories", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("response: \(response!)")
             self.subcatResponseArr = response
             self.cteagoryItemsTblView.reloadData()
