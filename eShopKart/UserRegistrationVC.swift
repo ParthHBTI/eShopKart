@@ -23,6 +23,9 @@ class UserRegistrationVC: TextFieldViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(UserRegistrationVC.crossBtnAction))
+        self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
+        self.title = "Sign Up"
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         mailTextField.delegate = self
@@ -131,6 +134,10 @@ class UserRegistrationVC: TextFieldViewController {
             self.DoneBtn.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
             self.DoneBtn.enabled = true
             }, completion: nil)
+    }
+    
+    func crossBtnAction() {
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

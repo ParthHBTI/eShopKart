@@ -13,6 +13,8 @@ class SignUpPassViewController:TextFieldViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(SignUpPassViewController.crossBtnAction))
+        self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
         setPassTextField.delegate = self
         // Do any additional setup after loading the view.
     }
@@ -36,6 +38,12 @@ class SignUpPassViewController:TextFieldViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func crossBtnAction() {
+        
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
 

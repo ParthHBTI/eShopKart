@@ -20,7 +20,7 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
         let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
         manager.requestSerializer = requestSerializer
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-        manager.POST("http://192.168.0.8/eshopkart/webservices/get_categories", parameters: nil, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.15/eshopkart/webservices/get_categories", parameters: nil, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("Response: \(response!)")
             self.responseArr = response
             self.categoryTblView.reloadData()

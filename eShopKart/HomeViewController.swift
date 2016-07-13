@@ -44,6 +44,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         // Do any additional setup after loading the view.
         searchProducts.layer.cornerRadius = 5.0
         searchProducts.layer.borderWidth = 1.0
+        searchProducts.layer.borderColor = UIColor.init(colorLiteralRed: 6/255.0, green: 135/255.0, blue: 255/255.0, alpha: 1.0).CGColor
     }
     override func viewWillAppear(animated: Bool) {
         upArrowImgView.fadeOut()
@@ -74,7 +75,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
             manager.requestSerializer = requestSerializer
             manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
             let params: [NSObject : String] = ["keyword": searchText ]
-            manager.POST("http://192.168.0.8/eshopkart/webservices/search", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            manager.POST("http://192.168.0.15/eshopkart/webservices/search", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
                 print("response: \(response)")
                 var values: AnyObject = []
                 values = response
@@ -115,7 +116,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         print("\(id)")
         let params: [NSObject : String] = ["product_id": id as! String]
         print("\(params)")
-        manager.POST("http://192.168.0.8/eshopkart/webservices/get_product_details", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.15/eshopkart/webservices/get_product_details", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("response: \(response!)")
             self.productsData = (response as! NSDictionary)
             let itemInfoDic  = self.productsData as! Dictionary<String, AnyObject>

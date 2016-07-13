@@ -71,10 +71,10 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
     // Go to home page
     func showHomePage() {
         if (self.navigationController?.topViewController?.isKindOfClass(HomeViewController)) == false{
-//            let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
-//            let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
+            //            let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
+            //            let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
             //self.navigationController?.popToViewController(vc!, animated: true)
-           self.navigationController?.popToRootViewControllerAnimated(true)
+            self.navigationController?.popToRootViewControllerAnimated(true)
         }
     }
     

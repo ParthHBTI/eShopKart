@@ -9,19 +9,20 @@
 import UIKit
 import AFNetworking
 
-class FeedbackViewController: UIViewController {
+class FeedbackViewController: TextFieldViewController {
     
     @IBOutlet weak var subTxtField: UITextField!
     @IBOutlet weak var feedbackTxtView: UITextView!
     @IBOutlet weak var submitBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBarHidden = false
+        subTxtField.delegate = self
+        feedbackTxtView.delegate = self
+//        self.navigationController?.navigationBarHidden = false
         let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.BlackOpaque
         nav?.tintColor = UIColor.whiteColor()
         self.title = "Feedback"
-        self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(BaseViewController.backAction))
         self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
@@ -57,7 +58,7 @@ class FeedbackViewController: UIViewController {
             let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
             manager.requestSerializer = requestSerializer
             manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-            manager.POST("http://192.168.0.8/eshopkart/webservices/user_feedback", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            manager.POST("http://192.168.0.15/eshopkart/webservices/user_feedback", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
                 print("response: \(response!)")
                 //self.cartDetailResponseArr = response
                 //self.tableView.reloadData()
@@ -71,10 +72,10 @@ class FeedbackViewController: UIViewController {
         }
     }
     
-    func backAction() {
-        
-        self.navigationController?.popViewControllerAnimated(true)
-    }
+//    func backAction() {
+//        
+//        self.navigationController?.popViewControllerAnimated(true)
+//    }
     
     
     func animateSubmitBtnOnWrongSubmit(){

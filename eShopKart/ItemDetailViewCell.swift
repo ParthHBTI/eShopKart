@@ -10,6 +10,7 @@ import UIKit
 
 class ItemDetailViewCell: UITableViewCell,UICollectionViewDelegate {
     
+    @IBOutlet weak var qtyTxtField: UITextField!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet weak var amount: UILabel!
     @IBOutlet weak var desTextView: UITextView!

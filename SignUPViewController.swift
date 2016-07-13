@@ -17,6 +17,8 @@ class SignUPViewController: TextFieldViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
+        let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(SignUPViewController.crossBtnAction))
+        self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,7 +37,7 @@ class SignUPViewController: TextFieldViewController {
         } else {
             if emailTextField.text!.isValidEmail() == true {
                 let emailID = emailTextField.text! as? String
-                let myUrl = NSURL(string: "http://192.168.0.8/eshopkart/webservices/verification")
+                let myUrl = NSURL(string: "http://192.168.0.15/eshopkart/webservices/verification")
                 let request = NSMutableURLRequest(URL:myUrl!);
                 request.HTTPMethod = "POST";
                 let form1 = "firstname=\(firstname)&lastname=\(lastname)&email=\(emailID)&password=\(password)&mobile=\(mobile)"
@@ -67,6 +69,10 @@ class SignUPViewController: TextFieldViewController {
             let form1 = "email=\(emailID)"
             print(form1)
         }
+    }
+    
+    func crossBtnAction() {
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 

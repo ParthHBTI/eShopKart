@@ -22,6 +22,8 @@ class LoginViewController: TextFieldViewController {
         self.passwordTextField.setLeftImage(UIImage(named: "icon_password.png")!)
         emailMobileTextField.delegate = self
         passwordTextField.delegate = self
+        let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(LoginViewController.crossBtnAction))
+        self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
     }
     
     @IBAction func loginACtion(sender: UIButton) {
@@ -165,7 +167,7 @@ class LoginViewController: TextFieldViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func crossBtnAction(sender: AnyObject) {
+    func crossBtnAction() {
         self.navigationController?.dismissViewControllerAnimated(false, completion: nil)
         
     }

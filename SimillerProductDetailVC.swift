@@ -25,7 +25,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         manager.requestSerializer = requestSerializer
         manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
         let params: [NSObject : AnyObject] = ["category_id": getsubCategoryId]
-        manager.POST("http://192.168.0.8/eshopkart/webservices/get_products", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.15/eshopkart/webservices/get_products", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("response: \(response!)")
             self.productsArr = (response as? NSArray)!
             print(self.productsArr)
@@ -66,7 +66,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         //galleryArr = itemInfoDic["Gallery"] as! Array<AnyObject>
         //let url = NSURL(string:("http://192.168.0.13/eshopkart/files/thumbs100x100/" + (galleryArr.objectAtIndex(0)["images"] as? String)!))
         //getQuoteBtn.tag = 101
-        let url = NSURL(string:("http://192.168.0.8/eshopkart/files/thumbs100x100/" + (itemInfoDic["Gallery"]?.objectAtIndex(0)["images"] as? String)!))
+        let url = NSURL(string:("http://192.168.0.15/eshopkart/files/thumbs100x100/" + (itemInfoDic["Gallery"]?.objectAtIndex(0)["images"] as? String)!))
         cell.productname?.text = itemInfoDic["name"] as? String
         cell.amount?.text = itemInfoDic["price"] as? String
         cell.productImgView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
@@ -117,7 +117,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
             let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
             manager.requestSerializer = requestSerializer
             manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-            manager.POST("http://192.168.0.8/eshopkart/webservices/request_for_code", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            manager.POST("http://192.168.0.15/eshopkart/webservices/request_for_code", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
                 print("response: \(response!)")
                 //self.cartDetailResponseArr = response
                 //self.tableView.reloadData()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextFieldViewController: UIViewController, UITextFieldDelegate {
+class TextFieldViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate{
     
     struct MoveKeyboard {
         static let KEYBOARD_ANIMATION_DURATION : CGFloat = 0.3
@@ -29,9 +29,9 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate {
         nav?.tintColor = UIColor.whiteColor()
         navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(TextFieldViewController.backAction))
-        let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(TextFieldViewController.crossBtnAction))
+//        let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(TextFieldViewController.crossBtnAction))
         self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
-        self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
+//        self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
         let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(TextFieldViewController.handleTap(_:)))
         self.view .addGestureRecognizer(tapRecognizer)
     }
@@ -92,10 +92,10 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-    func crossBtnAction() {
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
+//    func crossBtnAction() {
+//        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+//    }
+//    
     /*
      // MARK: - Navigation
      

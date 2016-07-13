@@ -20,6 +20,8 @@ class VerificationCodeViewController: TextFieldViewController {
         loading.detailsLabelText = "Verification Code has been send successfully in your Email ID"
         loading.hide(true, afterDelay: 3)
         loading.removeFromSuperViewOnHide = true
+        let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(VerificationCodeViewController.crossBtnAction))
+        self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
         // Do any additional setup after loading the view.
     }
     
@@ -108,6 +110,11 @@ class VerificationCodeViewController: TextFieldViewController {
             refreshAlert .dismissViewControllerAnimated(true, completion: nil)
         }))
         self.presentViewController(refreshAlert, animated: true, completion: nil)
+    }
+    
+    func crossBtnAction() {
+        self.navigationController?.dismissViewControllerAnimated(false, completion: nil)
+        
     }
 
     
