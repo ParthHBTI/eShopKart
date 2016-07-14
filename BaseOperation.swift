@@ -25,11 +25,11 @@ class BaseOperation {
         let del = UIApplication.sharedApplication().delegate as? AppDelegate
         print("token id sent is: ", del?.currentUser?.token_id)
         print("userinfo: \(postDic)")
-        let manager:	AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        let manager:AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
         let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
         manager.requestSerializer = requestSerializer
         manager.responseSerializer.acceptableContentTypes = NSSet(objects: "text/html", "text/plain","application/soap+xml") as Set<NSObject>
-        print("URL: \(inUrl)")
+        //print("URL: \(inUrl)")
         manager.POST(inUrl.absoluteString, parameters: postDic, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("URL: \(inUrl)")
             if let _ = response {

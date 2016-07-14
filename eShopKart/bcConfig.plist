@@ -30,6 +30,8 @@
 		<string>webservices/add_to_cart/</string>
 		<key>view_cart</key>
 		<string>webservices/view_cart/</string>
+		<key>userFeedback</key>
+		<string>webservices/user_feedback/</string>
 	</dict>
 </dict>
 </plist>
