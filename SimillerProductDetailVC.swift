@@ -95,10 +95,14 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
             SigninOperaion.request_for_code(userInfo, completionClosure: { response in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
-                loading.detailsLabelText = response["msg"] as! String
+                loading.detailsLabelText = response["message"] as! String
                 loading.hide(true, afterDelay: 2)
                 loading.removeFromSuperViewOnHide = true
-            }) { err in
+            }) { (error: NSError) -> () in
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = error.localizedDescription
+                loading.hide(true, afterDelay: 2)
             }
         }else {
             self.makeLoginAlert()
