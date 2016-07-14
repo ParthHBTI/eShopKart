@@ -36,7 +36,7 @@
         <!--User RegistrationVC-->
         <scene sceneID="YBW-nv-FMk">
             <objects>
-                <viewController storyboardIdentifier="UserSignUpID" id="FEi-YT-ZCg" customClass="UserRegistrationVC" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserSignUpID" id="FEi-YT-ZCg" customClass="UserRegistrationVC" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eNk-k0-rM6"/>
                         <viewControllerLayoutGuide type="bottom" id="jhz-1g-oUK"/>
@@ -244,7 +244,7 @@
         <!--Login View Controller-->
         <scene sceneID="J5a-Mw-rcw">
             <objects>
-                <viewController storyboardIdentifier="loginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wtZ-43-3EA" customClass="LoginViewController" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wtZ-43-3EA" customClass="LoginViewController" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5Ni-wk-Zlv"/>
                         <viewControllerLayoutGuide type="bottom" id="DFS-Yh-SDJ"/>
@@ -324,7 +324,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New to eShopKart? Sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="GW3-nU-Z2t">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New to bc? Sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="GW3-nU-Z2t">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="GW3-nU-Z2t" secondAttribute="height" multiplier="239:21" id="7nl-Iv-cZ3"/>
@@ -471,7 +471,7 @@
         <!--Verification Code View Controller-->
         <scene sceneID="HDn-jq-Jgu">
             <objects>
-                <viewController storyboardIdentifier="VerificationCodeIdentifire" id="MRa-c0-sfq" customClass="VerificationCodeViewController" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VerificationCodeIdentifire" id="MRa-c0-sfq" customClass="VerificationCodeViewController" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xi8-8i-1LJ"/>
                         <viewControllerLayoutGuide type="bottom" id="YlY-YT-ETK"/>
@@ -625,7 +625,7 @@
         <!--Reset Password View Controller-->
         <scene sceneID="oLI-PJ-wnu">
             <objects>
-                <viewController storyboardIdentifier="ResetPasswordIdentifire" id="JcG-rY-sKI" customClass="ResetPasswordViewController" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResetPasswordIdentifire" id="JcG-rY-sKI" customClass="ResetPasswordViewController" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yvd-uI-f0f"/>
                         <viewControllerLayoutGuide type="bottom" id="NFh-fX-ieb"/>
@@ -756,7 +756,7 @@
         <!--SignUP View Controller-->
         <scene sceneID="p3B-rW-95w">
             <objects>
-                <viewController id="ptn-3i-2UG" customClass="SignUPViewController" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ptn-3i-2UG" customClass="SignUPViewController" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="stH-dv-XM7"/>
                         <viewControllerLayoutGuide type="bottom" id="ReL-KC-9Dr"/>
@@ -931,7 +931,7 @@
         <!--Sign Up Code View Controller-->
         <scene sceneID="X99-VG-HCn">
             <objects>
-                <viewController storyboardIdentifier="SignUpCodeID" id="4TE-g9-XYr" customClass="SignUpCodeViewController" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpCodeID" id="4TE-g9-XYr" customClass="SignUpCodeViewController" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zLR-EX-LEQ"/>
                         <viewControllerLayoutGuide type="bottom" id="fYr-Kq-XU9"/>
@@ -1144,7 +1144,7 @@
         <!--Sign Up Pass View Controller-->
         <scene sceneID="dgf-ZM-xUf">
             <objects>
-                <viewController storyboardIdentifier="SetPassID" id="k0l-O0-201" customClass="SignUpPassViewController" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SetPassID" id="k0l-O0-201" customClass="SignUpPassViewController" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nBa-yt-Z61"/>
                         <viewControllerLayoutGuide type="bottom" id="7UB-YR-mKq"/>
@@ -1478,7 +1478,7 @@
         <!--Login Sign UpVC-->
         <scene sceneID="DZg-hn-BH7">
             <objects>
-                <viewController storyboardIdentifier="LandingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vaF-EL-zbf" customClass="ESKLoginSignUpVC" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LandingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vaF-EL-zbf" customClass="ESKLoginSignUpVC" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vsf-aF-lua"/>
                         <viewControllerLayoutGuide type="bottom" id="yBU-VT-ooZ"/>
@@ -1629,7 +1629,7 @@
         <!--User Profile View Controller-->
         <scene sceneID="McD-ju-tsr">
             <objects>
-                <viewController storyboardIdentifier="UserProfileViewIdentifire" id="XQQ-uI-04X" userLabel="User Profile View Controller" customClass="UserProfileViewController" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserProfileViewIdentifire" id="XQQ-uI-04X" userLabel="User Profile View Controller" customClass="UserProfileViewController" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tsa-AF-wiP"/>
                         <viewControllerLayoutGuide type="bottom" id="RBY-wE-baG"/>
@@ -1642,7 +1642,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileCell" rowHeight="67" id="nxj-zw-2xz" customClass="UserProfileCell" customModule="eShopKart" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileCell" rowHeight="67" id="nxj-zw-2xz" customClass="UserProfileCell" customModule="BrillCreation" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nxj-zw-2xz" id="kBT-1k-j5v">
@@ -1753,7 +1753,8 @@
                                                     <exclude reference="svo-ym-uTj"/>
                                                 </mask>
                                             </variation>
-                                            <variation key="heightClass=regular-widthClass=compact">
+                                            <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="66"/>
                                                 <mask key="subviews">
                                                     <include reference="wZt-vA-2Pa"/>
                                                     <include reference="6vp-D2-UkG"/>
@@ -2102,7 +2103,7 @@
         <!--Pre SignUPVC-->
         <scene sceneID="2iV-lg-2fy">
             <objects>
-                <viewController storyboardIdentifier="PreSignUPVCIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="epw-NM-Cjk" customClass="PreSignUPVC" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PreSignUPVCIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="epw-NM-Cjk" customClass="PreSignUPVC" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dww-z4-4hz"/>
                         <viewControllerLayoutGuide type="bottom" id="upK-HU-9fw"/>
@@ -2291,7 +2292,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qgP-eq-OXw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2637" y="722.25"/>
+            <point key="canvasLocation" x="2532" y="881.25"/>
         </scene>
     </scenes>
     <resources>

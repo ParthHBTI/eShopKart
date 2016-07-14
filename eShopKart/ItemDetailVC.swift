@@ -18,6 +18,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     }
     var animateDistance: CGFloat = 0
     var frameView: UIView!
+    var flag: Bool! = false
     
     @IBOutlet var ItemDetailTblView: UITableView!
     @IBOutlet weak var AddToCartBtn: UIButton!
@@ -26,14 +27,11 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     var productImageArr:AnyObject = []
     var productId: String!
     var getProductInfoDic = Dictionary<String,AnyObject>()
-    //var productImgArr = NSArray()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Product Detail"
         self.ItemDetailTblView.rowHeight = 170
         productImageArr = getProductInfoDic["Gallery"] as! Array<AnyObject>
-        //print(productImageArr)
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         AddToCartBtn.layer.borderWidth = 1.0
         AddToCartBtn.layer.borderColor = UIColor.init(colorLiteralRed: 6/255.0, green: 135/255.0, blue: 255/255.0, alpha: 1.0).CGColor
         AddToCartBtn.layer.cornerRadius = 5.0
@@ -42,12 +40,10 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
         GetQuoteBtn.layer.borderColor = UIColor.init(colorLiteralRed: 6/255.0, green: 135/255.0, blue: 255/255.0, alpha: 1.0).CGColor
         let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(ItemDetailVC.handleTap(_:)))
         self.view .addGestureRecognizer(tapRecognizer)
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,9 +52,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if(indexPath.row == 0) {
-            
             let cell1 = tableView.dequeueReusableCellWithIdentifier("ImageViewCellIdentifier", forIndexPath: indexPath) as! ItemDetailViewCell
-            //cell1.productImg?.image = getProductImg as UIImage!
             cell1.collectionView.reloadData()
             return cell1
         }
@@ -70,8 +64,11 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
             cell2.qtyTxtField.layer.cornerRadius = 5.0
             cell2.qtyTxtField.layer.borderWidth  = 1.0
             cell2.qtyTxtField.delegate = self
+            if self.flag == true {
             self.productQnty = cell2.qtyTxtField!.text!
-            //print(productQnty)
+            } else {
+                cell2.qtyTxtField.text = "1"
+            }
             return cell2
         }
         let cell3 = tableView.dequeueReusableCellWithIdentifier("DetailViewCellIdentifier", forIndexPath: indexPath) as! ItemDetailViewCell
@@ -84,81 +81,70 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     
     @IBAction func addToCart(sender: AnyObject) {
         let userData = NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
+        let productQty: String!
         if userData != nil {
             productId = getProductInfoDic["id"] as! String
-            let productQty = self.productQnty!
-            print(productQty)
-            let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-            let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
-            manager.requestSerializer = requestSerializer
-            manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
+            if self.flag == true {
+                 productQty = self.productQnty!
+            } else {
+                productQty = "1"
+            }
             let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
-            let params: [NSObject : AnyObject] = ["user_id": userId!,"product_id": productId!,"quantity": productQty]
-            manager.POST("http://192.168.0.15/eshopkart/webservices/add_to_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-                print("response: \(response!)")
-                //self.subcatResponseArr = response
-                self.ItemDetailTblView.reloadData()
-                // cartItemArray.addObject("")
+            let userInfo = [
+                "product_id" : productId,
+                "quantity" : productQty,
+                "user_id" : userId!,
+            ]
+            SigninOperaion.add_to_cart(userInfo, completionClosure: { response in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = response["message"] as! String
                 loading.hide(true, afterDelay: 2)
                 loading.removeFromSuperViewOnHide = true
-                
-            }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
-                
-                print("error: \(error!)")
-                
-            }
-            //            if (self.navigationController?.topViewController?.isKindOfClass(CartItemDetailVC)) == false{
-            //                let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
-            //                let vc = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as? CartItemDetailVC
-            //                self.navigationController?.pushViewController(vc!, animated: true)
-            //            }
-        } else {
-            
+                self.ItemDetailTblView.reloadData()
+            }) {(error: NSError) -> () in
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = error.localizedDescription
+                loading.hide(true, afterDelay: 2)
+
+            }        } else {
             self.makeLoginAlert()
         }
-        
-        //self.navigationItem.rightBarButtonItem?.badgeValue = "1"
     }
-    //
+    
     @IBAction func getCodeAction(sender: AnyObject) {
         let userData = NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
         if userData != nil {
             productId = getProductInfoDic["id"] as! String
-            let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-            let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
-            manager.requestSerializer = requestSerializer
-            manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
             let tokenId = (NSUserDefaults.standardUserDefaults().valueForKey("token_id"))
-            let params: [NSObject : AnyObject] = ["token_id": tokenId!,"product_id": productId!]
-            manager.POST("http://192.168.0.15/eshopkart/webservices/request_for_code", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-                print("response: \(response!)")
-                //self.subcatResponseArr = response
-                self.ItemDetailTblView.reloadData()
-                // cartItemArray.addObject("")
+            let userInfo = [
+                "token_id" : tokenId!,
+                "product_id" : productId!
+            ]
+            SigninOperaion.request_for_code(userInfo, completionClosure: { response in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = response["msg"] as! String
                 loading.hide(true, afterDelay: 2)
                 loading.removeFromSuperViewOnHide = true
-                
-            }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
-                
-                print("error: \(error!)")
-                
+                self.ItemDetailTblView.reloadData()
+            }) { (error: NSError) -> () in
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = error.localizedDescription
+                loading.hide(true, afterDelay: 2)
             }
-            
         }else {
-            
             self.makeLoginAlert()
         }
     }
     
-    
     func handleTap (tapGesture: UIGestureRecognizer) {
         self.view .endEditing(true)
+        self.ItemDetailTblView.reloadData()
+        //productQnty  = self.productQnty!
+        self.flag = true
         
     }
     
@@ -201,6 +187,8 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
+        self.ItemDetailTblView.reloadData()
+        self.flag = true
         return true
     }
     
@@ -208,28 +196,17 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
 
 extension ItemDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return productImageArr.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionCell", forIndexPath: indexPath) as! collectionCell
-        //let imageview: UIImageView=UIImageView(frame: CGRectMake(50, 50, self.view.frame.width-200, 50))
-        //        let image:UIImage = UIImage(named:"Kloudrac-Logo")!
-        // imageview.image = image
-        //cell.contentView.addSubview(imageview)
-        //cell.imageView.image = getProductImg
-        //cell.imageView.image = productImgArr.objectAtIndex(2)["images"] as? UIImage
-        // for i in 0 ..< productImageArr.count {
-        //let url = NSURL(string:("http://192.168.0.14/eshopkart/files/thumbs100x100/" + (productImageArr.objectAtIndex(i)["images"] as? String)!))
-        let url = NSURL(string:("http://192.168.0.15/eshopkart/files/thumbs100x100/" + (productImageArr[indexPath.row]["images"] as? String)!))
+        let url = NSURL(string:("http://192.168.0.11/eshopkart/files/thumbs100x100/" + (productImageArr[indexPath.row]["images"] as? String)!))
         cell.imageView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
-        //}
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath ind: NSIndexPath) -> CGSize {
-        
         return collectionView.frame.size;
     }
     

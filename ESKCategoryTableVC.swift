@@ -15,42 +15,15 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.categoryTblView.rowHeight = 55
-        let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-        let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
-        manager.requestSerializer = requestSerializer
-        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-        manager.POST("http://192.168.0.15/eshopkart/webservices/get_categories", parameters: nil, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-            print("Response: \(response!)")
+        let userInfo = [
+            "" : ""
+        ]
+        SigninOperaion.get_categories(userInfo, completionClosure: { response in
             self.responseArr = response
             self.categoryTblView.reloadData()
-            
-        }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
-            
-            print("error: \(error!)")
-            
-        }
-        // The output below is limited by 1 KB.
-        // Please Sign Up (Free!) to remove this limitation.
-        
-        let url = NSURL(string: "files/thumbs100x100/")!
-        let imageData = NSData(contentsOfURL: url)
-        // NSLog("data length %d\(imageData.characters.count())")
-        // UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-        if imageData != nil {
-            let filenames: String = String(format: "Deal.png")
-            //set name here
-            NSLog("%@", filenames)
-            let urlString: String = "http://localhost/php-admin//receiveFile.php"
-            let request: NSMutableURLRequest = NSMutableURLRequest()
-            request.URL = NSURL(string: urlString)!
-            request.HTTPMethod = "POST"
-            let boundary: String = "---------------------------14737809831466499882746641449"
-            let contentType: String = "multipart/form-data; boundary=\(boundary)"
-            request.addValue(contentType, forHTTPHeaderField: "Content-Type")
-            let body = NSMutableData()
-            body.appendData("\r\n--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-        }
+        }) { err in
+    }
+        self.categoryTblView.rowHeight = 55
     }
     override func viewWillAppear(animated: Bool) {
         

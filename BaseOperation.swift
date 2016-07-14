@@ -9,7 +9,7 @@
 import UIKit
 import AFNetworking
 
-let hostURL = "http://192.168.0.15/eshopkart/"
+let hostURL = "http://192.168.0.11/eshopkart/"
 let contentURL = hostURL + "pages/content"
 let imageBaseURL = hostURL + "files"
 @objc protocol OperationDelegate {
