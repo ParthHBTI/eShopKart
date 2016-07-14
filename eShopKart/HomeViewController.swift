@@ -56,12 +56,14 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         barSearchItem.showsScopeBar = true;
+        self.tableView.reloadData()
         print("this is searchText Begin\(filteredData.count)")
     }
     
     func configureSearchController() {
         
         searchController = UISearchController(searchResultsController: nil)
+        self.tableView.reloadData()
     }
     
     
@@ -75,13 +77,14 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
             manager.requestSerializer = requestSerializer
             manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
             let params: [NSObject : String] = ["keyword": searchText ]
-            manager.POST("http://192.168.0.15/eshopkart/webservices/search", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            manager.POST("http://192.168.0.11/eshopkart/webservices/search", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
                 print("response: \(response)")
                 var values: AnyObject = []
                 values = response
                 self.filteredData.removeAllObjects()
                 for var objDic in values as! NSArray
                 {
+                    self.tableView.reloadData()
                     self.filteredData.addObject(objDic)
                 }
                 print(self.filteredData.count)
@@ -96,7 +99,8 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int
     {   print("this is section\(filteredData.count)")
-        return filteredData.count
+        self.tableView.reloadData()
+        return self.filteredData.count
         
     }
     
@@ -116,7 +120,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         print("\(id)")
         let params: [NSObject : String] = ["product_id": id as! String]
         print("\(params)")
-        manager.POST("http://192.168.0.15/eshopkart/webservices/get_product_details", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+        manager.POST("http://192.168.0.11/eshopkart/webservices/get_product_details", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
             print("response: \(response!)")
             self.productsData = (response as! NSDictionary)
             let itemInfoDic  = self.productsData as! Dictionary<String, AnyObject>

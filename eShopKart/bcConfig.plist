@@ -18,6 +18,8 @@
 		<string>webservices/user_logout/</string>
 		<key>search</key>
 		<string>webservices/search/</string>
+		<key>sendFeedback</key>
+		<string>webservices/user_feedback</string>
 	</dict>
 </dict>
 </plist>

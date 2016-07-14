@@ -20,7 +20,7 @@ class SigninOperaion: BaseOperation, OperationDelegate {
             let dic = onSuccess as! NSDictionary
             completionClosure(dic)
             }, onError: {(error: NSError) -> () in
-        havingError(error)
+                havingError(error)
         })
     }
     
@@ -48,7 +48,7 @@ class SigninOperaion: BaseOperation, OperationDelegate {
                 havingError(error)
         })
     }
-
+    
     class func getOtp(userInfo: NSDictionary,completionClosure: (AnyObject) -> (), havingError:(NSError) -> ()) ->() {
         let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("getOtp"))
         let URL:NSURL = NSURL(string: urlString as String)!
@@ -91,6 +91,16 @@ class SigninOperaion: BaseOperation, OperationDelegate {
             let dic = onSuccess as! NSArray
             completionClosure(dic)
             }, onError: { (error:NSError) -> () in
+                havingError(error)
+        })
+    }
+    
+    class func userFeedback(feedbackInfo: NSDictionary,completionClosure: (AnyObject) -> (), havingError:(NSError) -> ()) ->(){
+        let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("sendFeedback"))
+        let URL:NSURL = NSURL(string: urlString as String)!
+        BaseOperation.initOperation(URL, userInfo: feedbackInfo , onSuccess: { (response:AnyObject) -> () in
+            completionClosure(response)
+            },onError: { (error:NSError) -> () in
                 havingError(error)
         })
     }

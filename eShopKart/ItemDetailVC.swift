@@ -22,6 +22,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     @IBOutlet var ItemDetailTblView: UITableView!
     @IBOutlet weak var AddToCartBtn: UIButton!
     @IBOutlet weak var GetQuoteBtn: UIButton!
+    var flag: Bool! = false
     var productQnty: String!
     var productImageArr:AnyObject = []
     var productId: String!
@@ -69,8 +70,12 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
             cell2.qtyTxtField.layer.borderColor = UIColor.grayColor().CGColor
             cell2.qtyTxtField.layer.cornerRadius = 5.0
             cell2.qtyTxtField.layer.borderWidth  = 1.0
-            cell2.qtyTxtField.delegate = self
-            self.productQnty = cell2.qtyTxtField!.text!
+            if self.flag == true {
+                self.productQnty = cell2.qtyTxtField!.text
+            } else {
+                cell2.qtyTxtField.text = "1"
+            }
+            
             //print(productQnty)
             return cell2
         }
@@ -86,28 +91,41 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
         let userData = NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
         if userData != nil {
             productId = getProductInfoDic["id"] as! String
-            let productQty = self.productQnty!
-            print(productQty)
-            let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-            let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
-            manager.requestSerializer = requestSerializer
-            manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-            let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
-            let params: [NSObject : AnyObject] = ["user_id": userId!,"product_id": productId!,"quantity": productQty]
-            manager.POST("http://192.168.0.15/eshopkart/webservices/add_to_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-                print("response: \(response!)")
-                //self.subcatResponseArr = response
-                self.ItemDetailTblView.reloadData()
-                // cartItemArray.addObject("")
+            var productQty: String!
+            if self.flag == true {
+                productQty = self.productQnty!
+            } else {
+                productQty = "1"
+            }
+            if productQty != "" && productQty != "0" {
+                let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+                let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
+                manager.requestSerializer = requestSerializer
+                manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
+                let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
+                let params: [NSObject : AnyObject] = ["user_id": userId!,"product_id": productId!,"quantity": productQty]
+                manager.POST("http://192.168.0.11/eshopkart/webservices/add_to_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+                    print("response: \(response!)")
+                    //self.subcatResponseArr = response
+                    self.ItemDetailTblView.reloadData()
+                    // cartItemArray.addObject("")
+                    let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                    loading.mode = MBProgressHUDModeText
+                    loading.detailsLabelText = response["message"] as! String
+                    loading.hide(true, afterDelay: 2)
+                    loading.removeFromSuperViewOnHide = true
+                    
+                }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
+                    
+                    print("error: \(error!)")
+                    
+                }
+            } else {
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
-                loading.detailsLabelText = response["message"] as! String
+                loading.detailsLabelText = "Please select product quantity"
                 loading.hide(true, afterDelay: 2)
                 loading.removeFromSuperViewOnHide = true
-                
-            }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
-                
-                print("error: \(error!)")
                 
             }
             //            if (self.navigationController?.topViewController?.isKindOfClass(CartItemDetailVC)) == false{
@@ -122,6 +140,13 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
         
         //self.navigationItem.rightBarButtonItem?.badgeValue = "1"
     }
+    
+    //    func getTxtVal() -> String {
+    //
+    //        self.ItemDetailTblView.reloadData()
+    //        let productQty = self.productQnty
+    //        return productQty
+    //    }
     //
     @IBAction func getCodeAction(sender: AnyObject) {
         let userData = NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
@@ -133,7 +158,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
             manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
             let tokenId = (NSUserDefaults.standardUserDefaults().valueForKey("token_id"))
             let params: [NSObject : AnyObject] = ["token_id": tokenId!,"product_id": productId!]
-            manager.POST("http://192.168.0.15/eshopkart/webservices/request_for_code", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            manager.POST("http://192.168.0.11/eshopkart/webservices/request_for_code", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
                 print("response: \(response!)")
                 //self.subcatResponseArr = response
                 self.ItemDetailTblView.reloadData()
@@ -159,7 +184,8 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     
     func handleTap (tapGesture: UIGestureRecognizer) {
         self.view .endEditing(true)
-        
+        self.ItemDetailTblView.reloadData()
+        self.flag = true
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -201,6 +227,8 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
+        self.ItemDetailTblView.reloadData()
+        //self.flag = true
         return true
     }
     
@@ -222,7 +250,7 @@ extension ItemDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
         //cell.imageView.image = productImgArr.objectAtIndex(2)["images"] as? UIImage
         // for i in 0 ..< productImageArr.count {
         //let url = NSURL(string:("http://192.168.0.14/eshopkart/files/thumbs100x100/" + (productImageArr.objectAtIndex(i)["images"] as? String)!))
-        let url = NSURL(string:("http://192.168.0.15/eshopkart/files/thumbs100x100/" + (productImageArr[indexPath.row]["images"] as? String)!))
+        let url = NSURL(string:("http://192.168.0.11/eshopkart/files/thumbs100x100/" + (productImageArr[indexPath.row]["images"] as? String)!))
         cell.imageView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         //}
         return cell

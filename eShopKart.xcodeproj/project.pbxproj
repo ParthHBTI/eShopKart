@@ -52,6 +52,7 @@
 		730078E01D14023E00ECFC91 /* bcConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 730078DF1D14023E00ECFC91 /* bcConfig.plist */; };
 		730879431D12ABDD00F4EFBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0436945E1CE450A7000868CE /* Main.storyboard */; };
 		73C1260A1D2BA1E80048F986 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C126091D2BA1E80048F986 /* FeedbackViewController.swift */; };
+		73D0DD321D379D2F00E5714C /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D0DD311D379D2E00E5714C /* HelpViewController.swift */; };
 		73F0C21A1D252595005C48C6 /* PreSignUPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F0C2191D252595005C48C6 /* PreSignUPVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +108,7 @@
 		730078DD1D13FF1500ECFC91 /* SignUpCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpCodeViewController.swift; sourceTree = "<group>"; };
 		730078DF1D14023E00ECFC91 /* bcConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bcConfig.plist; sourceTree = "<group>"; };
 		73C126091D2BA1E80048F986 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		73D0DD311D379D2E00E5714C /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		73F0C2191D252595005C48C6 /* PreSignUPVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreSignUPVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,6 +175,7 @@
 		04EEB2301CEC52500069A877 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				73D0DD311D379D2E00E5714C /* HelpViewController.swift */,
 				73C126091D2BA1E80048F986 /* FeedbackViewController.swift */,
 				043694621CE465DC000868CE /* BaseViewController.swift */,
 				180B482C1CF2C74100B5808C /* HomeViewController.swift */,
@@ -362,6 +365,7 @@
 				04B5641E1CEEF122001E9792 /* CategoryItemListVC.swift in Sources */,
 				18EB45721D0AE6AD00179B54 /* collectionCell.swift in Sources */,
 				730078D61D13FDFF00ECFC91 /* bcConfig.swift in Sources */,
+				73D0DD321D379D2F00E5714C /* HelpViewController.swift in Sources */,
 				046C45DB1CE5E40F00C8D13C /* CartItemDetailVC.swift in Sources */,
 				730078D81D13FE4B00ECFC91 /* VerificationCodeViewController.swift in Sources */,
 				18EDD7F91CFC5962007AE91E /* GeneralWebViewController.swift in Sources */,

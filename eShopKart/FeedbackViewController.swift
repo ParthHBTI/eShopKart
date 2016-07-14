@@ -18,7 +18,7 @@ class FeedbackViewController: TextFieldViewController {
         super.viewDidLoad()
         subTxtField.delegate = self
         feedbackTxtView.delegate = self
-//        self.navigationController?.navigationBarHidden = false
+        //        self.navigationController?.navigationBarHidden = false
         let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.BlackOpaque
         nav?.tintColor = UIColor.whiteColor()
@@ -31,6 +31,10 @@ class FeedbackViewController: TextFieldViewController {
         feedbackTxtView.layer.borderWidth = 1.0
         // Do any additional setup after loading the view.
     }
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.view .endEditing(true)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -38,11 +42,11 @@ class FeedbackViewController: TextFieldViewController {
     }
     
     @IBAction func submitAction(sender: AnyObject) {
-        let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        loading.mode = MBProgressHUDModeText
-        loading.hide(true, afterDelay: 2)
-        loading.removeFromSuperViewOnHide = true
         if subTxtField.text!.isEmpty == true || feedbackTxtView.text!.isEmpty == true {
+            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            loading.mode = MBProgressHUDModeText
+            loading.hide(true, afterDelay: 2)
+            loading.removeFromSuperViewOnHide = true
             loading.detailsLabelText = "please give all values"
             self.animateSubmitBtnOnWrongSubmit()
         }
@@ -53,29 +57,52 @@ class FeedbackViewController: TextFieldViewController {
                 "subject" : subTxtField.text!,
                 "message" : feedbackTxtView.text!
             ]
-            let params: [NSObject : AnyObject] = feedabackInfo
-            let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-            let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
-            manager.requestSerializer = requestSerializer
-            manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-            manager.POST("http://192.168.0.15/eshopkart/webservices/user_feedback", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-                print("response: \(response!)")
-                //self.cartDetailResponseArr = response
-                //self.tableView.reloadData()
-                loading.detailsLabelText = response["message"] as! String
-                
-            }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
-                
-                print("error: \(error!)")
-                
+            //let params: [NSObject : AnyObject] = feedabackInfo
+            //
+            //            let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+            //            let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
+            //            manager.requestSerializer = requestSerializer
+            //            manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
+            //            manager.POST("http://192.168.0.11/eshopkart/webservices/user_feedback", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            //                print("response: \(response!)")
+            //                //self.cartDetailResponseArr = response
+            //                //self.tableView.reloadData()
+            //                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            //                loading.mode = MBProgressHUDModeText
+            //                loading.hide(true, afterDelay: 2)
+            //                loading.removeFromSuperViewOnHide = true
+            //                loading.detailsLabelText = response["message"] as! String
+            //                self.subTxtField.text = ""
+            //                self.feedbackTxtView.text = ""
+            //
+            //            }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
+            //
+            //                print("error: \(error!)")
+            //
+            //            }
+            SigninOperaion.userFeedback(feedabackInfo, completionClosure: { (response: AnyObject) -> () in
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.removeFromSuperViewOnHide = true
+                loading.detailsLabelText = "Thanks for contacting us. We will get back to you shortly."
+                loading.hide(true, afterDelay: 2)
+                self.subTxtField.text = ""
+                self.feedbackTxtView.text = ""
+                print(response)
+            }) { (error:NSError) -> () in
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = error.localizedDescription
+                loading.hide(true, afterDelay: 2)
             }
+            
         }
     }
     
-//    func backAction() {
-//        
-//        self.navigationController?.popViewControllerAnimated(true)
-//    }
+    //    func backAction() {
+    //
+    //        self.navigationController?.popViewControllerAnimated(true)
+    //    }
     
     
     func animateSubmitBtnOnWrongSubmit(){

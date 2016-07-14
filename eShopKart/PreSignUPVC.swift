@@ -68,7 +68,7 @@ class PreSignUPVC: UIViewController {
         vc?.htmlString = url
         vc?.pageId = 1
         //self.presentViewController(vc!, animated: true, completion: nil)
-        self.navigationController?.pushViewController(vc!, animated: false)
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     @IBAction func privacyPolicyAction(sender: AnyObject) {
@@ -79,7 +79,7 @@ class PreSignUPVC: UIViewController {
         vc?.htmlString = url
         vc?.pageId = 2
         //self.presentViewController(vc!, animated: true, completion: nil)
-        self.navigationController?.pushViewController(vc!, animated: false)
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     func backAction() {
