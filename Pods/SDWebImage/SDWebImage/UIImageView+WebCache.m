@@ -16,6 +16,8 @@ static char TAG_ACTIVITY_STYLE;
 static char TAG_ACTIVITY_SHOW;
 
 @implementation UIImageView (WebCache)
+//
+
 
 - (void)sd_setImageWithURL:(NSURL *)url {
     [self sd_setImageWithURL:url placeholderImage:nil options:0 progress:nil completed:nil];
