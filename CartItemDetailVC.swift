@@ -15,31 +15,21 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Cart Detail"
-        //self.navigationItem.leftItemsSupplementBackButton = true
-        let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-        let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
-        manager.requestSerializer = requestSerializer
-        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
         let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
-        let params: [NSObject : AnyObject] = ["user_id": userId!]
-        manager.POST("http://192.168.0.11/eshopkart/webservices/view_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-            print("response: \(response!)")
+        let userInfo = [
+            "user_id" : userId!,
+            ]
+        SigninOperaion.view_cart(userInfo, completionClosure: { response in
             for var obj in response as! NSArray
             {
                 self.cartDetailResponseArr.addObject(obj)
             }
             self.tableView.reloadData()
-            //            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            //            loading.mode = MBProgressHUDModeText
-            //            loading.detailsLabelText = response["message"] as! String
-            //            loading.hide(true, afterDelay: 2)
-            //            loading.removeFromSuperViewOnHide = true
-            
-        }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
-            
-            print("error: \(error!)")
-            
-        }
+        }) { (error: NSError) -> () in
+            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            loading.mode = MBProgressHUDModeText
+            loading.detailsLabelText = error.localizedDescription
+            loading.hide(true, afterDelay: 2)        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -79,42 +69,31 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             self.view.addSubview(DynamicView)
             goHomeAction.addTarget(self, action: #selector(buttonAction), forControlEvents: .TouchUpInside)
         }
-        
-        //self.navigationItem.leftBarButtonItem = nil
-        //        self.navigationItem.leftItemsSupplementBackButton = true
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return cartDetailResponseArr.count
     }
     
     @IBAction func removeItemFromCart(sender: AnyObject) {
-        
-        //       let button = sender as! UIButton
-        //       let tagValue : Int = button.tag
         let currentRow = sender.tag
         let productId = self.cartDetailResponseArr.objectAtIndex(currentRow)["id"] as! String
-        let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-        let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
-        manager.requestSerializer = requestSerializer
-        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
         let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
-        let params: [NSObject : AnyObject] = ["user_id": userId!, "product_id": productId]
-        manager.POST("http://192.168.0.11/eshopkart/webservices/clear_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-            print("response: \(response!)")
-            //self.cartDetailResponseArr = response
-            //self.tableView.reloadData()
-            
-        }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
-            
-            print("error: \(error!)")
-            
+        let userInfo = [
+            "user_id" : userId!,
+            "product_id" : productId
+        ]
+        SigninOperaion.clear_cart(userInfo, completionClosure: { response in
+           
+        }) { (error: NSError) -> () in
+            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            loading.mode = MBProgressHUDModeText
+            loading.detailsLabelText = error.localizedDescription
+            loading.hide(true, afterDelay: 2)
         }
         if (cartDetailResponseArr.count > currentRow){
             cartDetailResponseArr.removeObjectAtIndex(currentRow)
@@ -129,56 +108,43 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     @IBAction func clearCartAction(sender: AnyObject) {
         
         let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
-        let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-        let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
-        manager.requestSerializer = requestSerializer
-        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-        let params: [NSObject : AnyObject] = ["user_id": userId!]
-        manager.POST("http://192.168.0.11/eshopkart/webservices/clear_cart", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-            print("response: \(response!)")
-            //self.cartDetailResponseArr = response
-            //self.tableView.reloadData()
+        let userInfo = [
+            "user_id" : userId!,
+            ]
+        SigninOperaion.clear_cart(userInfo, completionClosure: { response in
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = response["message"] as! String
-            loading.hide(true, afterDelay:1)
-            
-        }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
-            
-            print("error: \(error!)")
-        }
+            loading.hide(true, afterDelay: 2)
+            loading.removeFromSuperViewOnHide = true
+        }) { (error: NSError) -> () in
+            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            loading.mode = MBProgressHUDModeText
+            loading.detailsLabelText = error.localizedDescription
+            loading.hide(true, afterDelay: 2)        }
         cartDetailResponseArr.removeAllObjects()
         self.tableView.reloadData()
     }
     
-    
     @IBAction func getQuoteForAllItems(sender: AnyObject) {
-        
         let tokenId = NSUserDefaults.standardUserDefaults().valueForKey("token_id")
-        let params: [NSObject : AnyObject] = ["token_id": tokenId!]
-        let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-        let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
-        manager.requestSerializer = requestSerializer
-        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-        manager.POST("http://192.168.0.11/eshopkart/webservices/request_for_code", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-            print("response: \(response!)")
+        let userInfo = [
+            "token_id" : tokenId!
+            ]
+        SigninOperaion.request_for_code(userInfo, completionClosure: { response in
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = response["msg"] as! String
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
-            
-        }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
-            
-            print("error: \(error!)")
-            
+            self.cartDetailResponseArr.removeAllObjects()
+             self.tableView.reloadData()
+        }) { (error: NSError) -> () in
+            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            loading.mode = MBProgressHUDModeText
+            loading.detailsLabelText = error.localizedDescription
+            loading.hide(true, afterDelay: 2)
         }
-        //        }
-        //        else {
-        //
-        //            self.makeLoginAlert()
-        //        }
-        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> cartItemCell {

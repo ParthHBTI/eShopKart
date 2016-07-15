@@ -18,20 +18,13 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
         super.viewDidLoad()
         categoryNameLabel!.text = categoryName!
         self.cteagoryItemsTblView.rowHeight = 55
-        let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-        let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
-        manager.requestSerializer = requestSerializer
-        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-        let params: [NSObject : AnyObject] = ["category_id": categoryId]
-        manager.POST("http://192.168.0.11/eshopkart/webservices/get_categories", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-            print("response: \(response!)")
+        let userInfo = [
+            "category_id" : categoryId
+        ]
+        SigninOperaion.get_categories(userInfo, completionClosure: { response in
             self.subcatResponseArr = response
             self.cteagoryItemsTblView.reloadData()
-            
-        }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
-            
-            print("error: \(error!)")
-            
+        }) { err in
         }
     }
     
@@ -41,18 +34,15 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return subcatResponseArr.count
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> CategoryItemsViewCell {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("categoryItemsCell", forIndexPath: indexPath) as! CategoryItemsViewCell
         cell.subCategoryItemName?.text = subcatResponseArr.objectAtIndex(indexPath.row)["category_name"] as? String
         cell.subCatId?.text = subcatResponseArr.objectAtIndex(indexPath.row)["id"] as? String
@@ -61,12 +51,10 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
     }
     
     @IBAction func crossAction(sender: AnyObject) {
-        
         self.navigationController?.popViewControllerAnimated(false)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         let destinationVC = segue.destinationViewController as! SimillerProductDetailVC
         let cell = sender as! CategoryItemsViewCell
         destinationVC.getsubCategoryId = cell.subCatId!.text

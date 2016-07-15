@@ -18,8 +18,20 @@
 		<string>webservices/user_logout/</string>
 		<key>search</key>
 		<string>webservices/search/</string>
-		<key>sendFeedback</key>
-		<string>webservices/user_feedback</string>
+		<key>get_categories</key>
+		<string>webservices/get_categories/</string>
+		<key>get_products</key>
+		<string>webservices/get_products/</string>
+		<key>request_for_code</key>
+		<string>webservices/request_for_code/</string>
+		<key>clear_cart</key>
+		<string>webservices/clear_cart/</string>
+		<key>add_to_cart</key>
+		<string>webservices/add_to_cart/</string>
+		<key>view_cart</key>
+		<string>webservices/view_cart/</string>
+		<key>userFeedback</key>
+		<string>webservices/user_feedback/</string>
 	</dict>
 </dict>
 </plist>

@@ -27,11 +27,12 @@ class VerificationCodeViewController: TextFieldViewController {
     
     @IBAction func verifyCodeAction(sender: AnyObject) {
         let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        loading.mode = MBProgressHUDModeText
         if (verificationTextField.text == "" ) {
+            loading.mode = MBProgressHUDModeIndeterminate
             let alert = UIAlertView.init(title: "Oppss", message: "Please Enter Your Verify Code", delegate: self, cancelButtonTitle: "GO")
               //alert.dismissWithClickedButtonIndex(1, animated: true)
             alert.show()
+            loading.hide(true)
             //self.makeVerifyAlert()
         } else  {
             

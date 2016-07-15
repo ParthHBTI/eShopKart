@@ -51,35 +51,11 @@ class FeedbackViewController: TextFieldViewController {
             self.animateSubmitBtnOnWrongSubmit()
         }
         else {
-            let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
             let feedabackInfo :[String : String] = [
-                "user_id" : userId as! String,
                 "subject" : subTxtField.text!,
                 "message" : feedbackTxtView.text!
             ]
-            //let params: [NSObject : AnyObject] = feedabackInfo
-            //
-            //            let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-            //            let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
-            //            manager.requestSerializer = requestSerializer
-            //            manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-            //            manager.POST("http://192.168.0.11/eshopkart/webservices/user_feedback", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-            //                print("response: \(response!)")
-            //                //self.cartDetailResponseArr = response
-            //                //self.tableView.reloadData()
-            //                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            //                loading.mode = MBProgressHUDModeText
-            //                loading.hide(true, afterDelay: 2)
-            //                loading.removeFromSuperViewOnHide = true
-            //                loading.detailsLabelText = response["message"] as! String
-            //                self.subTxtField.text = ""
-            //                self.feedbackTxtView.text = ""
-            //
-            //            }) { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
-            //
-            //                print("error: \(error!)")
-            //
-            //            }
+           
             SigninOperaion.userFeedback(feedabackInfo, completionClosure: { (response: AnyObject) -> () in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
