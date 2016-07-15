@@ -12,7 +12,7 @@
         <!--Base View Controller-->
         <scene sceneID="pyZ-yW-0iF">
             <objects>
-                <viewController id="TsT-XV-IT4" userLabel="Base View Controller" customClass="BaseViewController" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TsT-XV-IT4" userLabel="Base View Controller" customClass="BaseViewController" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VwZ-YG-RYH"/>
                         <viewControllerLayoutGuide type="bottom" id="f25-Qd-i4p"/>
@@ -31,7 +31,7 @@
         <!--ESKCategory Table View Controller-->
         <scene sceneID="yCY-Ab-KQw">
             <objects>
-                <tableViewController storyboardIdentifier="MyHomeDetailIdentifire" id="wfJ-lb-oNX" userLabel="ESKCategory Table View Controller" customClass="ESKCategoryTableVC" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MyHomeDetailIdentifire" id="wfJ-lb-oNX" userLabel="ESKCategory Table View Controller" customClass="ESKCategoryTableVC" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="X1Y-GY-qg1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,7 +39,7 @@
                         <color key="sectionIndexColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.52156862749999999" green="0.62745098040000002" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Identifier" editingAccessoryType="disclosureIndicator" rowHeight="100" id="5Bj-Xo-w29" customClass="ESKCategoryCell" customModule="eShopKart" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Identifier" editingAccessoryType="disclosureIndicator" rowHeight="100" id="5Bj-Xo-w29" customClass="ESKCategoryCell" customModule="BrillCreation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Bj-Xo-w29" id="zMT-b9-cYY">
@@ -131,14 +131,14 @@
         <!--Similler Product DetailVC-->
         <scene sceneID="get-g5-fyG">
             <objects>
-                <tableViewController storyboardIdentifier="similarProductDetailVCIdentifier" id="PGA-fU-wSe" customClass="SimillerProductDetailVC" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="similarProductDetailVCIdentifier" id="PGA-fU-wSe" customClass="SimillerProductDetailVC" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="145" sectionHeaderHeight="28" sectionFooterHeight="28" id="323-8Z-8nO">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" red="0.52156862749999999" green="0.62745098040000002" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ProductCell" editingAccessoryType="disclosureIndicator" rowHeight="145" id="RWv-CU-Lxb" customClass="SimillerProductViewCell" customModule="eShopKart" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ProductCell" editingAccessoryType="disclosureIndicator" rowHeight="145" id="RWv-CU-Lxb" customClass="SimillerProductViewCell" customModule="BrillCreation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="145"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RWv-CU-Lxb" id="Aye-yp-UZy">
@@ -378,6 +378,7 @@
                                     <outlet property="getQuoteBtn" destination="cbJ-Q1-4b8" id="dha-bl-Ckn"/>
                                     <outlet property="productImgView" destination="7ih-gy-oud" id="ibg-U3-ysI"/>
                                     <outlet property="productname" destination="yaB-0i-5aI" id="lDi-BO-K4E"/>
+                                    <outlet property="size" destination="uEQ-fJ-gEc" id="VPX-Vm-eze"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -398,7 +399,7 @@
         <!--General Web View Controller-->
         <scene sceneID="HEV-tl-1ec">
             <objects>
-                <viewController storyboardIdentifier="GeneralWebVCIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LD6-uG-t5b" customClass="GeneralWebViewController" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GeneralWebVCIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LD6-uG-t5b" customClass="GeneralWebViewController" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dMU-gn-3aT"/>
                         <viewControllerLayoutGuide type="bottom" id="txj-aT-6X0"/>
@@ -454,7 +455,7 @@
         <!--Cart Item DetailVC-->
         <scene sceneID="YTo-Y1-z5y">
             <objects>
-                <viewController storyboardIdentifier="MyCardDetailIdentifire" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hJH-cE-hBy" customClass="CartItemDetailVC" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyCardDetailIdentifire" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hJH-cE-hBy" customClass="CartItemDetailVC" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zd1-mC-F9w"/>
                         <viewControllerLayoutGuide type="bottom" id="d9r-Mu-3Ke"/>
@@ -502,7 +503,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.65950096270000003" green="0.77297794149999999" blue="0.85477339659999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cartcell" rowHeight="146" id="Frc-l6-k9X" customClass="cartItemCell" customModule="eShopKart" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cartcell" rowHeight="146" id="Frc-l6-k9X" customClass="cartItemCell" customModule="BrillCreation" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Frc-l6-k9X" id="4dw-V1-u9h">
@@ -538,7 +539,8 @@
                                                             <exclude reference="Dc5-QP-uam"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="131" y="16" width="57" height="9"/>
                                                         <mask key="constraints">
                                                             <include reference="Dc5-QP-uam"/>
                                                         </mask>
@@ -557,7 +559,8 @@
                                                             <exclude reference="bcA-LY-aZ6"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="131" y="33" width="44" height="17"/>
                                                         <mask key="constraints">
                                                             <include reference="bcA-LY-aZ6"/>
                                                         </mask>
@@ -576,7 +579,8 @@
                                                             <exclude reference="ESL-zO-k8h"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="190" y="33" width="98" height="17"/>
                                                         <mask key="constraints">
                                                             <include reference="ESL-zO-k8h"/>
                                                         </mask>
@@ -595,7 +599,8 @@
                                                             <exclude reference="5so-g6-ctd"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="131" y="53" width="123" height="44"/>
                                                         <mask key="constraints">
                                                             <include reference="5so-g6-ctd"/>
                                                         </mask>
@@ -614,7 +619,8 @@
                                                             <exclude reference="L0m-8P-aPZ"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="265" y="53" width="179" height="44"/>
                                                         <mask key="constraints">
                                                             <include reference="L0m-8P-aPZ"/>
                                                         </mask>
@@ -671,7 +677,8 @@
                                                             <exclude reference="vbs-ls-fv0"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="202" y="16" width="22" height="26"/>
                                                         <mask key="constraints">
                                                             <include reference="eTK-1R-Y4r"/>
                                                             <include reference="vbs-ls-fv0"/>
@@ -870,7 +877,7 @@
         <!--Feedback View Controller-->
         <scene sceneID="LMr-Cq-RAG">
             <objects>
-                <viewController storyboardIdentifier="feedbackControllerIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Pdn-ee-u6X" customClass="FeedbackViewController" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="feedbackControllerIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Pdn-ee-u6X" customClass="FeedbackViewController" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pJh-Mf-aaQ"/>
                         <viewControllerLayoutGuide type="bottom" id="qH2-0g-7Ns"/>
@@ -1063,12 +1070,13 @@
         <!--Help View Controller-->
         <scene sceneID="1Zj-VF-lGK">
             <objects>
-                <viewController id="5yF-m6-K3W" customClass="HelpViewController" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5yF-m6-K3W" customClass="HelpViewController" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="phg-pr-zuz"/>
                         <viewControllerLayoutGuide type="bottom" id="FUT-SF-TMX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xT4-IM-Utf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1080,7 +1088,7 @@
         <!--Category Item ListVC-->
         <scene sceneID="f9i-3b-YID">
             <objects>
-                <viewController storyboardIdentifier="ItemDetailStoryboard" id="ZTl-j6-RRi" customClass="CategoryItemListVC" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemDetailStoryboard" id="ZTl-j6-RRi" customClass="CategoryItemListVC" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ddm-gv-Qjb"/>
                         <viewControllerLayoutGuide type="bottom" id="fxz-Bo-o3L"/>
@@ -1178,7 +1186,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="categoryItemsCell" editingAccessoryType="disclosureIndicator" rowHeight="80" id="VGc-wu-nRc" customClass="CategoryItemsViewCell" customModule="eShopKart" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="categoryItemsCell" editingAccessoryType="disclosureIndicator" rowHeight="80" id="VGc-wu-nRc" customClass="CategoryItemsViewCell" customModule="BrillCreation" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VGc-wu-nRc" id="BUH-EM-utf">
@@ -1324,7 +1332,7 @@
         <!--Item DetailVC-->
         <scene sceneID="h7r-CN-yOF">
             <objects>
-                <viewController storyboardIdentifier="ItemDetailVCIdentifier" id="Efw-So-kl8" customClass="ItemDetailVC" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemDetailVCIdentifier" id="Efw-So-kl8" customClass="ItemDetailVC" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YCI-JN-vTh"/>
                         <viewControllerLayoutGuide type="bottom" id="o4b-Yp-dVa"/>
@@ -1376,7 +1384,7 @@
                                     <constraint firstAttribute="height" constant="724" id="bbT-Zz-kyp"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageViewCellIdentifier" rowHeight="175" id="NJa-hY-rNU" customClass="ItemDetailViewCell" customModule="eShopKart" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageViewCellIdentifier" rowHeight="175" id="NJa-hY-rNU" customClass="ItemDetailViewCell" customModule="BrillCreation" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NJa-hY-rNU" id="Zdj-xP-UI0">
@@ -1396,7 +1404,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" reuseIdentifier="collectionCell" id="p2Z-A0-4dF" customClass="collectionCell" customModule="eShopKart" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" reuseIdentifier="collectionCell" id="p2Z-A0-4dF" customClass="collectionCell" customModule="BrillCreation" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1507,7 +1515,7 @@
                                             <outlet property="collectionView" destination="JCv-KA-ooy" id="tpz-kb-f3b"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PriceViewCellIdentifier" rowHeight="154" id="Juv-Ip-fc6" customClass="ItemDetailViewCell" customModule="eShopKart" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PriceViewCellIdentifier" rowHeight="154" id="Juv-Ip-fc6" customClass="ItemDetailViewCell" customModule="BrillCreation" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Juv-Ip-fc6" id="wWE-nG-KN4">
@@ -1549,7 +1557,8 @@
                                                             <exclude reference="J0v-m6-1Ib"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="35" y="13" width="170" height="19"/>
                                                         <mask key="constraints">
                                                             <include reference="J0v-m6-1Ib"/>
                                                         </mask>
@@ -1639,15 +1648,23 @@
                                                         </mask>
                                                     </variation>
                                                 </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4o-H6-F0H">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Xg5-KS-CQ1" secondAttribute="bottom" constant="8" id="B6a-zn-OgE"/>
                                                 <constraint firstItem="GId-Zy-Lip" firstAttribute="top" secondItem="wWE-nG-KN4" secondAttribute="topMargin" constant="5" id="L80-tO-E4J"/>
                                                 <constraint firstItem="GjO-8q-WD2" firstAttribute="leading" secondItem="wWE-nG-KN4" secondAttribute="leadingMargin" constant="38" id="MKS-8Z-h06"/>
+                                                <constraint firstItem="o4o-H6-F0H" firstAttribute="top" secondItem="oZR-zr-8YQ" secondAttribute="bottom" constant="8" id="PSR-G8-e4b"/>
                                                 <constraint firstItem="GId-Zy-Lip" firstAttribute="centerX" secondItem="wWE-nG-KN4" secondAttribute="centerX" id="WTy-Eh-Ckc"/>
                                                 <constraint firstItem="mJc-nP-lm9" firstAttribute="top" secondItem="GjO-8q-WD2" secondAttribute="bottom" constant="5" id="Wql-Ov-mVs">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="8"/>
                                                 </constraint>
+                                                <constraint firstItem="o4o-H6-F0H" firstAttribute="leading" secondItem="Xg5-KS-CQ1" secondAttribute="trailing" constant="-4" id="ZSA-vN-5f6"/>
                                                 <constraint firstItem="GId-Zy-Lip" firstAttribute="width" secondItem="wWE-nG-KN4" secondAttribute="width" multiplier="0.71" id="ZhG-uE-Fez"/>
                                                 <constraint firstItem="oZR-zr-8YQ" firstAttribute="centerY" secondItem="GjO-8q-WD2" secondAttribute="centerY" id="ck7-OT-WOU"/>
                                                 <constraint firstItem="oZR-zr-8YQ" firstAttribute="leading" secondItem="GjO-8q-WD2" secondAttribute="trailing" constant="5" id="jvE-JR-fYI"/>
@@ -1666,6 +1683,7 @@
                                                     <exclude reference="mJc-nP-lm9"/>
                                                     <exclude reference="Cs9-eY-MAT"/>
                                                     <exclude reference="Xg5-KS-CQ1"/>
+                                                    <exclude reference="o4o-H6-F0H"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <exclude reference="B6a-zn-OgE"/>
@@ -1680,6 +1698,8 @@
                                                     <exclude reference="MKS-8Z-h06"/>
                                                     <exclude reference="Wql-Ov-mVs"/>
                                                     <exclude reference="vSt-OL-Dmy"/>
+                                                    <exclude reference="PSR-G8-e4b"/>
+                                                    <exclude reference="ZSA-vN-5f6"/>
                                                     <exclude reference="ck7-OT-WOU"/>
                                                     <exclude reference="jvE-JR-fYI"/>
                                                 </mask>
@@ -1692,6 +1712,7 @@
                                                     <include reference="mJc-nP-lm9"/>
                                                     <include reference="Cs9-eY-MAT"/>
                                                     <include reference="Xg5-KS-CQ1"/>
+                                                    <include reference="o4o-H6-F0H"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <include reference="B6a-zn-OgE"/>
@@ -1706,6 +1727,8 @@
                                                     <include reference="MKS-8Z-h06"/>
                                                     <include reference="Wql-Ov-mVs"/>
                                                     <include reference="vSt-OL-Dmy"/>
+                                                    <include reference="PSR-G8-e4b"/>
+                                                    <include reference="ZSA-vN-5f6"/>
                                                     <include reference="ck7-OT-WOU"/>
                                                     <include reference="jvE-JR-fYI"/>
                                                 </mask>
@@ -1718,7 +1741,7 @@
                                             <outlet property="qtyTxtField" destination="Xg5-KS-CQ1" id="dNB-ND-O2c"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailViewCellIdentifier" rowHeight="237" id="xvp-1s-Oj3" customClass="ItemDetailViewCell" customModule="eShopKart" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailViewCellIdentifier" rowHeight="237" id="xvp-1s-Oj3" customClass="ItemDetailViewCell" customModule="BrillCreation" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xvp-1s-Oj3" id="gTM-G1-kon">
@@ -1780,28 +1803,29 @@
                                                     <exclude reference="v5p-8a-sRF"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <exclude reference="Oq2-0b-5ij"/>
+                                                    <exclude reference="kVB-Zg-hPv"/>
+                                                    <exclude reference="l1y-o8-PKH"/>
                                                     <exclude reference="1lo-Q6-vW0"/>
                                                     <exclude reference="adi-Tv-Thc"/>
                                                     <exclude reference="dU6-BC-HZ5"/>
                                                     <exclude reference="hpS-qx-qIe"/>
-                                                    <exclude reference="Oq2-0b-5ij"/>
-                                                    <exclude reference="kVB-Zg-hPv"/>
-                                                    <exclude reference="l1y-o8-PKH"/>
                                                 </mask>
                                             </variation>
-                                            <variation key="heightClass=regular-widthClass=compact">
+                                            <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="237"/>
                                                 <mask key="subviews">
                                                     <include reference="jz4-cP-FTD"/>
                                                     <include reference="v5p-8a-sRF"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <include reference="Oq2-0b-5ij"/>
+                                                    <include reference="kVB-Zg-hPv"/>
+                                                    <include reference="l1y-o8-PKH"/>
                                                     <include reference="1lo-Q6-vW0"/>
                                                     <include reference="adi-Tv-Thc"/>
                                                     <include reference="dU6-BC-HZ5"/>
                                                     <include reference="hpS-qx-qIe"/>
-                                                    <include reference="Oq2-0b-5ij"/>
-                                                    <include reference="kVB-Zg-hPv"/>
-                                                    <include reference="l1y-o8-PKH"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -1934,7 +1958,7 @@
         <!--Home View Controller-->
         <scene sceneID="czU-zS-OYN">
             <objects>
-                <viewController storyboardIdentifier="homePageViewIdentifier" id="NYj-Bs-ElX" customClass="HomeViewController" customModule="eShopKart" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homePageViewIdentifier" id="NYj-Bs-ElX" customClass="HomeViewController" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YbX-aQ-LPg"/>
                         <viewControllerLayoutGuide type="bottom" id="ShP-y9-y89"/>

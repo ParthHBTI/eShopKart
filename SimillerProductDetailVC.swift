@@ -57,7 +57,8 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         let itemInfoDic  = productsArr.objectAtIndex(indexPath.row) as! Dictionary<String,AnyObject>
         let url = NSURL(string:("http://192.168.0.11/eshopkart/files/thumbs100x100/" + (itemInfoDic["Gallery"]?.objectAtIndex(0)["images"] as? String)!))
         cell.productname?.text = itemInfoDic["name"] as? String
-        cell.amount?.text = itemInfoDic["price"] as? String
+        cell.amount?.text = itemInfoDic["material"] as? String
+        cell.size?.text = itemInfoDic["size"] as? String
         cell.productImgView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         cell.getQuoteBtn.tag = indexPath.row
         cell.getQuoteBtn.addTarget(self, action: #selector(SimillerProductDetailVC.getQuoteAction),forControlEvents: .TouchUpInside
