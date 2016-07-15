@@ -11,6 +11,7 @@ import UIKit
 class SimillerProductViewCell: UITableViewCell {
     @IBOutlet weak var productImgView: UIImageView!
     @IBOutlet weak var productname: UILabel!
+    @IBOutlet weak var size: UILabel!
     @IBOutlet weak var amount: UILabel!
     @IBOutlet weak var getQuoteBtn: UIButton!
     override func awakeFromNib() {
