@@ -52,6 +52,7 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
             body.appendData("\r\n--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
         }
     }
+    
     override func viewWillAppear(animated: Bool) {
         
         self.navigationItem.leftItemsSupplementBackButton = false

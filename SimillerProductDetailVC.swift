@@ -122,7 +122,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
                 //self.tableView.reloadData()
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
-                loading.detailsLabelText = response["msg"] as! String
+                loading.detailsLabelText = response["message"] as! String
                 loading.hide(true, afterDelay: 2)
                 loading.removeFromSuperViewOnHide = true
                 

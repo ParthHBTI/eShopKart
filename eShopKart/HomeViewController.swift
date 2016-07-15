@@ -46,10 +46,12 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         searchProducts.layer.borderWidth = 1.0
         searchProducts.layer.borderColor = UIColor.init(colorLiteralRed: 6/255.0, green: 135/255.0, blue: 255/255.0, alpha: 1.0).CGColor
     }
+    
     override func viewWillAppear(animated: Bool) {
         upArrowImgView.fadeOut()
     }
-    override func didReceiveMemoryWarning() {
+    
+   override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
