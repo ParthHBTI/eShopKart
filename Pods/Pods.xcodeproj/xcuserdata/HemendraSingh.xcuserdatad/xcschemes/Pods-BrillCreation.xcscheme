@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "045739021CE30EDF00EB0FC9"
-               BuildableName = "eShopKart.app"
-               BlueprintName = "eShopKart"
-               ReferencedContainer = "container:eShopKart.xcodeproj">
+               BlueprintIdentifier = "9AC47CD84E493BB100B964E1ABD4A788"
+               BuildableName = "Pods_BrillCreation.framework"
+               BlueprintName = "Pods-BrillCreation"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "045739021CE30EDF00EB0FC9"
-            BuildableName = "BrillCreation.app"
-            BlueprintName = "BrillCreation"
-            ReferencedContainer = "container:BrillCreation.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -51,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "045739021CE30EDF00EB0FC9"
-            BuildableName = "BrillCreation.app"
-            BlueprintName = "BrillCreation"
-            ReferencedContainer = "container:BrillCreation.xcodeproj">
+            BlueprintIdentifier = "9AC47CD84E493BB100B964E1ABD4A788"
+            BuildableName = "Pods_BrillCreation.framework"
+            BlueprintName = "Pods-BrillCreation"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -70,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "045739021CE30EDF00EB0FC9"
-            BuildableName = "eShopKart.app"
-            BlueprintName = "eShopKart"
-            ReferencedContainer = "container:eShopKart.xcodeproj">
+            BlueprintIdentifier = "9AC47CD84E493BB100B964E1ABD4A788"
+            BuildableName = "Pods_BrillCreation.framework"
+            BlueprintName = "Pods-BrillCreation"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
