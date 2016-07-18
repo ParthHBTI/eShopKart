@@ -271,7 +271,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
         } else if(indexPath.row == 2) {
-            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("")
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("HelpVCIdentifier") as! HelpViewController
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
         } else if(indexPath.row == 3) {

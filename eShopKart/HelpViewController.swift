@@ -11,7 +11,7 @@ import UIKit
 class HelpViewController: UIViewController , UITableViewDelegate{
     
     var faqArr: NSArray = ["How do I change my password","How do I add to cart an Item"]
-    var issuesArr:NSArray = ["App Stoped Working","App Crashes"]
+    var issuesArr:NSArray = ["App Stopped Working","App Crashes"]
 
     override func viewDidLoad() {
         super.viewDidLoad()

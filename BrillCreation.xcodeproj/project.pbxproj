@@ -109,6 +109,8 @@
 		730078DB1D13FF0A00ECFC91 /* SignUpPassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpPassViewController.swift; sourceTree = "<group>"; };
 		730078DD1D13FF1500ECFC91 /* SignUpCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpCodeViewController.swift; sourceTree = "<group>"; };
 		730078DF1D14023E00ECFC91 /* bcConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bcConfig.plist; sourceTree = "<group>"; };
+		73A8EEFB1D38CE950068A34B /* JeanDev.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = JeanDev.p12; sourceTree = "<group>"; };
+		73A8EEFC1D38CEA00068A34B /* EboardTeam(1).mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EboardTeam(1).mobileprovision"; sourceTree = "<group>"; };
 		73C126091D2BA1E80048F986 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		73D0DD311D379D2E00E5714C /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		73F0C2191D252595005C48C6 /* PreSignUPVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreSignUPVC.swift; sourceTree = "<group>"; };
@@ -169,6 +171,8 @@
 		045739191CE30F0800EB0FC9 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				73A8EEFC1D38CEA00068A34B /* EboardTeam(1).mobileprovision */,
+				73A8EEFB1D38CE950068A34B /* JeanDev.p12 */,
 				730078DF1D14023E00ECFC91 /* bcConfig.plist */,
 				04B5641B1CEED89E001E9792 /* Launch Screen.storyboard */,
 				045739121CE30EDF00EB0FC9 /* Info.plist */,
@@ -302,7 +306,7 @@
 				TargetAttributes = {
 					045739021CE30EDF00EB0FC9 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 47RFJH396J;
+						DevelopmentTeam = 7438FZYKTN;
 					};
 				};
 			};

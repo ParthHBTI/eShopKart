@@ -51,27 +51,26 @@ class FeedbackViewController: TextFieldViewController {
             self.animateSubmitBtnOnWrongSubmit()
         }
         else {
-            let feedabackInfo :[String : String] = [
-                "subject" : subTxtField.text!,
-                "message" : feedbackTxtView.text!
-            ]
-           
-            SigninOperaion.userFeedback(feedabackInfo, completionClosure: { (response: AnyObject) -> () in
-                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-                loading.mode = MBProgressHUDModeText
-                loading.removeFromSuperViewOnHide = true
-                loading.detailsLabelText = "Thanks for contacting us. We will get back to you shortly."
-                loading.hide(true, afterDelay: 2)
+            let isRegisteredUser = NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
+            if isRegisteredUser != nil {
+                let feedabackInfo :[String : String] = [
+                    "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id") as! String,
+                    "subject" : subTxtField.text!,
+                    "message" : feedbackTxtView.text!
+                ]
+                 SigninOperaion.userFeedback(feedabackInfo, completionClosure: { (response: AnyObject) -> () in
+                    print(response)
+                }) { (error:NSError) -> () in
+                    let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                    loading.mode = MBProgressHUDModeText
+                    loading.detailsLabelText = error.localizedDescription
+                    loading.hide(true, afterDelay: 2)
+                }
                 self.subTxtField.text = ""
                 self.feedbackTxtView.text = ""
-                print(response)
-            }) { (error:NSError) -> () in
-                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-                loading.mode = MBProgressHUDModeText
-                loading.detailsLabelText = error.localizedDescription
-                loading.hide(true, afterDelay: 2)
+            } else {
+                self.makeLoginAlert()
             }
-            
         }
     }
     
@@ -80,13 +79,27 @@ class FeedbackViewController: TextFieldViewController {
     //        self.navigationController?.popViewControllerAnimated(true)
     //    }
     
-    
     func animateSubmitBtnOnWrongSubmit(){
         let bounds = self.submitBtn.bounds
         UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: .CurveEaseOut, animations: {
             self.submitBtn.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
             self.submitBtn.enabled = true
             }, completion: nil)
+    }
+    
+    func makeLoginAlert()
+    {
+        let refreshAlert = UIAlertController(title: "Please Login", message: "To make this action, please login first.", preferredStyle: UIAlertControllerStyle.Alert)
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            let storyboard = UIStoryboard(name: "Login" , bundle:  nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as? UserProfileViewController
+            let navController = UINavigationController(rootViewController: vc!)
+            self.navigationController?.presentViewController(navController, animated: true, completion: nil)
+        }))
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+            refreshAlert .dismissViewControllerAnimated(true, completion: nil)
+        }))
+        self.presentViewController(refreshAlert, animated: true, completion: nil)
     }
     
     /*
@@ -98,4 +111,5 @@ class FeedbackViewController: TextFieldViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
 }
