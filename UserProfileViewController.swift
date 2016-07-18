@@ -23,7 +23,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
     @IBOutlet var tableView: UITableView!
     @IBOutlet var imageArray: NSMutableArray! = []
     @IBOutlet var profileArray: NSArray! = ["Customer Support","Share Our App","Need Help","App Feedback"]
-    var profileArr2: NSArray = ["Customer Support","Share Our App","Need Help","App Feedback","My Profile","My Requests"]
+    var profileArr2: NSArray = ["Customer Support","Share Our App","Need Help","App Feedback","My Profile","My Address","My Requests"]
     @IBAction func loginAction(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Login", bundle:  nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("loginVC") as? LoginViewController
@@ -279,12 +279,12 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
         } else if (indexPath.row == 4) {
-            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("")
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("") as! AddressViewController
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
         } else {
         
-            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as! CartItemDetailVC
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("AddressIdentity") as! AddressViewController
             self.navigationController?.pushViewController(destinationVC, animated: true)
         }
     }

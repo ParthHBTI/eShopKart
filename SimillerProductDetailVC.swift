@@ -27,8 +27,11 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         SigninOperaion.get_products(userInfo, completionClosure: { response in
             self.productsArr = (response as? NSArray)!
             self.tableview.reloadData()
-        }) { err in
-        }
+        }) { (error: NSError) -> () in
+            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            loading.mode = MBProgressHUDModeText
+            loading.detailsLabelText = error.localizedDescription
+            loading.hide(true, afterDelay: 2)        }
     }
     
     override func didReceiveMemoryWarning() {

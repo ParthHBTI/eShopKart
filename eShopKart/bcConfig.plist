@@ -32,6 +32,10 @@
 		<string>webservices/view_cart/</string>
 		<key>userFeedback</key>
 		<string>webservices/user_feedback/</string>
+		<key>add_address</key>
+		<string>webservices/add_address/</string>
+		<key>get_address</key>
+		<string>webservices/get_address/</string>
 	</dict>
 </dict>
 </plist>
