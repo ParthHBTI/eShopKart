@@ -76,8 +76,8 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
             
             if subViews is UIButton {
                 let button = subViews as! UIButton
-                //selectedCell.bringSubviewToFront(button)
                 button.backgroundColor = UIColor.init(colorLiteralRed: 238/255.0, green: 162.0/255, blue: 82.0/255, alpha: 1)
+                
             }
         }
         let itemInfoDic  = productsArr.objectAtIndex(indexPath.row) as! Dictionary<String,AnyObject>

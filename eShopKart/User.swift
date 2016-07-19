@@ -22,6 +22,7 @@ class User: NSObject {
     var token_id: String?  //need to confirm in this and above
     var firstname: String?
     var lastname: String?
+    var address_id: String?
     
     init(inDict:NSDictionary) {
         super.init()
@@ -37,6 +38,7 @@ class User: NSObject {
         self.token_id = inDict["token_id"] as? String
         self.firstname = inDict["firstname"] as? String
         self.lastname = inDict["lastname"] as? String
+        self.address_id = inDict["address_id"] as? String
         if (self.fullname == nil) {
             if self.firstname == nil {
                 self.fullname = inDict["email"] as? String
@@ -70,6 +72,7 @@ class User: NSObject {
         aCoder.encodeObject(self.token_id, forKey: "token_id")
         aCoder.encodeObject(self.firstname, forKey: "firstname")
         aCoder.encodeObject(self.lastname, forKey: "lastname")
+        aCoder.encodeObject(self.address_id, forKey: "address_id")
     }
     
     init(coder aDecoder: NSCoder!) {
@@ -85,6 +88,7 @@ class User: NSObject {
         self.token_id = aDecoder.decodeObjectForKey("token_id") as? String
         self.firstname = aDecoder.decodeObjectForKey("firstname") as? String
         self.lastname = aDecoder.decodeObjectForKey("lastname") as? String
+        self.address_id = aDecoder.decodeObjectForKey("address_id") as? String
     }
     
     override init() {

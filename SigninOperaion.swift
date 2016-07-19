@@ -188,6 +188,17 @@ class SigninOperaion: BaseOperation, OperationDelegate {
         let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("add_address"))
         let URL:NSURL = NSURL(string: urlString as String)!
         BaseOperation.initOperation(URL, userInfo: userInfo, onSuccess: { (onSuccess:AnyObject) -> () in
+            let dic = onSuccess as! NSDictionary
+            completionClosure(dic)
+            }, onError: { (error:NSError) -> () in
+                havingError(error)
+        })
+    }
+    
+    class func delete_address(userInfo: NSDictionary,completionClosure: (AnyObject) -> (), havingError:(NSError) -> ()) ->() {
+        let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("delete_address"))
+        let URL:NSURL = NSURL(string: urlString as String)!
+        BaseOperation.initOperation(URL, userInfo: userInfo, onSuccess: { (onSuccess:AnyObject) -> () in
             let dic = onSuccess as! NSArray
             completionClosure(dic)
             }, onError: { (error:NSError) -> () in

@@ -36,6 +36,8 @@
 		<string>webservices/add_address/</string>
 		<key>get_address</key>
 		<string>webservices/get_address/</string>
+		<key>delete_address</key>
+		<string>webservices/delete_address/</string>
 	</dict>
 </dict>
 </plist>
