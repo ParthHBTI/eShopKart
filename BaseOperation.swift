@@ -64,4 +64,26 @@ class BaseOperation {
             onError(error!)
         }
     }
+    
+    class func initOperationWithImage(inUrl:NSURL, userInfo: NSDictionary ,image: UIImage? ,onSuccess: (AnyObject) -> (), onError: (NSError) -> ()) {
+        print("userinfo: \(userInfo)")
+        let postDic = NSMutableDictionary(dictionary: userInfo)
+        postDic.setValue(NSUserDefaults.standardUserDefaults().valueForKey("token_id") as? String ?? "12345", forKey: "token_id")
+        let manager:	AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        let compression: CGFloat = 0.5
+        let imageData = UIImageJPEGRepresentation(image!, compression)
+        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
+        manager.POST(inUrl.absoluteString, parameters: postDic, constructingBodyWithBlock: { (formData: AFMultipartFormData!) -> Void in
+            if imageData != nil {
+                formData.appendPartWithFileData(imageData!, name: "media_file", fileName: "image.png", mimeType: "image/png")
+            }
+            },
+                     success: { (operation:AFHTTPRequestOperation!, responseObject:AnyObject!) -> Void in
+                        onSuccess(responseObject)
+            }, failure: { (operation: AFHTTPRequestOperation?, error:NSError!) -> Void in
+                onError(error)
+        })
+    }
+
+    
 }
