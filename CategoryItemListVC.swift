@@ -24,8 +24,11 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
         SigninOperaion.get_categories(userInfo, completionClosure: { response in
             self.subcatResponseArr = response
             self.cteagoryItemsTblView.reloadData()
-        }) { err in
-        }
+        }) {(error: NSError) -> () in
+            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            loading.mode = MBProgressHUDModeText
+            loading.detailsLabelText = error.localizedDescription
+            loading.hide(true, afterDelay: 2)        }
     }
     
     override func didReceiveMemoryWarning() {

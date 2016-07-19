@@ -16,12 +16,16 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let userInfo = [
-            "" : ""
+            "1" : "1"
         ]
         SigninOperaion.get_categories(userInfo, completionClosure: { response in
             self.responseArr = response
             self.categoryTblView.reloadData()
-        }) { err in
+        }) { (error: NSError) -> () in
+            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            loading.mode = MBProgressHUDModeText
+            loading.detailsLabelText = error.localizedDescription
+            loading.hide(true, afterDelay: 2)
     }
         self.categoryTblView.rowHeight = 55
     }
