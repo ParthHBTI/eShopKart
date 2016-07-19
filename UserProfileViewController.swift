@@ -267,11 +267,11 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
         } else if(indexPath.row == 1) {
-            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("")
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("AppShareVCIdentifire") as! AppShareViewController
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
         } else if(indexPath.row == 2) {
-            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("")
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("HelpVCIdentifier") as! HelpViewController
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
         } else if(indexPath.row == 3) {
@@ -279,12 +279,13 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
         } else if (indexPath.row == 4) {
-            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("") as! AddressViewController
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("ProfileSettingVCIdentifier") as! ProfileSettingViewController
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
         } else {
-        
-            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("AddressIdentity") as! AddressViewController
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("AddressVCIdentifier") as! AddressViewController
             self.navigationController?.pushViewController(destinationVC, animated: true)
         }
     }

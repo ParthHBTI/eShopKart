@@ -78,6 +78,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cartDetailResponseArr.count
     }
+   
     
     @IBAction func removeItemFromCart(sender: AnyObject) {
         let currentRow = sender.tag
@@ -134,7 +135,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         SigninOperaion.request_for_code(userInfo, completionClosure: { response in
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
-            loading.detailsLabelText = response["msg"] as! String
+            loading.detailsLabelText = response["message"] as! String
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
             self.cartDetailResponseArr.removeAllObjects()
@@ -154,7 +155,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         cell.productColor?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["colour"] as? String
         cell.productPrice?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["unitprice"] as? String
         cell.productQuantity?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["quantity"] as? String
-        let url = NSURL(string:("http://192.168.0.11/eshopkart/files/thumbs100x100/" + (cartDetailResponseArr.objectAtIndex(indexPath.row)["image"] as? String)!))
+        let url = NSURL(string:("http://192.168.0.9/eshopkart/files/thumbs100x100/" + (cartDetailResponseArr.objectAtIndex(indexPath.row)["image"] as? String)!))
         cell.productImg?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         cell.removBtn.tag = indexPath.row
         cell.removBtn.addTarget(self, action: #selector(CartItemDetailVC.removeItemFromCart),forControlEvents: .TouchUpInside)

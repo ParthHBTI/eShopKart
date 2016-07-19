@@ -58,7 +58,9 @@
 		730078DE1D13FF1500ECFC91 /* SignUpCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730078DD1D13FF1500ECFC91 /* SignUpCodeViewController.swift */; };
 		730078E01D14023E00ECFC91 /* bcConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 730078DF1D14023E00ECFC91 /* bcConfig.plist */; };
 		730879431D12ABDD00F4EFBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0436945E1CE450A7000868CE /* Main.storyboard */; };
+		7336060A1D3CE3DB00C9A15F /* AppShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733606091D3CE3DB00C9A15F /* AppShareViewController.swift */; };
 		73C1260A1D2BA1E80048F986 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C126091D2BA1E80048F986 /* FeedbackViewController.swift */; };
+		73CFD22D1D3DFC58008D0AC5 /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CFD22C1D3DFC58008D0AC5 /* ProfileSettingViewController.swift */; };
 		73D0DD321D379D2F00E5714C /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D0DD311D379D2E00E5714C /* HelpViewController.swift */; };
 		73F0C21A1D252595005C48C6 /* PreSignUPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F0C2191D252595005C48C6 /* PreSignUPVC.swift */; };
 		74A51CC8A3AE332317F4C0AC /* Pods_BrillCreation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A9121C328A040311E7CE07 /* Pods_BrillCreation.framework */; };
@@ -123,7 +125,11 @@
 		730078DB1D13FF0A00ECFC91 /* SignUpPassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpPassViewController.swift; sourceTree = "<group>"; };
 		730078DD1D13FF1500ECFC91 /* SignUpCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpCodeViewController.swift; sourceTree = "<group>"; };
 		730078DF1D14023E00ECFC91 /* bcConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bcConfig.plist; sourceTree = "<group>"; };
+		733606091D3CE3DB00C9A15F /* AppShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppShareViewController.swift; sourceTree = "<group>"; };
+		73A8EEFB1D38CE950068A34B /* JeanDev.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = JeanDev.p12; sourceTree = "<group>"; };
+		73A8EEFC1D38CEA00068A34B /* EboardTeam(1).mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EboardTeam(1).mobileprovision"; sourceTree = "<group>"; };
 		73C126091D2BA1E80048F986 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		73CFD22C1D3DFC58008D0AC5 /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
 		73D0DD311D379D2E00E5714C /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		73F0C2191D252595005C48C6 /* PreSignUPVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreSignUPVC.swift; sourceTree = "<group>"; };
 		74D4A6FA0A2E707CE4606434 /* Pods-BrillCreation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrillCreation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BrillCreation/Pods-BrillCreation.debug.xcconfig"; sourceTree = "<group>"; };
@@ -187,6 +193,8 @@
 		045739191CE30F0800EB0FC9 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				73A8EEFC1D38CEA00068A34B /* EboardTeam(1).mobileprovision */,
+				73A8EEFB1D38CE950068A34B /* JeanDev.p12 */,
 				730078DF1D14023E00ECFC91 /* bcConfig.plist */,
 				04B5641B1CEED89E001E9792 /* Launch Screen.storyboard */,
 				045739121CE30EDF00EB0FC9 /* Info.plist */,
@@ -199,6 +207,8 @@
 		04EEB2301CEC52500069A877 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				73CFD22C1D3DFC58008D0AC5 /* ProfileSettingViewController.swift */,
+				733606091D3CE3DB00C9A15F /* AppShareViewController.swift */,
 				04A2FA311D39076600C10875 /* AddNewAddressVC.swift */,
 				04A2FA271D38E54300C10875 /* AddressViewController.swift */,
 				73D0DD311D379D2E00E5714C /* HelpViewController.swift */,
@@ -323,7 +333,7 @@
 				TargetAttributes = {
 					045739021CE30EDF00EB0FC9 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 47RFJH396J;
+						DevelopmentTeam = 7438FZYKTN;
 					};
 				};
 			};
@@ -433,6 +443,7 @@
 				043694631CE465DC000868CE /* BaseViewController.swift in Sources */,
 				180B482D1CF2C74100B5808C /* HomeViewController.swift in Sources */,
 				730078D41D13FDF900ECFC91 /* SigninOperaion.swift in Sources */,
+				73CFD22D1D3DFC58008D0AC5 /* ProfileSettingViewController.swift in Sources */,
 				730078D21D13FDB600ECFC91 /* User.swift in Sources */,
 				18F87F751CF5B3AC0079750F /* MBProgressHUD.m in Sources */,
 				04B700791CE9D56900C4E292 /* UserProfileCell.swift in Sources */,
@@ -445,6 +456,7 @@
 				730078D01D13FBE000ECFC91 /* TextFieldViewController.swift in Sources */,
 				043694671CE4877D000868CE /* ESKCategoryTableVC.swift in Sources */,
 				18A93DF81CEF36DF0046F78D /* ImageWithTextField.swift in Sources */,
+				7336060A1D3CE3DB00C9A15F /* AppShareViewController.swift in Sources */,
 				0436946B1CE4A261000868CE /* SimillerProductDetailVC.swift in Sources */,
 				045739071CE30EDF00EB0FC9 /* AppDelegate.swift in Sources */,
 				18F56BA91CFD5A6500CFB052 /* BaseOperation.swift in Sources */,
