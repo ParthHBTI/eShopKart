@@ -20,19 +20,19 @@ class AddressViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
     @IBAction func selectionAct(sender: AnyObject) {
-        let tempCell = UITableView()
-        if flag != false {
-            self.editButton.hidden = true
-            self.deleteButton.hidden = true
-            self.selectionBtn.tintColor = UIColor.blackColor()
-            flag = false
-            
+        let buttonPress = sender.tag
+        print(buttonPress)
+        let tempCell =  AddressViewCell()
+        for  temp in 0...buttonPress {
+            if temp  == buttonPress {
+                tempCell.deleteButton?.hidden = false
+                tempCell.editButton?.hidden = false
             } else {
-            self.editButton.hidden = false
-            self.deleteButton.hidden = false
-            self.selectionBtn.tintColor = UIColor.blueColor()
-            flag = true
+                tempCell.deleteButton?.hidden = true
+                tempCell.editButton?.hidden = true
+            }
         }
     }
  

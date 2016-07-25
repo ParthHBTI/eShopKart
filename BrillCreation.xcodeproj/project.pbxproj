@@ -16,6 +16,8 @@
 		046B8EC31CEDD2470024EF0E /* ESKLoginSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */; };
 		046C45DB1CE5E40F00C8D13C /* CartItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */; };
 		046FB5E81D0160D60059F904 /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FB5E71D0160D60059F904 /* SignUPViewController.swift */; };
+		0489B50E1D45D07500F2AC34 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0489B50D1D45D07500F2AC34 /* CoreLocation.framework */; };
+		0489B5101D45D09200F2AC34 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0489B50F1D45D09200F2AC34 /* AddressBookUI.framework */; };
 		04A022421CEC47690002B3D1 /* EKartSideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */; };
 		04A2FA261D38E51D00C10875 /* AddressViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A2FA251D38E51D00C10875 /* AddressViewCell.swift */; };
 		04A2FA281D38E54300C10875 /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A2FA271D38E54300C10875 /* AddressViewController.swift */; };
@@ -79,6 +81,8 @@
 		046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ESKLoginSignUpVC.swift; path = ../ESKLoginSignUpVC.swift; sourceTree = "<group>"; };
 		046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartItemDetailVC.swift; path = ../CartItemDetailVC.swift; sourceTree = "<group>"; };
 		046FB5E71D0160D60059F904 /* SignUPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUPViewController.swift; path = ../SignUPViewController.swift; sourceTree = "<group>"; };
+		0489B50D1D45D07500F2AC34 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0489B50F1D45D09200F2AC34 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKartSideMenuManager.swift; path = ../EKartSideMenuManager.swift; sourceTree = "<group>"; };
 		04A2FA251D38E51D00C10875 /* AddressViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressViewCell.swift; path = ../AddressViewCell.swift; sourceTree = "<group>"; };
 		04A2FA271D38E54300C10875 /* AddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressViewController.swift; path = ../AddressViewController.swift; sourceTree = "<group>"; };
@@ -126,8 +130,6 @@
 		730078DD1D13FF1500ECFC91 /* SignUpCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpCodeViewController.swift; sourceTree = "<group>"; };
 		730078DF1D14023E00ECFC91 /* bcConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bcConfig.plist; sourceTree = "<group>"; };
 		733606091D3CE3DB00C9A15F /* AppShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppShareViewController.swift; sourceTree = "<group>"; };
-		73A8EEFB1D38CE950068A34B /* JeanDev.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = JeanDev.p12; sourceTree = "<group>"; };
-		73A8EEFC1D38CEA00068A34B /* EboardTeam(1).mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EboardTeam(1).mobileprovision"; sourceTree = "<group>"; };
 		73C126091D2BA1E80048F986 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		73CFD22C1D3DFC58008D0AC5 /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
 		73D0DD311D379D2E00E5714C /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0489B5101D45D09200F2AC34 /* AddressBookUI.framework in Frameworks */,
+				0489B50E1D45D07500F2AC34 /* CoreLocation.framework in Frameworks */,
 				18B49E871CF5AAF900B728BF /* MBProgressHUD.framework in Frameworks */,
 				18B49E851CF5AAD300B728BF /* AFNetworking.framework in Frameworks */,
 				74A51CC8A3AE332317F4C0AC /* Pods_BrillCreation.framework in Frameworks */,
@@ -193,8 +197,6 @@
 		045739191CE30F0800EB0FC9 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				73A8EEFC1D38CEA00068A34B /* EboardTeam(1).mobileprovision */,
-				73A8EEFB1D38CE950068A34B /* JeanDev.p12 */,
 				730078DF1D14023E00ECFC91 /* bcConfig.plist */,
 				04B5641B1CEED89E001E9792 /* Launch Screen.storyboard */,
 				045739121CE30EDF00EB0FC9 /* Info.plist */,
@@ -290,6 +292,8 @@
 		D48A0526576398153FC56E00 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0489B50F1D45D09200F2AC34 /* AddressBookUI.framework */,
+				0489B50D1D45D07500F2AC34 /* CoreLocation.framework */,
 				18B49E861CF5AAF900B728BF /* MBProgressHUD.framework */,
 				18B49E841CF5AAD300B728BF /* AFNetworking.framework */,
 				61B7E42343524F180F2EE1E5 /* Pods.framework */,

@@ -7,95 +7,86 @@
 //
 
 import UIKit
-class AddressViewController: UITableViewController {
+class AddressViewController: BaseViewController, UITableViewDelegate {
     var addressArray = NSMutableArray()
     var currentSelectedCell = -1
+    var tempCell = AddressViewCell()
+    var checkOption = false
+    @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let userInfo = [
             "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id") as! String,
         ]
+        
         SigninOperaion.get_address(userInfo, completionClosure: { response in
             print(response)
+            self.addressArray.removeAllObjects()
             var values: AnyObject = []
-            values = response
-            for var dic in values as! NSArray{
-                self.addressArray.addObject(dic)
+            //values = response
+            for var dic in response as! NSArray{
+          self.addressArray.addObject(dic)
+                self.tableView.reloadData()
             }
             self.tableView.reloadData()
-            print("\n\n\n\n\n\n\(self.addressArray)")
         }) { (error: NSError) -> () in
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = error.localizedDescription
             loading.hide(true, afterDelay: 2)
-            
         }
+         self.tableView.reloadData()
     }
 
     @IBAction func editAction(sender: AnyObject) {
-        let storyboard = UIStoryboard(name: "Main" , bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("addNewAddID") as? AddNewAddressVC
-        self.navigationController?.pushViewController(vc!, animated: true)
+        checkOption = true
+        let id = addressArray.objectAtIndex(sender.tag)["id"] as? String
+        let itemInfoDic  = addressArray.objectAtIndex(sender.tag) as! NSDictionary
+        let destinationVC = storyboard!.instantiateViewControllerWithIdentifier("addNewAddID") as! AddNewAddressVC
+        destinationVC.addressInfoDic = itemInfoDic
+        destinationVC.flagPoint = checkOption
+        destinationVC.address_id = id!
+        print(itemInfoDic)
+        self.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     func deleteAction1 (sender: AnyObject) {
+        let id = addressArray.objectAtIndex(sender.tag)["id"] as? String
               let userInfo = [
             "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id")!,
-            "address_id" : ""
+            "address_id" : id! as String
         ]
-        let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        SigninOperaion.delete_address(userInfo, completionClosure: { [weak self] response in
-            if let weakSelf = self {
-                let  resp: NSDictionary = response as! NSDictionary
-                if resp.valueForKey("message") as! String == "Success" {
-                    loading.mode = MBProgressHUDModeText
-                    loading.labelText = "Success!!!"
-                    loading.detailsLabelText = "Address deleted successfully"
-                    weakSelf.addressArray.removeObjectAtIndex(weakSelf.currentSelectedCell)
-                    if weakSelf.addressArray.count==0 {
-                        weakSelf.tableView.reloadData()
-                    } else {
-                        weakSelf.tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: weakSelf.currentSelectedCell, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Right)
-                    }
-                } else {
-                    loading.mode = MBProgressHUDModeText
-                    loading.labelText = "Error!!!"
-                    loading.detailsLabelText = resp.valueForKey("message") as! String
-                }
-            }
-            loading.hide(true, afterDelay: 2)
-            }, havingError: { [weak self] error in
-                loading.mode = MBProgressHUDModeText
-                loading.labelText = "Error!!!"
-                loading.detailsLabelText = error.localizedDescription
-                loading.hide(true, afterDelay: 2)
-                print(error.localizedDescription)
-            })
-        
         SigninOperaion.delete_address(userInfo, completionClosure: { response in
-            print(response)
             var values: AnyObject = []
-            values = response
-            for var dic in values as! NSArray{
-                self.addressArray.addObject(dic)
-            }
+            values = response as! NSArray
+            print(sender.tag)
+            self.addressArray.removeObjectAtIndex(sender.tag)
             self.tableView.reloadData()
-            print("\n\n\n\n\n\n\(self.addressArray)")
         }) { (error: NSError) -> () in
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = error.localizedDescription
             loading.hide(true, afterDelay: 2)
         }
-
     }
+    
     @IBAction func selectAddress(sender: AnyObject) {
-        let isButtonClick = sender.tag
-        if isButtonClick != nil {
-            sender.tag
+        let cell: AddressViewCell = (self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: sender.tag, inSection: 0)) as? AddressViewCell)!
+        var temp = -1
+        let buttonPress = sender.tag
+        repeat {
+            temp += 1
+            cell.selectionBtn!.tintColor = UIColor.blackColor()
+        } while (temp != buttonPress)
+        if temp == buttonPress {
+        cell.editButton.hidden = false
+        cell.deleteButton.hidden = false
+        cell.selectionBtn!.tintColor = UIColor.blueColor()
         }
+        cell.editButton.hidden = false
+        cell.deleteButton.hidden = false
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -106,33 +97,53 @@ class AddressViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  addressArray.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("addressIdentity", forIndexPath: indexPath) as! AddressViewCell
-        cell.addressTextField.font?.fontWithSize(15)
-        cell.deleteButton.addTarget(self, action:  #selector(AddressViewController.deleteAction1(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-         cell.selectionBtn.addTarget(self, action:  #selector(AddressViewController.selectAddress(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-        cell.editButton.addTarget(self, action:  #selector(AddressViewController.editAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.deleteButton!.addTarget(self, action:  #selector(AddressViewController.deleteAction1(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+         cell.selectionBtn!.addTarget(self, action:  #selector(AddressViewController.selectAddress(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.editButton!.addTarget(self, action:  #selector(AddressViewController.editAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         cell.userName?.text = addressArray.objectAtIndex(indexPath.row)["fullname"] as? String
+        cell.addressTextField.font = UIFont.boldSystemFontOfSize(18.0)
         cell.addressTextField.text = addressArray.objectAtIndex(indexPath.row)["fullAddress"] as? String
             cell.editButton.hidden = true
-            cell.deleteButton.hidden = true
-            cell.selectionBtn.tintColor = UIColor.blackColor()
+           cell.deleteButton.hidden = true
+        cell.editButton!.tag = indexPath.row
+        cell.selectionBtn!.tag = indexPath.row
+        cell.deleteButton!.tag = indexPath.row
+        tempCell = cell
       return cell
     }
-
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-       }
+  
+    
+     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let addDic = addressArray.objectAtIndex(indexPath.row) as! NSDictionary
+        print(addDic)
+       
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationItem.leftItemsSupplementBackButton = false
+    }
+    
+    override func backAction() {
+        for controller: UIViewController in self.navigationController!.viewControllers {
+            if (controller is UserProfileViewController) {
+                self.navigationController!.popToViewController(controller, animated: true)
+            }
+        }
+        }
+
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -177,6 +188,6 @@ class AddressViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-}
+
 
 

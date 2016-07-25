@@ -20,6 +20,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             "user_id" : userId!,
             ]
         SigninOperaion.view_cart(userInfo, completionClosure: { response in
+            print(response)
             for var obj in response as! NSArray
             {
                 self.cartDetailResponseArr.addObject(obj)
@@ -89,7 +90,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             "product_id" : productId
         ]
         SigninOperaion.clear_cart(userInfo, completionClosure: { response in
-           
+           //print(response)
         }) { (error: NSError) -> () in
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
@@ -155,7 +156,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         cell.productColor?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["colour"] as? String
         cell.productPrice?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["unitprice"] as? String
         cell.productQuantity?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["quantity"] as? String
-        let url = NSURL(string:("http://192.168.0.9/eshopkart/files/thumbs100x100/" + (cartDetailResponseArr.objectAtIndex(indexPath.row)["image"] as? String)!))
+        let url = NSURL(string:("http://192.168.0.5/eshopkart/files/thumbs100x100/" + (cartDetailResponseArr.objectAtIndex(indexPath.row)["image"] as? String)!))
         cell.productImg?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         cell.removBtn.tag = indexPath.row
         cell.removBtn.addTarget(self, action: #selector(CartItemDetailVC.removeItemFromCart),forControlEvents: .TouchUpInside)

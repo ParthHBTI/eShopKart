@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import CoreLocation
+import AddressBookUI
 
-class AddNewAddressVC: UIViewController {
+class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegate,UITextFieldDelegate {
 
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var zipCode: UITextField!
@@ -22,71 +24,196 @@ class AddNewAddressVC: UIViewController {
     @IBOutlet weak var alternateMoNo: UITextField!
     @IBOutlet weak var checkBtn: UIButton!
     var addressInfo = NSMutableArray()
+    var addressInfoDic = NSDictionary()
+    var address_id = NSString()
+    var flagPoint = Bool()
+    var addEdit = false
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var guiView: UIView!
+    
+    override func viewDidLayoutSubviews()  {
+        super.viewDidLayoutSubviews()
+
+        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: view.frame.size.height + 220);
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let userInfo = [
-            "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id") as! String,
-            ]
-        SigninOperaion.get_address(userInfo, completionClosure: { response in
-            print(response)
-            var values: AnyObject = []
-            values = response
-            for var dic in values as! NSArray{
-                self.addressInfo.addObject(dic)
-            }
-            print(self.addressInfo)
-        }) { (error: NSError) -> () in
-            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            loading.mode = MBProgressHUDModeText
-            loading.detailsLabelText = error.localizedDescription
-            loading.hide(true, afterDelay: 2)
-        }
-
+        zipCode.delegate = self
+        city.delegate = self
+        mobileNo.delegate = self
+        userName.delegate = self
+        address.delegate = self
+        state.delegate = self
+        landmark.delegate = self
+        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: view.frame.size.height + 500);
+        scrollView.setNeedsDisplay()
+        if flagPoint {
+            userName.text = addressInfoDic.objectForKey("fullname") as? String
+            zipCode.text  = addressInfoDic.objectForKey("zipcode") as? String
+            city.text = addressInfoDic.objectForKey("city") as? String
+            address.text = addressInfoDic.objectForKey("address") as? String
+            landmark.text = addressInfoDic.objectForKey("landmark") as? String
+            state.text = addressInfoDic.objectForKey("state") as? String
+            mobileNo.text = addressInfoDic.objectForKey("contactnumber") as? String
+            alternateMoNo.text = addressInfoDic.objectForKey("alternatenumber") as? String
+                }
         // Do any additional setup after loading the view.
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     @IBAction func saveAndContinue(sender: AnyObject) {
-        let userInfo = [
-            "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id") as! String,
-            "fullname" : userName.text! as String,
-            "address" : address.text! as String,
-            "city" : city.text! as String,
-            "state" : state.text! as String,
-            "zipcode" : zipCode!.text! as String,
-            "contact_number" : mobileNo.text! as String,
-            "landmark" : landmark.text! as String
-        ]
-        SigninOperaion.add_address(userInfo, completionClosure: { response in
-           print(response)
-            let storyboard = UIStoryboard(name: "Main" , bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("AddressIdentity") as? AddressViewController
-            self.navigationController?.pushViewController(vc!, animated: true)
-        }) { (error: NSError) -> () in
-            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            loading.mode = MBProgressHUDModeText
-            loading.detailsLabelText = error.localizedDescription
-            loading.hide(true, afterDelay: 2)
-
+        let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        addEdit = true
+        if self.flagPoint {
+            if zipCode.text!.isEmpty == true || userName.text!.isEmpty == true || address.text!.isEmpty == true || state.text!.isEmpty == true || city.text!.isEmpty == true || mobileNo.text!.isEmpty == true || landmark.text!.isEmpty == true {
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = "please enter all values here!"
+                loading.hide(true, afterDelay: 2)
+                loading.removeFromSuperViewOnHide = true
+            } else if (mobileNo.text!.characters.count) < 10 || (mobileNo.text!.characters.count) > 10 {
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = "Mobile Number is not valid !"
+                loading.hide(true, afterDelay: 2)
+                loading.removeFromSuperViewOnHide = true
+            } else if (zipCode.text!.characters.count) < 6 || (zipCode.text!.characters.count) > 6 {
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = "ZipCode is not valid !"
+                loading.hide(true, afterDelay: 2)
+                loading.removeFromSuperViewOnHide = true
+            }else {
+            let userInfo = [
+                "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id") as! String,
+                "fullname" : userName!.text!,
+                "address" : address!.text!,
+                "city" : city!.text! ,
+                "state" : state.text! as String,
+                "zipcode" : zipCode!.text! as String,
+                "contact_number" : mobileNo.text! as String,
+                "landmark" : landmark.text! as String,
+                "address_id" : address_id
+            ]
+            SigninOperaion.add_address(userInfo, completionClosure: { response in
+                
+                print(response)
+                
+            }) { (error: NSError) -> () in
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = error.localizedDescription
+                loading.hide(true, afterDelay: 2)
+            }
+                let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
+                let vc = storyboard.instantiateViewControllerWithIdentifier("AddressVCIdentifier") as? AddressViewController
+                self.navigationController?.pushViewController(vc!, animated: true)
         }
-
-        
+        } else {
+            if zipCode.text!.isEmpty == true || userName.text!.isEmpty == true || address.text!.isEmpty == true || state.text!.isEmpty == true || city.text!.isEmpty == true || mobileNo.text!.isEmpty == true || landmark.text!.isEmpty == true {
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = "please enter all values here!"
+                loading.hide(true, afterDelay: 2)
+                loading.removeFromSuperViewOnHide = true
+            } else if (mobileNo.text!.characters.count) < 10 || (mobileNo.text!.characters.count) > 10 {
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = "Mobile Number is not valid !"
+                loading.hide(true, afterDelay: 2)
+                loading.removeFromSuperViewOnHide = true
+            } else if (zipCode.text!.characters.count) < 6 || (zipCode.text!.characters.count) > 6 {
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = "ZipCode is not valid !"
+                loading.hide(true, afterDelay: 2)
+                loading.removeFromSuperViewOnHide = true
+            } else {
+                let userInfo = [
+                    "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id") as! String,
+                    "fullname" : userName!.text!,
+                    "address" : address!.text!,
+                    "city" : city!.text! ,
+                    "state" : state.text! as String,
+                    "zipcode" : zipCode!.text! as String,
+                    "contact_number" : mobileNo.text! as String,
+                    "landmark" : landmark.text! as String,
+                ]
+                SigninOperaion.add_address(userInfo, completionClosure: { response in
+                    print(response)
+                    
+                }) { (error: NSError) -> () in
+                    let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                    loading.mode = MBProgressHUDModeText
+                    loading.detailsLabelText = error.localizedDescription
+                    loading.hide(true, afterDelay: 2)
+                }
+                let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
+                let vc = storyboard.instantiateViewControllerWithIdentifier("AddressVCIdentifier") as? AddressViewController
+                self.navigationController?.pushViewController(vc!, animated: true)
+            }
+        }
     }
+    func textViewDidChange(textView: UITextView) {
+        userName.text = userName.text
+        print(userName.text)
+    }
+    func textFieldDidChange() {
+        userName.text = userName.text
+        city.text = city.text
+        mobileNo.text = mobileNo.text
+        landmark.text = landmark.text
+        zipCode.text = zipCode.text
+        address.text = address .text
+        state.text = state.text
+    }
+    
     @IBAction func cancelAction(sender: AnyObject) {
-        if (self.navigationController?.topViewController?.isKindOfClass(AddNewAddressVC)) == false{
-            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("AddressIdentity") as? AddressViewController
-            let navController = UINavigationController(rootViewController: vc!)
-            self.presentViewController(navController, animated: true, completion: nil)
-        }
-
+        userName.text = ""
+        zipCode.text  = ""
+        city.text = ""
+        address.text = ""
+        landmark.text = ""
+        state.text = ""
+        mobileNo.text = ""
+        alternateMoNo.text = ""
     }
 
+//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+//        let textFieldText: NSString = zipCode.text ?? ""
+//        let currentString = textFieldText.stringByReplacingCharactersInRange(range, withString: string)
+//        let length = currentString.characters.count
+//        if length >= 6{
+//            
+//        } else if length == 6 {
+//            enterZip(textFieldText as String)
+//        }
+//        
+//        return true
+//    }
+    
+    func enterZip(zipCode: String ) {
+        let geoCoder = CLGeocoder();
+        let params = [
+            String(kABPersonAddressZIPKey): zipCode as String,
+            String(kABPersonAddressCountryCodeKey): "IN",
+            String(kABPersonAddressStreetKey): ""
+            ]
+        geoCoder.geocodeAddressDictionary(params) {
+            (plasemarks, error) -> Void in
+            var plases = plasemarks
+            if plases != nil && plases?.count > 0 {
+                let firstPlace = plases?[0]
+                let city = firstPlace?.addressDictionary![String(kABPersonAddressCityKey)] as? String
+                let state = firstPlace?.addressDictionary![String(kABPersonAddressStateKey)] as? String
+                let country = firstPlace?.addressDictionary![String(kABPersonAddressCountryKey)] as? String
+                print("\(city)\n\(state)\n\(country)")
+                return;
+            }
+        }
+    }
+    
+  
     /*
     // MARK: - Navigation
 
