@@ -207,10 +207,10 @@ class SigninOperaion: BaseOperation, OperationDelegate {
     }
     
     class func editProfile(userInfo: NSDictionary,completionClosure: (AnyObject) -> (), havingError:(NSError) -> ()) ->() {
-        let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("add_address"))
+        let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("updateProfile"))
         let URL:NSURL = NSURL(string: urlString as String)!
         BaseOperation.initOperation(URL, userInfo: userInfo, onSuccess: { (onSuccess:AnyObject) -> () in
-            let dic = onSuccess as! NSArray
+            let dic = onSuccess as! NSDictionary
             completionClosure(dic)
             }, onError: { (error:NSError) -> () in
                 havingError(error)

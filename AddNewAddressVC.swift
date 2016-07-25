@@ -9,7 +9,7 @@
 import UIKit
 
 class AddNewAddressVC: UIViewController {
-
+    
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var zipCode: UITextField!
     @IBOutlet weak var city: UITextField!
@@ -42,10 +42,10 @@ class AddNewAddressVC: UIViewController {
             loading.detailsLabelText = error.localizedDescription
             loading.hide(true, afterDelay: 2)
         }
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -63,7 +63,7 @@ class AddNewAddressVC: UIViewController {
             "landmark" : landmark.text! as String
         ]
         SigninOperaion.add_address(userInfo, completionClosure: { response in
-           print(response)
+            print(response)
             let storyboard = UIStoryboard(name: "Main" , bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("AddressIdentity") as? AddressViewController
             self.navigationController?.pushViewController(vc!, animated: true)
@@ -72,29 +72,31 @@ class AddNewAddressVC: UIViewController {
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = error.localizedDescription
             loading.hide(true, afterDelay: 2)
-
+            
         }
-
+        
         
     }
+    
     @IBAction func cancelAction(sender: AnyObject) {
-        if (self.navigationController?.topViewController?.isKindOfClass(AddNewAddressVC)) == false{
-            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("AddressIdentity") as? AddressViewController
-            let navController = UINavigationController(rootViewController: vc!)
-            self.presentViewController(navController, animated: true, completion: nil)
+        for controller in self.navigationController!.viewControllers as Array {
+            if controller.isKindOfClass(UserProfileViewController) {
+                self.navigationController?.popToViewController(controller as UIViewController, animated: true)
+                break
+            }
         }
-
     }
-
+    
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

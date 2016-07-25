@@ -38,6 +38,8 @@
 		<string>webservices/get_address/</string>
 		<key>delete_address</key>
 		<string>webservices/delete_address/</string>
+		<key>updateProfile</key>
+		<string>webservices/update_profile/</string>
 	</dict>
 </dict>
 </plist>

@@ -32,6 +32,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = error.localizedDescription
             loading.hide(true, afterDelay: 2)        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -58,14 +59,18 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> SimillerProductViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath) as! SimillerProductViewCell
         let itemInfoDic  = productsArr.objectAtIndex(indexPath.row) as! Dictionary<String,AnyObject>
-        let url = NSURL(string:("http://192.168.0.9/eshopkart/files/thumbs100x100/" + (itemInfoDic["Gallery"]?.objectAtIndex(0)["images"] as? String)!))
+        let url = NSURL(string:("http://192.168.0.5/eshopkart/files/thumbs100x100/" + (itemInfoDic["Gallery"]?.objectAtIndex(0)["images"] as? String)!))
         cell.productname?.text = itemInfoDic["name"] as? String
         cell.amount?.text = itemInfoDic["material"] as? String
         cell.size?.text = itemInfoDic["size"] as? String
         cell.productImgView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         cell.getQuoteBtn.tag = indexPath.row
-        cell.getQuoteBtn.addTarget(self, action: #selector(SimillerProductDetailVC.getQuoteAction),forControlEvents: .TouchUpInside
-        )
+        cell.getQuoteBtn.addTarget(self, action: #selector(SimillerProductDetailVC.getQuoteAction),forControlEvents: .TouchUpInside)
+        //cell.getQuoteBtn.layer.cornerRadius = 5.0,
+        //cell.getQuoteBtn.layer.borderWidth = 1.0
+            //cell.getQuoteBtn.add
+//            cell.getQuoteBtn.addCornerRadiusWithValue(5.0, color: , borderWidth: 1.0)
+        cell.getQuoteBtn.addCornerRadiusWithValue(5.0, color:UIColor.init(red: 78.0/255, green: 158.0/255, blue: 255.0/255, alpha: 1.0), borderWidth: 1.0)
         return cell
     }
     
@@ -76,7 +81,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
             
             if subViews is UIButton {
                 let button = subViews as! UIButton
-                button.backgroundColor = UIColor.init(colorLiteralRed: 238/255.0, green: 162.0/255, blue: 82.0/255, alpha: 1)
+                button.backgroundColor = UIColor.whiteColor()
                 
             }
         }

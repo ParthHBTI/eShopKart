@@ -15,7 +15,7 @@ class AddressViewController: UITableViewController {
         super.viewDidLoad()
         let userInfo = [
             "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id") as! String,
-        ]
+            ]
         SigninOperaion.get_address(userInfo, completionClosure: { response in
             print(response)
             var values: AnyObject = []
@@ -33,7 +33,7 @@ class AddressViewController: UITableViewController {
             
         }
     }
-
+    
     @IBAction func editAction(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Main" , bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("addNewAddID") as? AddNewAddressVC
@@ -41,7 +41,7 @@ class AddressViewController: UITableViewController {
     }
     
     func deleteAction1 (sender: AnyObject) {
-              let userInfo = [
+        let userInfo = [
             "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id")!,
             "address_id" : ""
         ]
@@ -89,7 +89,7 @@ class AddressViewController: UITableViewController {
             loading.detailsLabelText = error.localizedDescription
             loading.hide(true, afterDelay: 2)
         }
-
+        
     }
     @IBAction func selectAddress(sender: AnyObject) {
         let isButtonClick = sender.tag
@@ -103,80 +103,80 @@ class AddressViewController: UITableViewController {
     }
     
     
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  addressArray.count
     }
-
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("addressIdentity", forIndexPath: indexPath) as! AddressViewCell
         cell.addressTextField.font?.fontWithSize(15)
         cell.deleteButton.addTarget(self, action:  #selector(AddressViewController.deleteAction1(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-         cell.selectionBtn.addTarget(self, action:  #selector(AddressViewController.selectAddress(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.selectionBtn.addTarget(self, action:  #selector(AddressViewController.selectAddress(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         cell.editButton.addTarget(self, action:  #selector(AddressViewController.editAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         cell.userName?.text = addressArray.objectAtIndex(indexPath.row)["fullname"] as? String
         cell.addressTextField.text = addressArray.objectAtIndex(indexPath.row)["fullAddress"] as? String
-            cell.editButton.hidden = true
-            cell.deleteButton.hidden = true
-            cell.selectionBtn.tintColor = UIColor.blackColor()
-      return cell
+        cell.editButton.hidden = true
+        cell.deleteButton.hidden = true
+        cell.selectionBtn.tintColor = UIColor.blackColor()
+        return cell
     }
-
+    
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-       }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
     }
-    */
-
     /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
+     // Override to support editing the table view.
+     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+     if editingStyle == .Delete {
+     // Delete the row from the data source
+     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+     } else if editingStyle == .Insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+     
+     }
+     */
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // Override to support conditional rearranging of the table view.
+     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
 }
 
 

@@ -22,8 +22,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
     @IBOutlet var changePass: UIButton!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var imageArray: NSMutableArray! = []
-    @IBOutlet var profileArray: NSArray! = ["Customer Support","Share Our App","Need Help","App Feedback"]
-    var profileArr2: NSArray = ["Customer Support","Share Our App","Need Help","App Feedback","My Profile","My Address","My Requests"]
+    @IBOutlet var profileArray: NSArray! = ["Customer Support","Share Our App","Need Help","Give Feedback"]
+    var profileArr2: NSArray = ["Customer Support","Share Our App","Need Help","Give Feedback","My Profile","My Address","My Orders"]
     @IBAction func loginAction(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Login", bundle:  nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("loginVC") as? LoginViewController
@@ -101,6 +101,15 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
         imageArray[7] = UIImage(named: "done.png" )!
         imageArray[8] = UIImage(named: "done.png" )!
         imageArray[9] = UIImage(named: "done.png" )!
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        let username = NSUserDefaults.standardUserDefaults().valueForKey("username")
+        let email = NSUserDefaults.standardUserDefaults().valueForKey("email")
+        let mobile = NSUserDefaults.standardUserDefaults().valueForKey("mobile")
+        firstLastLbl.text = username as? String
+        mobileLbl.text = mobile as? String
+        emailLbl.text = email as? String
     }
     
     @IBAction func logoutAction() {
@@ -284,6 +293,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
         } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let destinationVC = storyboard.instantiateViewControllerWithIdentifier("AddressVCIdentifier") as! AddressViewController
             self.navigationController?.pushViewController(destinationVC, animated: true)
         }

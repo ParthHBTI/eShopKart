@@ -26,8 +26,8 @@ class FeedbackViewController: TextFieldViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(BaseViewController.backAction))
         self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
+        submitBtn.addBorderWithColor(UIColor.whiteColor(), borderWidth: 1.0)
         submitBtn.layer.cornerRadius = 5.0
-        submitBtn.layer.borderWidth = 1.0
         feedbackTxtView.layer.borderWidth = 1.0
         // Do any additional setup after loading the view.
     }
@@ -58,7 +58,7 @@ class FeedbackViewController: TextFieldViewController {
                     "subject" : subTxtField.text!,
                     "message" : feedbackTxtView.text!
                 ]
-                 SigninOperaion.userFeedback(feedabackInfo, completionClosure: { (response: AnyObject) -> () in
+                SigninOperaion.userFeedback(feedabackInfo, completionClosure: { (response: AnyObject) -> () in
                     print(response)
                 }) { (error:NSError) -> () in
                     let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)

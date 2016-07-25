@@ -36,10 +36,10 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         self.navigationItem.leftItemsSupplementBackButton = false
     }
     
-    func buttonAction() {
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as! HomeViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+    func goToHomeBtnAction() {
+//        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as! HomeViewController
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,7 +67,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             DynamicView.addSubview(cartImage)
             DynamicView.addSubview(goHomeAction)
             self.view.addSubview(DynamicView)
-            goHomeAction.addTarget(self, action: #selector(buttonAction), forControlEvents: .TouchUpInside)
+            goHomeAction.addTarget(self, action: #selector(goToHomeBtnAction), forControlEvents: .TouchUpInside)
         }
     }
     
@@ -155,7 +155,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         cell.productColor?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["colour"] as? String
         cell.productPrice?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["unitprice"] as? String
         cell.productQuantity?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["quantity"] as? String
-        let url = NSURL(string:("http://192.168.0.9/eshopkart/files/thumbs100x100/" + (cartDetailResponseArr.objectAtIndex(indexPath.row)["image"] as? String)!))
+        let url = NSURL(string:("http://192.168.0.5/eshopkart/files/thumbs100x100/" + (cartDetailResponseArr.objectAtIndex(indexPath.row)["image"] as? String)!))
         cell.productImg?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         cell.removBtn.tag = indexPath.row
         cell.removBtn.addTarget(self, action: #selector(CartItemDetailVC.removeItemFromCart),forControlEvents: .TouchUpInside)

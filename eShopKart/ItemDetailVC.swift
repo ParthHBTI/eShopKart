@@ -19,7 +19,8 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     var animateDistance: CGFloat = 0
     var frameView: UIView!
     var flag: Bool! = false
-    
+    var indexPath: NSIndexPath = NSIndexPath(forRow: 1, inSection: 1)
+    var cell = ItemDetailViewCell()
     @IBOutlet var ItemDetailTblView: UITableView!
     @IBOutlet weak var AddToCartBtn: UIButton!
     @IBOutlet weak var GetQuoteBtn: UIButton!
@@ -45,6 +46,12 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    override func viewWillAppear(animated: Bool) {
+        if self.flag == true {
+            self.cell.qtyTxtField.text = "1"
+        }
+        self.ItemDetailTblView.reloadData()
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -65,10 +72,11 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
             cell2.qtyTxtField.layer.borderWidth  = 1.0
             cell2.qtyTxtField.delegate = self
             if self.flag == true {
-            self.productQnty = cell2.qtyTxtField!.text!
+                self.productQnty = cell2.qtyTxtField!.text!
             } else {
                 cell2.qtyTxtField.text = "1"
             }
+            self.cell = cell2
             return cell2
         }
         let cell3 = tableView.dequeueReusableCellWithIdentifier("DetailViewCellIdentifier", forIndexPath: indexPath) as! ItemDetailViewCell
@@ -85,7 +93,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
         if userData != nil {
             productId = getProductInfoDic["id"] as! String
             if self.flag == true {
-                 productQty = self.productQnty!
+                productQty = self.productQnty!
             } else {
                 productQty = "1"
             }
@@ -94,7 +102,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
                 "product_id" : productId,
                 "quantity" : productQty,
                 "user_id" : userId!,
-            ]
+                ]
             SigninOperaion.add_to_cart(userInfo, completionClosure: { response in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
@@ -107,7 +115,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = error.localizedDescription
                 loading.hide(true, afterDelay: 2)
-
+                
             }        } else {
             self.makeLoginAlert()
         }
@@ -125,7 +133,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
             SigninOperaion.request_for_code(userInfo, completionClosure: { response in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
-                loading.detailsLabelText = response["message"] as! String
+                loading.detailsLabelText = response["msg"] as! String
                 loading.hide(true, afterDelay: 2)
                 loading.removeFromSuperViewOnHide = true
                 self.ItemDetailTblView.reloadData()
@@ -201,7 +209,7 @@ extension ItemDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionCell", forIndexPath: indexPath) as! collectionCell
-        let url = NSURL(string:("http://192.168.0.9/eshopkart/files/thumbs100x100/" + (productImageArr[indexPath.row]["images"] as? String)!))
+        let url = NSURL(string:("http://192.168.0.5/eshopkart/files/images/" + (productImageArr[indexPath.row]["images"] as? String)!))
         cell.imageView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         return cell
     }

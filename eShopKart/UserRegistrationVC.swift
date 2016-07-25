@@ -48,25 +48,42 @@ class UserRegistrationVC: TextFieldViewController {
     
     @IBAction func submitAction(sender: AnyObject) {
         let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        let firstNameStr = self.firstNameTextField.text!
+        let lastNameStr = self.lastNameTextField.text!
+        let mobileStr = self.contactNumberTextField.text!
+        let charSet = NSCharacterSet.whitespaceCharacterSet()
+        let firstNameWhiteSpaceSet = firstNameStr.stringByTrimmingCharactersInSet(charSet)
+        let lastNameWhiteSpaceSet = lastNameStr.stringByTrimmingCharactersInSet(charSet)
+        let mobileWhiteSpaceSet = mobileStr.stringByTrimmingCharactersInSet(charSet)
         if firstNameTextField.text!.isEmpty == true || lastNameTextField.text!.isEmpty == true || mailTextField.text!.isEmpty == true || contactNumberTextField.text!.isEmpty == true || passwordTextField.text!.isEmpty == true || confirmPassTextField.text!.isEmpty == true {
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = "please enter all values here!"
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
             self.animateBtnOnWrongSubmit()
+            
         } else if (passwordTextField.text!.characters.count) < 6 {
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = "password length must be of 6 characters!"
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
             self.animateBtnOnWrongSubmit()
+            
         } else if contactNumberTextField.text!.characters.count != 10 {
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = "please enter a valid mobile number"
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
             self.animateBtnOnWrongSubmit()
-        } else {
+            
+        }else if firstNameWhiteSpaceSet == "" || lastNameWhiteSpaceSet == "" || mobileWhiteSpaceSet == "" {
+            loading.mode = MBProgressHUDModeText
+            loading.detailsLabelText = "Only white spaces can not be accepted"
+            loading.hide(true, afterDelay: 2)
+            loading.removeFromSuperViewOnHide = true
+            self.animateBtnOnWrongSubmit()
+            
+        }else {
             if  mailTextField.text!.isValidEmail() == true {
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 loading.mode = MBProgressHUDModeIndeterminate
@@ -89,12 +106,17 @@ class UserRegistrationVC: TextFieldViewController {
                         appDelegate.currentUser = user
                         appDelegate.saveCurrentUserDetails()
                         if let tokenId: AnyObject = response.valueForKey("User")?.valueForKey("token_id") {
-                            let username =	response.valueForKey("User")?.valueForKey("username") as! String
+                            let firstName = response.valueForKey("User")?.valueForKey("firstname") as! String
+                            let lastName = response.valueForKey("User")?.valueForKey("lastname") as! String
+                            let trimFirstNameStr = firstName.stringByTrimmingCharactersInSet(charSet) as String
+                            let userFullNmae = trimFirstNameStr + " " + lastName
                             let email =	response.valueForKey("User")?.valueForKey("email") as! String
                             let mobile = response.valueForKey("User")?.valueForKey("mobile") as! String
                             let user_id =	response.valueForKey("User")?.valueForKey("id") as! String
+                            NSUserDefaults.standardUserDefaults().setValue(firstName, forKey:"firstname")
+                            NSUserDefaults.standardUserDefaults().setValue(lastName , forKey: "lastname")
                             NSUserDefaults.standardUserDefaults().setValue(tokenId, forKey: "token_id")
-                            NSUserDefaults.standardUserDefaults().setValue(username, forKey: "username")
+                            NSUserDefaults.standardUserDefaults().setValue(userFullNmae, forKey: "username")
                             NSUserDefaults.standardUserDefaults().setValue(email, forKey: "email")
                             NSUserDefaults.standardUserDefaults().setValue(mobile, forKey: "mobile")
                             NSUserDefaults.standardUserDefaults().setValue(user_id, forKey: "id")
