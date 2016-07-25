@@ -209,14 +209,14 @@
 		04EEB2301CEC52500069A877 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				043694621CE465DC000868CE /* BaseViewController.swift */,
+				180B482C1CF2C74100B5808C /* HomeViewController.swift */,
 				73CFD22C1D3DFC58008D0AC5 /* ProfileSettingViewController.swift */,
 				733606091D3CE3DB00C9A15F /* AppShareViewController.swift */,
 				04A2FA311D39076600C10875 /* AddNewAddressVC.swift */,
 				04A2FA271D38E54300C10875 /* AddressViewController.swift */,
 				73D0DD311D379D2E00E5714C /* HelpViewController.swift */,
 				73C126091D2BA1E80048F986 /* FeedbackViewController.swift */,
-				043694621CE465DC000868CE /* BaseViewController.swift */,
-				180B482C1CF2C74100B5808C /* HomeViewController.swift */,
 				73F0C2191D252595005C48C6 /* PreSignUPVC.swift */,
 				18EDD7F81CFC5962007AE91E /* GeneralWebViewController.swift */,
 				043694661CE4877D000868CE /* ESKCategoryTableVC.swift */,

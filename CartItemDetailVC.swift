@@ -37,10 +37,10 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         self.navigationItem.leftItemsSupplementBackButton = false
     }
     
-    func buttonAction() {
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as! HomeViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+    func goToHomeBtnAction() {
+//        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as! HomeViewController
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,7 +68,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             DynamicView.addSubview(cartImage)
             DynamicView.addSubview(goHomeAction)
             self.view.addSubview(DynamicView)
-            goHomeAction.addTarget(self, action: #selector(buttonAction), forControlEvents: .TouchUpInside)
+            goHomeAction.addTarget(self, action: #selector(goToHomeBtnAction), forControlEvents: .TouchUpInside)
         }
     }
     

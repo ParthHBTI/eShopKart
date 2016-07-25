@@ -42,6 +42,8 @@
 		<string>webservices/get_product_details/</string>
 		<key>update_address</key>
 		<string>webservices/update_address/</string>
+		<key>updateProfile</key>
+		<string>webservices/update_profile/</string>
 	</dict>
 </dict>
 </plist>
