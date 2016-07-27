@@ -9,8 +9,8 @@
 import UIKit
 import AFNetworking
 
-let hostURL = "http://192.168.0.5/eshopkart/"
-//let hostURL = "http://brillcreations.com/"
+//let hostURL = "http://192.168.0.6/eshopkart/"
+let hostURL = "http://brillcreations.com/brill/bcreation/"
 let contentURL = hostURL + "pages/content"
 let imageBaseURL = hostURL + "files"
 @objc protocol OperationDelegate {
@@ -25,7 +25,6 @@ class BaseOperation {
         postDic.setValue(NSUserDefaults.standardUserDefaults().valueForKey("token_id") as? String ?? "12345", forKey: "token_id")
         let del = UIApplication.sharedApplication().delegate as? AppDelegate
         print("token id sent is: ", del?.currentUser?.token_id)
-        print("userinfo: \(postDic)")
         let manager:AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
         let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
         manager.requestSerializer = requestSerializer

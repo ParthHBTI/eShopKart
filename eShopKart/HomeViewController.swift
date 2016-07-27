@@ -12,23 +12,22 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     
     @IBOutlet weak var barSearchItem: UISearchBar!
     @IBOutlet weak var dynamicImageView: UIImageView!
-    var searchController: UISearchController!
-    var tableViewController: UITableViewController?
+    var searchController: UISearchController?
     var filteredData = NSMutableArray()
-    var tableView = UITableView()
     var productsArr = NSArray()
     var productsData = NSDictionary()
-    @IBOutlet weak var upArrowImgView: UIImageView!
-    @IBOutlet weak var searchProducts: UIButton!
+    @IBOutlet weak var upArrowImgView: UIImageView?
+    @IBOutlet weak var searchProducts: UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ChangeImage()
-        searchController = UISearchController(searchResultsController: self.tableViewController)
-        searchController.searchResultsController
-        searchController.searchBar.sizeToFit()
-        searchController.delegate = self
-        searchController.searchBar.delegate = self
+        
+       
+        searchController = UISearchController(searchResultsController: nil)
+        searchController!.searchResultsController
+        searchController!.searchBar.sizeToFit()
+        searchController!.delegate = self
+        searchController!.searchBar.delegate = self
         barSearchItem.delegate = self
         self.definesPresentationContext = true
         self.barSearchItem.autocorrectionType = .No
@@ -36,123 +35,102 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         self.barSearchItem.autoresizingMask = .FlexibleWidth
         self.navigationItem.setHidesBackButton(true, animated: false)
         self.navigationItem.setLeftBarButtonItems(nil, animated: false)
-        self.upArrowImgView.fadeOut()
+        self.upArrowImgView!.fadeOut()
         self.configureSearchController()
-        searchProducts.layer.cornerRadius = 5.0
-        searchProducts.layer.borderWidth = 1.0
-        searchProducts.layer.borderColor = UIColor.init(colorLiteralRed: 6/255.0, green: 135/255.0, blue: 255/255.0, alpha: 1.0).CGColor
+        searchProducts!.layer.cornerRadius = 5.0
+        searchProducts!.layer.borderWidth = 1.0
+        searchProducts!.layer.borderColor = UIColor.init(colorLiteralRed: 6/255.0, green: 135/255.0, blue: 255/255.0, alpha: 1.0).CGColor
+        
     }
-    
     override func viewWillAppear(animated: Bool) {
-        upArrowImgView.fadeOut()
+        upArrowImgView!.fadeOut()
     }
     
    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
+  
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         barSearchItem.showsScopeBar = true;
-        self.tableView.reloadData()
+        self.searchController!.searchResultsController?.reloadInputViews()
         print("this is searchText Begin\(filteredData.count)")
     }
     
     func configureSearchController() {
         searchController = UISearchController(searchResultsController: nil)
-        self.tableView.reloadData()
     }
+    
+    func loadData(response:NSArray)  {
+            self.filteredData.removeAllObjects()
+            for var dic in response {
+                self.filteredData.addObject(dic)
+            }
+        self.searchDisplayController!.searchResultsTableView.reloadData()
+        }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == ""{
-            tableView.hidden = true
         } else {
             let userInfo = [
                 "keyword" : searchText,
                 ]
             SigninOperaion.search(userInfo, completionClosure: { response in
                 print(response)
-                self.filteredData.removeAllObjects()
-                for var dic in response as! NSArray{
-                    self.filteredData.addObject(dic)
-                }
-                self.tableView.reloadData()
+                self.loadData(response as! NSArray)
+                //self.performSelector(#selector(HomeViewController.loadData(_:)), withObject: response, afterDelay:0)
             }) { (error: NSError) -> () in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = error.localizedDescription
                 loading.hide(true, afterDelay: 2)
+                
+                //    self.searchDisplayController!.searchResultsTableView.reloadData()
             }
-            self.tableView.reloadData()
-            print(filteredData.count)
         }
     }
     
-    func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int
-    {
+    func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int {
         return self.filteredData.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:UITableViewCell=UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "mycell")
-        cell.textLabel?.text = filteredData[indexPath.row]["name"] as? String
-        return cell
+        
+        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("CellSubtitle")
+        if (cell == nil) {
+            cell =  UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CellSubtitle")
+            }
+        
+        cell?.textLabel?.textColor = UIColor.init(colorLiteralRed: Float(arc4random()%255)/255.0 , green: Float(arc4random()%255)/255.0 , blue: Float(arc4random()%255)/255.0 , alpha: 1)
+        cell!.textLabel?.text = filteredData[indexPath.row]["name"] as? String
+        return cell!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        let id = filteredData.objectAtIndex(indexPath.row)["id"]
-//        let userInfo = [
-//            "product_id" : id as! String
-//            ] as NSDictionary
-//        SigninOperaion.get_product_details(userInfo, completionClosure: { response in
-//            print(response)
-//            var values: AnyObject = []
-//            values = response
-//            self.filteredData.removeAllObjects()
-//            for var dic in values as! NSArray{
-//                self.tableView.reloadData()
-//                self.filteredData.addObject(dic)
-//                self.productsData = (response as! NSDictionary)
-//                let itemInfoDic  = self.productsData as! Dictionary<String, AnyObject>
-//                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-//                let destinationVC = storyboard.instantiateViewControllerWithIdentifier("ItemDetailVCIdentifier") as! ItemDetailVC
-//                destinationVC.getProductInfoDic = itemInfoDic
-//            }
-//            self.tableView.reloadData()
-//        }) { (error: NSError) -> () in
-//            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-//            loading.mode = MBProgressHUDModeText
-//            loading.detailsLabelText = error.localizedDescription
-//            loading.hide(true, afterDelay: 2)
-//        }
-        let manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-        let requestSerializer : AFJSONRequestSerializer = AFJSONRequestSerializer()
-        manager.requestSerializer = requestSerializer
-        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
         let id = filteredData.objectAtIndex(indexPath.row)["id"]
-        print("\(id)")
-        let params: [NSObject : String] = ["product_id": id as! String]
-        print("\(params)")
-        manager.POST("http://192.168.0.8/eshopkart/webservices/get_product_details", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-            print("response: \(response!)")
-            self.productsData = (response as! NSDictionary)
-            let itemInfoDic  = self.productsData as! Dictionary<String, AnyObject>
-            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("ItemDetailVCIdentifier") as! ItemDetailVC
-            destinationVC.getProductInfoDic = itemInfoDic
+        let userInfo = [
+            "product_id" : id as! String
+            ] as NSDictionary
+        SigninOperaion.get_product_details(userInfo, completionClosure: { response in
+            print(response)
+            var values = NSArray()
+            values = response.valueForKey("Gallery")! as! NSArray
+            self.filteredData.removeAllObjects()
+            for var dic in values {
+                self.filteredData.addObject(dic)
+            }
+                self.productsData = (response as! NSDictionary)
+                let itemInfoDic  = self.productsData as! Dictionary<String, AnyObject>
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let destinationVC = storyboard.instantiateViewControllerWithIdentifier("ItemDetailVCIdentifier") as! ItemDetailVC
+                destinationVC.getProductInfoDic = itemInfoDic
             self.navigationController?.pushViewController(destinationVC, animated: true)
-            })
-        { (operation : AFHTTPRequestOperation?, error : NSError?) -> Void in
-            print("error: \(error!)")
+            self.searchDisplayController!.searchResultsTableView.reloadData()
+        }) { (error: NSError) -> () in
+            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            loading.mode = MBProgressHUDModeText
+            loading.detailsLabelText = error.localizedDescription
+            loading.hide(true, afterDelay: 2)
         }
-        
-    }
-    
-    func ChangeImage() {
-        let url = NSURL(string:("http://192.168.0.5/eshopkart/webservices/get_pic" ))
-        let data = NSData(contentsOfURL: url!)
-        dynamicImageView.image = UIImage(data: data!)
-        print(data)
     }
     /*
      // MARK: - Navigation

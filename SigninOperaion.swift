@@ -217,6 +217,7 @@ class SigninOperaion: BaseOperation, OperationDelegate {
         })
     }
     
+    
     class func get_product_details(userInfo: NSDictionary,completionClosure: (AnyObject) -> (), havingError:(NSError) -> ()) ->() {
         let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("get_product_details"))
         let URL:NSURL = NSURL(string: urlString as String)!
@@ -227,6 +228,7 @@ class SigninOperaion: BaseOperation, OperationDelegate {
                 havingError(error)
         })
     }
+
     
     class func update_address(userInfo: NSDictionary,completionClosure: (AnyObject) -> (), havingError:(NSError) -> ()) ->() {
         let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("update_address"))
