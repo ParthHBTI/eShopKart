@@ -292,10 +292,15 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
             let destinationVC = storyboard.instantiateViewControllerWithIdentifier("ProfileSettingVCIdentifier") as! ProfileSettingViewController
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
-        } else {
+        } else if indexPath.row == 5{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let destinationVC = storyboard.instantiateViewControllerWithIdentifier("AddressVCIdentifier") as! AddressViewController
             self.navigationController?.pushViewController(destinationVC, animated: true)
+        } else {
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("OrderNumberID") as! MyOredrNumberVC
+            self.navigationController?.pushViewController(destinationVC, animated: true)
+
         }
     }
     

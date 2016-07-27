@@ -11,6 +11,8 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
     var addressArray = NSMutableArray()
     var tempCell = AddressViewCell()
     var checkOption = false
+    var editCellIndex = -1
+
     @IBOutlet var tableView: UITableView!
     var floaringView = UIView()
     var orderBtn = UIButton()
@@ -97,20 +99,9 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
     }
     
     @IBAction func selectAddress(sender: AnyObject) {
-        let cell: AddressViewCell = (self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: sender.tag, inSection: 0)) as? AddressViewCell)!
-        var temp = -1
-        let buttonPress = sender.tag
-        repeat {
-            temp += 1
-            cell.selectionBtn!.tintColor = UIColor.blackColor()
-        } while (temp != buttonPress)
-        if temp == buttonPress {
-        cell.editButton.hidden = false
-        cell.deleteButton.hidden = false
-        cell.selectionBtn!.tintColor = UIColor.blueColor()
-        }
-        cell.editButton.hidden = false
-        cell.deleteButton.hidden = false
+        editCellIndex = sender.tag
+        self.tableView.reloadData()
+       
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -144,11 +135,16 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
         cell.selectionBtn!.tag = indexPath.row
         cell.deleteButton!.tag = indexPath.row
         tempCell = cell
+        cell.selectionBtn!.tintColor = UIColor.blackColor()
+        if editCellIndex == indexPath.row {
+            cell.editButton.hidden = false
+            cell.deleteButton.hidden = false
+            cell.selectionBtn!.tintColor = UIColor.blueColor()
+        }
       return cell
     }
     
-  
-    
+      
      func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let addDic = addressArray.objectAtIndex(indexPath.row) as! NSDictionary
         print(addDic)

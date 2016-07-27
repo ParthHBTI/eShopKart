@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0408167C1CF592670006B85C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0408167B1CF592670006B85C /* Login.storyboard */; };
+		04358D931D489AA300CB24A8 /* MyOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04358D921D489AA300CB24A8 /* MyOrdersViewController.swift */; };
+		04358D951D489DAB00CB24A8 /* myOrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04358D941D489DAB00CB24A8 /* myOrdersCell.swift */; };
+		04358D971D48BD4800CB24A8 /* MyOredrNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04358D961D48BD4800CB24A8 /* MyOredrNumberVC.swift */; };
+		04358D991D48BD6D00CB24A8 /* MyOrderNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04358D981D48BD6D00CB24A8 /* MyOrderNumberCell.swift */; };
 		043694631CE465DC000868CE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043694621CE465DC000868CE /* BaseViewController.swift */; };
 		043694671CE4877D000868CE /* ESKCategoryTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043694661CE4877D000868CE /* ESKCategoryTableVC.swift */; };
 		043694691CE48F1E000868CE /* ESKCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043694681CE48F1E000868CE /* ESKCategoryCell.swift */; };
@@ -70,6 +74,10 @@
 
 /* Begin PBXFileReference section */
 		0408167B1CF592670006B85C /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		04358D921D489AA300CB24A8 /* MyOrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyOrdersViewController.swift; path = ../MyOrdersViewController.swift; sourceTree = "<group>"; };
+		04358D941D489DAB00CB24A8 /* myOrdersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = myOrdersCell.swift; path = ../myOrdersCell.swift; sourceTree = "<group>"; };
+		04358D961D48BD4800CB24A8 /* MyOredrNumberVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyOredrNumberVC.swift; path = ../MyOredrNumberVC.swift; sourceTree = "<group>"; };
+		04358D981D48BD6D00CB24A8 /* MyOrderNumberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyOrderNumberCell.swift; path = ../MyOrderNumberCell.swift; sourceTree = "<group>"; };
 		0436945E1CE450A7000868CE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		043694621CE465DC000868CE /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = ../BaseViewController.swift; sourceTree = "<group>"; };
 		043694661CE4877D000868CE /* ESKCategoryTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ESKCategoryTableVC.swift; path = ../ESKCategoryTableVC.swift; sourceTree = "<group>"; };
@@ -215,6 +223,8 @@
 				733606091D3CE3DB00C9A15F /* AppShareViewController.swift */,
 				04A2FA311D39076600C10875 /* AddNewAddressVC.swift */,
 				04A2FA271D38E54300C10875 /* AddressViewController.swift */,
+				04358D961D48BD4800CB24A8 /* MyOredrNumberVC.swift */,
+				04358D921D489AA300CB24A8 /* MyOrdersViewController.swift */,
 				73D0DD311D379D2E00E5714C /* HelpViewController.swift */,
 				73C126091D2BA1E80048F986 /* FeedbackViewController.swift */,
 				73F0C2191D252595005C48C6 /* PreSignUPVC.swift */,
@@ -246,6 +256,8 @@
 		04EEB2311CEC52800069A877 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				04358D981D48BD6D00CB24A8 /* MyOrderNumberCell.swift */,
+				04358D941D489DAB00CB24A8 /* myOrdersCell.swift */,
 				04A2FA251D38E51D00C10875 /* AddressViewCell.swift */,
 				18A93DF41CEF32DE0046F78D /* ItemDetailViewCell.swift */,
 				18EDD7F61CFC2AEA007AE91E /* cartItemCell.swift */,
@@ -447,6 +459,7 @@
 				043694631CE465DC000868CE /* BaseViewController.swift in Sources */,
 				180B482D1CF2C74100B5808C /* HomeViewController.swift in Sources */,
 				730078D41D13FDF900ECFC91 /* SigninOperaion.swift in Sources */,
+				04358D991D48BD6D00CB24A8 /* MyOrderNumberCell.swift in Sources */,
 				73CFD22D1D3DFC58008D0AC5 /* ProfileSettingViewController.swift in Sources */,
 				730078D21D13FDB600ECFC91 /* User.swift in Sources */,
 				18F87F751CF5B3AC0079750F /* MBProgressHUD.m in Sources */,
@@ -456,6 +469,7 @@
 				04A022421CEC47690002B3D1 /* EKartSideMenuManager.swift in Sources */,
 				18EDD7F71CFC2AEA007AE91E /* cartItemCell.swift in Sources */,
 				18D3DA911CFEBBED006938DE /* LoginViewController.swift in Sources */,
+				04358D931D489AA300CB24A8 /* MyOrdersViewController.swift in Sources */,
 				1800CB061CF6E0940094727B /* UIBarButtonItem+Badge.m in Sources */,
 				730078D01D13FBE000ECFC91 /* TextFieldViewController.swift in Sources */,
 				043694671CE4877D000868CE /* ESKCategoryTableVC.swift in Sources */,
@@ -472,7 +486,9 @@
 				046C45DB1CE5E40F00C8D13C /* CartItemDetailVC.swift in Sources */,
 				730078D81D13FE4B00ECFC91 /* VerificationCodeViewController.swift in Sources */,
 				18EDD7F91CFC5962007AE91E /* GeneralWebViewController.swift in Sources */,
+				04358D971D48BD4800CB24A8 /* MyOredrNumberVC.swift in Sources */,
 				04A2FA321D39076600C10875 /* AddNewAddressVC.swift in Sources */,
+				04358D951D489DAB00CB24A8 /* myOrdersCell.swift in Sources */,
 				18A93DF31CEF32680046F78D /* ItemDetailVC.swift in Sources */,
 				73F0C21A1D252595005C48C6 /* PreSignUPVC.swift in Sources */,
 				04B564221CEEF326001E9792 /* SimillerProductViewCell.swift in Sources */,
