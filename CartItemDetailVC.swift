@@ -156,7 +156,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         cell.productColor?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["colour"] as? String
         cell.productPrice?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["unitprice"] as? String
         cell.productQuantity?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["quantity"] as? String
-        let url = NSURL(string:("http://192.168.0.6/eshopkart/files/thumbs100x100/" + (cartDetailResponseArr.objectAtIndex(indexPath.row)["image"] as? String)!))
+        let url = NSURL(string:(imageURL + (cartDetailResponseArr.objectAtIndex(indexPath.row)["image"] as? String)!))
         cell.productImg?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         cell.removBtn.tag = indexPath.row
         cell.removBtn.addTarget(self, action: #selector(CartItemDetailVC.removeItemFromCart),forControlEvents: .TouchUpInside)
