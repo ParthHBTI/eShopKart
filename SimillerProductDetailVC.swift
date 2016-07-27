@@ -59,7 +59,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> SimillerProductViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath) as! SimillerProductViewCell
         let itemInfoDic  = productsArr.objectAtIndex(indexPath.row) as! Dictionary<String,AnyObject>
-        let url = NSURL(string:("http://192.168.0.16/eshopkart/files/thumbs100x100/" + (itemInfoDic["Gallery"]?.objectAtIndex(0)["images"] as? String)!))
+        let url = NSURL(string:(imageURL + (itemInfoDic["Gallery"]?.objectAtIndex(0)["images"] as? String)!))
         cell.productname?.text = itemInfoDic["name"] as? String
         cell.amount?.text = itemInfoDic["material"] as? String
         cell.size?.text = itemInfoDic["size"] as? String

@@ -7,16 +7,40 @@
 //
 
 import UIKit
-class AddressViewController: BaseViewController, UITableViewDelegate {
+class AddressViewController: UIViewController, UITableViewDelegate, UIScrollViewDelegate {
     var addressArray = NSMutableArray()
-    var currentSelectedCell = -1
     var tempCell = AddressViewCell()
     var checkOption = false
     @IBOutlet var tableView: UITableView!
-    
+    var floaringView = UIView()
+    var orderBtn = UIButton()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        orderBtn.setTitle("Go for order", forState: .Normal)
+        var newButton = orderBtn.frame
+        newButton.size.height = 35
+        newButton.size.width = 400
+        orderBtn.frame = newButton
+        floaringView.addSubview(orderBtn)
+        self.floaringView.backgroundColor = UIColor.blueColor()
+        var newFrame: CGRect = self.floaringView.frame
+        newFrame.size.height = 0
+        newFrame.size.width = 400
+        self.floaringView.frame = newFrame
+         orderBtn.addTarget(self, action: #selector(goForOrder), forControlEvents: .TouchUpInside)
+        self.navigationController?.navigationBarHidden = false
+        let nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.BlackOpaque
+        nav?.tintColor = UIColor.whiteColor()
+        self.title = "My Addresses"
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+        let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(AddressViewController.backAction))
+        self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
+        let screenSize:CGRect = UIScreen.mainScreen().bounds
+        floaringView.frame.size.height = screenSize.height - 630
+        self.tableView.addSubview(floaringView)
+        self.tableView.addObserver(self, forKeyPath: "frame", options: .New, context: nil )
         let userInfo = [
             "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id") as! String,
         ]
@@ -24,9 +48,9 @@ class AddressViewController: BaseViewController, UITableViewDelegate {
         SigninOperaion.get_address(userInfo, completionClosure: { response in
             print(response)
             self.addressArray.removeAllObjects()
-            var values: AnyObject = []
+            var values = (response as? NSArray)!
             //values = response
-            for var dic in response as! NSArray{
+            for var dic in values {
           self.addressArray.addObject(dic)
                 self.tableView.reloadData()
             }
@@ -131,19 +155,45 @@ class AddressViewController: BaseViewController, UITableViewDelegate {
        
     }
     
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        adjustFloatingViewFrame()
+    }
+    
+    func adjustFloatingViewFrame() {
+        var newFrame: CGRect = self.floaringView.frame
+        newFrame.origin.x = 0
+        newFrame.origin.y = self.tableView.contentOffset.y  + CGRectGetHeight(self.tableView.bounds) - CGRectGetHeight(self.floaringView.bounds)
+        self.floaringView.frame = newFrame
+        self.tableView.bringSubviewToFront(self.floaringView)
+        
+    }
+    
+     deinit {
+        self.tableView.removeObserver(self, forKeyPath: "frame")
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if (keyPath == "frame") {
+            adjustFloatingViewFrame()
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         self.navigationItem.leftItemsSupplementBackButton = false
     }
     
-    override func backAction() {
+    func backAction() {
         for controller: UIViewController in self.navigationController!.viewControllers {
             if (controller is UserProfileViewController) {
                 self.navigationController!.popToViewController(controller, animated: true)
             }
         }
         }
+    func goForOrder() {
+        print("testing")
 
     }
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -190,4 +240,4 @@ class AddressViewController: BaseViewController, UITableViewDelegate {
     */
 
 
-
+}

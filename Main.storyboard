@@ -794,7 +794,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fc1-mX-JjF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7959" y="-2707.5"/>
+            <point key="canvasLocation" x="7597.5" y="-2658.75"/>
         </scene>
         <!--Add New AddressVC-->
         <scene sceneID="uRN-uz-lZS">
@@ -1528,7 +1528,58 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCw-8i-Wgh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8695.5" y="-2731.5"/>
+            <point key="canvasLocation" x="8569.5" y="-2936.25"/>
+        </scene>
+        <!--App Share View Controller-->
+        <scene sceneID="VKG-uw-W7W">
+            <objects>
+                <viewController storyboardIdentifier="AppShareVCIdentifire" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZPG-2t-c98" customClass="AppShareViewController" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Qn-pJ-jsR"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ovl-Nj-lTI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vVJ-Yj-Low">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbe-0w-3Az">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Share App"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="124" y="385" width="152" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="AppShareAction:" destination="ZPG-2t-c98" eventType="touchUpInside" id="QRO-Rt-Kky"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kbe-0w-3Az" firstAttribute="centerY" secondItem="vVJ-Yj-Low" secondAttribute="centerY" id="YAk-j1-cPv"/>
+                            <constraint firstItem="kbe-0w-3Az" firstAttribute="centerX" secondItem="vVJ-Yj-Low" secondAttribute="centerX" id="gnl-WZ-pBS"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="kbe-0w-3Az"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="YAk-j1-cPv"/>
+                                <exclude reference="gnl-WZ-pBS"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="kbe-0w-3Az"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="YAk-j1-cPv"/>
+                                <include reference="gnl-WZ-pBS"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ROo-um-mmx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9364.5" y="-2960.25"/>
         </scene>
         <!--Cart Item DetailVC-->
         <scene sceneID="YTo-Y1-z5y">
@@ -1766,14 +1817,14 @@
                                                 <constraint firstItem="KVM-ss-IT3" firstAttribute="top" secondItem="1dM-ct-5lL" secondAttribute="bottom" constant="8" id="BEk-Th-Rm6"/>
                                                 <constraint firstItem="1dM-ct-5lL" firstAttribute="leading" secondItem="sxq-7A-cKd" secondAttribute="trailing" constant="20" id="EZc-0H-PfD"/>
                                                 <constraint firstItem="2nV-wZ-bI5" firstAttribute="top" secondItem="l8D-WE-mgD" secondAttribute="bottom" constant="6" id="GNa-Lv-anf"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="sxq-7A-cKd" secondAttribute="bottom" constant="8" id="HFE-Nc-Rkb"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="sxq-7A-cKd" secondAttribute="bottom" constant="5" id="HFE-Nc-Rkb"/>
                                                 <constraint firstItem="Evd-hd-Re9" firstAttribute="top" secondItem="1dM-ct-5lL" secondAttribute="bottom" constant="8" id="Jdz-yO-MDE"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="2nV-wZ-bI5" secondAttribute="bottom" constant="17" id="Juf-cO-dJ9"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="2nV-wZ-bI5" secondAttribute="bottom" constant="14" id="Juf-cO-dJ9"/>
                                                 <constraint firstItem="gVL-Pg-mFn" firstAttribute="leading" secondItem="l8D-WE-mgD" secondAttribute="trailing" constant="11" id="L8T-jf-mhW"/>
                                                 <constraint firstItem="Evd-hd-Re9" firstAttribute="leading" secondItem="KVM-ss-IT3" secondAttribute="trailing" constant="15" id="Npk-P7-WUb"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="WtR-gd-lix" secondAttribute="trailing" constant="8" id="XQq-VU-n2A"/>
                                                 <constraint firstItem="l8D-WE-mgD" firstAttribute="top" secondItem="KVM-ss-IT3" secondAttribute="bottom" constant="3" id="Xjx-V7-wlu"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="OPQ-Eh-THB" secondAttribute="bottom" constant="17" id="Zu5-6z-Etr"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="OPQ-Eh-THB" secondAttribute="bottom" constant="14" id="Zu5-6z-Etr"/>
                                                 <constraint firstItem="Evd-hd-Re9" firstAttribute="centerY" secondItem="KVM-ss-IT3" secondAttribute="centerY" id="dfa-oO-FjT"/>
                                                 <constraint firstItem="OPQ-Eh-THB" firstAttribute="centerY" secondItem="2nV-wZ-bI5" secondAttribute="centerY" id="fvz-Jf-odV"/>
                                                 <constraint firstItem="KVM-ss-IT3" firstAttribute="leading" secondItem="sxq-7A-cKd" secondAttribute="trailing" constant="20" id="iWM-1n-vyp"/>
@@ -2127,7 +2178,7 @@
         <!--Help View Controller-->
         <scene sceneID="1Zj-VF-lGK">
             <objects>
-                <viewController id="5yF-m6-K3W" customClass="HelpViewController" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HelpVCIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5yF-m6-K3W" customClass="HelpViewController" customModule="BrillCreation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="phg-pr-zuz"/>
                         <viewControllerLayoutGuide type="bottom" id="FUT-SF-TMX"/>
@@ -2140,7 +2191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KGa-eh-ygD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8685" y="-3602.25"/>
+            <point key="canvasLocation" x="8805" y="-3626.25"/>
         </scene>
         <!--Category Item ListVC-->
         <scene sceneID="f9i-3b-YID">
@@ -2646,7 +2697,8 @@
                                                             <exclude reference="J0v-m6-1Ib"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="35" y="13" width="170" height="19"/>
                                                         <mask key="constraints">
                                                             <include reference="J0v-m6-1Ib"/>
                                                         </mask>
@@ -2849,7 +2901,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jz4-cP-FTD">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jz4-cP-FTD">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="VmI-Ju-BTX"/>
@@ -3157,17 +3209,17 @@
                                 <exclude reference="Auk-TC-lDv"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="C5K-44-0ZQ"/>
-                                <exclude reference="Rth-5q-PId"/>
-                                <exclude reference="w5k-J7-0oH"/>
-                                <exclude reference="9NX-Dp-dEF"/>
-                                <exclude reference="JA7-OG-ra9"/>
-                                <exclude reference="Qpc-Va-FuD"/>
-                                <exclude reference="g7Y-t4-6zI"/>
+                                <exclude reference="VA8-6S-y3Z"/>
                                 <exclude reference="6qI-r5-CHw"/>
                                 <exclude reference="QEz-NR-04g"/>
                                 <exclude reference="emg-b3-bTv"/>
-                                <exclude reference="VA8-6S-y3Z"/>
+                                <exclude reference="C5K-44-0ZQ"/>
+                                <exclude reference="Rth-5q-PId"/>
+                                <exclude reference="w5k-J7-0oH"/>
+                                <exclude reference="g7Y-t4-6zI"/>
+                                <exclude reference="9NX-Dp-dEF"/>
+                                <exclude reference="JA7-OG-ra9"/>
+                                <exclude reference="Qpc-Va-FuD"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -3178,17 +3230,17 @@
                                 <include reference="Auk-TC-lDv"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="C5K-44-0ZQ"/>
-                                <include reference="Rth-5q-PId"/>
-                                <include reference="w5k-J7-0oH"/>
-                                <include reference="9NX-Dp-dEF"/>
-                                <include reference="JA7-OG-ra9"/>
-                                <include reference="Qpc-Va-FuD"/>
-                                <include reference="g7Y-t4-6zI"/>
+                                <include reference="VA8-6S-y3Z"/>
                                 <include reference="6qI-r5-CHw"/>
                                 <include reference="QEz-NR-04g"/>
                                 <include reference="emg-b3-bTv"/>
-                                <include reference="VA8-6S-y3Z"/>
+                                <include reference="C5K-44-0ZQ"/>
+                                <include reference="Rth-5q-PId"/>
+                                <include reference="w5k-J7-0oH"/>
+                                <include reference="g7Y-t4-6zI"/>
+                                <include reference="9NX-Dp-dEF"/>
+                                <include reference="JA7-OG-ra9"/>
+                                <include reference="Qpc-Va-FuD"/>
                             </mask>
                         </variation>
                     </view>

@@ -39,6 +39,15 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBarHidden = false
+        let nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.BlackOpaque
+        nav?.tintColor = UIColor.whiteColor()
+        self.title = "New Address"
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+        let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(AddNewAddressVC.backAction))
+        self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
         zipCode.delegate = self
         city.delegate = self
         mobileNo.delegate = self
@@ -99,9 +108,7 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
                 "address_id" : address_id
             ]
             SigninOperaion.add_address(userInfo, completionClosure: { response in
-                
                 print(response)
-                
             }) { (error: NSError) -> () in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
@@ -213,7 +220,14 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
         }
     }
     
-  
+    func backAction() {
+        for controller: UIViewController in self.navigationController!.viewControllers {
+            if (controller is AddressViewController) {
+                self.navigationController!.popToViewController(controller, animated: true)
+            }
+        }
+    }
+
     /*
     // MARK: - Navigation
 

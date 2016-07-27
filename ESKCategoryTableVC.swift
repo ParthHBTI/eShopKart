@@ -10,7 +10,7 @@ import UIKit
 import AFNetworking
 class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
     
-    var responseArr:AnyObject = []
+    var responseArr = NSMutableArray()
     @IBOutlet var categoryTblView: UITableView!
     
     override func viewDidLoad() {
@@ -19,7 +19,7 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
             "1" : "1"
         ]
         SigninOperaion.get_categories(userInfo, completionClosure: { response in
-            self.responseArr = response
+            self.responseArr = response as! NSMutableArray
             self.categoryTblView.reloadData()
         }) { (error: NSError) -> () in
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)

@@ -15,7 +15,7 @@ class bcConfig {
 
     class var sharedInstance: bcConfig {
         struct Static  {
-            static var instance: bcConfig?
+            static var instance: bcConfig!
             static var token: dispatch_once_t = 0
         }
         dispatch_once(&Static.token) {
@@ -36,9 +36,12 @@ class bcConfig {
 //                } catch _ {
 //                }
 //            }
+            
             let sourcePath = NSBundle.mainBundle().pathForResource("bcConfig", ofType: "plist")
             configDict = NSDictionary(contentsOfFile: sourcePath! as String) as NSDictionary!
         }
+        
+        
         let webServiceUrlDict:NSDictionary = configDict["WebServiceUrl"] as! NSDictionary
         let relativeUrl:NSString = webServiceUrlDict[configKey] as! String
         let modifiedURLString = NSString(format:"%@%@", hostURL, relativeUrl) as String
