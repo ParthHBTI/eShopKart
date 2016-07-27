@@ -23,7 +23,6 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ChangeImage()
         searchController = UISearchController(searchResultsController: self.tableViewController)
         searchController.searchResultsController
         searchController.searchBar.sizeToFit()
@@ -148,12 +147,6 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         
     }
     
-    func ChangeImage() {
-        let url = NSURL(string:("http://192.168.0.5/eshopkart/webservices/get_pic" ))
-        let data = NSData(contentsOfURL: url!)
-        dynamicImageView.image = UIImage(data: data!)
-        print(data)
-    }
     /*
      // MARK: - Navigation
      

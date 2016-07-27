@@ -9,7 +9,7 @@
 import UIKit
 import AFNetworking
 
-let hostURL = "http://192.168.0.5/eshopkart/"
+let hostURL = "http://192.168.0.6/eshopkart/"
 //let hostURL = "http://brillcreations.com/"
 let contentURL = hostURL + "pages/content"
 let imageBaseURL = hostURL + "files"
@@ -78,7 +78,7 @@ class BaseOperation {
             if imageData != nil {
                 formData.appendPartWithFileData(imageData!, name: "media_file", fileName: "image.png", mimeType: "image/png")
             }
-            },
+        },
                      success: { (operation:AFHTTPRequestOperation!, responseObject:AnyObject!) -> Void in
                         onSuccess(responseObject)
             }, failure: { (operation: AFHTTPRequestOperation?, error:NSError!) -> Void in

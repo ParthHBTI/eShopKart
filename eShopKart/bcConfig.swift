@@ -26,17 +26,18 @@ class bcConfig {
     
     func urlForKey (configKey: NSString) -> NSString {
         if configDict == nil {
-            var path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString
-            path = path.stringByAppendingString("bcConfig.plist")
-            let fileManager = NSFileManager.defaultManager()
-            if !fileManager.fileExistsAtPath(path as String) {
-                let sourcePath = NSBundle.mainBundle().pathForResource("bcConfig", ofType: "plist")
-                do {
-                    try fileManager.copyItemAtPath(sourcePath!, toPath: path as String)
-                } catch _ {
-                }
-            }
-            configDict = NSDictionary(contentsOfFile: path as String) as NSDictionary!
+//            var path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString
+//            path = path.stringByAppendingString("bcConfig.plist")
+//            let fileManager = NSFileManager.defaultManager()
+//            if !fileManager.fileExistsAtPath(path as String) {
+//                let sourcePath = NSBundle.mainBundle().pathForResource("bcConfig", ofType: "plist")
+//                do {
+//                    try fileManager.copyItemAtPath(sourcePath!, toPath: path as String)
+//                } catch _ {
+//                }
+//            }
+            let sourcePath = NSBundle.mainBundle().pathForResource("bcConfig", ofType: "plist")
+            configDict = NSDictionary(contentsOfFile: sourcePath! as String) as NSDictionary!
         }
         let webServiceUrlDict:NSDictionary = configDict["WebServiceUrl"] as! NSDictionary
         let relativeUrl:NSString = webServiceUrlDict[configKey] as! String
