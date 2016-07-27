@@ -751,7 +751,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r3g-0n-vjg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4585.5" y="10.5"/>
+            <point key="canvasLocation" x="4575" y="-109.5"/>
         </scene>
         <!--SignUP View Controller-->
         <scene sceneID="p3B-rW-95w">
@@ -926,7 +926,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cv4-U9-XOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5272.5" y="10.5"/>
+            <point key="canvasLocation" x="5368.5" y="-97.5"/>
         </scene>
         <!--Sign Up Code View Controller-->
         <scene sceneID="X99-VG-HCn">
@@ -1139,7 +1139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybq-sy-eiO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5943" y="10.5"/>
+            <point key="canvasLocation" x="6118.5" y="-102.75"/>
         </scene>
         <!--Sign Up Pass View Controller-->
         <scene sceneID="dgf-ZM-xUf">
@@ -1248,7 +1248,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L8e-c7-Rif" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6386" y="-25"/>
+            <point key="canvasLocation" x="6813" y="-113.25"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="9P5-dV-bn4">
@@ -1753,8 +1753,7 @@
                                                     <exclude reference="svo-ym-uTj"/>
                                                 </mask>
                                             </variation>
-                                            <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                                <rect key="frame" x="0.0" y="0.0" width="400" height="66"/>
+                                            <variation key="heightClass=regular-widthClass=compact">
                                                 <mask key="subviews">
                                                     <include reference="wZt-vA-2Pa"/>
                                                     <include reference="6vp-D2-UkG"/>
@@ -2098,7 +2097,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esj-jN-v3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6842" y="-90"/>
+            <point key="canvasLocation" x="7470" y="-120.75"/>
         </scene>
         <!--Profile Setting View Controller-->
         <scene sceneID="slg-Uo-Lxz">
@@ -2128,6 +2127,7 @@
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="181" id="9PI-pM-8Ud"/>
+                                    <constraint firstAttribute="width" secondItem="oeu-n5-Mxv" secondAttribute="height" multiplier="181:18" id="PxA-cE-s68"/>
                                     <constraint firstAttribute="height" constant="18" id="RGs-dw-qmT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -2136,12 +2136,14 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="9PI-pM-8Ud"/>
+                                        <exclude reference="PxA-cE-s68"/>
                                         <exclude reference="RGs-dw-qmT"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="9PI-pM-8Ud"/>
+                                        <exclude reference="PxA-cE-s68"/>
                                         <include reference="RGs-dw-qmT"/>
                                     </mask>
                                 </variation>
@@ -2203,7 +2205,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.41960784309999999" green="0.56862745100000001" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="oeu-n5-Mxv" firstAttribute="centerY" secondItem="cbR-mX-a4r" secondAttribute="centerY" id="1FZ-cz-GT1"/>
+                            <constraint firstItem="oeu-n5-Mxv" firstAttribute="centerY" secondItem="cbR-mX-a4r" secondAttribute="centerY" multiplier="6:7" id="1FZ-cz-GT1"/>
                             <constraint firstItem="oUg-fa-L2b" firstAttribute="width" secondItem="oeu-n5-Mxv" secondAttribute="width" id="4mY-1U-53N"/>
                             <constraint firstItem="OH1-if-Wdk" firstAttribute="leading" secondItem="5TE-tN-gzJ" secondAttribute="leading" id="5ok-PR-ftC"/>
                             <constraint firstItem="oTu-Ah-en8" firstAttribute="centerX" secondItem="fnw-pd-SUB" secondAttribute="centerX" id="7Yo-pR-UAS"/>
@@ -2336,7 +2338,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TNu-Qo-rff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7644" y="-89.25"/>
+            <point key="canvasLocation" x="8223" y="-126"/>
         </scene>
         <!--Pre SignUPVC-->
         <scene sceneID="2iV-lg-2fy">

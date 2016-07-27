@@ -54,7 +54,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -79,15 +79,12 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
             self.cell = cell2
             return cell2
         }
-        if indexPath.row == 2 {
         let cell3 = tableView.dequeueReusableCellWithIdentifier("DetailViewCellIdentifier", forIndexPath: indexPath) as! ItemDetailViewCell
         cell3.desTextView.layer.cornerRadius = 3
         cell3.desTextView.layer.borderWidth = 0.5
         cell3.desTextView?.text = getProductInfoDic["product_description"] as? String
         return cell3
-        }
-        let cell4 = tableView.dequeueReusableCellWithIdentifier("keysAndFeatureCell", forIndexPath: indexPath) as! ItemDetailViewCell
-        return cell4
+        
     }
     
     @IBAction func addToCart(sender: AnyObject) {
@@ -212,7 +209,7 @@ extension ItemDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionCell", forIndexPath: indexPath) as! collectionCell
-        let url = NSURL(string:("http://brillcreations.com/brill/bcreation/files/images/" + (productImageArr[indexPath.row]["images"] as? String)!))
+        let url = NSURL(string:("http://192.168.0.6/eshopkart/files/images/" + (productImageArr[indexPath.row]["images"] as? String)!))
         cell.imageView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         return cell
     }

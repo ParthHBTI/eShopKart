@@ -65,11 +65,15 @@ class LoginViewController: TextFieldViewController {
                     appDelegate.currentUser = user
                     appDelegate.saveCurrentUserDetails()
                     if let tokenId: AnyObject = response.valueForKey("User")?.valueForKey("token_id") {
+                        let firstName = response.valueForKey("User")?.valueForKey("firstname") as! String
+                        let lastName  = response.valueForKey("User")?.valueForKey("lastname") as! String
                         let username =	response.valueForKey("User")?.valueForKey("username") as! String
                         let email =	response.valueForKey("User")?.valueForKey("email") as! String
                         let mobile = response.valueForKey("User")?.valueForKey("mobile") as! String
                         let user_id =	response.valueForKey("User")?.valueForKey("id") as! String
                         NSUserDefaults.standardUserDefaults().setValue(tokenId, forKey: "token_id")
+                        NSUserDefaults.standardUserDefaults().setValue(firstName, forKey: "firstname")
+                        NSUserDefaults.standardUserDefaults().setValue(lastName, forKey: "lastname")
                         NSUserDefaults.standardUserDefaults().setValue(username, forKey: "username")
                         NSUserDefaults.standardUserDefaults().setValue(email, forKey: "email")
                         NSUserDefaults.standardUserDefaults().setValue(mobile, forKey: "mobile")

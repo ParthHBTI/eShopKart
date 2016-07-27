@@ -41,12 +41,13 @@ class ProfileSettingViewController: TextFieldViewController {
         self.title = "Update Profile"
         self.firstNameTxtField.text = NSUserDefaults.standardUserDefaults().valueForKey("firstname") as? String
         self.lastNameTxtField.text = NSUserDefaults.standardUserDefaults().valueForKey("lastname") as? String
+        self.emailTxtField.text = NSUserDefaults.standardUserDefaults().valueForKey("email") as? String
+        self.mobNumberTxtField.text = NSUserDefaults.standardUserDefaults().valueForKey("mobile") as? String
         //        let userFullName = NSUserDefaults.standardUserDefaults().valueForKey("username") as? String
         //        var splitStrArr = userFullName!.componentsSeparatedByString(" ")
         //        firstNameTxtField.text = splitStrArr[0]
         //        lastNameTxtField.text = splitStrArr.count > 1 ? splitStrArr[splitStrArr.count - 1] : nil
-        self.emailTxtField.text = NSUserDefaults.standardUserDefaults().valueForKey("email") as? String
-        self.mobNumberTxtField.text = NSUserDefaults.standardUserDefaults().valueForKey("mobile") as? String
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -123,14 +124,14 @@ class ProfileSettingViewController: TextFieldViewController {
                     if let tokenId: AnyObject = response.valueForKey("User")?.valueForKey("token_id") {
                         let firstName = response.valueForKey("User")?.valueForKey("firstname") as! String
                         let lastName = response.valueForKey("User")?.valueForKey("lastname") as! String
-                        let trimFirstNameStr = firstName.stringByTrimmingCharactersInSet(charSet) as String
+                        let trimFirstNameStr = firstName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) as String
                         let userFullName = trimFirstNameStr + " " + lastName
                         let email =	response.valueForKey("User")?.valueForKey("email") as! String
                         let mobile = response.valueForKey("User")?.valueForKey("mobile") as! String
-                        let user_id =	response.valueForKey("User")?.valueForKey("id") as! String
-                        NSUserDefaults.standardUserDefaults().setValue(firstName, forKey: "firstname")
-                        NSUserDefaults.standardUserDefaults().setValue(lastName, forKey: "lastname")
+                        let user_id = response.valueForKey("User")?.valueForKey("id") as! String
                         NSUserDefaults.standardUserDefaults().setValue(tokenId, forKey: "token_id")
+                        NSUserDefaults.standardUserDefaults().setValue(trimFirstNameStr, forKey: "firstname")
+                        NSUserDefaults.standardUserDefaults().setValue(lastName, forKey: "lastname")
                         NSUserDefaults.standardUserDefaults().setValue(userFullName, forKey: "username")
                         NSUserDefaults.standardUserDefaults().setValue(email, forKey: "email")
                         NSUserDefaults.standardUserDefaults().setValue(mobile, forKey: "mobile")
