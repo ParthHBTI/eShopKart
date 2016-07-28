@@ -44,6 +44,10 @@
 		<string>webservices/update_address/</string>
 		<key>updateProfile</key>
 		<string>webservices/update_profile/</string>
+		<key>get_requests</key>
+		<string>webservices/get_requests/</string>
+		<key>oredered_details</key>
+		<string>webservices/get_request_details</string>
 	</dict>
 </dict>
 </plist>

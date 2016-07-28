@@ -240,6 +240,27 @@ class SigninOperaion: BaseOperation, OperationDelegate {
                 havingError(error)
         })
     }
+    class func get_requests(userInfo: NSDictionary,completionClosure: (AnyObject) -> (), havingError:(NSError) -> ()) ->() {
+        let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("get_requests"))
+        let URL:NSURL = NSURL(string: urlString as String)!
+        BaseOperation.initOperation(URL, userInfo: userInfo, onSuccess: { (onSuccess:AnyObject) -> () in
+            let dic = onSuccess as! NSArray
+            completionClosure(dic)
+            }, onError: { (error:NSError) -> () in
+                havingError(error)
+        })
+    }
+    
+    class func get_request_details(userInfo: NSDictionary,completionClosure: (AnyObject) -> (), havingError:(NSError) -> ()) ->() {
+        let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("oredered_details"))
+        let URL:NSURL = NSURL(string: urlString as String)!
+        BaseOperation.initOperation(URL, userInfo: userInfo, onSuccess: { (onSuccess:AnyObject) -> () in
+            let dic = onSuccess as! NSArray
+            completionClosure(dic)
+            }, onError: { (error:NSError) -> () in
+                havingError(error)
+        })
+    }
 
 
 

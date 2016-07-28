@@ -35,23 +35,13 @@ class LoginViewController: TextFieldViewController {
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
             self.animateLoginBtnOnWrongSubmit()
-        }
-            
-            //        } else if passwordTextField.text!.isEmpty == true {
-            //            loading.labelText = "Password can not be empty"
-            //            loading.yOffset = -55.0
-            //            loading.hide(true, afterDelay: 2)
-            //            loading.removeFromSuperViewOnHide = true
-            //            self.animateLoginBtnOnWrongSubmit()
-            //        }
-        else {
+        } else {
             if emailMobileTextField.text!.isValidEmail() == true {
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 var token = appDelegate.deviceTokenString as? String
                 if token == nil {
                     token = "786e246f17d1a0684d499b390b8"
                 }
-                print("\n\(token)\n")
                 let userInfo = [
                     "email" : emailMobileTextField!.text!,
                     "password" : passwordTextField!.text!,

@@ -10,9 +10,9 @@ import UIKit
 
 class myOrdersCell: UITableViewCell {
 
-    @IBOutlet weak var orderID: UILabel!
     @IBOutlet weak var productName: UILabel!
-    @IBOutlet weak var productStatus: UILabel!
+    @IBOutlet weak var totalItems: UILabel!
+    @IBOutlet weak var grandTotal: UILabel!
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productStatusDate: UILabel!
     override func awakeFromNib() {
