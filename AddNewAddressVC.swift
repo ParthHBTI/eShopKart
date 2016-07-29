@@ -37,8 +37,10 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
         self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: view.frame.size.height + 220);
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        landmark.delegate = self
         self.navigationController?.navigationBarHidden = false
         let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.BlackOpaque
@@ -161,10 +163,11 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
             }
         }
     }
-    func textViewDidChange(textView: UITextView) {
-        userName.text = userName.text
-        print(userName.text)
-    }
+//    func textViewDidChange(textView: UITextView) {
+//        userName.text = userName.text
+//        print(userName.text)
+//    }
+    
     func textFieldDidChange() {
         userName.text = userName.text
         city.text = city.text
@@ -173,6 +176,16 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
         zipCode.text = zipCode.text
         address.text = address .text
         state.text = state.text
+    }
+    
+    @IBAction func defaultAction(sender: UIButton) {
+        print("testing")
+        checkBtn.tintColor = UIColor.blueColor()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
     
     @IBAction func cancelAction(sender: AnyObject) {

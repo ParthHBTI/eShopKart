@@ -100,6 +100,7 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate,UITextViewD
     }
     
     
+    
     /*func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange,
                    replacementString string: String) -> Bool
     {
