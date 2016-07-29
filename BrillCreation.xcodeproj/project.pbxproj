@@ -68,6 +68,7 @@
 		73C1260A1D2BA1E80048F986 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C126091D2BA1E80048F986 /* FeedbackViewController.swift */; };
 		73CFD22D1D3DFC58008D0AC5 /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CFD22C1D3DFC58008D0AC5 /* ProfileSettingViewController.swift */; };
 		73D0DD321D379D2F00E5714C /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D0DD311D379D2E00E5714C /* HelpViewController.swift */; };
+		73F037E91D4A015100628E83 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F037E81D4A015100628E83 /* MessageComposer.swift */; };
 		73F0C21A1D252595005C48C6 /* PreSignUPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F0C2191D252595005C48C6 /* PreSignUPVC.swift */; };
 		74A51CC8A3AE332317F4C0AC /* Pods_BrillCreation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A9121C328A040311E7CE07 /* Pods_BrillCreation.framework */; };
 /* End PBXBuildFile section */
@@ -141,6 +142,7 @@
 		73C126091D2BA1E80048F986 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		73CFD22C1D3DFC58008D0AC5 /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
 		73D0DD311D379D2E00E5714C /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		73F037E81D4A015100628E83 /* MessageComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
 		73F0C2191D252595005C48C6 /* PreSignUPVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreSignUPVC.swift; sourceTree = "<group>"; };
 		74D4A6FA0A2E707CE4606434 /* Pods-BrillCreation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrillCreation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BrillCreation/Pods-BrillCreation.debug.xcconfig"; sourceTree = "<group>"; };
 		D6726FB0107239CE18FB8855 /* Pods-BrillCreation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrillCreation.release.xcconfig"; path = "Pods/Target Support Files/Pods-BrillCreation/Pods-BrillCreation.release.xcconfig"; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				043694621CE465DC000868CE /* BaseViewController.swift */,
 				180B482C1CF2C74100B5808C /* HomeViewController.swift */,
 				73CFD22C1D3DFC58008D0AC5 /* ProfileSettingViewController.swift */,
+				73F037E81D4A015100628E83 /* MessageComposer.swift */,
 				733606091D3CE3DB00C9A15F /* AppShareViewController.swift */,
 				04A2FA311D39076600C10875 /* AddNewAddressVC.swift */,
 				04A2FA271D38E54300C10875 /* AddressViewController.swift */,
@@ -349,7 +352,7 @@
 				TargetAttributes = {
 					045739021CE30EDF00EB0FC9 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 37933HE5C4;
+						DevelopmentTeam = 7438FZYKTN;
 					};
 				};
 			};
@@ -490,6 +493,7 @@
 				04A2FA321D39076600C10875 /* AddNewAddressVC.swift in Sources */,
 				04358D951D489DAB00CB24A8 /* myOrdersCell.swift in Sources */,
 				18A93DF31CEF32680046F78D /* ItemDetailVC.swift in Sources */,
+				73F037E91D4A015100628E83 /* MessageComposer.swift in Sources */,
 				73F0C21A1D252595005C48C6 /* PreSignUPVC.swift in Sources */,
 				04B564221CEEF326001E9792 /* SimillerProductViewCell.swift in Sources */,
 			);

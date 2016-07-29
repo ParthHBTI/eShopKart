@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import MessageUI
 
-class UserProfileViewController: UIViewController, UITableViewDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+class UserProfileViewController: UIViewController, UITableViewDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, MFMailComposeViewControllerDelegate {
+    let messageComposerObj = MessageComposer()
+    
     let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
     var currentUser : User?
     var isuserLogin: Bool = false
@@ -39,10 +42,10 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
         self.title = "Profile"
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         self.navigationItem.setHidesBackButton(true, animated: true)
-//        let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(UserProfileViewController.backAction))
+        //        let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(UserProfileViewController.backAction))
         let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(UserProfileViewController.crossBtnAction))
         //let profileEditBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Edit-1"), style: . Plain, target: self, action: Selector(""))
-//        self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
+        //        self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
         self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
         
         let userData = NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
@@ -50,7 +53,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
             isuserLogin = true
         }
         let btnstr = [
-            NSFontAttributeName : UIFont.systemFontOfSize(15.0),
+            NSFontAttributeName : UIFont.systemFontOfSize(12.0),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
             //NSUnderlineStyleAttributeName : NSUnderlineStyle.StyleSingle.rawValue
         ]
@@ -104,12 +107,12 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
     }
     
     override func viewWillAppear(animated: Bool) {
-        let username = NSUserDefaults.standardUserDefaults().valueForKey("username")
-        let email = NSUserDefaults.standardUserDefaults().valueForKey("email")
-        let mobile = NSUserDefaults.standardUserDefaults().valueForKey("mobile")
-        firstLastLbl.text = username as? String
-        mobileLbl.text = mobile as? String
-        emailLbl.text = email as? String
+        //        let username = NSUserDefaults.standardUserDefaults().valueForKey("username")
+        //        let email = NSUserDefaults.standardUserDefaults().valueForKey("email")
+        //        let mobile = NSUserDefaults.standardUserDefaults().valueForKey("mobile")
+        firstLastLbl.text = NSUserDefaults.standardUserDefaults().valueForKey("username") as? String
+        mobileLbl.text = NSUserDefaults.standardUserDefaults().valueForKey("mobile") as? String
+        emailLbl.text = NSUserDefaults.standardUserDefaults().valueForKey("email") as? String
     }
     
     @IBAction func logoutAction() {
@@ -133,8 +136,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 })
                 loading.hide(true)
-//                let storyboard = UIStoryboard(name: "Main" , bundle: nil)
-//                let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
+                //                let storyboard = UIStoryboard(name: "Main" , bundle: nil)
+                //                let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as? HomeViewController
                 //self.navigationController?.pushViewController(vc!, animated: true)
                 self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
             } else {
@@ -276,8 +279,9 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
         } else if(indexPath.row == 1) {
-            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("AppShareVCIdentifire") as! AppShareViewController
-            self.navigationController?.pushViewController(destinationVC, animated: true)
+            //            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("AppShareVCIdentifire") as! AppShareViewController
+            //            self.navigationController?.pushViewController(destinationVC, animated: true)
+            self.AppShareAction(indexPath.row)
             
         } else if(indexPath.row == 2) {
             let destinationVC = storyboard.instantiateViewControllerWithIdentifier("HelpVCIdentifier") as! HelpViewController
@@ -300,7 +304,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
             let destinationVC = storyboard.instantiateViewControllerWithIdentifier("OrderNumberID") as! MyOredrNumberVC
             self.navigationController?.pushViewController(destinationVC, animated: true)
-
+            
         }
     }
     
@@ -308,7 +312,42 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func AppShareAction(sender: AnyObject) {
+        //        if messageComposer.canSendMail() {
+        let textToShare: String = "Brill Creation, now another plateform for online shopping in bulk, please go through this URL"
+        let urlToShare: NSURL = NSURL(string: "http://brillcreations.com/brill/bcreation")!
+        let imageToShare: UIImage = UIImage(named: "appImg.png")!
+        let objectsToShare: [AnyObject] = [textToShare, urlToShare, imageToShare]
+        let activityVC: UIActivityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        let excludeActivities: [AnyObject] = [UIActivityTypePrint, UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList,UIActivityTypePostToVimeo,UIActivityTypeAirDrop,UIActivityTypeSaveToCameraRoll]
+        activityVC.excludedActivityTypes = excludeActivities as? [String]
+        activityVC.popoverPresentationController?.sourceView = sender as? UIView
+        self.presentViewController(activityVC, animated: true, completion: nil)
+        //                activityVC.completionHandler = {(activityType, completed:Bool) in
+        //                    if activityType == UIActivityTypeMail {
+        //                        print("mail")
+        //                    }
+        activityVC.completionWithItemsHandler = {(activityType: String?, ok: Bool, items: [AnyObject]?, err:NSError?) -> Void in
+            if activityType == UIActivityTypeMail {
+                if self.messageComposerObj.canSendMail() {
+                    return
+                } else {
+                    self.showSendMailErrorAlert()
+                }
+            }
+        }
+        //        } else {
+        //        self.showSendMailErrorAlert()
+        //
+        //        }
+    }
+    
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+}
+
 //    func backAction() {
 //        self.navigationController?.popViewControllerAnimated(true)
 //    }
-}
