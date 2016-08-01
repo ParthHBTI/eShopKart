@@ -262,6 +262,15 @@ class SigninOperaion: BaseOperation, OperationDelegate {
         })
     }
 
-
+    class func request_mail(userInfo: NSDictionary,completionClosure: (AnyObject) -> (), havingError:(NSError) -> ()) ->() {
+        let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("request_mail"))
+        let URL:NSURL = NSURL(string: urlString as String)!
+        BaseOperation.initOperation(URL, userInfo: userInfo, onSuccess: { (onSuccess:AnyObject) -> () in
+            let dic = onSuccess 
+            completionClosure(dic)
+            }, onError: { (error:NSError) -> () in
+                havingError(error)
+        })
+    }
 
 }

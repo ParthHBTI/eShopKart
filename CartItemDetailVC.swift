@@ -129,11 +129,15 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     }
     
     @IBAction func getQuoteForAllItems(sender: AnyObject) {
+        var order_number = String()
+        var myInt = Int()
         let tokenId = NSUserDefaults.standardUserDefaults().valueForKey("token_id")
         let userInfo = [
             "token_id" : tokenId!
             ]
         SigninOperaion.request_for_code(userInfo, completionClosure: { response in
+            order_number = response.valueForKey("order_number") as! String
+            myInt = (order_number as NSString).integerValue
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = response["message"] as! String
@@ -141,6 +145,17 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             loading.removeFromSuperViewOnHide = true
             self.cartDetailResponseArr.removeAllObjects()
              self.tableView.reloadData()
+            let userInfo1 = [
+                "order_number" : myInt
+            ]
+            SigninOperaion.request_mail(userInfo1, completionClosure: { response in
+                print(response)
+            }) { (error: NSError) -> () in
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = error.localizedDescription
+                loading.hide(true, afterDelay: 2)
+            }
         }) { (error: NSError) -> () in
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText

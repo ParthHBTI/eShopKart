@@ -48,6 +48,8 @@
 		<string>webservices/get_requests/</string>
 		<key>oredered_details</key>
 		<string>webservices/get_request_details</string>
+		<key>request_mail</key>
+		<string>webservices/request_mail</string>
 	</dict>
 </dict>
 </plist>

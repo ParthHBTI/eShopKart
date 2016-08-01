@@ -11,6 +11,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
     var addressArray = NSMutableArray()
     var tempCell = AddressViewCell()
     var checkOption = false
+    var checkDefault = Bool()
     var editCellIndex = -1
 
     @IBOutlet var tableView: UITableView!
@@ -56,6 +57,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
           self.addressArray.addObject(dic)
                 self.tableView.reloadData()
             }
+            
             self.tableView.reloadData()
         }) { (error: NSError) -> () in
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -100,6 +102,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
     
     @IBAction func selectAddress(sender: AnyObject) {
         editCellIndex = sender.tag
+        checkDefault = false
         self.tableView.reloadData()
        
     }
@@ -136,10 +139,19 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
         cell.deleteButton!.tag = indexPath.row
         tempCell = cell
         cell.selectionBtn!.tintColor = UIColor.blackColor()
+        if self.checkDefault == true {
+            if indexPath.row == addressArray.count - 1 {
+                cell.editButton.hidden = false
+                cell.deleteButton.hidden = false
+                cell.selectionBtn!.tintColor = UIColor.blueColor()
+            }
+        } else {
         if editCellIndex == indexPath.row {
+            checkDefault = false
             cell.editButton.hidden = false
             cell.deleteButton.hidden = false
             cell.selectionBtn!.tintColor = UIColor.blueColor()
+        }
         }
       return cell
     }

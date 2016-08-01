@@ -132,6 +132,8 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     }
     
     @IBAction func getCodeAction(sender: AnyObject) {
+        var order_number = String()
+        var myInt = Int()
         let userData = NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
         if userData != nil {
             productId = getProductInfoDic["id"] as! String
@@ -142,10 +144,23 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
             ]
             SigninOperaion.request_for_code(userInfo, completionClosure: { response in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                order_number = response.valueForKey("order_number") as! String
+                myInt = (order_number as NSString).integerValue
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = response["message"] as! String
                 loading.hide(true, afterDelay: 2)
                 loading.removeFromSuperViewOnHide = true
+                let userInfo1 = [
+                    "order_number" : myInt
+                ]
+                SigninOperaion.request_mail(userInfo1, completionClosure: { response in
+                    print(response)
+                }) { (error: NSError) -> () in
+                    let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                    loading.mode = MBProgressHUDModeText
+                    loading.detailsLabelText = error.localizedDescription
+                    loading.hide(true, afterDelay: 2)
+                }
                 self.ItemDetailTblView.reloadData()
             }) { (error: NSError) -> () in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)

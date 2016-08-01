@@ -10,6 +10,7 @@ import UIKit
 import AFNetworking
 
 class FeedbackViewController: TextFieldViewController {
+    let baseViewController = BaseViewController()
     
     @IBOutlet weak var subTxtField: UITextField!
     @IBOutlet weak var feedbackTxtView: UITextView!
@@ -86,6 +87,7 @@ class FeedbackViewController: TextFieldViewController {
                 self.feedbackTxtView.text = ""
             } else {
                 self.makeLoginAlert()
+                //baseViewController.makeLoginAlert()
             }
         }
     }

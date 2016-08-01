@@ -1753,7 +1753,8 @@
                                                     <exclude reference="svo-ym-uTj"/>
                                                 </mask>
                                             </variation>
-                                            <variation key="heightClass=regular-widthClass=compact">
+                                            <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="66"/>
                                                 <mask key="subviews">
                                                     <include reference="wZt-vA-2Pa"/>
                                                     <include reference="6vp-D2-UkG"/>

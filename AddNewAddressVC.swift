@@ -27,13 +27,13 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
     var addressInfoDic = NSDictionary()
     var address_id = NSString()
     var flagPoint = Bool()
+    var checkdefault = false
     var addEdit = false
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var guiView: UIView!
     
     override func viewDidLayoutSubviews()  {
         super.viewDidLayoutSubviews()
-
         self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: view.frame.size.height + 220);
     }
     
@@ -118,7 +118,9 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
                 loading.hide(true, afterDelay: 2)
             }
                 let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
+                //let destinationVC = storyboard.instantiateViewControllerWithIdentifier("AddressVCIdentifier") as! AddressViewController
                 let vc = storyboard.instantiateViewControllerWithIdentifier("AddressVCIdentifier") as? AddressViewController
+                vc?.checkDefault = checkdefault
                 self.navigationController?.pushViewController(vc!, animated: true)
         }
         } else {
@@ -159,6 +161,7 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
                 }
                 let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
                 let vc = storyboard.instantiateViewControllerWithIdentifier("AddressVCIdentifier") as? AddressViewController
+                vc?.checkDefault = checkdefault
                 self.navigationController?.pushViewController(vc!, animated: true)
             }
         }
@@ -179,7 +182,7 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
     }
     
     @IBAction func defaultAction(sender: UIButton) {
-        print("testing")
+        checkdefault = true
         checkBtn.tintColor = UIColor.blueColor()
     }
     
@@ -200,14 +203,21 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
     }
 
 //    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-//        let textFieldText: NSString = zipCode.text ?? ""
-//        let currentString = textFieldText.stringByReplacingCharactersInRange(range, withString: string)
-//        let length = currentString.characters.count
-//        if length >= 6{
-//            
-//        } else if length == 6 {
-//            enterZip(textFieldText as String)
-//        }
+////        let textFieldText: NSString = zipCode.text ?? ""
+////        let currentString = textFieldText.stringByReplacingCharactersInRange(range, withString: string)
+////        let length = currentString.characters.count
+////        if length > 6{
+////            
+////        } else if length == 6 {
+////            
+////            let geocoder = CLGeocoder()
+////            geocoder.geocodeAddressString(zipCode.text!) {
+////                (placemarks, error) -> Void in
+////                if let placemark = placemarks?[0] {
+////                    print(placemark.addressDictionary)
+////                }
+////            }
+////        }
 //        
 //        return true
 //    }
@@ -216,8 +226,7 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
         let geoCoder = CLGeocoder();
         let params = [
             String(kABPersonAddressZIPKey): zipCode as String,
-            String(kABPersonAddressCountryCodeKey): "IN",
-            String(kABPersonAddressStreetKey): ""
+            String(kABPersonAddressCountryCodeKey): "IND",
             ]
         geoCoder.geocodeAddressDictionary(params) {
             (plasemarks, error) -> Void in
