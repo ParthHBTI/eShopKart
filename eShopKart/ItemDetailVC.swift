@@ -17,8 +17,8 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
         static let LANDSCAPE_KEYBOARD_HEIGHT : CGFloat = 162;
     }
     var animateDistance: CGFloat = 0
-    var frameView: UIView!
     var flag: Bool! = false
+    var checkFlag = false
     var indexPath: NSIndexPath = NSIndexPath(forRow: 1, inSection: 1)
     var cell = ItemDetailViewCell()
     @IBOutlet var ItemDetailTblView: UITableView!
@@ -30,6 +30,11 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     var getProductInfoDic = Dictionary<String,AnyObject>()
     override func viewDidLoad() {
         super.viewDidLoad()
+        if checkFlag {
+            AddToCartBtn.hidden = true
+            GetQuoteBtn.hidden = true
+            
+        }
         self.title = "Product Detail"
         self.ItemDetailTblView.rowHeight = 170
         productImageArr = getProductInfoDic["Gallery"] as! Array<AnyObject>
@@ -71,10 +76,15 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
             cell2.qtyTxtField.layer.cornerRadius = 5.0
             cell2.qtyTxtField.layer.borderWidth  = 1.0
             cell2.qtyTxtField.delegate = self
+            if checkFlag {
+                cell2.qtyTxtField.text = productQnty
+                cell2.qtyTxtField.enabled = false
+            } else {
             if self.flag == true {
                 self.productQnty = cell2.qtyTxtField!.text!
             } else {
                 cell2.qtyTxtField.text = "1"
+            }
             }
             self.cell = cell2
             return cell2
@@ -133,7 +143,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
             SigninOperaion.request_for_code(userInfo, completionClosure: { response in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
-                loading.detailsLabelText = response["msg"] as! String
+                loading.detailsLabelText = response["message"] as! String
                 loading.hide(true, afterDelay: 2)
                 loading.removeFromSuperViewOnHide = true
                 self.ItemDetailTblView.reloadData()
@@ -200,6 +210,9 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
         return true
     }
     
+    override func backAction() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 }
 
 extension ItemDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {

@@ -62,20 +62,28 @@ class UserRegistrationVC: TextFieldViewController {
             loading.removeFromSuperViewOnHide = true
             self.animateBtnOnWrongSubmit()
             
-        } else if (passwordTextField.text!.characters.count) < 6 {
+        } else  if  mailTextField.text!.isValidEmail() != true {
             loading.mode = MBProgressHUDModeText
-            loading.detailsLabelText = "password length must be of 6 characters!"
+            loading.labelText = "Please enter valid email id"
             loading.hide(true, afterDelay: 2)
-            loading.removeFromSuperViewOnHide = true
             self.animateBtnOnWrongSubmit()
-            
         } else if contactNumberTextField.text!.characters.count != 10 {
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = "please enter a valid mobile number"
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
             self.animateBtnOnWrongSubmit()
-            
+        } else if (passwordTextField.text!.characters.count) < 6 {
+                        loading.mode = MBProgressHUDModeText
+                        loading.detailsLabelText = "password length must be of 6 characters!"
+                        loading.hide(true, afterDelay: 2)
+                        loading.removeFromSuperViewOnHide = true
+                        self.animateBtnOnWrongSubmit()
+        }else if passwordTextField.text != confirmPassTextField.text{
+            loading.mode = MBProgressHUDModeText
+            loading.detailsLabelText = "Password and Confirm Password does not match"
+            loading.hide(true, afterDelay: 2)
+            loading.removeFromSuperViewOnHide = true
         }else if firstNameWhiteSpaceSet == "" || lastNameWhiteSpaceSet == "" || mobileWhiteSpaceSet == "" {
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = "Only white spaces can not be accepted"
@@ -84,7 +92,6 @@ class UserRegistrationVC: TextFieldViewController {
             self.animateBtnOnWrongSubmit()
             
         }else {
-            if  mailTextField.text!.isValidEmail() == true {
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 loading.mode = MBProgressHUDModeIndeterminate
                 var token =	appDelegate.deviceTokenString as? String
@@ -141,13 +148,7 @@ class UserRegistrationVC: TextFieldViewController {
                     loading.hide(true, afterDelay: 2)
                     self.animateBtnOnWrongSubmit()
                 }
-            } else {
-                loading.mode = MBProgressHUDModeText
-                loading.labelText = "Please enter valid email id"
-                loading.hide(true, afterDelay: 2)
-                self.animateBtnOnWrongSubmit()
             }
-        }
     }
     
     func animateBtnOnWrongSubmit(){
@@ -162,8 +163,60 @@ class UserRegistrationVC: TextFieldViewController {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-}
+    func textField(textField: UITextField,
+                   shouldChangeCharactersInRange range: NSRange,
+                                                 replacementString string: String)
+        -> Bool
+    {
+        if string.characters.count == 0 {
+            return true
+        }
+        // Check to see if the text field's contents still fit the constraints
+        // with the new content added to it.
+        // If the contents still fit the constraints, allow the change
+        // by returning true; otherwise disallow the change by returning false.
+        let currentText = textField.text ?? ""
+        let prospectiveText = (currentText as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        
+        switch textField {
+        case  firstNameTextField:
+            return prospectiveText.characters.count <= 30
+            
+        case lastNameTextField:
+            return prospectiveText.characters.count <= 30
+            
+        case contactNumberTextField:
+            return prospectiveText.characters.count <= 10
+            
+        default:
+            return true
+        }
+    }
 
+    
+    override func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == self.firstNameTextField {
+            self.lastNameTextField.becomeFirstResponder()
+        }else if textField == self.lastNameTextField{
+            self.mailTextField.becomeFirstResponder()
+        }else if textField == self.mailTextField{
+           if  mailTextField.text!.isValidEmail() == true {
+            self.contactNumberTextField.becomeFirstResponder()
+           } else {
+            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            loading.mode = MBProgressHUDModeText
+            loading.labelText = "Please enter valid email id"
+            loading.hide(true, afterDelay: 2)
+            }
+        } else if textField == self.contactNumberTextField{
+            self.passwordTextField.becomeFirstResponder()
+        } else if textField == self.passwordTextField{
+            self.confirmPassTextField.becomeFirstResponder()
+        } else {
+            //self.view.endEditing(true)
+        }
+        return true
+    }
 /*
  // MARK: - Navigation
  
@@ -175,3 +228,4 @@ class UserRegistrationVC: TextFieldViewController {
  */
 
 
+}
