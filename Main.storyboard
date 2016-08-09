@@ -1766,7 +1766,7 @@
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="134" y="53" width="132" height="47"/>
+                                                        <rect key="frame" x="134" y="53" width="131" height="47"/>
                                                         <mask key="constraints">
                                                             <include reference="5so-g6-ctd"/>
                                                         </mask>
@@ -1786,7 +1786,7 @@
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="277" y="53" width="194" height="47"/>
+                                                        <rect key="frame" x="276" y="53" width="194" height="47"/>
                                                         <mask key="constraints">
                                                             <include reference="L0m-8P-aPZ"/>
                                                         </mask>

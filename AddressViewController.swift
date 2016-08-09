@@ -42,22 +42,22 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
             loading.detailsLabelText = error.localizedDescription
             loading.hide(true, afterDelay: 2)
         }
-//        var topView = myTopView.frame
-//        topView.size.height = 70.0
-//        topView.size.width = 320.0
-//        myTopView.frame = topView
-//        orderBtn.setTitle("Order Now", forState: .Normal)
-//        var newButton = orderBtn.frame
-//        newButton.size.height = 35
-//        newButton.size.width = 320
-//        orderBtn.frame = newButton
-//        floaringView.addSubview(orderBtn)
-//        self.floaringView.backgroundColor = UIColor.blueColor()
-//        var newFrame: CGRect = self.floaringView.frame
-//        newFrame.size.height = 0
-//        newFrame.size.width = 400
-//        self.floaringView.frame = newFrame
-//         orderBtn.addTarget(self, action: #selector(goForOrder), forControlEvents: .TouchUpInside)
+        var topView = myTopView.frame
+        topView.size.height = 70.0
+        topView.size.width = 320.0
+        myTopView.frame = topView
+        orderBtn.setTitle("Order Now", forState: .Normal)
+        var newButton = orderBtn.frame
+        newButton.size.height = 35
+        newButton.size.width = 320
+        orderBtn.frame = newButton
+        floaringView.addSubview(orderBtn)
+        self.floaringView.backgroundColor = UIColor.blueColor()
+        var newFrame: CGRect = self.floaringView.frame
+        newFrame.size.height = 0
+        newFrame.size.width = 400
+        self.floaringView.frame = newFrame
+         orderBtn.addTarget(self, action: #selector(goForOrder), forControlEvents: .TouchUpInside)
         self.navigationController?.navigationBarHidden = false
         let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.BlackOpaque
@@ -74,11 +74,6 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
                  self.tableView.reloadData()
     }
 
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let view = UIView.init(frame: CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height))
-        view.backgroundColor = UIColor.greenColor()
-        return view
-    }
     
     @IBAction func editAction(sender: AnyObject) {
         checkOption = true
