@@ -7,30 +7,57 @@
 //
 
 import UIKit
+
 class AddressViewController: UIViewController, UITableViewDelegate, UIScrollViewDelegate {
     var addressArray = NSMutableArray()
     var tempCell = AddressViewCell()
     var checkOption = false
     var checkDefault = Bool()
     var editCellIndex = -1
-
+    var deleteFlag = false
     @IBOutlet var tableView: UITableView!
     var floaringView = UIView()
     var orderBtn = UIButton()
+    @IBOutlet weak var myTopView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        orderBtn.setTitle("Go for order", forState: .Normal)
-        var newButton = orderBtn.frame
-        newButton.size.height = 35
-        newButton.size.width = 400
-        orderBtn.frame = newButton
-        floaringView.addSubview(orderBtn)
-        self.floaringView.backgroundColor = UIColor.blueColor()
-        var newFrame: CGRect = self.floaringView.frame
-        newFrame.size.height = 0
-        newFrame.size.width = 400
-        self.floaringView.frame = newFrame
-         orderBtn.addTarget(self, action: #selector(goForOrder), forControlEvents: .TouchUpInside)
+        let userInfo = [
+            "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id") as! String,
+            ]
+        SigninOperaion.get_address(userInfo, completionClosure: { response in
+            print(response)
+            self.addressArray.removeAllObjects()
+            let values = (response as? NSArray)!
+            //values = response
+            for var dic in values {
+                self.addressArray.addObject(dic)
+                self.tableView.reloadData()
+            }
+            
+            self.tableView.reloadData()
+        }) { (error: NSError) -> () in
+            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            loading.mode = MBProgressHUDModeText
+            loading.detailsLabelText = error.localizedDescription
+            loading.hide(true, afterDelay: 2)
+        }
+//        var topView = myTopView.frame
+//        topView.size.height = 70.0
+//        topView.size.width = 320.0
+//        myTopView.frame = topView
+//        orderBtn.setTitle("Order Now", forState: .Normal)
+//        var newButton = orderBtn.frame
+//        newButton.size.height = 35
+//        newButton.size.width = 320
+//        orderBtn.frame = newButton
+//        floaringView.addSubview(orderBtn)
+//        self.floaringView.backgroundColor = UIColor.blueColor()
+//        var newFrame: CGRect = self.floaringView.frame
+//        newFrame.size.height = 0
+//        newFrame.size.width = 400
+//        self.floaringView.frame = newFrame
+//         orderBtn.addTarget(self, action: #selector(goForOrder), forControlEvents: .TouchUpInside)
         self.navigationController?.navigationBarHidden = false
         let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.BlackOpaque
@@ -44,30 +71,15 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
         floaringView.frame.size.height = screenSize.height - 630
         self.tableView.addSubview(floaringView)
         self.tableView.addObserver(self, forKeyPath: "frame", options: .New, context: nil )
-        let userInfo = [
-            "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id") as! String,
-        ]
-        
-        SigninOperaion.get_address(userInfo, completionClosure: { response in
-            print(response)
-            self.addressArray.removeAllObjects()
-            var values = (response as? NSArray)!
-            //values = response
-            for var dic in values {
-          self.addressArray.addObject(dic)
-                self.tableView.reloadData()
-            }
-            
-            self.tableView.reloadData()
-        }) { (error: NSError) -> () in
-            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            loading.mode = MBProgressHUDModeText
-            loading.detailsLabelText = error.localizedDescription
-            loading.hide(true, afterDelay: 2)
-        }
-         self.tableView.reloadData()
+                 self.tableView.reloadData()
     }
 
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView.init(frame: CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height))
+        view.backgroundColor = UIColor.greenColor()
+        return view
+    }
+    
     @IBAction func editAction(sender: AnyObject) {
         checkOption = true
         let id = addressArray.objectAtIndex(sender.tag)["id"] as? String
@@ -81,6 +93,8 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
     }
     
     func deleteAction1 (sender: AnyObject) {
+        makeLoginAlert()
+        if deleteFlag {
         let id = addressArray.objectAtIndex(sender.tag)["id"] as? String
               let userInfo = [
             "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id")!,
@@ -97,6 +111,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = error.localizedDescription
             loading.hide(true, afterDelay: 2)
+        }
         }
     }
     
@@ -201,7 +216,19 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
         print("testing")
 
     }
-
+    
+    func makeLoginAlert() {
+        let refreshAlert = UIAlertController(title: "Cofirmation", message: "You want to delete your address.", preferredStyle: UIAlertControllerStyle.Alert)
+        refreshAlert.addAction(UIAlertAction(title: "Delete", style: .Default, handler: { (action: UIAlertAction!) in
+            self.deleteFlag = true
+        }))
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+            self.deleteFlag = false
+            refreshAlert .dismissViewControllerAnimated(true, completion: nil)
+        }))
+        self.presentViewController(refreshAlert, animated: true, completion: nil)
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

@@ -14,6 +14,9 @@ class MyOredrNumberVC: UITableViewController {
     var total = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(AddressViewController.backAction))
+        self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -54,7 +57,7 @@ class MyOredrNumberVC: UITableViewController {
         SigninOperaion.get_request_details(userInfo, completionClosure: { response in
             
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("MyOrdersIdentityID") as! MyOrdersViewController
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("MyOrdersIdentityID1") as! MyOrdersTableVC
             let total = self.myOrderArray.objectAtIndex(indexPath.row)["total_ordered_item"]
             let myInt = (total as! NSString).integerValue
             destinationVC.totalItems = myInt
@@ -76,7 +79,19 @@ class MyOredrNumberVC: UITableViewController {
 
     }
     
-
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
+    }
+    
+    
+    func backAction() {
+        for controller: UIViewController in self.navigationController!.viewControllers {
+            if (controller is UserProfileViewController) {
+                self.navigationController!.popToViewController(controller, animated: true)
+            }
+        }
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

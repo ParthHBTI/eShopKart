@@ -164,10 +164,7 @@ class UserRegistrationVC: TextFieldViewController {
     }
     
     func textField(textField: UITextField,
-                   shouldChangeCharactersInRange range: NSRange,
-                                                 replacementString string: String)
-        -> Bool
-    {
+                   shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         if string.characters.count == 0 {
             return true
         }

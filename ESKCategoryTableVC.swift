@@ -11,6 +11,7 @@ import AFNetworking
 class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
     
     var responseArr = NSMutableArray()
+    var dataSend = NSArray()
     @IBOutlet var categoryTblView: UITableView!
     
     override func viewDidLoad() {
@@ -65,6 +66,12 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
         let cell = sender as! ESKCategoryCell
         destinationVC.categoryName = cell.TextLabel!.text
         destinationVC.categoryId = cell.cellId!.text
+        destinationVC.DataSend = dataSend
         
     }
+    
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//        let destinationVC = storyboard.instantiateViewControllerWithIdentifier("ItemDetailVCIdentifier") as! CategoryItemListVC
+//    }
 }

@@ -7,10 +7,12 @@
 //
 import UIKit
 import AFNetworking
+
 class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     //var cartDetailResponseArr:AnyObject = []
     var cartDetailResponseArr = NSMutableArray()
     @IBOutlet var tableView: UITableView!
+    var sureFlag = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,10 +52,10 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     
     override func viewDidAppear(animated: Bool) {
         if (cartDetailResponseArr.count == 0) {
-            let DynamicView=UIView(frame: CGRectMake(0, 100, 420, 400))
-            let goHomeAction = UIButton(frame: CGRect(x: 110, y: 250, width: 200, height: 60))
-            let detailLBL = UILabel(frame: CGRect(x: 100, y: 210, width: 300, height: 60))
-            let cartImage = UIImageView(frame: CGRectMake(120, 0, 200, 200))
+            let DynamicView=UIView(frame: CGRectMake((self.view.superview?.center.x)!, (self.view.superview?.center.x)! , 420, 400))
+            let goHomeAction = UIButton(frame: CGRect(x: 110, y: 270, width: 200, height: 60))
+            let detailLBL = UILabel(frame: CGRect(x: 100, y: 230, width: 300, height: 60))
+            let cartImage = UIImageView(frame: CGRectMake(120, 30, 200, 200))
             cartImage.image = UIImage(named: "market.png")
             detailLBL.textColor = UIColor.blackColor()
             goHomeAction.backgroundColor = UIColor.whiteColor()
@@ -61,6 +63,8 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             goHomeAction.setTitle("CONTINUE SHOPPING", forState: .Normal)
             detailLBL.text = "Your Shopping Cart is Empty!"
             goHomeAction.layer.cornerRadius=10
+            self.view.addSubview(DynamicView)
+            DynamicView.center = self.view.center
             DynamicView.backgroundColor=UIColor.whiteColor()
             DynamicView.layer.cornerRadius=25
             DynamicView.layer.borderWidth=0
@@ -108,7 +112,8 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     }
     
     @IBAction func clearCartAction(sender: AnyObject) {
-        
+        makeLoginAlert()
+        if sureFlag {
         let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
         let userInfo = [
             "user_id" : userId!,
@@ -126,6 +131,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             loading.hide(true, afterDelay: 2)        }
         cartDetailResponseArr.removeAllObjects()
         self.tableView.reloadData()
+        }
     }
     
     @IBAction func getQuoteForAllItems(sender: AnyObject) {
@@ -177,6 +183,19 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         cell.removBtn.addTarget(self, action: #selector(CartItemDetailVC.removeItemFromCart),forControlEvents: .TouchUpInside)
         return cell
     }
+    
+    override func makeLoginAlert() {
+        let refreshAlert = UIAlertController(title: "Cofirmation", message: "You want to clear your cart.", preferredStyle: UIAlertControllerStyle.Alert)
+        refreshAlert.addAction(UIAlertAction(title: "Clear All", style: .Default, handler: { (action: UIAlertAction!) in
+            self.sureFlag = true
+        }))
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+            self.sureFlag = false
+            refreshAlert .dismissViewControllerAnimated(true, completion: nil)
+        }))
+        self.presentViewController(refreshAlert, animated: true, completion: nil)
+    }
+
     
     //func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     

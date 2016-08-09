@@ -36,7 +36,7 @@ class SignUPViewController: TextFieldViewController {
             loading.removeFromSuperViewOnHide = true
         } else {
             if emailTextField.text!.isValidEmail() == true {
-                let emailID = emailTextField.text! as? String
+                let emailID = emailTextField.text! 
                 let myUrl = NSURL(string: "http://192.168.0.16/eshopkart/webservices/verification")
                 let request = NSMutableURLRequest(URL:myUrl!);
                 request.HTTPMethod = "POST";

@@ -86,8 +86,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
             firstLastLbl.hidden = true
             
         }
-        let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(UserProfileViewController.handleTap))
-        userPhoto.addGestureRecognizer(tapRecognizer)
+//        let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(UserProfileViewController.handleTap))
+//        userPhoto.addGestureRecognizer(tapRecognizer)
         let nitification = NSNotificationCenter()
         nitification.postNotificationName("Login Successfully", object: self)
         //navigationItem.setRightBarButtonItem(profileEditBtnItem, animated: true)
@@ -149,43 +149,43 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
         }
     }
     
-    func handleTap() {
-        if(NSUserDefaults.standardUserDefaults().valueForKey("User") != nil) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-            imagePicker.delegate = self
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
-                print("Button capture")
-                imagePicker.allowsEditing = false
-                imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
-                imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
-                self.presentViewController(imagePicker, animated: true, completion: nil)
-            }
-        }
-    }
+//    func handleTap() {
+//        if(NSUserDefaults.standardUserDefaults().valueForKey("User") != nil) {
+//            let imagePicker = UIImagePickerController()
+//            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+//            imagePicker.delegate = self
+//            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
+//                print("Button capture")
+//                imagePicker.allowsEditing = false
+//                imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+//                imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+//                self.presentViewController(imagePicker, animated: true, completion: nil)
+//            }
+//        }
+//    }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            let imagePicker = UIImagePickerController()
-            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
-                print("Button capture")
-                imagePicker.allowsEditing = false
-                imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
-                imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
-                self.presentViewController(imagePicker, animated: true, completion: nil)
-            }
-            
-            userPhoto.contentMode = .ScaleAspectFit
-            userPhoto.image = pickedImage
-        }
-        
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
+//    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+//        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+//            let imagePicker = UIImagePickerController()
+//            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+//            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
+//                print("Button capture")
+//                imagePicker.allowsEditing = false
+//                imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+//                imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+//                self.presentViewController(imagePicker, animated: true, completion: nil)
+//            }
+//            
+//            userPhoto.contentMode = .ScaleAspectFit
+//            userPhoto.image = pickedImage
+//        }
+//        
+//        dismissViewControllerAnimated(true, completion: nil)
+//    }
+//    
+//    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+//        self.dismissViewControllerAnimated(true, completion: nil)
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

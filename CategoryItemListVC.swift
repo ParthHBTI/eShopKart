@@ -12,6 +12,7 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
     var subcatResponseArr:AnyObject = []
     var categoryId: String!
     var categoryName: String!
+    var DataSend = NSArray()
     @IBOutlet var categoryNameLabel: UILabel!
     @IBOutlet var cteagoryItemsTblView: UITableView!
     override func viewDidLoad() {
@@ -62,5 +63,12 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
         let cell = sender as! CategoryItemsViewCell
         destinationVC.getsubCategoryId = cell.subCatId!.text
         
+    }
+}
+extension NSLayoutConstraint {
+    
+    override public var description: String {
+        let id = identifier ?? ""
+        return "id: \(id), constant: \(constant)" //you may print whatever you want here
     }
 }
