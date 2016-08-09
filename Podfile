@@ -4,7 +4,6 @@
 target 'BrillCreation' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-pod 'SinchVerification-Swift'
 pod 'AFNetworking', '~> 2.6.0’
 pod 'MBProgressHUD', '~> 0.9.2'
 pod 'SDWebImage', '~> 3.8'

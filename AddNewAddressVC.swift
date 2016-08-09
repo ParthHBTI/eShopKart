@@ -27,19 +27,22 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
     var addressInfoDic = NSDictionary()
     var address_id = NSString()
     var flagPoint = Bool()
+    var checkdefault = false
     var addEdit = false
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var guiView: UIView!
     
     override func viewDidLayoutSubviews()  {
         super.viewDidLayoutSubviews()
-
-        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: view.frame.size.height + 220);
+        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: view.frame.size.height + 240);
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(AddNewAddressVC.handleTap(_:)))
+        self.view .addGestureRecognizer(tapRecognizer)
         landmark.delegate = self
         self.navigationController?.navigationBarHidden = false
         let nav = self.navigationController?.navigationBar
@@ -118,11 +121,13 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
                 loading.hide(true, afterDelay: 2)
             }
                 let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
+                //let destinationVC = storyboard.instantiateViewControllerWithIdentifier("AddressVCIdentifier") as! AddressViewController
                 let vc = storyboard.instantiateViewControllerWithIdentifier("AddressVCIdentifier") as? AddressViewController
+                vc?.checkDefault = checkdefault
                 self.navigationController?.pushViewController(vc!, animated: true)
         }
         } else {
-            if zipCode.text!.isEmpty == true || userName.text!.isEmpty == true || address.text!.isEmpty == true || state.text!.isEmpty == true || city.text!.isEmpty == true || mobileNo.text!.isEmpty == true || landmark.text!.isEmpty == true {
+            if zipCode.text!.isEmpty == true || userName.text!.isEmpty == true || address.text!.isEmpty == true || state.text!.isEmpty == true || city.text!.isEmpty == true || mobileNo.text!.isEmpty == true  {
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = "please enter all values here!"
                 loading.hide(true, afterDelay: 2)
@@ -159,6 +164,7 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
                 }
                 let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
                 let vc = storyboard.instantiateViewControllerWithIdentifier("AddressVCIdentifier") as? AddressViewController
+                vc?.checkDefault = checkdefault
                 self.navigationController?.pushViewController(vc!, animated: true)
             }
         }
@@ -178,13 +184,27 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
         state.text = state.text
     }
     
+    func handleTap(tapGesture: UIGestureRecognizer) {
+         self.view .endEditing(true)
+    }
+    
     @IBAction func defaultAction(sender: UIButton) {
-        print("testing")
+        checkdefault = true
         checkBtn.tintColor = UIColor.blueColor()
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
         self.view.endEditing(true)
+        return true
+    }
+    
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            address.resignFirstResponder()
+            return false
+        }
         return true
     }
     
@@ -198,26 +218,67 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
         mobileNo.text = ""
         alternateMoNo.text = ""
     }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        let keyboardDoneButtonShow = UIToolbar(frame: CGRectMake(0, 0,  self.view.frame.size.width, self.view.frame.size.height/17))
+        keyboardDoneButtonShow.barStyle = UIBarStyle .BlackTranslucent
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: #selector(UITextFieldDelegate.textFieldShouldReturn(_:)))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        let toolbarButton = [flexSpace,doneButton]
+        keyboardDoneButtonShow.setItems(toolbarButton, animated: false)
+        mobileNo.inputAccessoryView = keyboardDoneButtonShow
+         alternateMoNo.inputAccessoryView = keyboardDoneButtonShow
+        return true
+        
+    }
 
 //    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-//        let textFieldText: NSString = zipCode.text ?? ""
-//        let currentString = textFieldText.stringByReplacingCharactersInRange(range, withString: string)
-//        let length = currentString.characters.count
-//        if length >= 6{
-//            
-//        } else if length == 6 {
-//            enterZip(textFieldText as String)
-//        }
+////        let textFieldText: NSString = zipCode.text ?? ""
+////        let currentString = textFieldText.stringByReplacingCharactersInRange(range, withString: string)
+////        let length = currentString.characters.count
+////        if length > 6{
+////            
+////        } else if length == 6 {
+////            
+////            let geocoder = CLGeocoder()
+////            geocoder.geocodeAddressString(zipCode.text!) {
+////                (placemarks, error) -> Void in
+////                if let placemark = placemarks?[0] {
+////                    print(placemark.addressDictionary)
+////                }
+////            }
+////        }
 //        
 //        return true
 //    }
+    
+    func textField(textField: UITextField,
+                   shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if string.characters.count == 0 {
+            return true
+        }
+        let currentText = textField.text ?? ""
+        let prospectiveText = (currentText as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        
+        switch textField {
+        
+        case mobileNo:
+            return prospectiveText.characters.count <= 10
+            
+        case alternateMoNo:
+            return prospectiveText.characters.count <= 10
+            
+        default:
+            return true
+        }
+    }
+
     
     func enterZip(zipCode: String ) {
         let geoCoder = CLGeocoder();
         let params = [
             String(kABPersonAddressZIPKey): zipCode as String,
-            String(kABPersonAddressCountryCodeKey): "IN",
-            String(kABPersonAddressStreetKey): ""
+            String(kABPersonAddressCountryCodeKey): "IND",
             ]
         geoCoder.geocodeAddressDictionary(params) {
             (plasemarks, error) -> Void in

@@ -8,7 +8,12 @@
 
 import UIKit
 
+<<<<<<< HEAD
 class BaseViewController: UIViewController, UINavigationControllerDelegate {
+=======
+
+class BaseViewController: UIViewController, UINavigationControllerDelegate  {
+>>>>>>> 71f5d634246bb32c1ece115251e2bb389fc9c559
     let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
     var unreadCartNotificationCount = 0
     var cartArr = NSMutableArray()
@@ -48,6 +53,8 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
         }
         self.navigationController?.navigationBarHidden = false
         let nav = self.navigationController?.navigationBar
+//        nav!.frame=CGRectMake(0, 0, 320, 20)
+//        self.view.addSubview(nav!)
         nav?.barStyle = UIBarStyle.BlackOpaque
         nav?.tintColor = UIColor.whiteColor()
         self.title = ""
@@ -138,11 +145,11 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     func makeLoginAlert()
-    {
+{
         let refreshAlert = UIAlertController(title: "Please Login", message: "To make this action, please login first.", preferredStyle: UIAlertControllerStyle.Alert)
-        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+        refreshAlert.addAction(UIAlertAction(title: "Login", style: .Default, handler: { (action: UIAlertAction!) in
             let storyboard = UIStoryboard(name: "Login" , bundle:  nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as? UserProfileViewController
+            let vc = storyboard.instantiateViewControllerWithIdentifier("loginVC") as? LoginViewController
             let navController = UINavigationController(rootViewController: vc!)
             self.navigationController?.presentViewController(navController, animated: true, completion: nil)
         }))

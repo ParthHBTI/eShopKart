@@ -12,7 +12,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     
     @IBOutlet weak var barSearchItem: UISearchBar!
     @IBOutlet weak var dynamicImageView: UIImageView!
-    var searchController: UISearchController?
+    var searchController: UISearchController!
     var filteredData = NSMutableArray()
     var productsArr = NSArray()
     var productsData = NSDictionary()
@@ -22,8 +22,13 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         searchController = UISearchController(searchResultsController: nil)
-        searchController!.searchResultsController
+        //searchController!.searchResultsController
         searchController!.searchBar.sizeToFit()
+        if #available(iOS 9.0, *) {
+            self.searchController.loadViewIfNeeded()
+        } else {
+            // Fallback on earlier versions
+        }
         searchController!.delegate = self
         searchController!.searchBar.delegate = self
         barSearchItem.delegate = self
