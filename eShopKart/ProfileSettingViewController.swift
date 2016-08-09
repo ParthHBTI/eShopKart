@@ -73,13 +73,13 @@ class ProfileSettingViewController: TextFieldViewController {
     //    }
     @IBAction func saveChangesBtnAction(sender: AnyObject) {
         let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        let firstNameStr = self.firstNameTxtField.text!
-        let lastName = self.lastNameTxtField.text!
-        let mobile = self.mobNumberTxtField.text!
+        //        let firstNameStr = self.firstNameTxtField.text!
+        //        let lastName = self.lastNameTxtField.text!
+        //        let mobile = self.mobNumberTxtField.text!
         let charSet = NSCharacterSet.whitespaceCharacterSet()
-        let firstNameWhiteSpaceSet = firstNameStr.stringByTrimmingCharactersInSet(charSet)
-        let lastNameWhiteSpaceSet = lastName.stringByTrimmingCharactersInSet(charSet)
-        let mobileWhiteSpaceSet = mobile.stringByTrimmingCharactersInSet(charSet)
+        let firstNameWhiteSpaceSet = self.firstNameTxtField.text!.stringByTrimmingCharactersInSet(charSet)
+        let lastNameWhiteSpaceSet = self.lastNameTxtField.text!.stringByTrimmingCharactersInSet(charSet)
+        let mobileWhiteSpaceSet = self.mobNumberTxtField.text!.stringByTrimmingCharactersInSet(charSet)
         if firstNameTxtField.text!.isEmpty == true || lastNameTxtField.text!.isEmpty == true || mobNumberTxtField.text!.isEmpty == true || emailTxtField.text!.isEmpty == true {
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = "please enter correct data!"
@@ -124,7 +124,7 @@ class ProfileSettingViewController: TextFieldViewController {
                     if let tokenId: AnyObject = response.valueForKey("User")?.valueForKey("token_id") {
                         let firstName = response.valueForKey("User")?.valueForKey("firstname") as! String
                         let lastName = response.valueForKey("User")?.valueForKey("lastname") as! String
-                        let trimFirstNameStr = firstName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) as String
+                        let trimFirstNameStr = firstName.stringByTrimmingCharactersInSet(charSet) as String
                         let userFullName = trimFirstNameStr + " " + lastName
                         let email =	response.valueForKey("User")?.valueForKey("email") as! String
                         let mobile = response.valueForKey("User")?.valueForKey("mobile") as! String
@@ -187,13 +187,13 @@ class ProfileSettingViewController: TextFieldViewController {
             self.saveBtn.enabled = true
             }, completion: nil)
     }
-   
+    
     func textField(textField: UITextField,
                    shouldChangeCharactersInRange range: NSRange,
                                                  replacementString string: String)
         -> Bool
     {
-       if string.characters.count == 0 {
+        if string.characters.count == 0 {
             return true
         }
         // Check to see if the text field's contents still fit the constraints

@@ -10,6 +10,7 @@ import UIKit
 import AFNetworking
 
 class FeedbackViewController: TextFieldViewController {
+    
     let baseViewController = BaseViewController()
     
     @IBOutlet weak var subTxtField: UITextField!
@@ -34,6 +35,7 @@ class FeedbackViewController: TextFieldViewController {
         submitBtn.addCornerRadiusWithValue(5.0, color: UIColor.init(red: 78.0/255, green: 158.0/255, blue: 255.0/255, alpha: 1.0), borderWidth: 1.0)
         // Do any additional setup after loading the view.
     }
+    
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         self.view .endEditing(true)

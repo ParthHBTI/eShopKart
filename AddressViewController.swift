@@ -12,7 +12,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
     var tempCell = AddressViewCell()
     var checkOption = false
     var editCellIndex = -1
-
+    
     @IBOutlet var tableView: UITableView!
     var floaringView = UIView()
     var orderBtn = UIButton()
@@ -29,7 +29,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
         newFrame.size.height = 0
         newFrame.size.width = 400
         self.floaringView.frame = newFrame
-         orderBtn.addTarget(self, action: #selector(goForOrder), forControlEvents: .TouchUpInside)
+        orderBtn.addTarget(self, action: #selector(goForOrder), forControlEvents: .TouchUpInside)
         self.navigationController?.navigationBarHidden = false
         let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.BlackOpaque
@@ -45,7 +45,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
         self.tableView.addObserver(self, forKeyPath: "frame", options: .New, context: nil )
         let userInfo = [
             "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id") as! String,
-        ]
+            ]
         
         SigninOperaion.get_address(userInfo, completionClosure: { response in
             print(response)
@@ -53,7 +53,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
             var values = (response as? NSArray)!
             //values = response
             for var dic in values {
-          self.addressArray.addObject(dic)
+                self.addressArray.addObject(dic)
                 self.tableView.reloadData()
             }
             self.tableView.reloadData()
@@ -63,9 +63,9 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
             loading.detailsLabelText = error.localizedDescription
             loading.hide(true, afterDelay: 2)
         }
-         self.tableView.reloadData()
+        self.tableView.reloadData()
     }
-
+    
     @IBAction func editAction(sender: AnyObject) {
         checkOption = true
         let id = addressArray.objectAtIndex(sender.tag)["id"] as? String
@@ -80,7 +80,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
     
     func deleteAction1 (sender: AnyObject) {
         let id = addressArray.objectAtIndex(sender.tag)["id"] as? String
-              let userInfo = [
+        let userInfo = [
             "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id")!,
             "address_id" : id! as String
         ]
@@ -101,7 +101,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
     @IBAction func selectAddress(sender: AnyObject) {
         editCellIndex = sender.tag
         self.tableView.reloadData()
-       
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -109,28 +109,28 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
     }
     
     
-
+    
     // MARK: - Table view data source
-
-     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
-     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  addressArray.count
     }
-
     
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("addressIdentity", forIndexPath: indexPath) as! AddressViewCell
         cell.deleteButton!.addTarget(self, action:  #selector(AddressViewController.deleteAction1(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-         cell.selectionBtn!.addTarget(self, action:  #selector(AddressViewController.selectAddress(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.selectionBtn!.addTarget(self, action:  #selector(AddressViewController.selectAddress(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         cell.editButton!.addTarget(self, action:  #selector(AddressViewController.editAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         cell.userName?.text = addressArray.objectAtIndex(indexPath.row)["fullname"] as? String
         cell.addressTextField.font = UIFont.boldSystemFontOfSize(18.0)
         cell.addressTextField.text = addressArray.objectAtIndex(indexPath.row)["fullAddress"] as? String
-            cell.editButton.hidden = true
-           cell.deleteButton.hidden = true
+        cell.editButton.hidden = true
+        cell.deleteButton.hidden = true
         cell.editButton!.tag = indexPath.row
         cell.selectionBtn!.tag = indexPath.row
         cell.deleteButton!.tag = indexPath.row
@@ -141,14 +141,14 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
             cell.deleteButton.hidden = false
             cell.selectionBtn!.tintColor = UIColor.blueColor()
         }
-      return cell
+        return cell
     }
     
-      
-     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let addDic = addressArray.objectAtIndex(indexPath.row) as! NSDictionary
         print(addDic)
-       
+        
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -164,7 +164,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
         
     }
     
-     deinit {
+    deinit {
         self.tableView.removeObserver(self, forKeyPath: "frame")
     }
     
@@ -184,56 +184,56 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
                 self.navigationController!.popToViewController(controller, animated: true)
             }
         }
-        }
+    }
     func goForOrder() {
         print("testing")
-
+        
     }
-
+    
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
+     // Override to support editing the table view.
+     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+     if editingStyle == .Delete {
+     // Delete the row from the data source
+     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+     } else if editingStyle == .Insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+     
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+     // Override to support conditional rearranging of the table view.
+     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+    
 }

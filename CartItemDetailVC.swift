@@ -7,8 +7,11 @@
 //
 import UIKit
 import AFNetworking
+
 class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     //var cartDetailResponseArr:AnyObject = []
+
+    
     var cartDetailResponseArr = NSMutableArray()
     @IBOutlet var tableView: UITableView!
     
@@ -24,6 +27,8 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             for var obj in response as! NSArray
             {
                 self.cartDetailResponseArr.addObject(obj)
+                //self.navigationItem.rightBarButtonItem!.badgeValue = String(self.cartDetailResponseArr.count)
+                //self.badgeValCounter = self.cartDetailResponseArr.count
             }
             self.tableView.reloadData()
         }) { (error: NSError) -> () in
@@ -83,7 +88,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     
     @IBAction func removeItemFromCart(sender: AnyObject) {
         let currentRow = sender.tag
-        let productId = self.cartDetailResponseArr.objectAtIndex(currentRow)["id"] as! String
+        let productId = cartDetailResponseArr.objectAtIndex(currentRow)["id"] as! String
         let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
         let userInfo = [
             "user_id" : userId!,
@@ -99,6 +104,8 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         }
         if (cartDetailResponseArr.count > currentRow){
             cartDetailResponseArr.removeObjectAtIndex(currentRow)
+            self.navigationItem.rightBarButtonItem!.badgeValue = String(cartDetailResponseArr.count)
+            //self.badgeValCounter = self.cartDetailResponseArr.count
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = "Removed successfully from your cart"
@@ -114,6 +121,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             "user_id" : userId!,
             ]
         SigninOperaion.clear_cart(userInfo, completionClosure: { response in
+            self.navigationItem.rightBarButtonItem!.badgeValue = nil
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = response["message"] as! String
@@ -134,6 +142,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             "token_id" : tokenId!
             ]
         SigninOperaion.request_for_code(userInfo, completionClosure: { response in
+            self.navigationItem.rightBarButtonItem!.badgeValue = nil
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = response["message"] as! String

@@ -70,6 +70,7 @@
 		73D0DD321D379D2F00E5714C /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D0DD311D379D2E00E5714C /* HelpViewController.swift */; };
 		73F037E91D4A015100628E83 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F037E81D4A015100628E83 /* MessageComposer.swift */; };
 		73F0C21A1D252595005C48C6 /* PreSignUPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F0C2191D252595005C48C6 /* PreSignUPVC.swift */; };
+		73F0DD101D4F5AAD00278D2B /* ImageCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73F0DD0F1D4F5AAD00278D2B /* ImageCollectionView.xib */; };
 		74A51CC8A3AE332317F4C0AC /* Pods_BrillCreation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A9121C328A040311E7CE07 /* Pods_BrillCreation.framework */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +145,7 @@
 		73D0DD311D379D2E00E5714C /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		73F037E81D4A015100628E83 /* MessageComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
 		73F0C2191D252595005C48C6 /* PreSignUPVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreSignUPVC.swift; sourceTree = "<group>"; };
+		73F0DD0F1D4F5AAD00278D2B /* ImageCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImageCollectionView.xib; path = eShopKart/ImageCollectionView.xib; sourceTree = "<group>"; };
 		74D4A6FA0A2E707CE4606434 /* Pods-BrillCreation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrillCreation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BrillCreation/Pods-BrillCreation.debug.xcconfig"; sourceTree = "<group>"; };
 		D6726FB0107239CE18FB8855 /* Pods-BrillCreation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrillCreation.release.xcconfig"; path = "Pods/Target Support Files/Pods-BrillCreation/Pods-BrillCreation.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -278,6 +280,7 @@
 			children = (
 				1800CB041CF6E0940094727B /* UIBarButtonItem+Badge.h */,
 				1800CB051CF6E0940094727B /* UIBarButtonItem+Badge.m */,
+				73F0DD0F1D4F5AAD00278D2B /* ImageCollectionView.xib */,
 				18F56BA71CFD599800CFB052 /* Webservices */,
 				18A93DF71CEF36DF0046F78D /* ImageWithTextField.swift */,
 			);
@@ -389,6 +392,7 @@
 				730879431D12ABDD00F4EFBB /* Main.storyboard in Resources */,
 				04A2FA2D1D39012000C10875 /* checked.png in Resources */,
 				184820EC1D0939EB00C9A35D /* LaunchScreen.xib in Resources */,
+				73F0DD101D4F5AAD00278D2B /* ImageCollectionView.xib in Resources */,
 				04B5641A1CEED884001E9792 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,7 +442,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

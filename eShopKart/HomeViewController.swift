@@ -21,8 +21,6 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
         searchController = UISearchController(searchResultsController: nil)
         searchController!.searchResultsController
         searchController!.searchBar.sizeToFit()
@@ -44,7 +42,24 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     }
     override func viewWillAppear(animated: Bool) {
         upArrowImgView!.fadeOut()
-    }
+            
+            let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
+            let userInfo = [
+                "user_id" : userId!,
+                ]
+            SigninOperaion.view_cart(userInfo, completionClosure: { response in
+                print(response)
+                self.navigationItem.rightBarButtonItem!.badgeValue = String(response.count)
+                //self.badgeValCounter = self.cartDetailResponseArr.count
+                })
+            { (error: NSError) -> () in
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = error.localizedDescription
+                loading.hide(true, afterDelay: 2)
+            }
+            
+        }
     
    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

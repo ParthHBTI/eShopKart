@@ -125,7 +125,7 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate,UITextViewD
      // Pass the selected object to the new view controller.
      }
      */
-}
+  }
 extension String {
     func isValidEmail() -> Bool {
         let regex = try? NSRegularExpression(pattern: "^[A-Z0-9._%+]+@(?:[A-Z0-9]+\\.)+[A-Z]{2,}$", options: .CaseInsensitive)
