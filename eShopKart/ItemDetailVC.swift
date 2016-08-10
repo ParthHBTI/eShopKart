@@ -127,7 +127,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
                 loading.hide(true, afterDelay: 2)
                 
             }        } else {
-            self.makeLoginAlert()
+            //self.makeLoginAlert()
         }
     }
     
@@ -225,7 +225,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
         return true
     }
     
-    override func backAction() {
+     override func backAction() {
         self.navigationController?.popViewControllerAnimated(true)
     }
 }

@@ -38,7 +38,7 @@ class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if cellDescriptors != nil {
             return cellDescriptors!.count
         }
@@ -55,7 +55,7 @@ class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewWillAppear(animated: Bool) {
         configureTableView()
         loadCellDescriptors()
-        print(cellDescriptors)
+        //print(cellDescriptors)
     }
     
     func configureTableView() {

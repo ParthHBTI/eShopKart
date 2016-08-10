@@ -19,7 +19,7 @@ class ProfileSettingViewController: TextFieldViewController {
     @IBOutlet weak var emailLbl: UILabel!
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var saveBtn: UIButton!
-    
+    let button = UIButton(type: UIButtonType.Custom)
     override func viewDidLoad() {
         super.viewDidLoad()
         firstNameTxtField.delegate = self
@@ -27,15 +27,27 @@ class ProfileSettingViewController: TextFieldViewController {
         mobNumberTxtField.delegate = self
         emailTxtField.delegate = self
         
+        
+        button.setTitle("Done", forState: UIControlState.Normal)
+        button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        button.frame = CGRectMake(0, 163, 106, 53)
+        button.adjustsImageWhenHighlighted = false
+        button.addTarget(self, action: #selector(self.doneBtnAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        
         //        let numberToolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 50))
         //        numberToolbar.barStyle = .BlackTranslucent
         //        numberToolbar.items = [UIBarButtonItem(title: "Cancel", style: .Bordered, target: self, action: #selector(self.cancelNumberPad)), UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil), UIBarButtonItem(title: "Apply", style: .Done, target: self, action: #selector(self.doneWithNumberPad))]
         //        numberToolbar.sizeToFit()
         //        mobNumberTxtField.inputAccessoryView = numberToolbar
-        let barButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: mobNumberTxtField, action: #selector(self.resignFirstResponder))
+        //mobNumberTxtField.returnKeyType = .Done
+        /*let barButton1: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: mobNumberTxtField, action: #selector(self.resignFirstResponder))
+        
+        //let barButton2: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: mobNumberTxtField, action: #selector(self.resignFirstResponder))
         let toolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 44))
-        toolbar.items = [barButton]
-        mobNumberTxtField.inputAccessoryView = toolbar
+        //toolbar.barStyle = UIBarStyle.BlackTranslucent
+        barButton1.accessibilityFrame = (frame: CGRectMake(250/255.0, 0/255.0, 106.0/255, 53.0/25))
+        toolbar.items = [barButton1]
+        mobNumberTxtField.inputAccessoryView = toolbar*/
         let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(BaseViewController.backAction))
         self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
         self.title = "Update Profile"
@@ -217,8 +229,32 @@ class ProfileSettingViewController: TextFieldViewController {
             return true
         }
     }
+    
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        //textField.backgroundColor = UIColor.blueColor()
+        //textField.addBorderWithColor(UIColor.redColor(), borderWidth: 1.0)
+        return true
+    }
+    
+    override func textFieldDidBeginEditing(textField: UITextField) {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileSettingViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+    }
+    
+    func keyboardWillShow(note : NSNotification) -> Void{
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.button.hidden = false
+            let keyBoardWindow = UIApplication.sharedApplication().windows.last
+            self.button.frame = CGRectMake(0, (keyBoardWindow?.frame.size.height)!-53, 106, 53)
+            keyBoardWindow?.addSubview(self.button)
+            keyBoardWindow?.bringSubviewToFront(self.button)
+            UIView.animateWithDuration(((note.userInfo! as NSDictionary).objectForKey(UIKeyboardAnimationCurveUserInfoKey)?.doubleValue)!, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+                self.view.frame = CGRectOffset(self.view.frame, 0, 0)
+                }, completion: { (complete) -> Void in
+            })
+        }
+    }
+    
+    func doneBtnAction(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
         return true
     }
 }

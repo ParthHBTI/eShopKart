@@ -301,13 +301,24 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
             let destinationVC = storyboard.instantiateViewControllerWithIdentifier("AddressVCIdentifier") as! AddressViewController
             self.navigationController?.pushViewController(destinationVC, animated: true)
         } else {
-            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("OrderNumberID") as! MyOredrNumberVC
-            self.navigationController?.pushViewController(destinationVC, animated: true)
             
+            let userInfo = [
+                "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id")!,
+                ]
+            SigninOperaion.get_requests(userInfo, completionClosure: { response in
+                let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                let destinationVC = storyboard.instantiateViewControllerWithIdentifier("OrderNumberID") as! MyOredrNumberVC
+                destinationVC.myOrderArray = response as! NSArray
+                self.navigationController?.pushViewController(destinationVC, animated: true)
+            }) { (error: NSError) -> () in
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = error.localizedDescription
+                loading.hide(true, afterDelay: 2)
+            }
         }
     }
-    
+
     func crossBtnAction() {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }

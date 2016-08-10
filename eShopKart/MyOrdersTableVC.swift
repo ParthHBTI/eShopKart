@@ -1,22 +1,23 @@
 //
-//  MyOredrNumberVC.swift
+//  MyOrdersTableVC.swift
 //  BrillCreation
 //
-//  Created by mac on 27/07/16.
+//  Created by mac on 08/08/16.
 //  Copyright © 2016 kloudRac.com. All rights reserved.
 //
 
 import UIKit
 
-class MyOredrNumberVC: UITableViewController {
+class MyOrdersTableVC: UITableViewController {
+    var myOrders = NSArray()
+    var totalItems = Int()
+    var productsData = NSDictionary()
+    var flag = false
 
-    var myOrderArray = NSArray()
-    var total = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(AddressViewController.backAction))
+        let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(MyOrdersTableVC.backAction))
         self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -26,7 +27,6 @@ class MyOredrNumberVC: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -36,31 +36,34 @@ class MyOredrNumberVC: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myOrderArray.count
-    }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("orderNumberCell", forIndexPath: indexPath) as! MyOrderNumberCell
-        cell.totalOrderedItems?.tintColor = UIColor.blueColor()
-        cell.orderNumber.text = myOrderArray.objectAtIndex(indexPath.row)["order_number"] as? String
-        cell.dateLbl.text = myOrderArray.objectAtIndex(indexPath.row)["orderdate"] as? String
-        cell.status.text = myOrderArray.objectAtIndex(indexPath.row)["status"] as? String
-        cell.totalOrderedItems!.text = myOrderArray.objectAtIndex(indexPath.row)["total_ordered_item"] as? String
-        return cell
+        return totalItems
     }
     
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("myOrderCell", forIndexPath: indexPath) as! myOrdersCell
+        let url = NSURL(string:(imageURL + (myOrders.objectAtIndex(indexPath.row)["image"] as? String)!))
+        cell.productImage?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
+        cell.productName.text = myOrders.objectAtIndex(indexPath.row)["product_name"] as? String
+        cell.totalItems.text = myOrders.objectAtIndex(indexPath.row)["quantity"] as? String
+        cell.grandTotal.text = "nil"//myOrders.objectAtIndex(indexPath.row)[""] as? String
+        cell.productStatusDate.text = myOrders.objectAtIndex(indexPath.row)["orderdate"] as? String
+
+        return cell
+    }
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        flag = true
         let userInfo = [
-            "order_id" : self.myOrderArray.objectAtIndex(indexPath.row)["order_id"] as! String
-            ]
-        SigninOperaion.get_request_details(userInfo, completionClosure: { response in
-            
-            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("MyOrdersIdentityID1") as! MyOrdersTableVC
-            let total = self.myOrderArray.objectAtIndex(indexPath.row)["total_ordered_item"]
-            let myInt = (total as! NSString).integerValue
-            destinationVC.totalItems = myInt
-            destinationVC.myOrders = response as! NSArray
+            "product_id" : myOrders.objectAtIndex(indexPath.row)["product_id"] as! String
+            ] as NSDictionary
+        SigninOperaion.get_product_details(userInfo, completionClosure: { response in
+            self.productsData = (response as! NSDictionary)
+            let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
+            let itemInfoDic  = self.productsData as! Dictionary<String, AnyObject>
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("ImageID") as! ImageViewController
+            destinationVC.getProductInfoDic = itemInfoDic
+            destinationVC.productQnty = self.myOrders.objectAtIndex(indexPath.row)["quantity"] as! String
+            destinationVC.checkFlag = self.flag
             self.navigationController?.pushViewController(destinationVC, animated: true)
         }) { (error: NSError) -> () in
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -69,18 +72,6 @@ class MyOredrNumberVC: UITableViewController {
             loading.hide(true, afterDelay: 2)
         }
 
-//        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-//        let destinationVC = storyboard.instantiateViewControllerWithIdentifier("MyOrdersIdentityID") as! MyOrdersViewController
-//        let total = myOrderArray.objectAtIndex(indexPath.row)["total_ordered_item"]
-//        let myInt = (total as! NSString).integerValue
-//        destinationVC.totalItems = myInt
-//        self.navigationController?.pushViewController(destinationVC, animated: true)
-
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        tableView.reloadData()
     }
     
     

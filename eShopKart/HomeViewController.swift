@@ -47,15 +47,14 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     }
     override func viewWillAppear(animated: Bool) {
         upArrowImgView!.fadeOut()
-            
-            let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
+        
+        let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
+        if (userId != nil) {
             let userInfo = [
-                "user_id" : userId!,
-                ]
+                "user_id" : userId!
+            ]
             SigninOperaion.view_cart(userInfo, completionClosure: { response in
-                print(response)
-                self.navigationItem.rightBarButtonItem!.badgeValue = String(response.count)
-                //self.badgeValCounter = self.cartDetailResponseArr.count
+                self.myCartBarItem!.badgeValue = String(self.cartArr.count)
                 })
             { (error: NSError) -> () in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -63,13 +62,14 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
                 loading.detailsLabelText = error.localizedDescription
                 loading.hide(true, afterDelay: 2)
             }
-            
         }
+        
+    }
     
-   override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-  
+    
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         barSearchItem.showsScopeBar = true;
         self.searchController!.searchResultsController?.reloadInputViews()
@@ -81,12 +81,12 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     }
     
     func loadData(response:NSArray)  {
-            self.filteredData.removeAllObjects()
-            for var dic in response {
-                self.filteredData.addObject(dic)
-            }
-        self.searchDisplayController!.searchResultsTableView.reloadData()
+        self.filteredData.removeAllObjects()
+        for var dic in response {
+            self.filteredData.addObject(dic)
         }
+        self.searchDisplayController!.searchResultsTableView.reloadData()
+    }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == ""{
@@ -118,7 +118,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("CellSubtitle")
         if (cell == nil) {
             cell =  UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CellSubtitle")
-            }
+        }
         
         cell?.textLabel?.textColor = UIColor.init(colorLiteralRed: Float(arc4random()%255)/255.0 , green: Float(arc4random()%255)/255.0 , blue: Float(arc4random()%255)/255.0 , alpha: 1)
         cell!.textLabel?.text = filteredData[indexPath.row]["name"] as? String
@@ -138,11 +138,11 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
             for var dic in values {
                 self.filteredData.addObject(dic)
             }
-                self.productsData = (response as! NSDictionary)
-                let itemInfoDic  = self.productsData as! Dictionary<String, AnyObject>
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let destinationVC = storyboard.instantiateViewControllerWithIdentifier("ItemDetailVCIdentifier") as! ItemDetailVC
-                destinationVC.getProductInfoDic = itemInfoDic
+            self.productsData = (response as! NSDictionary)
+            let itemInfoDic  = self.productsData as! Dictionary<String, AnyObject>
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let destinationVC = storyboard.instantiateViewControllerWithIdentifier("ItemDetailVCIdentifier") as! ItemDetailVC
+            destinationVC.getProductInfoDic = itemInfoDic
             self.navigationController?.pushViewController(destinationVC, animated: true)
             self.searchDisplayController!.searchResultsTableView.reloadData()
         }) { (error: NSError) -> () in

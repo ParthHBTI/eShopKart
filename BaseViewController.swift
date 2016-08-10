@@ -8,12 +8,8 @@
 
 import UIKit
 
-<<<<<<< HEAD
 class BaseViewController: UIViewController, UINavigationControllerDelegate {
-=======
-
-class BaseViewController: UIViewController, UINavigationControllerDelegate  {
->>>>>>> 71f5d634246bb32c1ece115251e2bb389fc9c559
+    
     let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
     var unreadCartNotificationCount = 0
     var cartArr = NSMutableArray()
@@ -21,21 +17,24 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
     var showSearchBarbuttonItem: UIBarButtonItem!
     var unreadCartItemDetailLabel: UILabel!
     var isUserLogin: Bool! = false
+    var myCartBarItem: UIBarButtonItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // self.navigationItem.rightBarButtonItem!.badgeValue = String(self.CartItemDetailVCIns.cartDetailResponseArr.count)
-        //self.navigationItem.rightBarButtonItem?.badgeValue = String(self.badgeValCounter)
+
+    myCartBarItem = UIBarButtonItem(image: UIImage(named: "market"), style: .Plain, target: self, action: #selector(BaseViewController.myCardDetail))
+        
         ////
         let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
+        if (userId != nil) {
         let userInfo = [
             "user_id" : userId!,
             ]
         SigninOperaion.view_cart(userInfo, completionClosure: { response in
             print(response)
-            for var obj in response as! NSArray
-            {
+            for var obj in response as! NSArray {
                 self.cartArr.addObject(obj)
-                self.navigationItem.rightBarButtonItem!.badgeValue = String(self.cartArr.count)
+               self.myCartBarItem!.badgeValue = String(self.cartArr.count)
                 //self.badgeValCounter = self.cartDetailResponseArr.count
             }
             //self.tableView.reloadData()
@@ -45,16 +44,17 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
             loading.detailsLabelText = error.localizedDescription
             loading.hide(true, afterDelay: 2)
         }
-        
+    }
         ////
+        
         let data =  NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
         if data != nil {
             isUserLogin = true
         }
         self.navigationController?.navigationBarHidden = false
         let nav = self.navigationController?.navigationBar
-//        nav!.frame=CGRectMake(0, 0, 320, 20)
-//        self.view.addSubview(nav!)
+        //        nav!.frame=CGRectMake(0, 0, 320, 20)
+        //        self.view.addSubview(nav!)
         nav?.barStyle = UIBarStyle.BlackOpaque
         nav?.tintColor = UIColor.whiteColor()
         self.title = ""
@@ -63,9 +63,8 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
         let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(BaseViewController.backAction))
         let homeBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "building"), style: .Plain, target: self, action: #selector(BaseViewController.showHomePage))
         self.navigationItem.setLeftBarButtonItems([backBarButtonItem , homeBarButtonItem], animated: true)
-        let writeAddBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "market"), style: .Plain, target: self, action: #selector(BaseViewController.myCardDetail))
         let showSearchBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "landlord"), style: .Plain, target: self, action: #selector(BaseViewController.showUserProfile))
-        self.navigationItem.setRightBarButtonItems([writeAddBarButtonItem,showSearchBarButtonItem], animated: true)
+        self.navigationItem.setRightBarButtonItems([showSearchBarButtonItem,myCartBarItem!], animated: true)
         //self.navigationItem.rightBarButtonItem!.badgeValue = "1";
         //        let NavItemsArr = self.navigationController?.navigationBar.items as NSArray!
         //        let navItem = NavItemsArr.objectAtIndex(2) as! UINavigationItem
@@ -75,20 +74,22 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
     override func viewWillAppear(animated: Bool) {
         
         let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
+        if (userId != nil) {
         let userInfo = [
             "user_id" : userId!,
             ]
         SigninOperaion.view_cart(userInfo, completionClosure: { response in
             print(response)
-        self.navigationItem.rightBarButtonItem!.badgeValue = String(response.count)
-                //self.badgeValCounter = self.cartDetailResponseArr.count
-        })
+            //self.navigationItem.rightBarButtonItem!.badgeValue = String(response.count)
+            //self.badgeValCounter = self.cartDetailResponseArr.count
+            })
         { (error: NSError) -> () in
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = error.localizedDescription
             loading.hide(true, afterDelay: 2)
         }
+    }
         
     }
     
@@ -97,7 +98,6 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
         if (self.navigationController?.topViewController?.isKindOfClass(UserProfileViewController)) == false {
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as? UserProfileViewController
-            //self.navigationController?.pushViewController(vc!, animated: true)
             let navController = UINavigationController(rootViewController: vc!)
             self.presentViewController(navController, animated: true, completion: nil)
         }
@@ -105,7 +105,6 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
     
     // Go to user's card detail page
     func myCardDetail() {
-        //self.navigationItem.rightBarButtonItem!.badgeValue = "1"
         let data =  NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
         if data != nil {
             if (self.navigationController?.topViewController?.isKindOfClass(CartItemDetailVC)   ) == false{
@@ -145,7 +144,7 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
     }
     
     func makeLoginAlert()
-{
+    {
         let refreshAlert = UIAlertController(title: "Please Login", message: "To make this action, please login first.", preferredStyle: UIAlertControllerStyle.Alert)
         refreshAlert.addAction(UIAlertAction(title: "Login", style: .Default, handler: { (action: UIAlertAction!) in
             let storyboard = UIStoryboard(name: "Login" , bundle:  nil)
@@ -159,7 +158,5 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate  {
         self.presentViewController(refreshAlert, animated: true, completion: nil)
     }
     
-    
 }
-
 
