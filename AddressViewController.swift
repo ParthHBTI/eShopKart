@@ -52,7 +52,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
         newButton.size.width = 320
         orderBtn.frame = newButton
         floaringView.addSubview(orderBtn)
-        self.floaringView.backgroundColor = UIColor.blueColor()
+        self.floaringView.backgroundColor = UIColor.init(red: 74/256.0, green: 115/256.0, blue: 236/256.0, alpha: 1.0)
         var newFrame: CGRect = self.floaringView.frame
         newFrame.size.height = 0
         newFrame.size.width = 400
