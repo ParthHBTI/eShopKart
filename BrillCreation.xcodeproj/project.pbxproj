@@ -161,7 +161,7 @@
 		73C126091D2BA1E80048F986 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		73CFD22C1D3DFC58008D0AC5 /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
 		73D0DD311D379D2E00E5714C /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
-		73F037E81D4A015100628E83 /* MessageComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
+		73F037E81D4A015100628E83 /* MessageComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageComposer.swift; path = eShopKart/MessageComposer.swift; sourceTree = "<group>"; };
 		73F0C2191D252595005C48C6 /* PreSignUPVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreSignUPVC.swift; sourceTree = "<group>"; };
 		73F0DD0F1D4F5AAD00278D2B /* ImageCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImageCollectionView.xib; path = eShopKart/ImageCollectionView.xib; sourceTree = "<group>"; };
 		74D4A6FA0A2E707CE4606434 /* Pods-BrillCreation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrillCreation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BrillCreation/Pods-BrillCreation.debug.xcconfig"; sourceTree = "<group>"; };
@@ -243,7 +243,6 @@
 				043694621CE465DC000868CE /* BaseViewController.swift */,
 				180B482C1CF2C74100B5808C /* HomeViewController.swift */,
 				73CFD22C1D3DFC58008D0AC5 /* ProfileSettingViewController.swift */,
-				73F037E81D4A015100628E83 /* MessageComposer.swift */,
 				733606091D3CE3DB00C9A15F /* AppShareViewController.swift */,
 				04A2FA311D39076600C10875 /* AddNewAddressVC.swift */,
 				04A2FA271D38E54300C10875 /* AddressViewController.swift */,
@@ -300,6 +299,7 @@
 		18A93DF61CEF36120046F78D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				73F037E81D4A015100628E83 /* MessageComposer.swift */,
 				1800CB041CF6E0940094727B /* UIBarButtonItem+Badge.h */,
 				1800CB051CF6E0940094727B /* UIBarButtonItem+Badge.m */,
 				73F0DD0F1D4F5AAD00278D2B /* ImageCollectionView.xib */,
