@@ -488,7 +488,10 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahn-f4-shQ">
                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                    <state key="normal" title="Add New "/>
+                                    <color key="tintColor" red="0.0787162696" green="0.2828120194" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Add New ">
+                                        <color key="titleColor" red="0.2901960784" green="0.45098039220000002" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
                                     <connections>
                                         <segue destination="OCH-Pn-vcy" kind="show" id="qFL-MX-D0n"/>
                                     </connections>
@@ -630,7 +633,9 @@
                                                     <variation key="heightClass=regular-widthClass=compact" constant="-60.70588235294116"/>
                                                 </constraint>
                                             </constraints>
-                                            <state key="normal" title="Edit"/>
+                                            <state key="normal" title="Edit">
+                                                <color key="titleColor" red="0.2901960784" green="0.45098039220000002" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="XL4-5X-ED6"/>
@@ -653,7 +658,9 @@
                                                     <variation key="heightClass=regular-widthClass=compact" constant="39"/>
                                                 </constraint>
                                             </constraints>
-                                            <state key="normal" title="Delete"/>
+                                            <state key="normal" title="Delete">
+                                                <color key="titleColor" red="0.29019607843137252" green="0.45098039215686275" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="I2Z-We-aUA"/>
@@ -880,11 +887,12 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTM-Xl-zd1">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.29019607843137252" green="0.45098039215686275" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="cqi-13-kgO"/>
                                             <constraint firstAttribute="width" constant="292" id="k3e-Oe-2Qe"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.2901960784" green="0.45098039220000002" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Save &amp; Continue">
                                             <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -912,7 +920,8 @@
                                             </constraint>
                                             <constraint firstAttribute="height" constant="34" id="tSL-ym-mOx"/>
                                         </constraints>
-                                        <state key="normal" title="Cancel"/>
+                                        <color key="tintColor" red="0.29019607843137252" green="0.45098039215686275" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Clear All"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="2th-20-fBL"/>
@@ -1216,7 +1225,9 @@
                                             </constraint>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="unchecked.png"/>
+                                        <state key="normal" image="unchecked.png">
+                                            <color key="titleColor" red="0.2901960784" green="0.45098039220000002" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="I1Z-4V-nPF"/>
@@ -1705,7 +1716,8 @@
                                                             <exclude reference="Dc5-QP-uam"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="134" y="16" width="54" height="9"/>
                                                         <mask key="constraints">
                                                             <include reference="Dc5-QP-uam"/>
                                                         </mask>
@@ -1724,7 +1736,8 @@
                                                             <exclude reference="bcA-LY-aZ6"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="134" y="33" width="44" height="17"/>
                                                         <mask key="constraints">
                                                             <include reference="bcA-LY-aZ6"/>
                                                         </mask>
@@ -1743,7 +1756,8 @@
                                                             <exclude reference="ESL-zO-k8h"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="193" y="33" width="98" height="17"/>
                                                         <mask key="constraints">
                                                             <include reference="ESL-zO-k8h"/>
                                                         </mask>
@@ -1762,7 +1776,8 @@
                                                             <exclude reference="5so-g6-ctd"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="134" y="53" width="132" height="47"/>
                                                         <mask key="constraints">
                                                             <include reference="5so-g6-ctd"/>
                                                         </mask>
@@ -1781,7 +1796,8 @@
                                                             <exclude reference="L0m-8P-aPZ"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="277" y="53" width="194" height="47"/>
                                                         <mask key="constraints">
                                                             <include reference="L0m-8P-aPZ"/>
                                                         </mask>
@@ -1838,7 +1854,8 @@
                                                             <exclude reference="vbs-ls-fv0"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="202" y="16" width="22" height="26"/>
                                                         <mask key="constraints">
                                                             <include reference="eTK-1R-Y4r"/>
                                                             <include reference="vbs-ls-fv0"/>
@@ -2919,6 +2936,9 @@
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="21" y="37" width="198" height="134"/>
+                                                    </variation>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jz4-cP-FTD">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -2933,7 +2953,8 @@
                                                             <exclude reference="VmI-Ju-BTX"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="21" y="14" width="148" height="21"/>
                                                         <mask key="constraints">
                                                             <include reference="VmI-Ju-BTX"/>
                                                         </mask>

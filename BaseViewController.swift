@@ -21,7 +21,7 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //navigationController!.navigationBar.barTintColor = UIColor.init(red: 74/255.0, green: 115/255.0, blue: 236/255.0, alpha: 1.0)
     myCartBarItem = UIBarButtonItem(image: UIImage(named: "market"), style: .Plain, target: self, action: #selector(BaseViewController.myCartDetail))
         
         ////
