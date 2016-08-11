@@ -91,6 +91,11 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate,UITextViewD
         self.navigationController?.popViewControllerAnimated(true)
     }
     
+    //func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+//        textField.addBorderWithColor(UIColor.init(red: 255/255.0, green: 128/255.0, blue: 7/255.0, alpha: 1.0), borderWidth: 1.0)
+//        return true
+    //}
+    
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
             textView.resignFirstResponder()

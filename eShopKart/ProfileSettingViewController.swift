@@ -41,13 +41,13 @@ class ProfileSettingViewController: TextFieldViewController {
         //        mobNumberTxtField.inputAccessoryView = numberToolbar
         //mobNumberTxtField.returnKeyType = .Done
         /*let barButton1: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: mobNumberTxtField, action: #selector(self.resignFirstResponder))
-        
-        //let barButton2: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: mobNumberTxtField, action: #selector(self.resignFirstResponder))
-        let toolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 44))
-        //toolbar.barStyle = UIBarStyle.BlackTranslucent
-        barButton1.accessibilityFrame = (frame: CGRectMake(250/255.0, 0/255.0, 106.0/255, 53.0/25))
-        toolbar.items = [barButton1]
-        mobNumberTxtField.inputAccessoryView = toolbar*/
+         
+         //let barButton2: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: mobNumberTxtField, action: #selector(self.resignFirstResponder))
+         let toolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 44))
+         //toolbar.barStyle = UIBarStyle.BlackTranslucent
+         barButton1.accessibilityFrame = (frame: CGRectMake(250/255.0, 0/255.0, 106.0/255, 53.0/25))
+         toolbar.items = [barButton1]
+         mobNumberTxtField.inputAccessoryView = toolbar*/
         let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(BaseViewController.backAction))
         self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
         self.title = "Update Profile"
@@ -223,20 +223,26 @@ class ProfileSettingViewController: TextFieldViewController {
             return prospectiveText.characters.count <= 30
             
         case mobNumberTxtField:
-            return prospectiveText.characters.count <= 10
-            
+            return prospectiveText.characters.count <= 10 //{
+                //return true
+           // } else {
+                //textField.addBorderWithColor(UIColor.init(red: 255/255.0, green: 128/255.0, blue: 7/255.0, alpha: 1.0), borderWidth: 1.0)
+                //return true
+            //}
         default:
             return true
         }
     }
     
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        //textField.addBorderWithColor(UIColor.redColor(), borderWidth: 1.0)
+        //textField.borderStyle =
         return true
     }
     
+    
     override func textFieldDidBeginEditing(textField: UITextField) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileSettingViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        
     }
     
     func keyboardWillShow(note : NSNotification) -> Void{

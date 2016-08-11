@@ -22,7 +22,7 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    myCartBarItem = UIBarButtonItem(image: UIImage(named: "market"), style: .Plain, target: self, action: #selector(BaseViewController.myCardDetail))
+    myCartBarItem = UIBarButtonItem(image: UIImage(named: "market"), style: .Plain, target: self, action: #selector(BaseViewController.myCartDetail))
         
         ////
         let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
@@ -104,7 +104,7 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     // Go to user's card detail page
-    func myCardDetail() {
+    func myCartDetail() {
         let data =  NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
         if data != nil {
             if (self.navigationController?.topViewController?.isKindOfClass(CartItemDetailVC)   ) == false{

@@ -2020,7 +2020,8 @@
                                                             <exclude reference="tjd-70-wji"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="360" y="23" width="19" height="20"/>
                                                         <mask key="constraints">
                                                             <include reference="ES0-bh-6Kx"/>
                                                             <include reference="tjd-70-wji"/>
