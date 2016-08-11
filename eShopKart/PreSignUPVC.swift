@@ -9,7 +9,6 @@
 import UIKit
 
 class PreSignUPVC: UIViewController {
-
     @IBOutlet weak var privacyPolicyBtn: UIButton!
     @IBOutlet weak var aboutUsBtn: UIButton!
     
@@ -40,24 +39,22 @@ class PreSignUPVC: UIViewController {
         self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
         let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"),style: .Plain, target: self, action: #selector(PreSignUPVC.crossAction))
         self.navigationItem
-        .setRightBarButtonItem(crossBtnItem, animated: true)
+            .setRightBarButtonItem(crossBtnItem, animated: true)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
     override func viewWillAppear(animated: Bool) {
-            //self.navigationController?.navigationBarHidden = true
+        
     }
     
     @IBAction func SigninWithFB(sender: AnyObject) {
         
-        
     }
     
     @IBAction func SigninWithTwitter(sender: AnyObject) {
-        
         
     }
     
@@ -67,18 +64,15 @@ class PreSignUPVC: UIViewController {
         let	url = NSString(format: "%@/1", contentURL) as String
         vc?.htmlString = url
         vc?.pageId = 1
-        //self.presentViewController(vc!, animated: true, completion: nil)
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     @IBAction func privacyPolicyAction(sender: AnyObject) {
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("GeneralWebVCIdentifier") as? GeneralWebViewController
         let	url = NSString(format: "%@/2", contentURL) as String
         vc?.htmlString = url
         vc?.pageId = 2
-        //self.presentViewController(vc!, animated: true, completion: nil)
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
@@ -88,16 +82,5 @@ class PreSignUPVC: UIViewController {
     
     func crossAction() {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-    
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }

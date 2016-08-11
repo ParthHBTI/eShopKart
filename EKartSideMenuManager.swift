@@ -14,9 +14,7 @@ import UIKit
 }
 
 @objc public protocol EKartSideMenuProtocol{
-   // var sideMenu : EKartSideMenuManager? { get }
     func setContentViewcontroller(ContentViewcontroller : UIViewController)
-    
 }
 
 public enum EKartSideMenuAnimation : Int {
@@ -31,15 +29,12 @@ public enum EKartSideMenuPostion : Int {
 
 public extension UIViewController {
     public func toggleSideMenuView (){
-      //  sideMenuController()?.sideMenu?.toggleMenu()
     }
     
     public func hideSideMenuView () {
-      //  sideMenuController()?.sideMenu?.hideSideMenu()
     }
     
     public func showSideMenuView () {
-      //  sideMenucontroller()?.sideMenu()?.showSideMenu()
     }
 
 }

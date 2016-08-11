@@ -210,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				04EEB2301CEC52500069A877 /* Controller */,
+				73145CBC1D59DDD4002906AF /* Custom Cell */,
 				18A93DF61CEF36120046F78D /* Helpers */,
 				04EEB2311CEC52800069A877 /* Cell */,
 				0436945E1CE450A7000868CE /* Main.storyboard */,
@@ -281,7 +282,6 @@
 		04EEB2311CEC52800069A877 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				73145CBC1D59DDD4002906AF /* Xib */,
 				04358D981D48BD6D00CB24A8 /* MyOrderNumberCell.swift */,
 				04358D941D489DAB00CB24A8 /* myOrdersCell.swift */,
 				04A2FA251D38E51D00C10875 /* AddressViewCell.swift */,
@@ -329,7 +329,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		73145CBC1D59DDD4002906AF /* Xib */ = {
+		73145CBC1D59DDD4002906AF /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
 				73145CBD1D59DE86002906AF /* ImageCollectionView.xib */,
@@ -339,7 +339,7 @@
 				73145CC51D59DEB4002906AF /* productDetails.xib */,
 				73145CC71D59DEBC002906AF /* SeeMore.xib */,
 			);
-			name = Xib;
+			name = "Custom Cell";
 			sourceTree = "<group>";
 		};
 		D48A0526576398153FC56E00 /* Frameworks */ = {

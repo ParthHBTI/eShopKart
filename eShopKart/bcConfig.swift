@@ -12,7 +12,7 @@ import Foundation
 class bcConfig {
     var configDict: NSDictionary!
     var userDefaults = NSUserDefaults.standardUserDefaults()
-
+    
     class var sharedInstance: bcConfig {
         struct Static  {
             static var instance: bcConfig!
@@ -26,27 +26,14 @@ class bcConfig {
     
     func urlForKey (configKey: NSString) -> NSString {
         if configDict == nil {
-//            var path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString
-//            path = path.stringByAppendingString("bcConfig.plist")
-//            let fileManager = NSFileManager.defaultManager()
-//            if !fileManager.fileExistsAtPath(path as String) {
-//                let sourcePath = NSBundle.mainBundle().pathForResource("bcConfig", ofType: "plist")
-//                do {
-//                    try fileManager.copyItemAtPath(sourcePath!, toPath: path as String)
-//                } catch _ {
-//                }
-//            }
-            
             let sourcePath = NSBundle.mainBundle().pathForResource("bcConfig", ofType: "plist")
             configDict = NSDictionary(contentsOfFile: sourcePath! as String) as NSDictionary!
         }
-        
-        
         let webServiceUrlDict:NSDictionary = configDict["WebServiceUrl"] as! NSDictionary
         let relativeUrl:NSString = webServiceUrlDict[configKey] as! String
         let modifiedURLString = NSString(format:"%@%@", hostURL, relativeUrl) as String
         return modifiedURLString
     }
 }
-    
+
 

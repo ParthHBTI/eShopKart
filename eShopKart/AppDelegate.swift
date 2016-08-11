@@ -9,7 +9,6 @@
 import UIKit
 
 let UIAppDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -28,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if token == nil {
             showUserPage()
         }
-        // Override point for customization after application launch.m
         return true
     }
     
@@ -67,11 +65,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         func applicationWillTerminate(application: UIApplication) {
             // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         }
-        
-        
     }
-    
 }
+
 extension UIView {
     func addBorderWithColor(color: UIColor, borderWidth: CGFloat) {
         addBorderToView(color, borderWidth: borderWidth,radius: 0)

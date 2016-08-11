@@ -50,7 +50,6 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
         let cell = tableView.dequeueReusableCellWithIdentifier("categoryItemsCell", forIndexPath: indexPath) as! CategoryItemsViewCell
         cell.subCategoryItemName?.text = subcatResponseArr.objectAtIndex(indexPath.row)["category_name"] as? String
         cell.subCatId?.text = subcatResponseArr.objectAtIndex(indexPath.row)["id"] as? String
-        
         return cell
     }
     
@@ -62,13 +61,12 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
         let destinationVC = segue.destinationViewController as! SimillerProductDetailVC
         let cell = sender as! CategoryItemsViewCell
         destinationVC.getsubCategoryId = cell.subCatId!.text
-        
     }
 }
+
 extension NSLayoutConstraint {
-    
     override public var description: String {
         let id = identifier ?? ""
-        return "id: \(id), constant: \(constant)" //you may print whatever you want here
+        return "id: \(id), constant: \(constant)"
     }
 }

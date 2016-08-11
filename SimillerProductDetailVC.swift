@@ -66,23 +66,16 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         cell.productImgView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
         cell.getQuoteBtn.tag = indexPath.row
         cell.getQuoteBtn.addTarget(self, action: #selector(SimillerProductDetailVC.getQuoteAction),forControlEvents: .TouchUpInside)
-        //cell.getQuoteBtn.layer.cornerRadius = 5.0,
-        //cell.getQuoteBtn.layer.borderWidth = 1.0
-            //cell.getQuoteBtn.add
-//            cell.getQuoteBtn.addCornerRadiusWithValue(5.0, color: , borderWidth: 1.0)
         cell.getQuoteBtn.addCornerRadiusWithValue(5.0, color:UIColor.init(red: 78.0/255, green: 158.0/255, blue: 255.0/255, alpha: 1.0), borderWidth: 1.0)
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         let selectedCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!
         for subViews in selectedCell.contentView.subviews {
-            
             if subViews is UIButton {
                 let button = subViews as! UIButton
                 button.backgroundColor = UIColor.whiteColor()
-                
             }
         }
         let itemInfoDic  = productsArr.objectAtIndex(indexPath.row) as! Dictionary<String,AnyObject>
@@ -107,7 +100,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 print(response)
                 order_number = response.valueForKey("order_number") as! String
-                 myInt = (order_number as NSString).integerValue
+                myInt = (order_number as NSString).integerValue
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = response["message"] as! String
                 loading.hide(true, afterDelay: 2)
@@ -123,15 +116,12 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
                     loading.detailsLabelText = error.localizedDescription
                     loading.hide(true, afterDelay: 2)
                 }
-
             }) { (error: NSError) -> () in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = error.localizedDescription
                 loading.hide(true, afterDelay: 2)
             }
-            
-            
         }else {
             self.makeLoginAlert()
         }

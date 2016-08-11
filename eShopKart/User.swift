@@ -50,7 +50,7 @@ class User: NSObject {
             }
         }
     }
-
+    
     class func initWithArray (inArr: NSArray) -> NSArray {
         let allValues:NSMutableArray = []
         for inDictNew in inArr {
@@ -58,7 +58,7 @@ class User: NSObject {
         }
         return allValues
     }
-
+    
     func encodeWithCoder(aCoder: NSCoder!) {
         aCoder.encodeObject(self.id, forKey: "id")
         aCoder.encodeObject(self.email, forKey: "email")
@@ -93,5 +93,5 @@ class User: NSObject {
     
     override init() {
     }
-
+    
 }

@@ -41,7 +41,6 @@ class SignUPViewController: TextFieldViewController {
                 let request = NSMutableURLRequest(URL:myUrl!);
                 request.HTTPMethod = "POST";
                 let form1 = "firstname=\(firstname)&lastname=\(lastname)&email=\(emailID)&password=\(password)&mobile=\(mobile)"
-                //let form1 = "email=kamleshhbti@hotmail.com"
                 print(form1)
                 request.HTTPBody = form1.dataUsingEncoding(NSUTF8StringEncoding)
                 let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {

@@ -11,11 +11,8 @@ import MessageUI
 
 class AppShareViewController: UIViewController,MFMailComposeViewControllerDelegate {
     
-    //let messageComposer = MessageComposer()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         // Do any additional setup after loading the view.
     }
     
@@ -25,20 +22,18 @@ class AppShareViewController: UIViewController,MFMailComposeViewControllerDelega
     }
     
     @IBAction func AppShareAction(sender: AnyObject) {
-        //if messageComposer.canSendText() {
         let textToShare: String = "Brill Creation, now another plateform for online shopping in bulk, please go through this URL"
-            let urlToShare: NSURL = NSURL(string: "http://brillcreations.com/brill/bcreation")!
-            let imageToShare: UIImage = UIImage(named: "appImg.png")!
-            let objectsToShare: [AnyObject] = [textToShare, urlToShare, imageToShare]
-            let activityVC: UIActivityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            let excludeActivities: [AnyObject] = [UIActivityTypePrint, UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList,UIActivityTypePostToVimeo,UIActivityTypeAirDrop,UIActivityTypeSaveToCameraRoll]
-            activityVC.excludedActivityTypes = excludeActivities as? [String]
-            activityVC.popoverPresentationController?.sourceView = sender as? UIView
-            self.presentViewController(activityVC, animated: true, completion: nil)
-        //}
+        let urlToShare: NSURL = NSURL(string: "http://brillcreations.com/brill/bcreation")!
+        let imageToShare: UIImage = UIImage(named: "appImg.png")!
+        let objectsToShare: [AnyObject] = [textToShare, urlToShare, imageToShare]
+        let activityVC: UIActivityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        let excludeActivities: [AnyObject] = [UIActivityTypePrint, UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList,UIActivityTypePostToVimeo,UIActivityTypeAirDrop,UIActivityTypeSaveToCameraRoll]
+        activityVC.excludedActivityTypes = excludeActivities as? [String]
+        activityVC.popoverPresentationController?.sourceView = sender as? UIView
+        self.presentViewController(activityVC, animated: true, completion: nil)
     }
     
-   @IBAction func sendEmailButtonTapped(sender: AnyObject) {
+    @IBAction func sendEmailButtonTapped(sender: AnyObject) {
         let mailComposeViewController = configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
             self.presentViewController(mailComposeViewController, animated: true, completion: nil)
@@ -61,10 +56,7 @@ class AppShareViewController: UIViewController,MFMailComposeViewControllerDelega
         sendMailErrorAlert.show()
     }
     
-    // MARK: MFMailComposeViewControllerDelegate Method
-    
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         controller.dismissViewControllerAnimated(true, completion: nil)
     }
-    
 }

@@ -7,6 +7,7 @@
 //
 import UIKit
 import AFNetworking
+
 class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     
     struct MoveKeyboard {
@@ -28,12 +29,12 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     var productImageArr:AnyObject = []
     var productId: String!
     var getProductInfoDic = Dictionary<String,AnyObject>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if checkFlag {
             AddToCartBtn.hidden = true
             GetQuoteBtn.hidden = true
-            
         }
         self.title = "Product Detail"
         self.ItemDetailTblView.rowHeight = 170
@@ -51,6 +52,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     override func viewWillAppear(animated: Bool) {
         if self.flag == true {
             self.cell.qtyTxtField.text = "1"
@@ -80,11 +82,11 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
                 cell2.qtyTxtField.text = productQnty
                 cell2.qtyTxtField.enabled = false
             } else {
-            if self.flag == true {
-                self.productQnty = cell2.qtyTxtField!.text!
-            } else {
-                cell2.qtyTxtField.text = "1"
-            }
+                if self.flag == true {
+                    self.productQnty = cell2.qtyTxtField!.text!
+                } else {
+                    cell2.qtyTxtField.text = "1"
+                }
             }
             self.cell = cell2
             return cell2
@@ -94,7 +96,6 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
         cell3.desTextView.layer.borderWidth = 0.5
         cell3.desTextView?.text = getProductInfoDic["product_description"] as? String
         return cell3
-        
     }
     
     @IBAction func addToCart(sender: AnyObject) {
@@ -125,8 +126,8 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = error.localizedDescription
                 loading.hide(true, afterDelay: 2)
-                
-            }        } else {
+            }
+        } else {
             //self.makeLoginAlert()
         }
     }
@@ -176,9 +177,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     func handleTap (tapGesture: UIGestureRecognizer) {
         self.view .endEditing(true)
         self.ItemDetailTblView.reloadData()
-        //productQnty  = self.productQnty!
         self.flag = true
-        
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -225,7 +224,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
         return true
     }
     
-     override func backAction() {
+    override func backAction() {
         self.navigationController?.popViewControllerAnimated(true)
     }
 }
@@ -250,11 +249,3 @@ extension ItemDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
         print("Collection view at row \(collectionView.tag) selected index path \(indexPath)")
     }
 }
-
-
-
-
-
-
-
-

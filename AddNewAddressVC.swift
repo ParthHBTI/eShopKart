@@ -11,7 +11,7 @@ import CoreLocation
 import AddressBookUI
 
 class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegate,UITextFieldDelegate {
-
+    
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var zipCode: UITextField!
     @IBOutlet weak var city: UITextField!
@@ -40,7 +40,7 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(AddNewAddressVC.handleTap(_:)))
         self.view .addGestureRecognizer(tapRecognizer)
         landmark.delegate = self
@@ -71,10 +71,8 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
             state.text = addressInfoDic.objectForKey("state") as? String
             mobileNo.text = addressInfoDic.objectForKey("contactnumber") as? String
             alternateMoNo.text = addressInfoDic.objectForKey("alternatenumber") as? String
-                }
-        // Do any additional setup after loading the view.
+        }
     }
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -101,31 +99,30 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
                 loading.hide(true, afterDelay: 2)
                 loading.removeFromSuperViewOnHide = true
             }else {
-            let userInfo = [
-                "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id") as! String,
-                "fullname" : userName!.text!,
-                "address" : address!.text!,
-                "city" : city!.text! ,
-                "state" : state.text! as String,
-                "zipcode" : zipCode!.text! as String,
-                "contact_number" : mobileNo.text! as String,
-                "landmark" : landmark.text! as String,
-                "address_id" : address_id
-            ]
-            SigninOperaion.add_address(userInfo, completionClosure: { response in
-                print(response)
-            }) { (error: NSError) -> () in
-                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-                loading.mode = MBProgressHUDModeText
-                loading.detailsLabelText = error.localizedDescription
-                loading.hide(true, afterDelay: 2)
-            }
+                let userInfo = [
+                    "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id") as! String,
+                    "fullname" : userName!.text!,
+                    "address" : address!.text!,
+                    "city" : city!.text! ,
+                    "state" : state.text! as String,
+                    "zipcode" : zipCode!.text! as String,
+                    "contact_number" : mobileNo.text! as String,
+                    "landmark" : landmark.text! as String,
+                    "address_id" : address_id
+                ]
+                SigninOperaion.add_address(userInfo, completionClosure: { response in
+                    print(response)
+                }) { (error: NSError) -> () in
+                    let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                    loading.mode = MBProgressHUDModeText
+                    loading.detailsLabelText = error.localizedDescription
+                    loading.hide(true, afterDelay: 2)
+                }
                 let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
-                //let destinationVC = storyboard.instantiateViewControllerWithIdentifier("AddressVCIdentifier") as! AddressViewController
                 let vc = storyboard.instantiateViewControllerWithIdentifier("AddressVCIdentifier") as? AddressViewController
                 vc?.checkDefault = checkdefault
                 self.navigationController?.pushViewController(vc!, animated: true)
-        }
+            }
         } else {
             if zipCode.text!.isEmpty == true || userName.text!.isEmpty == true || address.text!.isEmpty == true || state.text!.isEmpty == true || city.text!.isEmpty == true || mobileNo.text!.isEmpty == true  {
                 loading.mode = MBProgressHUDModeText
@@ -152,7 +149,7 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
                     "zipcode" : zipCode!.text! as String,
                     "contact_number" : mobileNo.text! as String,
                     "landmark" : landmark.text! as String,
-                ]
+                    ]
                 SigninOperaion.add_address(userInfo, completionClosure: { response in
                     print(response)
                     
@@ -169,10 +166,6 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
             }
         }
     }
-//    func textViewDidChange(textView: UITextView) {
-//        userName.text = userName.text
-//        print(userName.text)
-//    }
     
     func textFieldDidChange() {
         userName.text = userName.text
@@ -185,7 +178,7 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
     }
     
     func handleTap(tapGesture: UIGestureRecognizer) {
-         self.view .endEditing(true)
+        self.view .endEditing(true)
     }
     
     @IBAction func defaultAction(sender: UIButton) {
@@ -194,11 +187,9 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
         self.view.endEditing(true)
         return true
     }
-    
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
@@ -227,30 +218,10 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
         let toolbarButton = [flexSpace,doneButton]
         keyboardDoneButtonShow.setItems(toolbarButton, animated: false)
         mobileNo.inputAccessoryView = keyboardDoneButtonShow
-         alternateMoNo.inputAccessoryView = keyboardDoneButtonShow
+        alternateMoNo.inputAccessoryView = keyboardDoneButtonShow
         return true
         
     }
-
-//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-////        let textFieldText: NSString = zipCode.text ?? ""
-////        let currentString = textFieldText.stringByReplacingCharactersInRange(range, withString: string)
-////        let length = currentString.characters.count
-////        if length > 6{
-////            
-////        } else if length == 6 {
-////            
-////            let geocoder = CLGeocoder()
-////            geocoder.geocodeAddressString(zipCode.text!) {
-////                (placemarks, error) -> Void in
-////                if let placemark = placemarks?[0] {
-////                    print(placemark.addressDictionary)
-////                }
-////            }
-////        }
-//        
-//        return true
-//    }
     
     func textField(textField: UITextField,
                    shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
@@ -261,7 +232,7 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
         let prospectiveText = (currentText as NSString).stringByReplacingCharactersInRange(range, withString: string)
         
         switch textField {
-        
+            
         case mobileNo:
             return prospectiveText.characters.count <= 10
             
@@ -272,7 +243,7 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
             return true
         }
     }
-
+    
     
     func enterZip(zipCode: String ) {
         let geoCoder = CLGeocoder();
@@ -301,15 +272,4 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
             }
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
+  }

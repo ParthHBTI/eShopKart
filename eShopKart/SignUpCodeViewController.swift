@@ -11,14 +11,14 @@ import UIKit
 class SignUpCodeViewController: TextFieldViewController {
     @IBOutlet var codeTextField: UITextField!
     
-        override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
-            let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(SignUpCodeViewController.crossBtnAction))
-            self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
-            codeTextField.delegate = self
-    // Do any additional setup after loading the view.
+        let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(SignUpCodeViewController.crossBtnAction))
+        self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
+        codeTextField.delegate = self
+        // Do any additional setup after loading the view.
     }
-   
+    
     @IBAction func submitAction(sender: AnyObject) {
         let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         loading.mode = MBProgressHUDModeText
@@ -37,7 +37,6 @@ class SignUpCodeViewController: TextFieldViewController {
             let vc = storyboard.instantiateViewControllerWithIdentifier("SetPassID") as? SignUpPassViewController
             self.navigationController?.pushViewController(vc!, animated: true)
         }
-        
     }
     
     @IBAction func resendAction(sender: AnyObject) {
@@ -53,21 +52,7 @@ class SignUpCodeViewController: TextFieldViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
     func crossBtnAction() {
-    
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
