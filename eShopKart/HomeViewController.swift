@@ -46,23 +46,24 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         
     }
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
         upArrowImgView!.fadeOut()
         
-        let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
-        if (userId != nil) {
-            let userInfo = [
-                "user_id" : userId!
-            ]
-            SigninOperaion.view_cart(userInfo, completionClosure: { response in
+//        let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
+//        if (userId != nil) {
+//            let userInfo = [
+//                "user_id" : userId!
+//            ]
+//            SigninOperaion.view_cart(userInfo, completionClosure: { response in
                 self.myCartBarItem!.badgeValue = String(self.cartArr.count)
-                })
-            { (error: NSError) -> () in
-                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-                loading.mode = MBProgressHUDModeText
-                loading.detailsLabelText = error.localizedDescription
-                loading.hide(true, afterDelay: 2)
-            }
-        }
+//                })
+//            { (error: NSError) -> () in
+//                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+//                loading.mode = MBProgressHUDModeText
+//                loading.detailsLabelText = error.localizedDescription
+//                loading.hide(true, afterDelay: 2)
+//            }
+//        }
         
     }
     

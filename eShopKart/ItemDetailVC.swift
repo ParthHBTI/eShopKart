@@ -52,6 +52,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
         if self.flag == true {
             self.cell.qtyTxtField.text = "1"
         }
@@ -120,14 +121,16 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
                 loading.hide(true, afterDelay: 2)
                 loading.removeFromSuperViewOnHide = true
                 self.ItemDetailTblView.reloadData()
+                
             }) {(error: NSError) -> () in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = error.localizedDescription
                 loading.hide(true, afterDelay: 2)
+                super.viewWillAppear(true)
                 
             }        } else {
-            //self.makeLoginAlert()
+            self.makeLoginAlert()
         }
     }
     

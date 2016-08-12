@@ -10,11 +10,8 @@ import AFNetworking
 
 class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     //var cartDetailResponseArr:AnyObject = []
-
-    
     var cartDetailResponseArr = NSMutableArray()
     @IBOutlet var tableView: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Cart Detail"
@@ -39,12 +36,13 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
+        //super.viewWillAppear(true)
         self.navigationItem.leftItemsSupplementBackButton = false
     }
     
     func goToHomeBtnAction() {
-//        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as! HomeViewController
+        //        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        //        let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as! HomeViewController
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
@@ -84,7 +82,6 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cartDetailResponseArr.count
     }
-   
     
     @IBAction func removeItemFromCart(sender: AnyObject) {
         let currentRow = sender.tag
@@ -95,7 +92,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             "product_id" : productId
         ]
         SigninOperaion.clear_cart(userInfo, completionClosure: { response in
-           //print(response)
+            //print(response)
         }) { (error: NSError) -> () in
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
@@ -104,7 +101,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         }
         if (cartDetailResponseArr.count > currentRow){
             cartDetailResponseArr.removeObjectAtIndex(currentRow)
-            self.navigationItem.rightBarButtonItem!.badgeValue = String(cartDetailResponseArr.count)
+            self.myCartBarItem!.badgeValue = String(cartDetailResponseArr.count)
             //self.badgeValCounter = self.cartDetailResponseArr.count
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
@@ -131,7 +128,9 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = error.localizedDescription
-            loading.hide(true, afterDelay: 2)        }
+            loading.hide(true, afterDelay: 2)
+        }
+        self.myCartBarItem!.badgeValue = nil
         cartDetailResponseArr.removeAllObjects()
         self.tableView.reloadData()
     }
@@ -140,7 +139,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         let tokenId = NSUserDefaults.standardUserDefaults().valueForKey("token_id")
         let userInfo = [
             "token_id" : tokenId!
-            ]
+        ]
         SigninOperaion.request_for_code(userInfo, completionClosure: { response in
             self.navigationItem.rightBarButtonItem!.badgeValue = nil
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -148,14 +147,15 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             loading.detailsLabelText = response["message"] as! String
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
-            self.cartDetailResponseArr.removeAllObjects()
-             self.tableView.reloadData()
-        }) { (error: NSError) -> () in
+         }) { (error: NSError) -> () in
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = error.localizedDescription
             loading.hide(true, afterDelay: 2)
         }
+        self.cartDetailResponseArr.removeAllObjects()
+        self.tableView.reloadData()
+        self.myCartBarItem!.badgeValue = nil
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> cartItemCell {

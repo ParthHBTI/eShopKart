@@ -2215,44 +2215,6 @@
             </objects>
             <point key="canvasLocation" x="7435.5" y="-330.75"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="MRX-jb-1Eb">
-            <objects>
-                <viewController id="EU5-Df-32k" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KcS-GR-2yF"/>
-                        <viewControllerLayoutGuide type="bottom" id="QWz-0K-jr8"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ZaJ-1N-zDs">
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGl-gA-gNR">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="73" y="120" width="254" height="21"/>
-                                </variation>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="IGl-gA-gNR"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="IGl-gA-gNR"/>
-                            </mask>
-                        </variation>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jqn-KM-sSP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7480.5" y="527.25"/>
-        </scene>
         <!--Profile Setting View Controller-->
         <scene sceneID="slg-Uo-Lxz">
             <objects>

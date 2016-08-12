@@ -32,7 +32,7 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        
+        super.viewWillAppear(true)
         self.navigationItem.leftItemsSupplementBackButton = false
     }
     
