@@ -14,7 +14,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Cart Detail"
+        self.title = "My Cart"
         let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
         let userInfo = [
             "user_id" : userId!,
@@ -54,10 +54,11 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             cartImage.image = UIImage(named: "market.png")
             detailLBL.textColor = UIColor.blackColor()
             goHomeAction.backgroundColor = UIColor.whiteColor()
-            goHomeAction.setTitleColor(UIColor.blueColor() , forState: .Normal)
+            goHomeAction.setTitleColor(UIColor.init(red: 74/255.0, green: 115/255.0, blue: 236/255.0, alpha: 1.0) , forState: .Normal)
             goHomeAction.setTitle("CONTINUE SHOPPING", forState: .Normal)
             detailLBL.text = "Your Shopping Cart is Empty!"
             goHomeAction.layer.cornerRadius=10
+            DynamicView.center = view.center
             DynamicView.backgroundColor=UIColor.whiteColor()
             DynamicView.layer.cornerRadius=25
             DynamicView.layer.borderWidth=0
@@ -126,6 +127,8 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     }
     
     @IBAction func getQuoteForAllItems(sender: AnyObject) {
+        var order_number = String()
+        var myInt = Int()
         let tokenId = NSUserDefaults.standardUserDefaults().valueForKey("token_id")
         let userInfo = [
             "token_id" : tokenId!
@@ -137,7 +140,20 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             loading.detailsLabelText = response["message"] as! String
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
+            order_number = response.valueForKey("order_number") as! String
+            myInt = (order_number as NSString).integerValue
             self.cartDetailResponseArr.removeAllObjects()
+            let userInfo1 = [
+                "order_number" : myInt
+            ]
+            SigninOperaion.request_mail(userInfo1, completionClosure: { response in
+                print(response)
+            }) { (error: NSError) -> () in
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = error.localizedDescription
+                loading.hide(true, afterDelay: 2)
+            }
             self.tableView.reloadData()
         }) { (error: NSError) -> () in
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -146,7 +162,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             loading.hide(true, afterDelay: 2)
         }
     }
-    
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> cartItemCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cartcell", forIndexPath: indexPath) as! cartItemCell
         cell.contentView.backgroundColor = UIColor.whiteColor()

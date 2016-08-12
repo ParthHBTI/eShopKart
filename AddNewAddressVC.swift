@@ -34,7 +34,7 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
     
     override func viewDidLayoutSubviews()  {
         super.viewDidLayoutSubviews()
-        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: view.frame.size.height + 240);
+        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: view.frame.size.height + 300);
     }
     
     
@@ -56,11 +56,12 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
         zipCode.delegate = self
         city.delegate = self
         mobileNo.delegate = self
+        alternateMoNo.delegate = self
         userName.delegate = self
         address.delegate = self
         state.delegate = self
         landmark.delegate = self
-        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: view.frame.size.height + 500);
+        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: view.frame.size.height );
         scrollView.setNeedsDisplay()
         if flagPoint {
             userName.text = addressInfoDic.objectForKey("fullname") as? String
@@ -241,27 +242,6 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
             
         default:
             return true
-        }
-    }
-    
-    
-    func enterZip(zipCode: String ) {
-        let geoCoder = CLGeocoder();
-        let params = [
-            String(kABPersonAddressZIPKey): zipCode as String,
-            String(kABPersonAddressCountryCodeKey): "IND",
-            ]
-        geoCoder.geocodeAddressDictionary(params) {
-            (plasemarks, error) -> Void in
-            var plases = plasemarks
-            if plases != nil && plases?.count > 0 {
-                let firstPlace = plases?[0]
-                let city = firstPlace?.addressDictionary![String(kABPersonAddressCityKey)] as? String
-                let state = firstPlace?.addressDictionary![String(kABPersonAddressStateKey)] as? String
-                let country = firstPlace?.addressDictionary![String(kABPersonAddressCountryKey)] as? String
-                print("\(city)\n\(state)\n\(country)")
-                return;
-            }
         }
     }
     

@@ -19,7 +19,7 @@ class UserRegistrationVC: TextFieldViewController {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var confirmPassTextField: UITextField!
     @IBOutlet var DoneBtn: UIButton!
-    
+    var valid = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +47,9 @@ class UserRegistrationVC: TextFieldViewController {
     }
     
     @IBAction func submitAction(sender: AnyObject) {
+        let alphaNums: NSCharacterSet = NSCharacterSet.decimalDigitCharacterSet()
+        let inStringSet: NSCharacterSet = NSCharacterSet(charactersInString: contactNumberTextField.text!)
+        valid = alphaNums.isSupersetOfSet(inStringSet)
         let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         let firstNameStr = self.firstNameTextField.text!
         let lastNameStr = self.lastNameTextField.text!
@@ -73,7 +76,13 @@ class UserRegistrationVC: TextFieldViewController {
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
             self.animateBtnOnWrongSubmit()
-        } else if (passwordTextField.text!.characters.count) < 6 {
+        } else if !valid {
+            loading.mode = MBProgressHUDModeText
+            loading.detailsLabelText = "please enter a valid mobile number"
+            loading.hide(true, afterDelay: 2)
+            loading.removeFromSuperViewOnHide = true
+            self.animateBtnOnWrongSubmit()
+        }else if (passwordTextField.text!.characters.count) < 6 {
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = "password length must be of 6 characters!"
             loading.hide(true, afterDelay: 2)
