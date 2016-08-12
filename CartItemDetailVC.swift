@@ -9,20 +9,23 @@ import UIKit
 import AFNetworking
 
 class CartItemDetailVC: BaseViewController,UITableViewDelegate {
+    //var cartDetailResponseArr:AnyObject = []
     var cartDetailResponseArr = NSMutableArray()
     @IBOutlet var tableView: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "My Cart"
+        self.title = "Cart Detail"
         let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
         let userInfo = [
             "user_id" : userId!,
             ]
         SigninOperaion.view_cart(userInfo, completionClosure: { response in
             print(response)
-            for var obj in response as! NSArray {
+            for var obj in response as! NSArray
+            {
                 self.cartDetailResponseArr.addObject(obj)
+                //self.navigationItem.rightBarButtonItem!.badgeValue = String(self.cartDetailResponseArr.count)
+                //self.badgeValCounter = self.cartDetailResponseArr.count
             }
             self.tableView.reloadData()
         }) { (error: NSError) -> () in
@@ -33,10 +36,13 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
+        //super.viewWillAppear(true)
         self.navigationItem.leftItemsSupplementBackButton = false
     }
     
     func goToHomeBtnAction() {
+        //        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        //        let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as! HomeViewController
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
@@ -54,11 +60,11 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             cartImage.image = UIImage(named: "market.png")
             detailLBL.textColor = UIColor.blackColor()
             goHomeAction.backgroundColor = UIColor.whiteColor()
-            goHomeAction.setTitleColor(UIColor.init(red: 74/255.0, green: 115/255.0, blue: 236/255.0, alpha: 1.0) , forState: .Normal)
+            goHomeAction.setTitleColor(UIColor.blueColor() , forState: .Normal)
             goHomeAction.setTitle("CONTINUE SHOPPING", forState: .Normal)
             detailLBL.text = "Your Shopping Cart is Empty!"
-            goHomeAction.layer.cornerRadius=10
             DynamicView.center = view.center
+            goHomeAction.layer.cornerRadius=10
             DynamicView.backgroundColor=UIColor.whiteColor()
             DynamicView.layer.cornerRadius=25
             DynamicView.layer.borderWidth=0
@@ -87,6 +93,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             "product_id" : productId
         ]
         SigninOperaion.clear_cart(userInfo, completionClosure: { response in
+            //print(response)
         }) { (error: NSError) -> () in
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
@@ -95,7 +102,8 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         }
         if (cartDetailResponseArr.count > currentRow){
             cartDetailResponseArr.removeObjectAtIndex(currentRow)
-            self.navigationItem.rightBarButtonItem!.badgeValue = String(cartDetailResponseArr.count)
+            self.myCartBarItem!.badgeValue = String(cartDetailResponseArr.count)
+            //self.badgeValCounter = self.cartDetailResponseArr.count
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = "Removed successfully from your cart"
@@ -121,7 +129,9 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = error.localizedDescription
-            loading.hide(true, afterDelay: 2)        }
+            loading.hide(true, afterDelay: 2)
+        }
+        self.myCartBarItem!.badgeValue = nil
         cartDetailResponseArr.removeAllObjects()
         self.tableView.reloadData()
     }
@@ -136,13 +146,12 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         SigninOperaion.request_for_code(userInfo, completionClosure: { response in
             self.navigationItem.rightBarButtonItem!.badgeValue = nil
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            order_number = response.valueForKey("order_number") as! String
+            myInt = (order_number as NSString).integerValue
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = response["message"] as! String
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
-            order_number = response.valueForKey("order_number") as! String
-            myInt = (order_number as NSString).integerValue
-            self.cartDetailResponseArr.removeAllObjects()
             let userInfo1 = [
                 "order_number" : myInt
             ]
@@ -154,15 +163,18 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
                 loading.detailsLabelText = error.localizedDescription
                 loading.hide(true, afterDelay: 2)
             }
-            self.tableView.reloadData()
-        }) { (error: NSError) -> () in
+
+         }) { (error: NSError) -> () in
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = error.localizedDescription
             loading.hide(true, afterDelay: 2)
         }
+        self.cartDetailResponseArr.removeAllObjects()
+        self.tableView.reloadData()
+        self.myCartBarItem!.badgeValue = nil
     }
-
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> cartItemCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cartcell", forIndexPath: indexPath) as! cartItemCell
         cell.contentView.backgroundColor = UIColor.whiteColor()
@@ -176,4 +188,64 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         cell.removBtn.addTarget(self, action: #selector(CartItemDetailVC.removeItemFromCart),forControlEvents: .TouchUpInside)
         return cell
     }
+    
+    //func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    
+    //        let productId = cartDetailResponseArr.objectAtIndex(indexPath.row)["id"] as! String
+    //        getProductId(productId)
+    
+    
+    //}
+    
+    //    func getProductId(productId: String) -> String {
+    //        print(productId)
+    //        return productId
+    //    }
+    
+    
+    /*
+     // Override to support conditional editing of the table view.
+     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
+    /*
+     // Override to support editing the table view.
+     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+     if editingStyle == .Delete {
+     // Delete the row from the data source
+     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+     } else if editingStyle == .Insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
+    /*
+     // Override to support rearranging the table view.
+     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+     
+     }
+     */
+    
+    /*
+     // Override to support conditional rearranging of the table view.
+     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

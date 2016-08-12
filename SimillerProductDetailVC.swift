@@ -31,8 +31,8 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = error.localizedDescription
-            loading.hide(true, afterDelay: 2)        }
-        
+            loading.hide(true, afterDelay: 2)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,7 +77,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
                 let button = subViews as! UIButton
                 button.backgroundColor = UIColor.whiteColor()
             }
-        }
+    }
         let itemInfoDic  = productsArr.objectAtIndex(indexPath.row) as! Dictionary<String,AnyObject>
         let destinationVC = storyboard!.instantiateViewControllerWithIdentifier("ItemDetailVCIdentifier") as! ItemDetailVC
         destinationVC.getProductInfoDic = itemInfoDic

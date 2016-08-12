@@ -9,6 +9,7 @@
 import UIKit
 import AFNetworking
 class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
+    
     var responseArr = NSMutableArray()
     var dataSend = NSArray()
     @IBOutlet var categoryTblView: UITableView!
@@ -26,25 +27,30 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = error.localizedDescription
             loading.hide(true, afterDelay: 2)
-        }
+    }
         self.categoryTblView.rowHeight = 55
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
         self.navigationItem.leftItemsSupplementBackButton = false
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return responseArr.count
     }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ESKCategoryCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Identifier", forIndexPath: indexPath) as! ESKCategoryCell
@@ -55,10 +61,17 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         let destinationVC = segue.destinationViewController as! CategoryItemListVC
         let cell = sender as! ESKCategoryCell
         destinationVC.categoryName = cell.TextLabel!.text
         destinationVC.categoryId = cell.cellId!.text
         destinationVC.DataSend = dataSend
+        
     }
+    
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//        let destinationVC = storyboard.instantiateViewControllerWithIdentifier("ItemDetailVCIdentifier") as! CategoryItemListVC
+//    }
 }

@@ -1,18 +1,16 @@
-//
 //  BaseViewController.swift
 //  eShopKart
-//
 //  Created by mac on 12/05/16.
 //  Copyright © 2016 kloudRac.com. All rights reserved.
 //
 
 import UIKit
-
 class BaseViewController: UIViewController, UINavigationControllerDelegate {
     
     let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
     var unreadCartNotificationCount = 0
     var cartArr = NSMutableArray()
+    
     //var CartItemDetailVCIns = CartItemDetailVC()
     var showSearchBarbuttonItem: UIBarButtonItem!
     var unreadCartItemDetailLabel: UILabel!
@@ -22,29 +20,29 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //navigationController!.navigationBar.barTintColor = UIColor.init(red: 74/255.0, green: 115/255.0, blue: 236/255.0, alpha: 1.0)
-    myCartBarItem = UIBarButtonItem(image: UIImage(named: "market"), style: .Plain, target: self, action: #selector(BaseViewController.myCartDetail))
+        myCartBarItem = UIBarButtonItem(image: UIImage(named: "market"), style: .Plain, target: self, action: #selector(BaseViewController.myCartDetail))
         
         ////
         let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
         if (userId != nil) {
-        let userInfo = [
-            "user_id" : userId!,
-            ]
-        SigninOperaion.view_cart(userInfo, completionClosure: { response in
-            print(response)
-            for var obj in response as! NSArray {
-                self.cartArr.addObject(obj)
-               self.myCartBarItem!.badgeValue = String(self.cartArr.count)
-                //self.badgeValCounter = self.cartDetailResponseArr.count
+            let userInfo = [
+                "user_id" : userId!,
+                ]
+            SigninOperaion.view_cart(userInfo, completionClosure: { response in
+                print(response)
+                for var obj in response as! NSArray {
+                    self.cartArr.addObject(obj)
+                    self.myCartBarItem!.badgeValue = String(self.cartArr.count)
+                    //self.badgeValCounter = self.cartDetailResponseArr.count
+                }
+                //self.tableView.reloadData()
+            }) { (error: NSError) -> () in
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = error.localizedDescription
+                loading.hide(true, afterDelay: 2)
             }
-            //self.tableView.reloadData()
-        }) { (error: NSError) -> () in
-            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            loading.mode = MBProgressHUDModeText
-            loading.detailsLabelText = error.localizedDescription
-            loading.hide(true, afterDelay: 2)
         }
-    }
         ////
         
         let data =  NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
@@ -72,24 +70,28 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        
+        let totalCartItemsArr = NSMutableArray()
         let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
         if (userId != nil) {
-        let userInfo = [
-            "user_id" : userId!,
-            ]
-        SigninOperaion.view_cart(userInfo, completionClosure: { response in
-            print(response)
-            //self.navigationItem.rightBarButtonItem!.badgeValue = String(response.count)
-            //self.badgeValCounter = self.cartDetailResponseArr.count
-            })
-        { (error: NSError) -> () in
-            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            loading.mode = MBProgressHUDModeText
-            loading.detailsLabelText = error.localizedDescription
-            loading.hide(true, afterDelay: 2)
+            let userInfo = [
+                "user_id" : userId!,
+                ]
+            SigninOperaion.view_cart(userInfo, completionClosure: { response in
+                print(response)
+                for var obj in response as! NSArray {
+                    totalCartItemsArr.addObject(obj)
+                    //self.myCartBarItem!.badgeValue = String(self.cartArr.count)
+                    //self.badgeValCounter = self.cartDetailResponseArr.count
+                }
+                    self.myCartBarItem!.badgeValue = String(totalCartItemsArr.count)
+                })
+            { (error: NSError) -> () in
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = error.localizedDescription
+                loading.hide(true, afterDelay: 2)
+            }
         }
-    }
         
     }
     
@@ -107,7 +109,7 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
     func myCartDetail() {
         let data =  NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
         if data != nil {
-            if (self.navigationController?.topViewController?.isKindOfClass(CartItemDetailVC)   ) == false{
+            if (self.navigationController?.topViewController?.isKindOfClass(CartItemDetailVC)) == false {
                 let storyboard = UIStoryboard(name: "Main" , bundle:  nil)
                 let vc = storyboard.instantiateViewControllerWithIdentifier("MyCardDetailIdentifire") as? CartItemDetailVC
                 self.navigationController?.pushViewController(vc!, animated: true)
