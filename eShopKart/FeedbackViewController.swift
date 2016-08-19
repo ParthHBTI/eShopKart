@@ -10,10 +10,12 @@ import UIKit
 import AFNetworking
 
 class FeedbackViewController: TextFieldViewController {
-    let baseViewController = BaseViewController()
+    
     @IBOutlet weak var subTxtField: UITextField!
     @IBOutlet weak var feedbackTxtView: UITextView!
     @IBOutlet weak var submitBtn: UIButton!
+    
+    let baseViewController = BaseViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()

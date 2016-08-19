@@ -11,6 +11,7 @@ class VerificationCodeViewController: TextFieldViewController {
     
     @IBOutlet var verificationTextField: UITextField!
     @IBOutlet weak var verifyAccBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         verificationTextField.delegate = self
@@ -31,7 +32,6 @@ class VerificationCodeViewController: TextFieldViewController {
             let alert = UIAlertView.init(title: "Oppss", message: "Please Enter Your Verify Code", delegate: self, cancelButtonTitle: "GO")
             alert.show()
             loading.hide(true)
-            //self.makeVerifyAlert()
         } else  {
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             var token =	appDelegate.deviceTokenString as? String
@@ -78,7 +78,7 @@ class VerificationCodeViewController: TextFieldViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func animateVerifyAccBtnOnWrongSubmit(){
+    func animateVerifyAccBtnOnWrongSubmit() {
         let bounds = self.verifyAccBtn.bounds
         UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: .CurveEaseOut, animations: {
             self.verifyAccBtn.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)

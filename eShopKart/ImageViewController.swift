@@ -11,6 +11,7 @@ import UIKit
 class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    
     var cellDescriptors: NSMutableArray!
     var visibleRowsPerSection = [[Int]]()
     var checkFlag = false
@@ -112,6 +113,7 @@ class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.productName?.text = getProductInfoDic["name"] as? String
             cell.productMat?.text = getProductInfoDic["material"] as? String
             cell.productQty.text = getProductInfoDic["quantity"] as? String
+            cell.productSize.text = getProductInfoDic["size"] as? String
             cell.productDetail.text = getProductInfoDic["product_description"] as? String
             myCell1 = cell
             myCell1.productDetail.sizeToFit()
@@ -235,5 +237,4 @@ class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
     }
-    
 }

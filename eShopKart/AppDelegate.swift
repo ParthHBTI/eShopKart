@@ -10,6 +10,7 @@ import UIKit
 
 let UIAppDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
@@ -44,7 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func saveCurrentUserDetails() {
-        
         if let _ = currentUser {
             NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject( currentUser!), forKey: "User")
         }
@@ -89,9 +89,11 @@ extension UIView {
     func addBorderWithColor(color: UIColor, borderWidth: CGFloat) {
         addBorderToView(color, borderWidth: borderWidth,radius: 0)
     }
+    
     func addCornerRadiusWithValue( radius: CGFloat ,color: UIColor, borderWidth: CGFloat) {
         addBorderToView(color, borderWidth: borderWidth,radius: radius)
     }
+    
     private func addBorderToView(color: UIColor, borderWidth: CGFloat, radius:CGFloat)
     {
         self.layer.cornerRadius = radius

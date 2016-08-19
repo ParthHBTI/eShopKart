@@ -17,6 +17,7 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate,UITextViewD
         static let PORTRAIT_KEYBOARD_HEIGHT : CGFloat = 216;
         static let LANDSCAPE_KEYBOARD_HEIGHT : CGFloat = 162;
     }
+    
     var animateDistance: CGFloat = 0
     var frameView: UIView!
     

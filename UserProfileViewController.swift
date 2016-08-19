@@ -10,10 +10,7 @@ import UIKit
 import MessageUI
 
 class UserProfileViewController: UIViewController, UITableViewDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, MFMailComposeViewControllerDelegate {
-    let messageComposerObj = MessageComposer()
-    let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-    var currentUser : User?
-    var isuserLogin: Bool = false
+    
     @IBOutlet var firstLastLbl: UILabel!
     @IBOutlet var mobileLbl: UILabel!
     @IBOutlet var emailLbl: UILabel!
@@ -25,6 +22,11 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
     @IBOutlet var tableView: UITableView!
     @IBOutlet var imageArray: NSMutableArray! = []
     @IBOutlet var profileArray: NSArray! = ["Customer Support","Share Our App","Need Help","Give Feedback"]
+    
+    let messageComposerObj = MessageComposer()
+    let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+    var currentUser : User?
+    var isuserLogin: Bool = false
     var profileArr2: NSArray = ["Customer Support","Share Our App","Need Help","Give Feedback","My Profile","My Address","My Orders"]
     
     override func viewDidLoad() {
@@ -219,7 +221,6 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
             cell.profileLbl.text = profileArr2.objectAtIndex(indexPath.row) as? String
         }else {
             cell.profileLbl.text = profileArray.objectAtIndex(indexPath.row) as? String
-            
         }
         return cell
     }
@@ -232,7 +233,6 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
             destinationVC.htmlString = url
             destinationVC.pageId = 4
             self.navigationController?.pushViewController(destinationVC, animated: true)
-            
         } else if(indexPath.row == 1) {
             self.AppShareAction(indexPath.row)
         } else if(indexPath.row == 2) {

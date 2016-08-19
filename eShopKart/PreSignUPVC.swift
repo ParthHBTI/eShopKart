@@ -9,6 +9,7 @@
 import UIKit
 
 class PreSignUPVC: UIViewController {
+    
     @IBOutlet weak var privacyPolicyBtn: UIButton!
     @IBOutlet weak var aboutUsBtn: UIButton!
     

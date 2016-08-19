@@ -8,6 +8,7 @@
 
 import UIKit
 import AFNetworking
+
 class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDelegate, UISearchControllerDelegate, UISearchDisplayDelegate, UITableViewDataSource {
     
     @IBOutlet weak var barSearchItem: UISearchBar!
@@ -22,12 +23,10 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         searchController = UISearchController(searchResultsController: nil)
-        //searchController!.searchResultsController
         searchController!.searchBar.sizeToFit()
         if #available(iOS 9.0, *) {
             self.searchController.loadViewIfNeeded()
         } else {
-            // Fallback on earlier versions
         }
         searchController!.delegate = self
         searchController!.searchBar.delegate = self
@@ -49,22 +48,21 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         super.viewWillAppear(true)
         upArrowImgView!.fadeOut()
         
-//        let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
-//        if (userId != nil) {
-//            let userInfo = [
-//                "user_id" : userId!
-//            ]
-//            SigninOperaion.view_cart(userInfo, completionClosure: { response in
-                self.myCartBarItem!.badgeValue = String(self.cartArr.count)
-//                })
-//            { (error: NSError) -> () in
-//                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-//                loading.mode = MBProgressHUDModeText
-//                loading.detailsLabelText = error.localizedDescription
-//                loading.hide(true, afterDelay: 2)
-//            }
-//        }
-        
+        //        let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
+        //        if (userId != nil) {
+        //            let userInfo = [
+        //                "user_id" : userId!
+        //            ]
+        //            SigninOperaion.view_cart(userInfo, completionClosure: { response in
+        self.myCartBarItem!.badgeValue = String(self.cartArr.count)
+        //                })
+        //            { (error: NSError) -> () in
+        //                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        //                loading.mode = MBProgressHUDModeText
+        //                loading.detailsLabelText = error.localizedDescription
+        //                loading.hide(true, afterDelay: 2)
+        //            }
+        //        }
     }
     
     override func didReceiveMemoryWarning() {

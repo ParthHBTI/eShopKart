@@ -19,6 +19,7 @@ class UserRegistrationVC: TextFieldViewController {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var confirmPassTextField: UITextField!
     @IBOutlet var DoneBtn: UIButton!
+    
     var valid = false
     
     override func viewDidLoad() {
@@ -99,7 +100,6 @@ class UserRegistrationVC: TextFieldViewController {
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
             self.animateBtnOnWrongSubmit()
-            
         }else {
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             loading.mode = MBProgressHUDModeIndeterminate
@@ -160,7 +160,7 @@ class UserRegistrationVC: TextFieldViewController {
         }
     }
     
-    func animateBtnOnWrongSubmit(){
+    func animateBtnOnWrongSubmit() {
         let bounds = self.DoneBtn.bounds
         UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: .CurveEaseOut, animations: {
             self.DoneBtn.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
@@ -217,15 +217,4 @@ class UserRegistrationVC: TextFieldViewController {
         }
         return true
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    
 }

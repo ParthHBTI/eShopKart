@@ -7,9 +7,11 @@
 //
 import UIKit
 import AFNetworking
+
 class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
     
     @IBOutlet var tableview: UITableView!
+    
     var getsubCategoryId: String!
     var productsArr = NSArray()
     var galleryArr:AnyObject = []
@@ -20,7 +22,6 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.view.backgroundColor = UIColor .blueColor()
         self.title = "Products List"
-        
         let userInfo = [
             "category_id" : getsubCategoryId
         ]
@@ -37,22 +38,17 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
     override func viewDidAppear(animated: Bool) {
-        //self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftItemsSupplementBackButton = false
-        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return productsArr.count
     }
     
@@ -77,7 +73,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
                 let button = subViews as! UIButton
                 button.backgroundColor = UIColor.whiteColor()
             }
-    }
+        }
         let itemInfoDic  = productsArr.objectAtIndex(indexPath.row) as! Dictionary<String,AnyObject>
         let destinationVC = storyboard!.instantiateViewControllerWithIdentifier("ItemDetailVCIdentifier") as! ItemDetailVC
         destinationVC.getProductInfoDic = itemInfoDic

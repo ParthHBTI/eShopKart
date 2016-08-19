@@ -10,8 +10,6 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
     let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
     var unreadCartNotificationCount = 0
     var cartArr = NSMutableArray()
-    
-    //var CartItemDetailVCIns = CartItemDetailVC()
     var showSearchBarbuttonItem: UIBarButtonItem!
     var unreadCartItemDetailLabel: UILabel!
     var isUserLogin: Bool! = false
@@ -21,8 +19,6 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         //navigationController!.navigationBar.barTintColor = UIColor.init(red: 74/255.0, green: 115/255.0, blue: 236/255.0, alpha: 1.0)
         myCartBarItem = UIBarButtonItem(image: UIImage(named: "market"), style: .Plain, target: self, action: #selector(BaseViewController.myCartDetail))
-        
-        ////
         let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
         if (userId != nil) {
             let userInfo = [
@@ -35,7 +31,6 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
                     self.myCartBarItem!.badgeValue = String(self.cartArr.count)
                     //self.badgeValCounter = self.cartDetailResponseArr.count
                 }
-                //self.tableView.reloadData()
             }) { (error: NSError) -> () in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
@@ -43,16 +38,12 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
                 loading.hide(true, afterDelay: 2)
             }
         }
-        ////
-        
         let data =  NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
         if data != nil {
             isUserLogin = true
         }
         self.navigationController?.navigationBarHidden = false
         let nav = self.navigationController?.navigationBar
-        //        nav!.frame=CGRectMake(0, 0, 320, 20)
-        //        self.view.addSubview(nav!)
         nav?.barStyle = UIBarStyle.BlackOpaque
         nav?.tintColor = UIColor.whiteColor()
         self.title = ""
@@ -83,7 +74,7 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
                     //self.myCartBarItem!.badgeValue = String(self.cartArr.count)
                     //self.badgeValCounter = self.cartDetailResponseArr.count
                 }
-                    self.myCartBarItem!.badgeValue = String(totalCartItemsArr.count)
+                self.myCartBarItem!.badgeValue = String(totalCartItemsArr.count)
                 })
             { (error: NSError) -> () in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -124,14 +115,7 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
     
     // Go to home page
     func showHomePage() {
-        //        if (self.navigationController?.topViewController?.isKindOfClass(HomeViewController)) == false{
         self.navigationController?.popToRootViewControllerAnimated(true)
-        //            for controller in self.navigationController!.viewControllers as Array {
-        //                if controller.isKindOfClass(HomeViewController) {
-        //                    self.navigationController?.popToViewController(controller as UIViewController, animated: true)
-        //                    break
-        //                }
-        //            }
     }
     
     // Go back to previous page
@@ -141,12 +125,10 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         showSearchBarbuttonItem?.action
     }
     
-    func makeLoginAlert()
-    {
+    func makeLoginAlert() {
         let refreshAlert = UIAlertController(title: "Please Login", message: "To make this action, please login first.", preferredStyle: UIAlertControllerStyle.Alert)
         refreshAlert.addAction(UIAlertAction(title: "Login", style: .Default, handler: { (action: UIAlertAction!) in
             let storyboard = UIStoryboard(name: "Login" , bundle:  nil)
@@ -159,6 +141,5 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
         }))
         self.presentViewController(refreshAlert, animated: true, completion: nil)
     }
-    
 }
 

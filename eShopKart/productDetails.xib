@@ -134,6 +134,7 @@
                 <outlet property="productName" destination="bNJ-CX-sfk" id="iVr-dO-Eku"/>
                 <outlet property="productQty" destination="UoM-8C-3Qn" id="kyV-LY-YlK"/>
                 <outlet property="productSize" destination="vdV-7q-YbW" id="db4-gq-xUP"/>
+                <outlet property="size" destination="QGA-pD-ThB" id="0aH-cO-KLc"/>
             </connections>
             <point key="canvasLocation" x="177.5" y="192.5"/>
         </tableViewCell>

@@ -9,7 +9,7 @@
 import UIKit
 
 class myOrdersCell: UITableViewCell {
-
+    
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var totalItems: UILabel!
     @IBOutlet weak var grandTotal: UILabel!
@@ -19,11 +19,9 @@ class myOrdersCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-
 }

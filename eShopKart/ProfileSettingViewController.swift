@@ -19,15 +19,15 @@ class ProfileSettingViewController: TextFieldViewController {
     @IBOutlet weak var emailLbl: UILabel!
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var saveBtn: UIButton!
+    
     let button = UIButton(type: UIButtonType.Custom)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         firstNameTxtField.delegate = self
         lastNameTxtField.delegate = self
         mobNumberTxtField.delegate = self
         emailTxtField.delegate = self
-        
-        
         button.setTitle("Done", forState: UIControlState.Normal)
         button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         button.frame = CGRectMake(0, 163, 106, 53)
@@ -83,6 +83,7 @@ class ProfileSettingViewController: TextFieldViewController {
     //
     //        }
     //    }
+    
     @IBAction func saveChangesBtnAction(sender: AnyObject) {
         let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         //        let firstNameStr = self.firstNameTxtField.text!
@@ -98,14 +99,12 @@ class ProfileSettingViewController: TextFieldViewController {
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
             self.animateBtnOnWrongSubmit()
-            
         } else if mobNumberTxtField.text?.characters.count != 10 {
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = "please enter a valid mobile number"
             loading.hide(true, afterDelay: 2)
             loading.removeFromSuperViewOnHide = true
             self.animateBtnOnWrongSubmit()
-            
         }else if firstNameWhiteSpaceSet == "" || lastNameWhiteSpaceSet == "" || mobileWhiteSpaceSet == "" {
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = "Only white spaces can not be accepted"
@@ -150,9 +149,6 @@ class ProfileSettingViewController: TextFieldViewController {
                         NSUserDefaults.standardUserDefaults().setValue(user_id, forKey: "id")
                         NSUserDefaults.standardUserDefaults().synchronize()
                         loading.hide(true)
-                        //                            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                        //                            let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as! UserProfileViewController
-                        //                            self.navigationController?.pushViewController(vc, animated: true)
                     } else {
                         loading.mode = MBProgressHUDModeText
                         loading.detailsLabelText = "Exceptional error occured. Please try again after some time"
@@ -171,27 +167,7 @@ class ProfileSettingViewController: TextFieldViewController {
             }
         }
     }
-    //        let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
-    //        let params = [
-    //            "user_id" : userId!,
-    //            "firstname" : self.firstNameTxtField.text!,
-    //            "lastname" : self.lastNameTxtField.text!,
-    //            ]
-    //        SigninOperaion.editProfile(params, completionClosure: { response in
-    //            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-    //            loading.mode = MBProgressHUDModeText
-    //            loading.detailsLabelText = response["message"] as! String
-    //            loading.hide(true, afterDelay: 2)
-    //            loading.removeFromSuperViewOnHide = true
-    //        }) {(error: NSError) -> () in
-    //            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-    //            loading.mode = MBProgressHUDModeText
-    //            loading.detailsLabelText = error.localizedDescription
-    //            loading.hide(true, afterDelay: 2)
-    //
-    //        }
-    //
-    //    }
+    
     func animateBtnOnWrongSubmit() {
         let bounds = self.saveBtn.bounds
         UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: .CurveEaseOut, animations: {
@@ -203,46 +179,33 @@ class ProfileSettingViewController: TextFieldViewController {
     func textField(textField: UITextField,
                    shouldChangeCharactersInRange range: NSRange,
                                                  replacementString string: String)
-        -> Bool
-    {
-        if string.characters.count == 0 {
-            return true
-        }
-        // Check to see if the text field's contents still fit the constraints
-        // with the new content added to it.
-        // If the contents still fit the constraints, allow the change
-        // by returning true; otherwise disallow the change by returning false.
-        let currentText = textField.text ?? ""
-        let prospectiveText = (currentText as NSString).stringByReplacingCharactersInRange(range, withString: string)
-        
-        switch textField {
-        case firstNameTxtField:
-            return prospectiveText.characters.count <= 30
+        -> Bool {
+            if string.characters.count == 0 {
+                return true
+            }
+            let currentText = textField.text ?? ""
+            let prospectiveText = (currentText as NSString).stringByReplacingCharactersInRange(range, withString: string)
             
-        case lastNameTxtField:
-            return prospectiveText.characters.count <= 30
-            
-        case mobNumberTxtField:
-            return prospectiveText.characters.count <= 10 //{
-                //return true
-           // } else {
-                //textField.addBorderWithColor(UIColor.init(red: 255/255.0, green: 128/255.0, blue: 7/255.0, alpha: 1.0), borderWidth: 1.0)
-                //return true
-            //}
-        default:
-            return true
-        }
+            switch textField {
+            case firstNameTxtField:
+                return prospectiveText.characters.count <= 30
+                
+            case lastNameTxtField:
+                return prospectiveText.characters.count <= 30
+                
+            case mobNumberTxtField:
+                return prospectiveText.characters.count <= 10
+            default:
+                return true
+            }
     }
     
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        //textField.borderStyle =
         return true
     }
     
-    
     override func textFieldDidBeginEditing(textField: UITextField) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileSettingViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        
     }
     
     func keyboardWillShow(note : NSNotification) -> Void{

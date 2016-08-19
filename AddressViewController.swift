@@ -9,16 +9,18 @@
 import UIKit
 
 class AddressViewController: UIViewController, UITableViewDelegate, UIScrollViewDelegate {
+    
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var myTopView: UIView!
+    
     var addressArray = NSMutableArray()
     var tempCell = AddressViewCell()
     var checkOption = false
     var checkDefault = Bool()
     var editCellIndex = -1
     var deleteFlag = false
-    @IBOutlet var tableView: UITableView!
     var floaringView = UIView()
     var orderBtn = UIButton()
-    @IBOutlet weak var myTopView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

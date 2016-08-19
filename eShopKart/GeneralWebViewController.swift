@@ -10,7 +10,9 @@ import UIKit
 import Foundation
 
 class GeneralWebViewController: UIViewController {
+    
     @IBOutlet var webView: UIWebView!
+    
     var htmlString: String?
     var pageId: Int?
     

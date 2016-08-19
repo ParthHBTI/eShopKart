@@ -8,13 +8,17 @@
 
 import UIKit
 import AFNetworking
+
 class CategoryItemListVC: BaseViewController,UITableViewDelegate{
+    
+    @IBOutlet var categoryNameLabel: UILabel!
+    @IBOutlet var cteagoryItemsTblView: UITableView!
+    
     var subcatResponseArr:AnyObject = []
     var categoryId: String!
     var categoryName: String!
     var DataSend = NSArray()
-    @IBOutlet var categoryNameLabel: UILabel!
-    @IBOutlet var cteagoryItemsTblView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         categoryNameLabel!.text = categoryName!
@@ -44,7 +48,6 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return subcatResponseArr.count
     }
-    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> CategoryItemsViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("categoryItemsCell", forIndexPath: indexPath) as! CategoryItemsViewCell

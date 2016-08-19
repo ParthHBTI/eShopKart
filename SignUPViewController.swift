@@ -9,7 +9,9 @@ import UIKit
 import AFNetworking
 
 class SignUPViewController: TextFieldViewController {
+    
     @IBOutlet var emailTextField: UITextField!
+    
     var firstname = String()
     var lastname = String()
     var password = String()
@@ -36,7 +38,7 @@ class SignUPViewController: TextFieldViewController {
             loading.removeFromSuperViewOnHide = true
         } else {
             if emailTextField.text!.isValidEmail() == true {
-                let emailID = emailTextField.text! 
+                let emailID = emailTextField.text!
                 let myUrl = NSURL(string: "http://192.168.0.16/eshopkart/webservices/verification")
                 let request = NSMutableURLRequest(URL:myUrl!);
                 request.HTTPMethod = "POST";
@@ -74,15 +76,3 @@ class SignUPViewController: TextFieldViewController {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
 }
-
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
- // Get the new view controller using segue.destinationViewController.
- // Pass the selected object to the new view controller.
- }
- */
-
-

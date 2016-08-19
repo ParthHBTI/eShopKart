@@ -18,6 +18,8 @@ class ProductDetailCell: UITableViewCell {
     @IBOutlet weak var productQty: UITextField!
     @IBOutlet weak var productDetail: UILabel!
     @IBOutlet weak var productWebView: UIWebView!
+    @IBOutlet weak var size: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,7 +27,6 @@ class ProductDetailCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 

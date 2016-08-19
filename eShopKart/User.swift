@@ -9,6 +9,7 @@
 import UIKit
 
 class User: NSObject {
+    
     var id: String?
     var email: String?
     var fullname: String?
@@ -93,5 +94,4 @@ class User: NSObject {
     
     override init() {
     }
-    
 }

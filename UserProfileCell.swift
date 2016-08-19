@@ -13,6 +13,7 @@ class UserProfileCell: UITableViewCell {
     @IBOutlet var imageIcon: UIImageView!
     @IBOutlet var profileLbl: UILabel!
     @IBOutlet var moreBtn: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,7 +21,6 @@ class UserProfileCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 

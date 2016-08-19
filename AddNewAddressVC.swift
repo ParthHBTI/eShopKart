@@ -23,24 +23,23 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
     @IBOutlet weak var mobileNo: UITextField!
     @IBOutlet weak var alternateMoNo: UITextField!
     @IBOutlet weak var checkBtn: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var guiView: UIView!
+    
     var addressInfo = NSMutableArray()
     var addressInfoDic = NSDictionary()
     var address_id = NSString()
     var flagPoint = Bool()
     var checkdefault = false
     var addEdit = false
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var guiView: UIView!
     
     override func viewDidLayoutSubviews()  {
         super.viewDidLayoutSubviews()
         self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: view.frame.size.height + 300);
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(AddNewAddressVC.handleTap(_:)))
         self.view .addGestureRecognizer(tapRecognizer)
         landmark.delegate = self
@@ -252,4 +251,4 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
             }
         }
     }
-  }
+}

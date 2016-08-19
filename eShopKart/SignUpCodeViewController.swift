@@ -9,6 +9,7 @@
 import UIKit
 
 class SignUpCodeViewController: TextFieldViewController {
+    
     @IBOutlet var codeTextField: UITextField!
     
     override func viewDidLoad() {

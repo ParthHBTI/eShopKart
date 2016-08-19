@@ -9,6 +9,7 @@
 import UIKit
 
 class SignUpPassViewController:TextFieldViewController {
+    
     @IBOutlet var setPassTextField: UITextField!
     
     override func viewDidLoad() {

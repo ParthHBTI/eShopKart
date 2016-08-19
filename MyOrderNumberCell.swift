@@ -9,7 +9,7 @@
 import UIKit
 
 class MyOrderNumberCell: UITableViewCell {
-
+    
     @IBOutlet weak var orderNumber: UILabel!
     @IBOutlet weak var totalOrderedItems: UILabel?
     @IBOutlet weak var status: UILabel!
@@ -19,11 +19,8 @@ class MyOrderNumberCell: UITableViewCell {
         // Initialization code
     }
     
-
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-
 }

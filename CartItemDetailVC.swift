@@ -9,9 +9,11 @@ import UIKit
 import AFNetworking
 
 class CartItemDetailVC: BaseViewController,UITableViewDelegate {
-    //var cartDetailResponseArr:AnyObject = []
-    var cartDetailResponseArr = NSMutableArray()
+    
     @IBOutlet var tableView: UITableView!
+    
+    var cartDetailResponseArr = NSMutableArray()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Cart Detail"
@@ -36,13 +38,10 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        //super.viewWillAppear(true)
         self.navigationItem.leftItemsSupplementBackButton = false
     }
     
     func goToHomeBtnAction() {
-        //        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        //        let vc = storyboard.instantiateViewControllerWithIdentifier("homePageViewIdentifier") as! HomeViewController
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
@@ -113,7 +112,6 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     }
     
     @IBAction func clearCartAction(sender: AnyObject) {
-        
         let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
         let userInfo = [
             "user_id" : userId!,
@@ -163,8 +161,8 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
                 loading.detailsLabelText = error.localizedDescription
                 loading.hide(true, afterDelay: 2)
             }
-
-         }) { (error: NSError) -> () in
+            
+        }) { (error: NSError) -> () in
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = error.localizedDescription
@@ -188,64 +186,4 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         cell.removBtn.addTarget(self, action: #selector(CartItemDetailVC.removeItemFromCart),forControlEvents: .TouchUpInside)
         return cell
     }
-    
-    //func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    
-    //        let productId = cartDetailResponseArr.objectAtIndex(indexPath.row)["id"] as! String
-    //        getProductId(productId)
-    
-    
-    //}
-    
-    //    func getProductId(productId: String) -> String {
-    //        print(productId)
-    //        return productId
-    //    }
-    
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-     if editingStyle == .Delete {
-     // Delete the row from the data source
-     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-     } else if editingStyle == .Insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

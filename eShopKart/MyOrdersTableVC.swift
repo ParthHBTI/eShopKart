@@ -9,6 +9,7 @@
 import UIKit
 
 class MyOrdersTableVC: UITableViewController {
+    
     var myOrders = NSArray()
     var totalItems = Int()
     var productsData = NSDictionary()
@@ -23,7 +24,7 @@ class MyOrdersTableVC: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-        
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }

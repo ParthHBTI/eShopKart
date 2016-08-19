@@ -10,10 +10,12 @@ import UIKit
 import AFNetworking
 
 class LoginViewController: TextFieldViewController {
+    
     @IBOutlet var emailMobileTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet weak var logInBtn: UIButton!
     @IBOutlet weak var forgetBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Log In"
@@ -130,7 +132,6 @@ class LoginViewController: TextFieldViewController {
                         let storyboard = UIStoryboard(name: "Login" , bundle: nil)
                         let vc = storyboard.instantiateViewControllerWithIdentifier("VerificationCodeIdentifire") as? VerificationCodeViewController
                         self.navigationController?.pushViewController(vc!, animated: true)
-                        
                     } else {
                         loading.mode = MBProgressHUDModeText
                         loading.detailsLabelText = "Exceptional error occured. Please try again after some time"
@@ -168,18 +169,7 @@ class LoginViewController: TextFieldViewController {
         return true
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     if (segue.identifier == "forgotSegue") {
-     let detailVC = segue.destinationViewController as! VerificationCodeViewController
-     detailVC.emailText = emailMobileTextField.text! as String
-     }
-     }*/
-    
-    func animateLoginBtnOnWrongSubmit(){
+    func animateLoginBtnOnWrongSubmit() {
         let bounds = self.logInBtn.bounds
         UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: .CurveEaseOut, animations: {
             self.logInBtn.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)

@@ -11,7 +11,6 @@ import UIKit
 class ESKCategoryCell: UITableViewCell {
 
     @IBOutlet var TextLabel: UILabel!
-    
     @IBOutlet weak var cellId: UILabel!
     
     override func awakeFromNib() {
@@ -21,7 +20,6 @@ class ESKCategoryCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 

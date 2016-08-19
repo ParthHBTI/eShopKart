@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 
 class bcConfig {
+    
     var configDict: NSDictionary!
     var userDefaults = NSUserDefaults.standardUserDefaults()
     

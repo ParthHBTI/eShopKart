@@ -9,6 +9,7 @@
 import UIKit
 
 class ResetPasswordViewController: TextFieldViewController {
+    
     @IBOutlet private var newPassTextField: UITextField!
     
     override func viewDidLoad() {
@@ -85,4 +86,4 @@ class ResetPasswordViewController: TextFieldViewController {
     func crossBtnAction() {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
- }
+}

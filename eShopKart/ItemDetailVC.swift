@@ -7,6 +7,7 @@
 //
 import UIKit
 import AFNetworking
+
 class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     
     struct MoveKeyboard {
@@ -16,24 +17,26 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
         static let PORTRAIT_KEYBOARD_HEIGHT : CGFloat = 216;
         static let LANDSCAPE_KEYBOARD_HEIGHT : CGFloat = 162;
     }
+    
+    @IBOutlet var ItemDetailTblView: UITableView!
+    @IBOutlet weak var AddToCartBtn: UIButton!
+    @IBOutlet weak var GetQuoteBtn: UIButton!
+    
     var animateDistance: CGFloat = 0
     var flag: Bool! = false
     var checkFlag = false
     var indexPath: NSIndexPath = NSIndexPath(forRow: 1, inSection: 1)
     var cell = ItemDetailViewCell()
-    @IBOutlet var ItemDetailTblView: UITableView!
-    @IBOutlet weak var AddToCartBtn: UIButton!
-    @IBOutlet weak var GetQuoteBtn: UIButton!
     var productQnty: String!
     var productImageArr:AnyObject = []
     var productId: String!
     var getProductInfoDic = Dictionary<String,AnyObject>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if checkFlag {
             AddToCartBtn.hidden = true
             GetQuoteBtn.hidden = true
-            
         }
         self.title = "Product Detail"
         self.ItemDetailTblView.rowHeight = 170
@@ -51,6 +54,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         if self.flag == true {
@@ -82,11 +86,11 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
                 cell2.qtyTxtField.text = productQnty
                 cell2.qtyTxtField.enabled = false
             } else {
-            if self.flag == true {
-                self.productQnty = cell2.qtyTxtField!.text!
-            } else {
-                cell2.qtyTxtField.text = "1"
-            }
+                if self.flag == true {
+                    self.productQnty = cell2.qtyTxtField!.text!
+                } else {
+                    cell2.qtyTxtField.text = "1"
+                }
             }
             self.cell = cell2
             return cell2
@@ -96,7 +100,6 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
         cell3.desTextView.layer.borderWidth = 0.5
         cell3.desTextView?.text = getProductInfoDic["product_description"] as? String
         return cell3
-        
     }
     
     @IBAction func addToCart(sender: AnyObject) {
@@ -129,21 +132,27 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
                 loading.detailsLabelText = error.localizedDescription
                 loading.hide(true, afterDelay: 2)
                 super.viewWillAppear(true)
-                
             }        } else {
             self.makeLoginAlert()
         }
     }
     
     @IBAction func getCodeAction(sender: AnyObject) {
+        let productQty: String!
         var order_number = String()
         var myInt = Int()
+        if self.flag == true {
+            productQty = self.productQnty!
+        } else {
+            productQty = "1"
+        }
         let userData = NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
         if userData != nil {
             productId = getProductInfoDic["id"] as! String
             let tokenId = (NSUserDefaults.standardUserDefaults().valueForKey("token_id"))
             let userInfo = [
                 "token_id" : tokenId!,
+                "quantity" : productQty,
                 "product_id" : productId!
             ]
             SigninOperaion.request_for_code(userInfo, completionClosure: { response in
@@ -180,9 +189,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
     func handleTap (tapGesture: UIGestureRecognizer) {
         self.view .endEditing(true)
         self.ItemDetailTblView.reloadData()
-        //productQnty  = self.productQnty!
         self.flag = true
-        
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -229,7 +236,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
         return true
     }
     
-     override func backAction() {
+    override func backAction() {
         self.navigationController?.popViewControllerAnimated(true)
     }
 }

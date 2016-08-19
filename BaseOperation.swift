@@ -9,8 +9,8 @@
 import UIKit
 import AFNetworking
 
-//let hostURL = "http://192.168.0.13/eshopkart/"
-let hostURL = "http://brillcreations.com/brill/bcreation/"
+let hostURL = "http://192.168.0.13/eshopkart/"
+//let hostURL = "http://brillcreations.com/brill/bcreation/"
 let imageURL = hostURL + "files/images/"
 let contentURL = hostURL + "pages/content"
 //let imageBaseURL = hostURL + "files"
@@ -50,7 +50,7 @@ class BaseOperation {
                 }
             } else {
                 let dict = NSMutableDictionary()
-                dict[NSLocalizedDescriptionKey] = "Server issues" //as! String
+                dict[NSLocalizedDescriptionKey] = "Server issues"
                 dict[NSLocalizedFailureReasonErrorKey] = "1000"
                 let error = NSError(domain: "com.bc.app.error", code: 1000, userInfo: dict as [NSObject : AnyObject])
                 dict[NSUnderlyingErrorKey] = error
@@ -60,26 +60,4 @@ class BaseOperation {
             onError(error!)
         }
     }
-    
-//    class func initOperationWithImage(inUrl:NSURL, userInfo: NSDictionary ,image: UIImage? ,onSuccess: (AnyObject) -> (), onError: (NSError) -> ()) {
-//        print("userinfo: \(userInfo)")
-//        let postDic = NSMutableDictionary(dictionary: userInfo)
-//        postDic.setValue(NSUserDefaults.standardUserDefaults().valueForKey("token_id") as? String ?? "12345", forKey: "token_id")
-//        let manager:	AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-//        let compression: CGFloat = 0.5
-//        let imageData = UIImageJPEGRepresentation(image!, compression)
-//        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/html", "application/json"]) as Set<NSObject>
-//        manager.POST(inUrl.absoluteString, parameters: postDic, constructingBodyWithBlock: { (formData: AFMultipartFormData!) -> Void in
-//            if imageData != nil {
-//                formData.appendPartWithFileData(imageData!, name: "media_file", fileName: "image.png", mimeType: "image/png")
-//            }
-//            },
-//                     success: { (operation:AFHTTPRequestOperation!, responseObject:AnyObject!) -> Void in
-//                        onSuccess(responseObject)
-//            }, failure: { (operation: AFHTTPRequestOperation?, error:NSError!) -> Void in
-//                onError(error)
-//        })
-//    }
-//
-    
 }
