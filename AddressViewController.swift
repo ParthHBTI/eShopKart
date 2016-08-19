@@ -18,7 +18,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
     var checkOption = false
     var checkDefault = Bool()
     var editCellIndex = -1
-    var deleteFlag = false
+    var deleteFlag = Bool()
     var floaringView = UIView()
     var orderBtn = UIButton()
     
@@ -88,26 +88,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
     }
     
     func deleteAction1 (sender: AnyObject) {
-        makeLoginAlert()
-        if deleteFlag {
-            let id = addressArray.objectAtIndex(sender.tag)["id"] as? String
-            let userInfo = [
-                "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id")!,
-                "address_id" : id! as String
-            ]
-            SigninOperaion.delete_address(userInfo, completionClosure: { response in
-                var values: AnyObject = []
-                values = response as! NSArray
-                print(sender.tag)
-                self.addressArray.removeObjectAtIndex(sender.tag)
-                self.tableView.reloadData()
-            }) { (error: NSError) -> () in
-                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-                loading.mode = MBProgressHUDModeText
-                loading.detailsLabelText = error.localizedDescription
-                loading.hide(true, afterDelay: 2)
-            }
-        }
+        makeLoginAlert(sender)
     }
     
     @IBAction func selectAddress(sender: AnyObject) {
@@ -205,10 +186,27 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
         print("testing")
     }
     
-    func makeLoginAlert() {
+    func makeLoginAlert(sender: AnyObject) {
         let refreshAlert = UIAlertController(title: "Cofirmation", message: "You want to delete your address.", preferredStyle: UIAlertControllerStyle.Alert)
         refreshAlert.addAction(UIAlertAction(title: "Delete", style: .Default, handler: { (action: UIAlertAction!) in
-            self.deleteFlag = true
+            let id = self.addressArray.objectAtIndex(sender.tag)["id"] as? String
+            let userInfo = [
+                "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id")!,
+                "address_id" : id! as String
+            ]
+            SigninOperaion.delete_address(userInfo, completionClosure: { response in
+                var values: AnyObject = []
+                values = response as! NSArray
+                print(sender.tag)
+                self.addressArray.removeObjectAtIndex(sender.tag)
+                self.tableView.reloadData()
+            }) { (error: NSError) -> () in
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = error.localizedDescription
+                loading.hide(true, afterDelay: 2)
+            }
+
         }))
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
             self.deleteFlag = false
