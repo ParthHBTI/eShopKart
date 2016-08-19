@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate {
+class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var cellDescriptors: NSMutableArray!
@@ -192,7 +192,7 @@ class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDat
             return 80.0
             
         case "SeeMoreID":
-            return 40.0
+            return 70.0
             
         default:
             return frame.height
@@ -235,4 +235,5 @@ class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
     }
+    
 }

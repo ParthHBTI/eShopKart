@@ -72,7 +72,8 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
         if(indexPath.row == 1) {
             let cell2 = tableView.dequeueReusableCellWithIdentifier("PriceViewCellIdentifier", forIndexPath: indexPath) as! ItemDetailViewCell
             cell2.productName?.text = getProductInfoDic["name"] as? String
-            cell2.amount?.text = getProductInfoDic["material"] as? String
+            cell2.amount?.text = getProductInfoDic["size"] as? String
+            cell2.material?.text = getProductInfoDic["material"] as? String
             cell2.qtyTxtField.layer.borderColor = UIColor.grayColor().CGColor
             cell2.qtyTxtField.layer.cornerRadius = 5.0
             cell2.qtyTxtField.layer.borderWidth  = 1.0

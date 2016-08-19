@@ -67,7 +67,7 @@ class MyOrdersTableVC: UITableViewController {
     
     func backAction() {
         for controller: UIViewController in self.navigationController!.viewControllers {
-            if (controller is UserProfileViewController) {
+            if (controller is MyOredrNumberVC) {
                 self.navigationController!.popToViewController(controller, animated: true)
             }
         }

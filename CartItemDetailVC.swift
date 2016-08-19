@@ -179,8 +179,8 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cartcell", forIndexPath: indexPath) as! cartItemCell
         cell.contentView.backgroundColor = UIColor.whiteColor()
         cell.productName?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["name"] as? String
-        cell.productColor?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["colour"] as? String
-        cell.productPrice?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["unitprice"] as? String
+        cell.productColor?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["size"] as? String
+        cell.productPrice?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["material"] as? String
         cell.productQuantity?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["quantity"] as? String
         let url = NSURL(string:(imageURL + (cartDetailResponseArr.objectAtIndex(indexPath.row)["image"] as? String)!))
         cell.productImg?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
