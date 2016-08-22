@@ -152,7 +152,7 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
                     ]
                 SigninOperaion.add_address(userInfo, completionClosure: { response in
                     print(response)
-                    
+                    self.checkdefault = true
                 }) { (error: NSError) -> () in
                     let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                     loading.mode = MBProgressHUDModeText

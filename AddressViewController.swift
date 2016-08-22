@@ -24,6 +24,28 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+           if  checkDefault {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    let userInfo = [
+                        "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id") as! String,
+                    ]
+                    SigninOperaion.get_address(userInfo, completionClosure: { response in
+                        print(response)
+                        self.addressArray.removeAllObjects()
+                        let values = (response as? NSArray)!
+                        for var dic in values {
+                            self.addressArray.addObject(dic)
+                        }
+                        self.tableView.reloadData()
+                    }) { (error: NSError) -> () in
+                        let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                        loading.mode = MBProgressHUDModeText
+                        loading.detailsLabelText = error.localizedDescription
+                        loading.hide(true, afterDelay: 2)
+                    }
+                })
+                return
+        }
         let userInfo = [
             "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id") as! String,
             ]
@@ -31,10 +53,8 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
             print(response)
             self.addressArray.removeAllObjects()
             let values = (response as? NSArray)!
-            //values = response
             for var dic in values {
                 self.addressArray.addObject(dic)
-                self.tableView.reloadData()
             }
             self.tableView.reloadData()
         }) { (error: NSError) -> () in
