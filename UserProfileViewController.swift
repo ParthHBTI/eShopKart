@@ -10,8 +10,7 @@ import UIKit
 import MessageUI
 
 class UserProfileViewController: UIViewController, UITableViewDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, MFMailComposeViewControllerDelegate {
-    let messageComposerObj = MessageComposer()
-    
+    let msgComposerObj = MessageComposer()
     let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
     var currentUser : User?
     var isuserLogin: Bool = false
@@ -340,7 +339,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
         //                    }
         activityVC.completionWithItemsHandler = {(activityType: String?, ok: Bool, items: [AnyObject]?, err:NSError?) -> Void in
             if activityType == UIActivityTypeMail {
-                if self.messageComposerObj.canSendMail() {
+                if self.msgComposerObj.canSendMail() {
                     return
                 } else {
                     self.showSendMailErrorAlert()

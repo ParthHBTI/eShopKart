@@ -9,7 +9,7 @@
 import UIKit
 import AFNetworking
 
-let hostURL = "http://192.168.0.9/eshopkart/"
+let hostURL = "http://192.168.0.2/eshopkart/"
 //let hostURL = "http://brillcreations.com/brill/bcreation/"
 let imageURL = hostURL + "files/images/"
 let contentURL = hostURL + "pages/content"
@@ -17,7 +17,6 @@ let contentURL = hostURL + "pages/content"
 @objc protocol OperationDelegate {
     
 }
-
 class BaseOperation {
     var delegate: OperationDelegate!
     class func initOperation(inUrl:NSURL, userInfo:NSDictionary, onSuccess: (AnyObject) -> (), onError: (NSError) -> ()) {
@@ -85,6 +84,6 @@ class BaseOperation {
                 onError(error)
         })
     }
-
+    
     
 }

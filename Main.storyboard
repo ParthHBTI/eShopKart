@@ -133,7 +133,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qVD-bu-rXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2113.5" y="-2467.5"/>
+            <point key="canvasLocation" x="2308.5" y="-2558.25"/>
         </scene>
         <!--Similler Product DetailVC-->
         <scene sceneID="get-g5-fyG">
@@ -1716,8 +1716,7 @@
                                                             <exclude reference="Dc5-QP-uam"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="134" y="16" width="54" height="9"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="Dc5-QP-uam"/>
                                                         </mask>
@@ -1736,8 +1735,7 @@
                                                             <exclude reference="bcA-LY-aZ6"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="134" y="33" width="44" height="17"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="bcA-LY-aZ6"/>
                                                         </mask>
@@ -1756,8 +1754,7 @@
                                                             <exclude reference="ESL-zO-k8h"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="193" y="33" width="98" height="17"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="ESL-zO-k8h"/>
                                                         </mask>
@@ -1777,7 +1774,7 @@
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="134" y="53" width="132" height="47"/>
+                                                        <rect key="frame" x="134" y="80" width="57" height="20"/>
                                                         <mask key="constraints">
                                                             <include reference="5so-g6-ctd"/>
                                                         </mask>
@@ -1797,7 +1794,7 @@
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="277" y="53" width="194" height="47"/>
+                                                        <rect key="frame" x="202" y="80" width="84" height="20"/>
                                                         <mask key="constraints">
                                                             <include reference="L0m-8P-aPZ"/>
                                                         </mask>
@@ -1854,8 +1851,7 @@
                                                             <exclude reference="vbs-ls-fv0"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="202" y="16" width="22" height="26"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="eTK-1R-Y4r"/>
                                                             <include reference="vbs-ls-fv0"/>
@@ -2049,7 +2045,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ldj-QO-mB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5668.5" y="-3074.25"/>
+            <point key="canvasLocation" x="5898" y="-3069.75"/>
         </scene>
         <!--Feedback View Controller-->
         <scene sceneID="LMr-Cq-RAG">
@@ -2471,7 +2467,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BS4-hk-6ZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3136.5" y="-2511.75"/>
+            <point key="canvasLocation" x="2992.5" y="-2558.25"/>
         </scene>
         <!--Item DetailVC-->
         <scene sceneID="h7r-CN-yOF">
@@ -3091,7 +3087,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="32N-wR-vhj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4858.5" y="-2851.5"/>
+            <point key="canvasLocation" x="5082" y="-2973.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fhf-M3-TaI">

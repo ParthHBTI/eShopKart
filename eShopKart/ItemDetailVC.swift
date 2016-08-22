@@ -33,7 +33,6 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
         if checkFlag {
             AddToCartBtn.hidden = true
             GetQuoteBtn.hidden = true
-            
         }
         self.title = "Product Detail"
         self.ItemDetailTblView.rowHeight = 170

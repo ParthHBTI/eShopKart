@@ -26,8 +26,6 @@ class ProfileSettingViewController: TextFieldViewController {
         lastNameTxtField.delegate = self
         mobNumberTxtField.delegate = self
         emailTxtField.delegate = self
-        
-        
         button.setTitle("Done", forState: UIControlState.Normal)
         button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         button.frame = CGRectMake(0, 163, 106, 53)
