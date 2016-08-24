@@ -88,54 +88,68 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     }
     
     @IBAction func removeItemFromCart(sender: AnyObject) {
-        let currentRow = sender.tag
-        let productId = cartDetailResponseArr.objectAtIndex(currentRow)["id"] as! String
-        let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
-        let userInfo = [
-            "user_id" : userId!,
-            "product_id" : productId
-        ]
-        SigninOperaion.clear_cart(userInfo, completionClosure: { response in
-            //print(response)
-        }) { (error: NSError) -> () in
-            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            loading.mode = MBProgressHUDModeText
-            loading.detailsLabelText = error.localizedDescription
-            loading.hide(true, afterDelay: 2)
-        }
-        if (cartDetailResponseArr.count > currentRow){
-            cartDetailResponseArr.removeObjectAtIndex(currentRow)
-            self.myCartBarItem!.badgeValue = String(cartDetailResponseArr.count)
-            //self.badgeValCounter = self.cartDetailResponseArr.count
-            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            loading.mode = MBProgressHUDModeText
-            loading.detailsLabelText = "Removed successfully from your cart"
-            loading.hide(true, afterDelay:1)
-        }
-        self.tableView.reloadData()
-    }
+        let refreshAlert = UIAlertController(title: "Sure to Delete?", message: "If you agree, then it will remove from your cart permanantly", preferredStyle: UIAlertControllerStyle.Alert)
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            let currentRow = sender.tag
+            let productId = self.cartDetailResponseArr.objectAtIndex(currentRow)["id"] as! String
+            let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
+            let userInfo = [
+                "user_id" : userId!,
+                "product_id" : productId
+            ]
+            SigninOperaion.clear_cart(userInfo, completionClosure: { response in
+                //print(response)
+            }) { (error: NSError) -> () in
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = error.localizedDescription
+                loading.hide(true, afterDelay: 2)
+            }
+            if (self.cartDetailResponseArr.count > currentRow){
+                self.cartDetailResponseArr.removeObjectAtIndex(currentRow)
+                self.myCartBarItem!.badgeValue = String(self.cartDetailResponseArr.count)
+                //self.badgeValCounter = self.cartDetailResponseArr.count
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = "Removed successfully from your cart"
+                loading.hide(true, afterDelay:1)
+            }
+            self.tableView.reloadData()
+        }))
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+            refreshAlert .dismissViewControllerAnimated(true, completion: nil)
+        }))
+        self.presentViewController(refreshAlert, animated: true, completion: nil)
+     }
     
     @IBAction func clearCartAction(sender: AnyObject) {
-        let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
-        let userInfo = [
-            "user_id" : userId!,
+        let refreshAlert = UIAlertController(title: "Sure to clear your cart?", message: "If you agree, then all items will remove from your cart permanantly", preferredStyle: UIAlertControllerStyle.Alert)
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
+            let userInfo = [
+                "user_id" : userId!,
             ]
-        SigninOperaion.clear_cart(userInfo, completionClosure: { response in
-            self.navigationItem.rightBarButtonItem!.badgeValue = nil
-            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            loading.mode = MBProgressHUDModeText
-            loading.detailsLabelText = response["message"] as! String
-            loading.hide(true, afterDelay: 2)
-            loading.removeFromSuperViewOnHide = true
-        }) { (error: NSError) -> () in
-            let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            loading.mode = MBProgressHUDModeText
-            loading.detailsLabelText = error.localizedDescription
-            loading.hide(true, afterDelay: 2)
-        }
-        self.myCartBarItem!.badgeValue = nil
-        cartDetailResponseArr.removeAllObjects()
-        self.tableView.reloadData()
+            SigninOperaion.clear_cart(userInfo, completionClosure: { response in
+                self.navigationItem.rightBarButtonItem!.badgeValue = nil
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = response["message"] as! String
+                loading.hide(true, afterDelay: 2)
+                loading.removeFromSuperViewOnHide = true
+            }) { (error: NSError) -> () in
+                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                loading.mode = MBProgressHUDModeText
+                loading.detailsLabelText = error.localizedDescription
+                loading.hide(true, afterDelay: 2)
+            }
+            self.myCartBarItem!.badgeValue = nil
+            self.cartDetailResponseArr.removeAllObjects()
+            self.tableView.reloadData()
+        }))
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+            refreshAlert .dismissViewControllerAnimated(true, completion: nil)
+        }))
+        self.presentViewController(refreshAlert, animated: true, completion: nil)
     }
     
     @IBAction func getQuoteForAllItems(sender: AnyObject) {

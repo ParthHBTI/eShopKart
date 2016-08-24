@@ -15,9 +15,14 @@ class LoginViewController: TextFieldViewController {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet weak var logInBtn: UIButton!
     @IBOutlet weak var forgetBtn: UIButton!
+    var isLoginWithAlert:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if isLoginWithAlert {
+            navigationItem.leftBarButtonItem = nil
+            //navigationItem.setHidesBackButton(true, animated: true)
+        }
         self.title = "Log In"
         self.emailMobileTextField.setLeftImage(UIImage(named: "icon_user.png")!)
         self.passwordTextField.setLeftImage(UIImage(named: "icon_password.png")!)

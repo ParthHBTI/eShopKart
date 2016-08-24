@@ -139,6 +139,7 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
             let vc = storyboard.instantiateViewControllerWithIdentifier("loginVC") as? LoginViewController
             let navController = UINavigationController(rootViewController: vc!)
             self.navigationController?.presentViewController(navController, animated: true, completion: nil)
+            vc!.isLoginWithAlert = true
         }))
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
             refreshAlert .dismissViewControllerAnimated(true, completion: nil)
