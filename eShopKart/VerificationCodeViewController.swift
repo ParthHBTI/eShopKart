@@ -11,6 +11,7 @@ class VerificationCodeViewController: TextFieldViewController {
     
     @IBOutlet var verificationTextField: UITextField!
     @IBOutlet weak var verifyAccBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         verificationTextField.delegate = self
@@ -22,7 +23,6 @@ class VerificationCodeViewController: TextFieldViewController {
         loading.removeFromSuperViewOnHide = true
         let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(VerificationCodeViewController.crossBtnAction))
         self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func verifyCodeAction(sender: AnyObject) {
@@ -30,12 +30,9 @@ class VerificationCodeViewController: TextFieldViewController {
         if (verificationTextField.text == "" ) {
             loading.mode = MBProgressHUDModeIndeterminate
             let alert = UIAlertView.init(title: "Oppss", message: "Please Enter Your Verify Code", delegate: self, cancelButtonTitle: "GO")
-              //alert.dismissWithClickedButtonIndex(1, animated: true)
             alert.show()
             loading.hide(true)
-            //self.makeVerifyAlert()
         } else  {
-            
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             var token =	appDelegate.deviceTokenString as? String
             if token == nil {
@@ -81,7 +78,7 @@ class VerificationCodeViewController: TextFieldViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func animateVerifyAccBtnOnWrongSubmit(){
+    func animateVerifyAccBtnOnWrongSubmit() {
         let bounds = self.verifyAccBtn.bounds
         UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: .CurveEaseOut, animations: {
             self.verifyAccBtn.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width + 60, height: bounds.size.height)
@@ -89,22 +86,10 @@ class VerificationCodeViewController: TextFieldViewController {
             }, completion: nil)
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    func makeVerifyAlert()
-    {
+    func makeVerifyAlert() {
         let refreshAlert = UIAlertController(title: "Please Login", message: "To make this action, please login first.", preferredStyle: UIAlertControllerStyle.Alert)
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
-            //let storyboard = UIStoryboard(name: "Login" , bundle:  nil)
-            let vc = self//storyboard.instantiateViewControllerWithIdentifier("VerificationCodeIdentifire") as?
+            let vc = self
             self.navigationController?.pushViewController(vc, animated: true)
         }))
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
@@ -115,9 +100,6 @@ class VerificationCodeViewController: TextFieldViewController {
     
     func crossBtnAction() {
         self.navigationController?.dismissViewControllerAnimated(false, completion: nil)
-        
     }
-
-    
 }
 

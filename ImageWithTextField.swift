@@ -19,15 +19,13 @@ extension UITextField{
                                                         attributes:attributes)
     }
     
-    func setTextFieldBackground(color: UIColor, borderColor:UIColor, borderWidth: CGFloat)
-    {
+    func setTextFieldBackground(color: UIColor, borderColor:UIColor, borderWidth: CGFloat) {
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = borderColor.CGColor
         self.backgroundColor = color
     }
     
-    func setLeftImage(image: UIImage)
-    {
+    func setLeftImage(image: UIImage) {
         let imageView1 = UIImageView(image: image)
         imageView1.frame = CGRectMake(0.0, 0.0, imageView1.image!.size.width + 20, imageView1.image!.size.height)
         imageView1.contentMode = UIViewContentMode.Center
@@ -41,13 +39,11 @@ extension UITextField{
         self.leftViewMode = UITextFieldViewMode.Always
     }
     
-    func setRightImage(image: UIImage)
-    {
+    func setRightImage(image: UIImage) {
         let imageView1 = UIImageView(image: image)
         imageView1.frame = CGRectMake(0.0, 0.0, imageView1.image!.size.width + 10, imageView1.image!.size.height)
         imageView1.contentMode = UIViewContentMode.Center
         self.rightViewMode = UITextFieldViewMode.Always
         self.rightView = imageView1
     }
-    
 }

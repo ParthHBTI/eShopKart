@@ -8,15 +8,23 @@
 
 import UIKit
 import AFNetworking
-class CategoryItemListVC: BaseViewController,UITableViewDelegate{
+
+class CategoryItemListVC: BaseViewController,UITableViewDelegate {
+    
+    @IBOutlet var categoryNameLabel: UILabel!
+    @IBOutlet var cteagoryItemsTblView: UITableView!
+    
     var subcatResponseArr:AnyObject = []
     var categoryId: String!
     var categoryName: String!
     var DataSend = NSArray()
-    @IBOutlet var categoryNameLabel: UILabel!
-    @IBOutlet var cteagoryItemsTblView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        cteagoryItemsTblView.separatorStyle = .SingleLine
+        let emptyCellSeparatorLineView = UIView(frame: CGRectMake(0, 0, 320, 1))
+        emptyCellSeparatorLineView.backgroundColor = UIColor.clearColor()
+        self.cteagoryItemsTblView.tableFooterView = emptyCellSeparatorLineView
         categoryNameLabel!.text = categoryName!
         self.cteagoryItemsTblView.rowHeight = 55
         let userInfo = [
@@ -45,12 +53,15 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
         return subcatResponseArr.count
     }
     
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> CategoryItemsViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("categoryItemsCell", forIndexPath: indexPath) as! CategoryItemsViewCell
         cell.subCategoryItemName?.text = subcatResponseArr.objectAtIndex(indexPath.row)["category_name"] as? String
         cell.subCatId?.text = subcatResponseArr.objectAtIndex(indexPath.row)["id"] as? String
-        
+        //
+        /*let separatorLineView = UIView(frame: CGRectMake(0, 0, 320, 1))
+        separatorLineView.backgroundColor = UIColor.clearColor()
+        cell.contentView.addSubview(separatorLineView)*/
+        //
         return cell
     }
     
@@ -62,13 +73,12 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
         let destinationVC = segue.destinationViewController as! SimillerProductDetailVC
         let cell = sender as! CategoryItemsViewCell
         destinationVC.getsubCategoryId = cell.subCatId!.text
-        
     }
 }
+
 extension NSLayoutConstraint {
-    
     override public var description: String {
         let id = identifier ?? ""
-        return "id: \(id), constant: \(constant)" //you may print whatever you want here
+        return "id: \(id), constant: \(constant)"
     }
 }

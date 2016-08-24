@@ -17,6 +17,7 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate,UITextViewD
         static let PORTRAIT_KEYBOARD_HEIGHT : CGFloat = 216;
         static let LANDSCAPE_KEYBOARD_HEIGHT : CGFloat = 162;
     }
+    
     var animateDistance: CGFloat = 0
     var frameView: UIView!
     
@@ -28,9 +29,7 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate,UITextViewD
         nav?.tintColor = UIColor.whiteColor()
         navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(TextFieldViewController.backAction))
-        //        let crossBtnItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "cross_icon"), style: .Plain, target: self, action: #selector(TextFieldViewController.crossBtnAction))
         self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
-        //        self.navigationItem.setRightBarButtonItem(crossBtnItem, animated: true)
         let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(TextFieldViewController.handleTap(_:)))
         self.view .addGestureRecognizer(tapRecognizer)
     }
@@ -42,7 +41,6 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate,UITextViewD
     
     func handleTap (tapGesture: UIGestureRecognizer) {
         self.view .endEditing(true)
-        
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -91,11 +89,6 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate,UITextViewD
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-    //func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-//        textField.addBorderWithColor(UIColor.init(red: 255/255.0, green: 128/255.0, blue: 7/255.0, alpha: 1.0), borderWidth: 1.0)
-//        return true
-    //}
-    
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
             textView.resignFirstResponder()
@@ -103,34 +96,8 @@ class TextFieldViewController: UIViewController, UITextFieldDelegate,UITextViewD
         }
         return true
     }
-    
-    
-    
-    /*func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange,
-                   replacementString string: String) -> Bool
-    {
-        let maxLength = 4
-        let currentString: NSString = textField.text!
-        let newString: NSString =
-            currentString.stringByReplacingCharactersInRange(range, withString: string)
-        return newString.length <= maxLength
-    }*/
-    
-    
-    //    func crossBtnAction() {
-    //        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-    //    }
-    //
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-  }
+}
+
 extension String {
     func isValidEmail() -> Bool {
         let regex = try? NSRegularExpression(pattern: "^[A-Z0-9._%+]+@(?:[A-Z0-9]+\\.)+[A-Z]{2,}$", options: .CaseInsensitive)

@@ -7,20 +7,25 @@
 //
 import UIKit
 import AFNetworking
+
 class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
     
     @IBOutlet var tableview: UITableView!
+    
     var getsubCategoryId: String!
     var productsArr = NSArray()
     var galleryArr:AnyObject = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableview.separatorStyle = .SingleLine
+        let emptyCellSeparatorLineView = UIView(frame: CGRectMake(0, 0, 320, 1))
+        emptyCellSeparatorLineView.backgroundColor = UIColor.clearColor()
+        self.tableview.tableFooterView = emptyCellSeparatorLineView
         self.navigationController?.navigationBar.shadowImage = UIImage (named: "memo-views")
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.view.backgroundColor = UIColor .blueColor()
         self.title = "Products List"
-        
         let userInfo = [
             "category_id" : getsubCategoryId
         ]
@@ -37,22 +42,17 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
     override func viewDidAppear(animated: Bool) {
-        //self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftItemsSupplementBackButton = false
-        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return productsArr.count
     }
     
@@ -63,22 +63,16 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         cell.productname?.text = itemInfoDic["name"] as? String
         cell.amount?.text = itemInfoDic["material"] as? String
         cell.size?.text = itemInfoDic["size"] as? String
-        cell.productImgView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
+        cell.productImgView?.setImageWithURL(url!, placeholderImage: UIImage(named:"BC Logo"))
         cell.getQuoteBtn.tag = indexPath.row
         cell.getQuoteBtn.addTarget(self, action: #selector(SimillerProductDetailVC.getQuoteAction),forControlEvents: .TouchUpInside)
-        //cell.getQuoteBtn.layer.cornerRadius = 5.0,
-        //cell.getQuoteBtn.layer.borderWidth = 1.0
-        //cell.getQuoteBtn.add
-        //            cell.getQuoteBtn.addCornerRadiusWithValue(5.0, color: , borderWidth: 1.0)
         cell.getQuoteBtn.addCornerRadiusWithValue(5.0, color:UIColor.init(red: 78.0/255, green: 158.0/255, blue: 255.0/255, alpha: 1.0), borderWidth: 1.0)
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         let selectedCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!
         for subViews in selectedCell.contentView.subviews {
-            
             if subViews is UIButton {
                 let button = subViews as! UIButton
                 button.backgroundColor = UIColor.whiteColor()
@@ -122,14 +116,12 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
                     loading.detailsLabelText = error.localizedDescription
                     loading.hide(true, afterDelay: 2)
                 }
-                
             }) { (error: NSError) -> () in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = error.localizedDescription
                 loading.hide(true, afterDelay: 2)
             }
-            
         }else {
             self.makeLoginAlert()
         }

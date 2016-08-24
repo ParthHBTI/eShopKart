@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate {
+class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    
     var cellDescriptors: NSMutableArray!
     var visibleRowsPerSection = [[Int]]()
     var checkFlag = false
@@ -25,6 +26,7 @@ class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var myCell1 = ProductDetailCell()
     var frame = CGRect()
     var bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(MyOrdersTableVC.backAction))
@@ -38,31 +40,29 @@ class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if cellDescriptors != nil {
             return cellDescriptors!.count
-        }
-        else {
+        } else {
             return 0
         }
-        
     }
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return visibleRowsPerSection[section].count
     }
+    
     override func viewWillAppear(animated: Bool) {
         configureTableView()
         loadCellDescriptors()
-        //print(cellDescriptors)
     }
     
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame: CGRectZero)
-        
         tableView.registerNib(UINib(nibName: "ImageView", bundle: nil), forCellReuseIdentifier: "IdImageCellI")
         tableView.registerNib(UINib(nibName: "productDetails", bundle: nil), forCellReuseIdentifier: "IDProductDetail")
         tableView.registerNib(UINib(nibName: "KeyAndFeatures", bundle: nil), forCellReuseIdentifier: "IdKeyAndFeatures")
@@ -76,29 +76,23 @@ class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDat
             getIndicesOfVisibleRows()
             tableView.reloadData()
         }
-        
     }
     
     func getIndicesOfVisibleRows() {
         visibleRowsPerSection.removeAll()
-        
         for currentSectionCells in cellDescriptors! {
             var visibleRows = [Int]()
-            
             for row in 0...((currentSectionCells as! [[String: AnyObject]]).count - 1) {
                 if currentSectionCells[row]["isVisible"] as! Bool == true {
                     visibleRows.append(row)
                 }
             }
-            
             visibleRowsPerSection.append(visibleRows)
         }
-        
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let currentCellDescriptor = getCellDescriptorForIndexPath(indexPath)
         let cell = tableView.dequeueReusableCellWithIdentifier(currentCellDescriptor["cellIdentifier"] as! String, forIndexPath: indexPath) as! ProductDetailCell
         if currentCellDescriptor["cellIdentifier"] as! String == "IdImageCellI" {
@@ -114,19 +108,18 @@ class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let url = NSURL(string:(imageURL + (productImageArr[i]["images"] as? String)!))
             myCell.imageViewPhoto?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
             myCell = cell
-            
         } else if currentCellDescriptor["cellIdentifier"] as! String == "IDProductDetail" {
             bool = true
             cell.productName?.text = getProductInfoDic["name"] as? String
             cell.productMat?.text = getProductInfoDic["material"] as? String
             cell.productQty.text = getProductInfoDic["quantity"] as? String
+            cell.productSize.text = getProductInfoDic["size"] as? String
             cell.productDetail.text = getProductInfoDic["product_description"] as? String
             myCell1 = cell
             myCell1.productDetail.sizeToFit()
         } else if currentCellDescriptor["cellIdentifier"] as! String == "IdNormalCell" {
             
         } else if currentCellDescriptor["cellIdentifier"] as! String == "SeeMoreID" {
-            //cell.textLabel?.text = currentCellDescriptor["primaryTitle"] as? String
         } else if currentCellDescriptor["cellIdentifier"] as! String == "IdKeyAndFeatures" {
             webViewDidFinishLoad(cell.productWebView)
             cell.contentView.addSubview(cell.productWebView)
@@ -167,10 +160,10 @@ class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 let url = NSURL(string:(imageURL + (productImageArr[i]["images"] as? String)!))
                 myCell.imageViewPhoto?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
             } else {
-            myCell.pageViewCon.currentPage = i + 1
-            let url = NSURL(string:(imageURL + (productImageArr[i + 1]["images"] as? String)!))
-            myCell.imageViewPhoto?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
-            i += 1
+                myCell.pageViewCon.currentPage = i + 1
+                let url = NSURL(string:(imageURL + (productImageArr[i + 1]["images"] as? String)!))
+                myCell.imageViewPhoto?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
+                i += 1
             }
         }
     }
@@ -190,7 +183,6 @@ class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let currentCellDescriptor = getCellDescriptorForIndexPath(indexPath)
-        
         switch currentCellDescriptor["cellIdentifier"] as! String {
         case "IdImageCellI":
             return 260.0
@@ -202,7 +194,7 @@ class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDat
             return 80.0
             
         case "SeeMoreID":
-            return 40.0
+            return 70.0
             
         default:
             return frame.height
@@ -211,20 +203,17 @@ class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func getCellDescriptorForIndexPath(indexPath: NSIndexPath) -> [String: AnyObject]  {
         let indexOfVisibleRow = visibleRowsPerSection[indexPath.section][indexPath.row]
-        //let Descriptor = cellDescriptors![indexPath.section][indexOfVisibleRow] as! [String: AnyObject]
-        let descriptor = cellDescriptors!.objectAtIndex(indexPath.section).objectAtIndex(indexOfVisibleRow)// as! [String: AnyObject]
+        let descriptor = cellDescriptors!.objectAtIndex(indexPath.section).objectAtIndex(indexOfVisibleRow)
         return descriptor as! [String: AnyObject]
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let indexOfTappedRow = visibleRowsPerSection[indexPath.section][indexPath.row]
-        
         if cellDescriptors[indexPath.section][indexOfTappedRow]["isExpandable"] as! Bool == true {
             var shouldExpandAndShowSubRows = false
             if cellDescriptors[indexPath.section][indexOfTappedRow]["isExpanded"] as! Bool == false {
                 shouldExpandAndShowSubRows = true
             }
-            
             cellDescriptors[indexPath.section][indexOfTappedRow].setValue(shouldExpandAndShowSubRows, forKey: "isExpanded")
             
             for i in (indexOfTappedRow + 1)...(indexOfTappedRow + (cellDescriptors[indexPath.section][indexOfTappedRow]["additionalRows"] as! Int)) {
@@ -248,15 +237,4 @@ class ImageViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

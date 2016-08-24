@@ -9,6 +9,7 @@
 import UIKit
 
 class ResetPasswordViewController: TextFieldViewController {
+    
     @IBOutlet private var newPassTextField: UITextField!
     
     override func viewDidLoad() {
@@ -63,14 +64,12 @@ class ResetPasswordViewController: TextFieldViewController {
                     NSUserDefaults.standardUserDefaults().setValue(mobile, forKey: "mobile")
                     NSUserDefaults.standardUserDefaults().setValue(user_id, forKey: "id")
                     NSUserDefaults.standardUserDefaults().synchronize()
-                    
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     })
                     loading.hide(true)
                     let storyboard = UIStoryboard(name: "Login" , bundle: nil)
                     let vc = storyboard.instantiateViewControllerWithIdentifier("UserProfileViewIdentifire") as? UserProfileViewController
                     self.navigationController?.pushViewController(vc!, animated: true)
-                    
                 } else {
                     loading.mode = MBProgressHUDModeText
                     loading.detailsLabelText = "Exceptional error occured. Please try again after some time"
@@ -85,18 +84,6 @@ class ResetPasswordViewController: TextFieldViewController {
     }
     
     func crossBtnAction() {
-        
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-        
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

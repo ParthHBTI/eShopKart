@@ -16,6 +16,8 @@ class ItemDetailViewCell: UITableViewCell,UICollectionViewDelegate {
     @IBOutlet weak var desTextView: UITextView!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var ImgControl: UIPageControl!
+    @IBOutlet weak var material: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

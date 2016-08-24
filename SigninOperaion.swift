@@ -20,7 +20,7 @@ class SigninOperaion: BaseOperation, OperationDelegate {
             let dic = onSuccess as! NSDictionary
             completionClosure(dic)
             }, onError: {(error: NSError) -> () in
-        havingError(error)
+                havingError(error)
         })
     }
     
@@ -29,7 +29,6 @@ class SigninOperaion: BaseOperation, OperationDelegate {
         print("\(urlstr)")
         let urlString = NSString(format:  bcConfig.sharedInstance.urlForKey("signin"))
         let URL: NSURL = NSURL(string: urlString as String)!
-        
         BaseOperation.initOperation(URL, userInfo: userInfo, onSuccess: {(onSuccess:AnyObject) -> () in
             let dic = onSuccess as! NSDictionary
             completionClosure(dic)
@@ -48,7 +47,7 @@ class SigninOperaion: BaseOperation, OperationDelegate {
                 havingError(error)
         })
     }
-
+    
     class func getOtp(userInfo: NSDictionary,completionClosure: (AnyObject) -> (), havingError:(NSError) -> ()) ->() {
         let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("getOtp"))
         let URL:NSURL = NSURL(string: urlString as String)!
@@ -76,7 +75,6 @@ class SigninOperaion: BaseOperation, OperationDelegate {
         print("\(urlstr)")
         let urlString = NSString(format:  bcConfig.sharedInstance.urlForKey("logoutUser"))
         let URL: NSURL = NSURL(string: urlString as String)!
-        
         BaseOperation.initOperation(URL, userInfo: userInfo, onSuccess: {(onSuccess:AnyObject) -> () in
             let dic = onSuccess as! NSDictionary
             completionClosure(dic)
@@ -222,13 +220,13 @@ class SigninOperaion: BaseOperation, OperationDelegate {
         let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("get_product_details"))
         let URL:NSURL = NSURL(string: urlString as String)!
         BaseOperation.initOperation(URL, userInfo: userInfo, onSuccess: { (onSuccess:AnyObject) -> () in
-            let dic = onSuccess 
+            let dic = onSuccess
             completionClosure(dic)
             }, onError: { (error:NSError) -> () in
                 havingError(error)
         })
     }
-
+    
     
     class func update_address(userInfo: NSDictionary,completionClosure: (AnyObject) -> (), havingError:(NSError) -> ()) ->() {
         let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("update_address"))
@@ -261,16 +259,15 @@ class SigninOperaion: BaseOperation, OperationDelegate {
                 havingError(error)
         })
     }
-
+    
     class func request_mail(userInfo: NSDictionary,completionClosure: (AnyObject) -> (), havingError:(NSError) -> ()) ->() {
         let urlString = NSString(format: bcConfig.sharedInstance.urlForKey("request_mail"))
         let URL:NSURL = NSURL(string: urlString as String)!
         BaseOperation.initOperation(URL, userInfo: userInfo, onSuccess: { (onSuccess:AnyObject) -> () in
-            let dic = onSuccess 
+            let dic = onSuccess
             completionClosure(dic)
             }, onError: { (error:NSError) -> () in
                 havingError(error)
         })
     }
-
 }

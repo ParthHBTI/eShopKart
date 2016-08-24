@@ -9,8 +9,8 @@
 import UIKit
 
 let UIAppDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
@@ -19,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var baseView = UIViewController?()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
+        let pushNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+        application.registerUserNotificationSettings(pushNotificationSettings)
+        application.registerForRemoteNotifications()
+        
         let data = NSUserDefaults.standardUserDefaults().objectForKey("User") as? NSData
         if data != nil {
             let admin = NSKeyedUnarchiver.unarchiveObjectWithData( data!) as! User
@@ -28,7 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if token == nil {
             showUserPage()
         }
-        // Override point for customization after application launch.m
         return true
     }
     
@@ -41,7 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func saveCurrentUserDetails() {
-        
         if let _ = currentUser {
             NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject( currentUser!), forKey: "User")
         }
@@ -67,18 +70,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         func applicationWillTerminate(application: UIApplication) {
             // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         }
-        
-        
     }
     
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        print("DEVICE TOKEN = \(deviceToken)")
+    }
 }
+
+func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+    print(error)
+}
+
+func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+    print(userInfo)
+}
+
 extension UIView {
     func addBorderWithColor(color: UIColor, borderWidth: CGFloat) {
         addBorderToView(color, borderWidth: borderWidth,radius: 0)
     }
+    
     func addCornerRadiusWithValue( radius: CGFloat ,color: UIColor, borderWidth: CGFloat) {
         addBorderToView(color, borderWidth: borderWidth,radius: radius)
     }
+    
     private func addBorderToView(color: UIColor, borderWidth: CGFloat, radius:CGFloat)
     {
         self.layer.cornerRadius = radius

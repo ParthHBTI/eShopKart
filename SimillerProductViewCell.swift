@@ -14,18 +14,17 @@ class SimillerProductViewCell: UITableViewCell {
     @IBOutlet weak var size: UILabel!
     @IBOutlet weak var amount: UILabel!
     @IBOutlet weak var getQuoteBtn: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
     func configureCell()  {
-        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
         // Configure the view for the selected state
     }
     

@@ -11,16 +11,16 @@ import AFNetworking
 
 class FeedbackViewController: TextFieldViewController {
     
-    let baseViewController = BaseViewController()
-    
     @IBOutlet weak var subTxtField: UITextField!
     @IBOutlet weak var feedbackTxtView: UITextView!
     @IBOutlet weak var submitBtn: UIButton!
+    
+    let baseViewController = BaseViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         subTxtField.delegate = self
         feedbackTxtView.delegate = self
-        //        self.navigationController?.navigationBarHidden = false
         let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.BlackOpaque
         nav?.tintColor = UIColor.whiteColor()
@@ -28,12 +28,8 @@ class FeedbackViewController: TextFieldViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(BaseViewController.backAction))
         self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
-        //submitBtn.addBorderWithColor(UIColor.whiteColor(), borderWidth: 1.0)
-        //submitBtn.layer.cornerRadius = 5.0
-        //feedbackTxtView.layer.borderWidth = 1.0
         subTxtField.addBorderWithColor(UIColor.whiteColor(), borderWidth: 0.0)
         submitBtn.addCornerRadiusWithValue(5.0, color: UIColor.init(red: 78.0/255, green: 158.0/255, blue: 255.0/255, alpha: 1.0), borderWidth: 1.0)
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -43,11 +39,9 @@ class FeedbackViewController: TextFieldViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func submitAction(sender: AnyObject) {
-        
         let subStr = self.subTxtField.text!
         let feedbackStr = self.feedbackTxtView.text!
         let charSet = NSCharacterSet.whitespaceCharacterSet()
@@ -60,7 +54,6 @@ class FeedbackViewController: TextFieldViewController {
             loading.removeFromSuperViewOnHide = true
             loading.detailsLabelText = "please give all values"
             self.animateSubmitBtnOnWrongSubmit()
-            
         }else if subWhiteSpaceSet == "" || feedbackWhiteSpaceSet == "" {
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
@@ -68,8 +61,7 @@ class FeedbackViewController: TextFieldViewController {
             loading.removeFromSuperViewOnHide = true
             loading.detailsLabelText = "You entered white spaces only"
             self.animateSubmitBtnOnWrongSubmit()
-        }
-        else {
+        } else {
             let isRegisteredUser = NSUserDefaults.standardUserDefaults().valueForKey("User") as? NSData
             if isRegisteredUser != nil {
                 let feedbackInfo :[String : String] = [
@@ -89,15 +81,9 @@ class FeedbackViewController: TextFieldViewController {
                 self.feedbackTxtView.text = ""
             } else {
                 self.makeLoginAlert()
-                //baseViewController.makeLoginAlert()
             }
         }
     }
-    
-    //    func backAction() {
-    //
-    //        self.navigationController?.popViewControllerAnimated(true)
-    //    }
     
     func animateSubmitBtnOnWrongSubmit(){
         let bounds = self.submitBtn.bounds
@@ -107,8 +93,7 @@ class FeedbackViewController: TextFieldViewController {
             }, completion: nil)
     }
     
-    func makeLoginAlert()
-    {
+    func makeLoginAlert() {
         let refreshAlert = UIAlertController(title: "Please Login", message: "To make this action, please login first.", preferredStyle: UIAlertControllerStyle.Alert)
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
             let storyboard = UIStoryboard(name: "Login" , bundle:  nil)
@@ -121,15 +106,4 @@ class FeedbackViewController: TextFieldViewController {
         }))
         self.presentViewController(refreshAlert, animated: true, completion: nil)
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

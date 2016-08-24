@@ -10,12 +10,15 @@ import UIKit
 
 class AddressViewCell: UITableViewCell {
     
-    var flag: Bool = false
+    
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var addressTextField: UITextView!
     @IBOutlet weak var selectionBtn: UIButton!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
+    
+    var flag: Bool = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -35,10 +38,9 @@ class AddressViewCell: UITableViewCell {
             }
         }
     }
- 
-   override func setSelected(selected: Bool, animated: Bool) {
+    
+    override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-
 }
