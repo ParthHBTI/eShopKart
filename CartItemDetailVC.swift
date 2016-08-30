@@ -13,12 +13,17 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
     
     var cartDetailResponseArr = NSMutableArray()
+    var myCartBarItem1: UIBarButtonItem?
     override func viewDidLoad() {
-        super.viewDidLoad()
+        //super.viewDidLoad()
         let emptyCellSeparatorLineView = UIView(frame: CGRectMake(0, 0, 320, 1))
         emptyCellSeparatorLineView.backgroundColor = UIColor.clearColor()
         self.tableView.tableFooterView = emptyCellSeparatorLineView
         self.title = "Cart Detail"
+        myCartBarItem1 = UIBarButtonItem(image: UIImage(named: "market"), style: .Plain, target: self, action: #selector(BaseViewController.myCartDetail))
+        let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(BaseViewController.backAction))
+        self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
+        self.navigationItem.setRightBarButtonItem(myCartBarItem1!, animated: true)
         let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
         let userInfo = [
             "user_id" : userId!,
@@ -28,7 +33,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             for var obj in response as! NSArray
             {
                 self.cartDetailResponseArr.addObject(obj)
-                //self.navigationItem.rightBarButtonItem!.badgeValue = String(self.cartDetailResponseArr.count)
+                self.myCartBarItem1!.badgeValue = String(self.cartDetailResponseArr.count)
                 //self.badgeValCounter = self.cartDetailResponseArr.count
             }
             self.tableView.reloadData()
@@ -107,7 +112,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             }
             if (self.cartDetailResponseArr.count > currentRow){
                 self.cartDetailResponseArr.removeObjectAtIndex(currentRow)
-                self.myCartBarItem!.badgeValue = String(self.cartDetailResponseArr.count)
+                self.myCartBarItem1!.badgeValue = String(self.cartDetailResponseArr.count)
                 //self.badgeValCounter = self.cartDetailResponseArr.count
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
@@ -142,7 +147,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
                 loading.detailsLabelText = error.localizedDescription
                 loading.hide(true, afterDelay: 2)
             }
-            self.myCartBarItem!.badgeValue = nil
+            self.myCartBarItem1!.badgeValue = nil
             self.cartDetailResponseArr.removeAllObjects()
             self.tableView.reloadData()
         }))
@@ -188,7 +193,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         }
         self.cartDetailResponseArr.removeAllObjects()
         self.tableView.reloadData()
-        self.myCartBarItem!.badgeValue = nil
+        self.myCartBarItem1!.badgeValue = nil
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> cartItemCell {

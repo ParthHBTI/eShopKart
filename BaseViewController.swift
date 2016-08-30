@@ -14,7 +14,6 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
     var unreadCartItemDetailLabel: UILabel!
     var isUserLogin: Bool! = false
     var myCartBarItem: UIBarButtonItem?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         //navigationController!.navigationBar.barTintColor = UIColor.init(red: 74/255.0, green: 115/255.0, blue: 236/255.0, alpha: 1.0)
@@ -84,7 +83,7 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
                 loading.hide(true, afterDelay: 2)
             }
         } else {
-        
+            
             self.myCartBarItem!.badgeValue = nil
         }
         

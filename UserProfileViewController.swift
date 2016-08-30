@@ -130,7 +130,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 })
                 loading.hide(true)
-                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                    self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                
             } else {
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = "Exceptional error occured. Please try again after some time"
