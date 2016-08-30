@@ -9,7 +9,7 @@
 import UIKit
 import AFNetworking
 
-class CategoryItemListVC: BaseViewController,UITableViewDelegate{
+class CategoryItemListVC: BaseViewController,UITableViewDelegate {
     
     @IBOutlet var categoryNameLabel: UILabel!
     @IBOutlet var cteagoryItemsTblView: UITableView!
@@ -21,6 +21,10 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cteagoryItemsTblView.separatorStyle = .SingleLine
+        let emptyCellSeparatorLineView = UIView(frame: CGRectMake(0, 0, 320, 1))
+        emptyCellSeparatorLineView.backgroundColor = UIColor.clearColor()
+        self.cteagoryItemsTblView.tableFooterView = emptyCellSeparatorLineView
         categoryNameLabel!.text = categoryName!
         self.cteagoryItemsTblView.rowHeight = 55
         let userInfo = [
@@ -53,6 +57,11 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate{
         let cell = tableView.dequeueReusableCellWithIdentifier("categoryItemsCell", forIndexPath: indexPath) as! CategoryItemsViewCell
         cell.subCategoryItemName?.text = subcatResponseArr.objectAtIndex(indexPath.row)["category_name"] as? String
         cell.subCatId?.text = subcatResponseArr.objectAtIndex(indexPath.row)["id"] as? String
+        //
+        /*let separatorLineView = UIView(frame: CGRectMake(0, 0, 320, 1))
+        separatorLineView.backgroundColor = UIColor.clearColor()
+        cell.contentView.addSubview(separatorLineView)*/
+        //
         return cell
     }
     

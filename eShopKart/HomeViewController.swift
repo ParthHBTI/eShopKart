@@ -22,6 +22,11 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Eliminate separator line of empty table Cells
+        let emptyCellSeparatorLineView = UIView(frame: CGRectMake(0, 0, 320, 1))
+        emptyCellSeparatorLineView.backgroundColor = UIColor.clearColor()
+        self.searchDisplayController?.searchResultsTableView.tableFooterView = emptyCellSeparatorLineView
+        //
         searchController = UISearchController(searchResultsController: nil)
         searchController!.searchBar.sizeToFit()
         if #available(iOS 9.0, *) {
@@ -54,7 +59,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         //                "user_id" : userId!
         //            ]
         //            SigninOperaion.view_cart(userInfo, completionClosure: { response in
-        self.myCartBarItem!.badgeValue = String(self.cartArr.count)
+        //self.myCartBarItem!.badgeValue = String(self.cartArr.count)
         //                })
         //            { (error: NSError) -> () in
         //                let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)

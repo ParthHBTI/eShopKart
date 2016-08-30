@@ -80,7 +80,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
         userPhoto.addGestureRecognizer(tapRecognizer)
         let nitification = NSNotificationCenter()
         nitification.postNotificationName("Login Successfully", object: self)
-        imageArray[0] = UIImage(named: "done.png" )!
+        imageArray[0] = UIImage(named: "Shape Copy.png" )!
         imageArray[1] = UIImage(named: "done.png" )!
         imageArray[2] = UIImage(named: "helpIcon5" )!
         imageArray[3] = UIImage(named: "feedbackIcon" )!
@@ -90,6 +90,10 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
         imageArray[7] = UIImage(named: "done.png" )!
         imageArray[8] = UIImage(named: "done.png" )!
         imageArray[9] = UIImage(named: "done.png" )!
+        
+        let emptyCellSeparatorLineView = UIView(frame: CGRectMake(0, 0, 320, 1))
+        emptyCellSeparatorLineView.backgroundColor = UIColor.clearColor()
+        self.tableView.tableFooterView = emptyCellSeparatorLineView
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -118,6 +122,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
         SigninOperaion.logoutUser(userInfo, completionClosure: { (response: AnyObject) -> () in
             appDelegate!.saveCurrentUserDetails()
             if let _: AnyObject = response.valueForKey("User")?.valueForKey("token_id") == nil {
+                NSUserDefaults.standardUserDefaults().setValue(nil, forKey: "id")
                 NSUserDefaults.standardUserDefaults().setValue(nil, forKey: "User")
                 NSUserDefaults.standardUserDefaults().setValue(nil, forKey: "token_id")
                 NSUserDefaults.standardUserDefaults().synchronize()

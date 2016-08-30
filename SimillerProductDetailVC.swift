@@ -18,6 +18,10 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableview.separatorStyle = .SingleLine
+        let emptyCellSeparatorLineView = UIView(frame: CGRectMake(0, 0, 320, 1))
+        emptyCellSeparatorLineView.backgroundColor = UIColor.clearColor()
+        self.tableview.tableFooterView = emptyCellSeparatorLineView
         self.navigationController?.navigationBar.shadowImage = UIImage (named: "memo-views")
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.view.backgroundColor = UIColor .blueColor()
@@ -59,7 +63,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         cell.productname?.text = itemInfoDic["name"] as? String
         cell.amount?.text = itemInfoDic["material"] as? String
         cell.size?.text = itemInfoDic["size"] as? String
-        cell.productImgView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
+        cell.productImgView?.setImageWithURL(url!, placeholderImage: UIImage(named:"BC Logo"))
         cell.getQuoteBtn.tag = indexPath.row
         cell.getQuoteBtn.addTarget(self, action: #selector(SimillerProductDetailVC.getQuoteAction),forControlEvents: .TouchUpInside)
         cell.getQuoteBtn.addCornerRadiusWithValue(5.0, color:UIColor.init(red: 78.0/255, green: 158.0/255, blue: 255.0/255, alpha: 1.0), borderWidth: 1.0)

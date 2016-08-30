@@ -13,9 +13,11 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
     
     var cartDetailResponseArr = NSMutableArray()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let emptyCellSeparatorLineView = UIView(frame: CGRectMake(0, 0, 320, 1))
+        emptyCellSeparatorLineView.backgroundColor = UIColor.clearColor()
+        self.tableView.tableFooterView = emptyCellSeparatorLineView
         self.title = "Cart Detail"
         let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
         let userInfo = [
@@ -34,15 +36,17 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = error.localizedDescription
-            loading.hide(true, afterDelay: 2)        }
+            loading.hide(true, afterDelay: 2)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.navigationItem.leftItemsSupplementBackButton = false
+        //self.navigationItem.leftItemsSupplementBackButton = false
     }
     
     func goToHomeBtnAction() {
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        //self.navigationController?.popToRootViewControllerAnimated(true)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -181,7 +185,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         cell.productPrice?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["material"] as? String
         cell.productQuantity?.text = cartDetailResponseArr.objectAtIndex(indexPath.row)["quantity"] as? String
         let url = NSURL(string:(imageURL + (cartDetailResponseArr.objectAtIndex(indexPath.row)["image"] as? String)!))
-        cell.productImg?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
+        cell.productImg?.setImageWithURL(url!, placeholderImage: UIImage(named:"BC Logo"))
         cell.removBtn.tag = indexPath.row
         cell.removBtn.addTarget(self, action: #selector(CartItemDetailVC.removeItemFromCart),forControlEvents: .TouchUpInside)
         return cell

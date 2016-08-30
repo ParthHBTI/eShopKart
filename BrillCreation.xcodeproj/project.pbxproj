@@ -62,6 +62,7 @@
 		730078DE1D13FF1500ECFC91 /* SignUpCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730078DD1D13FF1500ECFC91 /* SignUpCodeViewController.swift */; };
 		730078E01D14023E00ECFC91 /* bcConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 730078DF1D14023E00ECFC91 /* bcConfig.plist */; };
 		730879431D12ABDD00F4EFBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0436945E1CE450A7000868CE /* Main.storyboard */; };
+		730FCEE51D6C1EE100A464A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 730FCEE41D6C1EE100A464A3 /* Images.xcassets */; };
 		73145CBE1D59DE86002906AF /* ImageCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73145CBD1D59DE86002906AF /* ImageCollectionView.xib */; };
 		73145CC01D59DE94002906AF /* ImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73145CBF1D59DE94002906AF /* ImageView.xib */; };
 		73145CC21D59DE9D002906AF /* KeyAndFeatures.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73145CC11D59DE9D002906AF /* KeyAndFeatures.xib */; };
@@ -145,6 +146,7 @@
 		730078DB1D13FF0A00ECFC91 /* SignUpPassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpPassViewController.swift; sourceTree = "<group>"; };
 		730078DD1D13FF1500ECFC91 /* SignUpCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpCodeViewController.swift; sourceTree = "<group>"; };
 		730078DF1D14023E00ECFC91 /* bcConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bcConfig.plist; sourceTree = "<group>"; };
+		730FCEE41D6C1EE100A464A3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = BrillCreation/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		73145CBD1D59DE86002906AF /* ImageCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCollectionView.xib; sourceTree = "<group>"; };
 		73145CBF1D59DE94002906AF /* ImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageView.xib; sourceTree = "<group>"; };
 		73145CC11D59DE9D002906AF /* KeyAndFeatures.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyAndFeatures.xib; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				04B564191CEED884001E9792 /* Images.xcassets */,
 				045739191CE30F0800EB0FC9 /* Support */,
 				045739041CE30EDF00EB0FC9 /* Products */,
+				730FCEE41D6C1EE100A464A3 /* Images.xcassets */,
 			);
 			name = BrillCreation;
 			path = eShopKart;
@@ -390,7 +393,7 @@
 				TargetAttributes = {
 					045739021CE30EDF00EB0FC9 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 37933HE5C4;
+						DevelopmentTeam = 47RFJH396J;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -435,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B564181CEED4F6001E9792 /* Podfile in Resources */,
+				730FCEE51D6C1EE100A464A3 /* Images.xcassets in Resources */,
 				04A2FA301D39012000C10875 /* unchecked@2x.png in Resources */,
 				73145CC61D59DEB4002906AF /* productDetails.xib in Resources */,
 				04B5641C1CEED89E001E9792 /* Launch Screen.storyboard in Resources */,

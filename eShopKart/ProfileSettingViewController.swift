@@ -28,11 +28,11 @@ class ProfileSettingViewController: TextFieldViewController {
         lastNameTxtField.delegate = self
         mobNumberTxtField.delegate = self
         emailTxtField.delegate = self
-        button.setTitle("Done", forState: UIControlState.Normal)
+        /*button.setTitle("Done", forState: UIControlState.Normal)
         button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         button.frame = CGRectMake(0, 163, 106, 53)
         button.adjustsImageWhenHighlighted = false
-        button.addTarget(self, action: #selector(self.doneBtnAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action: #selector(self.doneBtnAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)*/
         
         //        let numberToolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 50))
         //        numberToolbar.barStyle = .BlackTranslucent
@@ -40,14 +40,17 @@ class ProfileSettingViewController: TextFieldViewController {
         //        numberToolbar.sizeToFit()
         //        mobNumberTxtField.inputAccessoryView = numberToolbar
         //mobNumberTxtField.returnKeyType = .Done
-        /*let barButton1: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: mobNumberTxtField, action: #selector(self.resignFirstResponder))
+        
+        ////
+        let barButton1: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: mobNumberTxtField, action: #selector(self.resignFirstResponder))
          
          //let barButton2: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: mobNumberTxtField, action: #selector(self.resignFirstResponder))
          let toolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 44))
          //toolbar.barStyle = UIBarStyle.BlackTranslucent
          barButton1.accessibilityFrame = (frame: CGRectMake(250/255.0, 0/255.0, 106.0/255, 53.0/25))
          toolbar.items = [barButton1]
-         mobNumberTxtField.inputAccessoryView = toolbar*/
+         mobNumberTxtField.inputAccessoryView = toolbar ////
+        
         let backBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_NavIcon"), style: .Plain, target: self, action: #selector(BaseViewController.backAction))
         self.navigationItem.setLeftBarButtonItem(backBarButtonItem, animated: true)
         self.title = "Update Profile"
@@ -204,11 +207,11 @@ class ProfileSettingViewController: TextFieldViewController {
         return true
     }
     
-    override func textFieldDidBeginEditing(textField: UITextField) {
+    /*override func textFieldDidBeginEditing(textField: UITextField) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileSettingViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-    }
+    }*/
     
-    func keyboardWillShow(note : NSNotification) -> Void{
+    /*func keyboardWillShow(note : NSNotification) -> Void{
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             self.button.hidden = false
             let keyBoardWindow = UIApplication.sharedApplication().windows.last
@@ -220,10 +223,10 @@ class ProfileSettingViewController: TextFieldViewController {
                 }, completion: { (complete) -> Void in
             })
         }
-    }
-    
+    }*/
+    /*
     func doneBtnAction(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return true
-    }
+    }*/
 }

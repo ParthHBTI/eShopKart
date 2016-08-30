@@ -249,7 +249,7 @@ extension ItemDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionCell", forIndexPath: indexPath) as! collectionCell
         let url = NSURL(string:(imageURL + (productImageArr[indexPath.row]["images"] as? String)!))
-        cell.imageView?.setImageWithURL(url!, placeholderImage: UIImage(named:"Kloudrac-Logo"))
+        cell.imageView?.setImageWithURL(url!, placeholderImage: UIImage(named:"BC Logo"))
         return cell
     }
     

@@ -18,6 +18,9 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let emptyCellSeparatorLineView = UIView(frame: CGRectMake(0, 0, 320, 1))
+        emptyCellSeparatorLineView.backgroundColor = UIColor.clearColor()
+        self.categoryTblView.tableFooterView = emptyCellSeparatorLineView
         let userInfo = [
             "1" : "1"
         ]
