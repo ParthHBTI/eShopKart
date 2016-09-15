@@ -110,7 +110,7 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
                     "landmark" : landmark.text! as String,
                     "address_id" : address_id
                 ]
-                SigninOperaion.add_address(userInfo, completionClosure: { response in
+                SigninOperation.add_address(userInfo, completionClosure: { response in
                     print(response)
                 }) { (error: NSError) -> () in
                     let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -150,7 +150,7 @@ class AddNewAddressVC: UIViewController, UIScrollViewDelegate, UITextViewDelegat
                     "contact_number" : mobileNo.text! as String,
                     "landmark" : landmark.text! as String,
                     ]
-                SigninOperaion.add_address(userInfo, completionClosure: { response in
+                SigninOperation.add_address(userInfo, completionClosure: { response in
                     print(response)
                     self.checkdefault = true
                 }) { (error: NSError) -> () in

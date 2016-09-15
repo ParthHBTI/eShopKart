@@ -49,7 +49,7 @@ class MyOrdersTableVC: UITableViewController {
         let userInfo = [
             "product_id" : myOrders.objectAtIndex(indexPath.row)["product_id"] as! String
             ] as NSDictionary
-        SigninOperaion.get_product_details(userInfo, completionClosure: { response in
+        SigninOperation.get_product_details(userInfo, completionClosure: { response in
             self.productsData = (response as! NSDictionary)
             let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
             let itemInfoDic  = self.productsData as! Dictionary<String, AnyObject>

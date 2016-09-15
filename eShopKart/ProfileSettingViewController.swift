@@ -130,7 +130,7 @@ class ProfileSettingViewController: TextFieldViewController {
                     "mobile" : mobNumberTxtField!.text!,
                     "email" : emailTxtField!.text!
                 ]
-                SigninOperaion.editProfile(userInfo, completionClosure: { response in
+                SigninOperation.editProfile(userInfo, completionClosure: { response in
                     let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
                     let user: User  = User.initWithArray(admin)[0] as! User
                     appDelegate.currentUser = user

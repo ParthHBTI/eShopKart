@@ -29,7 +29,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
         let userInfo = [
             "category_id" : getsubCategoryId
         ]
-        SigninOperaion.get_products(userInfo, completionClosure: { response in
+        SigninOperation.get_products(userInfo, completionClosure: { response in
             self.productsArr = (response as? NSArray)!
             self.tableview.reloadData()
         }) { (error: NSError) -> () in
@@ -37,6 +37,14 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = error.localizedDescription
             loading.hide(true, afterDelay: 2)
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        let indexPath = self.tableview.indexPathForSelectedRow
+        if (indexPath != nil) {
+            self.tableview.deselectRowAtIndexPath(indexPath!, animated: true)
         }
     }
     
@@ -96,7 +104,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
                 "token_id" : tokenId!,
                 "product_id" : productId
             ]
-            SigninOperaion.request_for_code(userInfo, completionClosure: { response in
+            SigninOperation.request_for_code(userInfo, completionClosure: { response in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 print(response)
                 order_number = response.valueForKey("order_number") as! String
@@ -108,7 +116,7 @@ class SimillerProductDetailVC: BaseViewController , UITableViewDelegate {
                 let userInfo1 = [
                     "order_number" : myInt
                 ]
-                SigninOperaion.request_mail(userInfo1, completionClosure: { response in
+                SigninOperation.request_mail(userInfo1, completionClosure: { response in
                     print(response)
                 }) { (error: NSError) -> () in
                     let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)

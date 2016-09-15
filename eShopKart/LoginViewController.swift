@@ -55,7 +55,7 @@ class LoginViewController: TextFieldViewController {
                 ]
                 loading.mode = MBProgressHUDModeIndeterminate
                 loading.yOffset = -55.0
-                SigninOperaion.signin(userInfo, completionClosure: { (response: AnyObject) -> () in
+                SigninOperation.signin(userInfo, completionClosure: { (response: AnyObject) -> () in
                     let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
                     let user: User  = User.initWithArray(admin)[0] as! User
                     appDelegate.currentUser = user
@@ -119,7 +119,7 @@ class LoginViewController: TextFieldViewController {
                 ]
                 loading.mode = MBProgressHUDModeIndeterminate
                 loading.yOffset = -55.0
-                SigninOperaion.verification(userInfo, completionClosure: { (response: AnyObject) -> () in
+                SigninOperation.verification(userInfo, completionClosure: { (response: AnyObject) -> () in
                     let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
                     let user: User  = User.initWithArray(admin)[0] as! User
                     appDelegate.currentUser = user

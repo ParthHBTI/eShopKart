@@ -30,7 +30,7 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate {
         let userInfo = [
             "category_id" : categoryId
         ]
-        SigninOperaion.get_categories(userInfo, completionClosure: { response in
+        SigninOperation.get_categories(userInfo, completionClosure: { response in
             self.subcatResponseArr = response
             self.cteagoryItemsTblView.reloadData()
         }) {(error: NSError) -> () in
@@ -38,6 +38,14 @@ class CategoryItemListVC: BaseViewController,UITableViewDelegate {
             loading.mode = MBProgressHUDModeText
             loading.detailsLabelText = error.localizedDescription
             loading.hide(true, afterDelay: 2)        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        let indexPath = self.cteagoryItemsTblView.indexPathForSelectedRow
+        if indexPath != nil {
+            self.cteagoryItemsTblView.deselectRowAtIndexPath(indexPath!, animated: true)
+        }
     }
     
     override func didReceiveMemoryWarning() {

@@ -24,7 +24,7 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
             let userInfo = [
                 "user_id" : userId!,
                 ]
-            SigninOperaion.view_cart(userInfo, completionClosure: { response in
+            SigninOperation.view_cart(userInfo, completionClosure: { response in
                 print(response)
                 for var obj in response as! NSArray {
                     self.cartArr.addObject(obj)
@@ -67,7 +67,7 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
             let userInfo = [
                 "user_id" : userId!,
                 ]
-            SigninOperaion.view_cart(userInfo, completionClosure: { response in
+            SigninOperation.view_cart(userInfo, completionClosure: { response in
                 print(response)
                 for var obj in response as! NSArray {
                     totalCartItemsArr.addObject(obj)
@@ -133,6 +133,25 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
     
     func makeLoginAlert() {
         let refreshAlert = UIAlertController(title: "Please Login", message: "To make this action, please login first.", preferredStyle: UIAlertControllerStyle.Alert)
+        //refreshAlert = UIAlertView(frame:CGRectMake(100.0, 222.0, 70.0, 80.0))
+        //// Add a text field with alert view
+        
+//        refreshAlert.addTextFieldWithConfigurationHandler { textField in
+//            //listen for changes
+//            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("handleTextFieldTextDidChangeNotification:"), name: UITextFieldTextDidChangeNotification, object: textField)
+//        }
+        
+        
+//        let imageView = UIImageView(frame: CGRectMake(220, 10, 60, 80))
+//        imageView.image = (UIImage(named: "appImage.png"))
+//        
+//        refreshAlert.view.addSubview(imageView)
+        ////
+        //let margin:CGFloat = 8.0
+        let rect = CGRectMake(50.0,0.0,300.0,400.0)
+        let customView = UIView(frame: rect)
+        customView.backgroundColor = UIColor.whiteColor()
+        refreshAlert.view.addSubview(customView)
         refreshAlert.addAction(UIAlertAction(title: "Login", style: .Default, handler: { (action: UIAlertAction!) in
             let storyboard = UIStoryboard(name: "Login" , bundle:  nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("loginVC") as? LoginViewController
@@ -145,5 +164,6 @@ class BaseViewController: UIViewController, UINavigationControllerDelegate {
         }))
         self.presentViewController(refreshAlert, animated: true, completion: nil)
     }
+    
 }
 

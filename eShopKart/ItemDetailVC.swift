@@ -118,7 +118,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
                 "quantity" : productQty,
                 "user_id" : userId!,
                 ]
-            SigninOperaion.add_to_cart(userInfo, completionClosure: { response in
+            SigninOperation.add_to_cart(userInfo, completionClosure: { response in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
                 loading.detailsLabelText = response["message"] as! String
@@ -155,7 +155,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
                 "quantity" : productQty,
                 "product_id" : productId!
             ]
-            SigninOperaion.request_for_code(userInfo, completionClosure: { response in
+            SigninOperation.request_for_code(userInfo, completionClosure: { response in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 order_number = response.valueForKey("order_number") as! String
                 myInt = (order_number as NSString).integerValue
@@ -166,7 +166,7 @@ class ItemDetailVC: BaseViewController,UITextFieldDelegate {
                 let userInfo1 = [
                     "order_number" : myInt
                 ]
-                SigninOperaion.request_mail(userInfo1, completionClosure: { response in
+                SigninOperation.request_mail(userInfo1, completionClosure: { response in
                     print(response)
                 }) { (error: NSError) -> () in
                     let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)

@@ -116,7 +116,7 @@ class UserRegistrationVC: TextFieldViewController {
                 "token_id" : token!
             ]
             if passwordTextField.text == confirmPassTextField.text{
-                SigninOperaion.signup(userInfo, completionClosure: { response in
+                SigninOperation.signup(userInfo, completionClosure: { response in
                     let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
                     let user: User  = User.initWithArray(admin)[0] as! User
                     appDelegate.currentUser = user

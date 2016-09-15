@@ -28,7 +28,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         let userInfo = [
             "user_id" : userId!,
             ]
-        SigninOperaion.view_cart(userInfo, completionClosure: { response in
+        SigninOperation.view_cart(userInfo, completionClosure: { response in
             print(response)
             for var obj in response as! NSArray
             {
@@ -93,7 +93,8 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
     }
     
     @IBAction func removeItemFromCart(sender: AnyObject) {
-        let refreshAlert = UIAlertController(title: "Sure to Delete?", message: "If you agree, then it will remove from your cart permanantly", preferredStyle: UIAlertControllerStyle.Alert)
+        //let refreshAlert = UIAlertController(title: "Sure to Delete?", message: "If you agree, then it will remove from your cart permanantly", preferredStyle: UIAlertControllerStyle.Alert)
+        let refreshAlert = UIAlertController(title: "Sure to Delete?", message: "If you agree, then it will remove from your cart permanantly.", preferredStyle: UIAlertControllerStyle.Alert)
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
             let currentRow = sender.tag
             let productId = self.cartDetailResponseArr.objectAtIndex(currentRow)["id"] as! String
@@ -102,7 +103,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
                 "user_id" : userId!,
                 "product_id" : productId
             ]
-            SigninOperaion.clear_cart(userInfo, completionClosure: { response in
+            SigninOperation.clear_cart(userInfo, completionClosure: { response in
                 //print(response)
             }) { (error: NSError) -> () in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -121,6 +122,8 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             }
             self.tableView.reloadData()
         }))
+//        refreshAlert.popoverPresentationController?.sourceView = view
+//        refreshAlert.popoverPresentationController?.sourceRect = sender.frame
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
             refreshAlert .dismissViewControllerAnimated(true, completion: nil)
         }))
@@ -128,13 +131,13 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
      }
     
     @IBAction func clearCartAction(sender: AnyObject) {
-        let refreshAlert = UIAlertController(title: "Sure to clear your cart?", message: "If you agree, then all items will remove from your cart permanantly", preferredStyle: UIAlertControllerStyle.Alert)
+        let refreshAlert = UIAlertController(title: "Sure to clear your cart?", message: "If you agree, then all items will remove from your cart permanantly.", preferredStyle: UIAlertControllerStyle.Alert)
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
             let userId = NSUserDefaults.standardUserDefaults().valueForKey("id")
             let userInfo = [
                 "user_id" : userId!,
             ]
-            SigninOperaion.clear_cart(userInfo, completionClosure: { response in
+            SigninOperation.clear_cart(userInfo, completionClosure: { response in
                 self.navigationItem.rightBarButtonItem!.badgeValue = nil
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 loading.mode = MBProgressHUDModeText
@@ -164,7 +167,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
         let userInfo = [
             "token_id" : tokenId!
         ]
-        SigninOperaion.request_for_code(userInfo, completionClosure: { response in
+        SigninOperation.request_for_code(userInfo, completionClosure: { response in
             self.navigationItem.rightBarButtonItem!.badgeValue = nil
             let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             order_number = response.valueForKey("order_number") as! String
@@ -176,7 +179,7 @@ class CartItemDetailVC: BaseViewController,UITableViewDelegate {
             let userInfo1 = [
                 "order_number" : myInt
             ]
-            SigninOperaion.request_mail(userInfo1, completionClosure: { response in
+            SigninOperation.request_mail(userInfo1, completionClosure: { response in
                 print(response)
             }) { (error: NSError) -> () in
                 let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)

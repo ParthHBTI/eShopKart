@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import Social
 
 class UserProfileViewController: UIViewController, UITableViewDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, MFMailComposeViewControllerDelegate {
     
@@ -21,13 +22,13 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
     @IBOutlet var changePass: UIButton!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var imageArray: NSMutableArray! = []
-    @IBOutlet var profileArray: NSArray! = ["Customer Support","Share Our App","Need Help","Give Feedback"]
+    @IBOutlet var profileArray: NSArray! = ["Customer Support","Share Our App","Need Help"]
     
     let messageComposerObj = MessageComposer()
     let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
     var currentUser : User?
     var isuserLogin: Bool = false
-    var profileArr2: NSArray = ["Customer Support","Share Our App","Need Help","Give Feedback","My Profile","My Address","My Orders"]
+    var profileArr2: NSArray = ["Customer Support","Share Our App","Need Help","Give Your Feedback","My Profile","My Address","My Orders"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +97,24 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
         self.tableView.tableFooterView = emptyCellSeparatorLineView
     }
     
+//    override func viewDidDisappear(animated: Bool) {
+//        
+//    }
+    
+//    override func viewDidAppear(animated: Bool) {
+//        
+//    }
+    
+//     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+//        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+//    }
+    
+    
     override func viewWillAppear(animated: Bool) {
+        let indexPath = self.tableView.indexPathForSelectedRow
+        if indexPath != nil {
+            self.tableView.deselectRowAtIndexPath(indexPath!, animated: true)
+        }
         firstLastLbl.text = NSUserDefaults.standardUserDefaults().valueForKey("username") as? String
         mobileLbl.text = NSUserDefaults.standardUserDefaults().valueForKey("mobile") as? String
         emailLbl.text = NSUserDefaults.standardUserDefaults().valueForKey("email") as? String
@@ -119,7 +137,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
             "token_id" : token!
         ]
         loading.mode = MBProgressHUDModeIndeterminate
-        SigninOperaion.logoutUser(userInfo, completionClosure: { (response: AnyObject) -> () in
+        SigninOperation.logoutUser(userInfo, completionClosure: { (response: AnyObject) -> () in
             appDelegate!.saveCurrentUserDetails()
             if let _: AnyObject = response.valueForKey("User")?.valueForKey("token_id") == nil {
                 NSUserDefaults.standardUserDefaults().setValue(nil, forKey: "id")
@@ -179,7 +197,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
             "email" : NSUserDefaults.standardUserDefaults().valueForKey("email")!,
             ]
         loading.mode = MBProgressHUDModeIndeterminate
-        SigninOperaion.verification(userInfo, completionClosure: { (response: AnyObject) -> () in
+        SigninOperation.verification(userInfo, completionClosure: { (response: AnyObject) -> () in
             let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
             let user: User  = User.initWithArray(admin)[0] as! User
             appDelegate.currentUser = user
@@ -259,7 +277,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
             let userInfo = [
                 "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id")!,
                 ]
-            SigninOperaion.get_requests(userInfo, completionClosure: { response in
+            SigninOperation.get_requests(userInfo, completionClosure: { response in
                 let storyboard = UIStoryboard(name: "Login", bundle: nil)
                 let destinationVC = storyboard.instantiateViewControllerWithIdentifier("OrderNumberID") as! MyOredrNumberVC
                 destinationVC.myOrderArray = response as! NSArray
@@ -276,7 +294,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
     func crossBtnAction() {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+    /*
     func AppShareAction(sender: AnyObject) {
         let textToShare: String = "Brill Creation, now another plateform for online shopping in bulk, please go through this URL"
         let urlToShare: NSURL = NSURL(string: "http://brillcreations.com/brill/bcreation")!
@@ -288,6 +306,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
         activityVC.popoverPresentationController?.sourceView = sender as? UIView
         self.presentViewController(activityVC, animated: true, completion: nil)
         activityVC.completionWithItemsHandler = {(activityType: String?, ok: Bool, items: [AnyObject]?, err:NSError?) -> Void in
+            self.viewWillAppear(true)// Call this method here to deselect row at indexPathForSelectedRow, while dismiss the UIActivityViewController
             if activityType == UIActivityTypeMail {
                 if self.messageComposerObj.canSendMail() {
                     return
@@ -296,10 +315,60 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UIImageP
                 }
             }
         }
+        
     }
     
     func showSendMailErrorAlert() {
         let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
         sendMailErrorAlert.show()
+    }*/
+    
+    ////
+    
+    func AppShareAction(sender: AnyObject) {
+        let textToShare: String = "Brill Creation, a new plateform for online shopping in bulk, please go through this URL"
+        let urlToShare = NSString(string: "http://brillcreations.com") as String
+        //let imageToShare: UIImage = UIImage(named: "appImg.png")!
+        let shareActionSheet: UIAlertController = UIAlertController(title: NSLocalizedString("Brill Creation", comment: ""), message: "Share our App through these Social Networks", preferredStyle:UIAlertControllerStyle.ActionSheet)
+        shareActionSheet.addAction(UIAlertAction(title:"Share on Facebook", style:UIAlertActionStyle.Default, handler:{ action in
+            //let fbUrlStr = NSString(format:"%@webservices/openDeepLink/%@/%@", hostURL, "new_post_in_building") as String
+            self.shareOnFacebook(self, ShareText: textToShare, linkToShare: urlToShare)
+            
+        }))
+        shareActionSheet.addAction(UIAlertAction(title:"Share on Twitter", style:UIAlertActionStyle.Default, handler:{ action in
+            self.shareOnTwitter(self, ShareText: textToShare, linkToShare: urlToShare)
+        }))
+        shareActionSheet.addAction(UIAlertAction(title:"Cancel", style:UIAlertActionStyle.Cancel, handler:nil))
+        presentViewController(shareActionSheet, animated: true, completion: nil)
     }
+    
+    func shareOnFacebook(viewController: UIViewController, ShareText: String, linkToShare: String) {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
+            let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            facebookSheet.addImage(UIImage(named: "appImage.png")!)
+            facebookSheet.setInitialText(ShareText)
+            facebookSheet.addURL(NSURL( string: linkToShare)!)
+            viewController.presentViewController(facebookSheet, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share our App.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            viewController.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func shareOnTwitter(viewController: UIViewController, ShareText: String, linkToShare: String) {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+            let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            twitterSheet.setInitialText(ShareText)
+            twitterSheet.addURL(NSURL(string: linkToShare))
+            twitterSheet.addImage(UIImage(named: "appImage.png"))
+            viewController.presentViewController(twitterSheet, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share our App.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            viewController.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    ////
 }
