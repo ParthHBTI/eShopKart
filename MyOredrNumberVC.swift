@@ -47,7 +47,7 @@ class MyOredrNumberVC: UITableViewController {
         let userInfo = [
             "order_id" : self.myOrderArray.objectAtIndex(indexPath.row)["order_id"] as! String
         ]
-        SigninOperaion.get_request_details(userInfo, completionClosure: { response in
+        SigninOperation.get_request_details(userInfo, completionClosure: { response in
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
             let destinationVC = storyboard.instantiateViewControllerWithIdentifier("MyOrdersIdentityID1") as! MyOrdersTableVC
             let total = self.myOrderArray.objectAtIndex(indexPath.row)["total_ordered_item"]

@@ -42,6 +42,7 @@ class FeedbackViewController: TextFieldViewController {
     }
     
     @IBAction func submitAction(sender: AnyObject) {
+        //self.submitBtn.showsTouchWhenHighlighted = true
         let subStr = self.subTxtField.text!
         let feedbackStr = self.feedbackTxtView.text!
         let charSet = NSCharacterSet.whitespaceCharacterSet()
@@ -69,7 +70,7 @@ class FeedbackViewController: TextFieldViewController {
                     "subject" : subTxtField.text!,
                     "message" : feedbackTxtView.text!
                 ]
-                SigninOperaion.userFeedback(feedbackInfo, completionClosure: { (response: AnyObject) -> () in
+                SigninOperation.userFeedback(feedbackInfo, completionClosure: { (response: AnyObject) -> () in
                     print(response)
                 }) { (error:NSError) -> () in
                     let loading = MBProgressHUD.showHUDAddedTo(self.view, animated: true)

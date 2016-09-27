@@ -29,7 +29,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
                     let userInfo = [
                         "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id") as! String,
                     ]
-                    SigninOperaion.get_address(userInfo, completionClosure: { response in
+                    SigninOperation.get_address(userInfo, completionClosure: { response in
                         print(response)
                         self.addressArray.removeAllObjects()
                         let values = (response as? NSArray)!
@@ -49,7 +49,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
         let userInfo = [
             "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id") as! String,
             ]
-        SigninOperaion.get_address(userInfo, completionClosure: { response in
+        SigninOperation.get_address(userInfo, completionClosure: { response in
             print(response)
             self.addressArray.removeAllObjects()
             let values = (response as? NSArray)!
@@ -214,7 +214,7 @@ class AddressViewController: UIViewController, UITableViewDelegate, UIScrollView
                 "user_id" : NSUserDefaults.standardUserDefaults().valueForKey("id")!,
                 "address_id" : id! as String
             ]
-            SigninOperaion.delete_address(userInfo, completionClosure: { response in
+            SigninOperation.delete_address(userInfo, completionClosure: { response in
                 var values: AnyObject = []
                 values = response as! NSArray
                 print(sender.tag)

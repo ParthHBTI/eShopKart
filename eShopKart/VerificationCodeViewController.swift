@@ -44,7 +44,7 @@ class VerificationCodeViewController: TextFieldViewController {
                 ]
             print(userInfo["email"])
             loading.mode = MBProgressHUDModeIndeterminate
-            SigninOperaion.getOtp(userInfo, completionClosure: { (response: AnyObject) -> () in
+            SigninOperation.getOtp(userInfo, completionClosure: { (response: AnyObject) -> () in
                 let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
                 let user: User  = User.initWithArray(admin)[0] as! User
                 appDelegate.currentUser = user

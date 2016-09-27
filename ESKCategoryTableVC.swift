@@ -24,7 +24,7 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
         let userInfo = [
             "1" : "1"
         ]
-        SigninOperaion.get_categories(userInfo, completionClosure: { response in
+        SigninOperation.get_categories(userInfo, completionClosure: { response in
             self.responseArr = response as! NSMutableArray
             self.categoryTblView.reloadData()
         }) { (error: NSError) -> () in
@@ -38,6 +38,11 @@ class ESKCategoryTableVC: BaseViewController,UITableViewDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        //categoryTblView.deselectRowAtIndexPath(categoryTblView.indexPathForSelectedRow!, animated: true)
+        let indexPath = self.categoryTblView.indexPathForSelectedRow
+        if (indexPath != nil) {
+            self.categoryTblView.deselectRowAtIndexPath(indexPath!, animated: animated)
+        }
         self.navigationItem.leftItemsSupplementBackButton = false
     }
     

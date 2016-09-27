@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class SigninOperaion: BaseOperation, OperationDelegate {
+class SigninOperation: BaseOperation, OperationDelegate {
     
     class func signup(userInfo: NSDictionary, completionClosure: (AnyObject) -> (), havingError:(NSError) -> ()) -> () {
         let urlstr = bcConfig.sharedInstance.urlForKey("signup")

@@ -19,6 +19,10 @@
 		046B8EC31CEDD2470024EF0E /* ESKLoginSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */; };
 		046C45DB1CE5E40F00C8D13C /* CartItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */; };
 		046FB5E81D0160D60059F904 /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FB5E71D0160D60059F904 /* SignUPViewController.swift */; };
+		04795BCB1D8A8F1600FD681E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04795BC81D8A8F1600FD681E /* FBSDKCoreKit.framework */; };
+		04795BCC1D8A8F1600FD681E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04795BC91D8A8F1600FD681E /* FBSDKLoginKit.framework */; };
+		04795BCD1D8A8F1600FD681E /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04795BCA1D8A8F1600FD681E /* FBSDKShareKit.framework */; };
+		04795BCF1D8A8F6600FD681E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04795BCE1D8A8F6600FD681E /* Bolts.framework */; };
 		0489B50E1D45D07500F2AC34 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0489B50D1D45D07500F2AC34 /* CoreLocation.framework */; };
 		0489B5101D45D09200F2AC34 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0489B50F1D45D09200F2AC34 /* AddressBookUI.framework */; };
 		04A022421CEC47690002B3D1 /* EKartSideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */; };
@@ -54,7 +58,7 @@
 		18FB3F381CF444FE00C2E3D5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB3F371CF444FE00C2E3D5 /* SearchViewController.swift */; };
 		730078D01D13FBE000ECFC91 /* TextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730078CF1D13FBE000ECFC91 /* TextFieldViewController.swift */; };
 		730078D21D13FDB600ECFC91 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730078D11D13FDB600ECFC91 /* User.swift */; };
-		730078D41D13FDF900ECFC91 /* SigninOperaion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730078D31D13FDF900ECFC91 /* SigninOperaion.swift */; };
+		730078D41D13FDF900ECFC91 /* SigninOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730078D31D13FDF900ECFC91 /* SigninOperation.swift */; };
 		730078D61D13FDFF00ECFC91 /* bcConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730078D51D13FDFF00ECFC91 /* bcConfig.swift */; };
 		730078D81D13FE4B00ECFC91 /* VerificationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730078D71D13FE4B00ECFC91 /* VerificationCodeViewController.swift */; };
 		730078DA1D13FEC200ECFC91 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730078D91D13FEC200ECFC91 /* ResetPasswordViewController.swift */; };
@@ -100,6 +104,10 @@
 		046B8EC21CEDD2470024EF0E /* ESKLoginSignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ESKLoginSignUpVC.swift; path = ../ESKLoginSignUpVC.swift; sourceTree = "<group>"; };
 		046C45DA1CE5E40F00C8D13C /* CartItemDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartItemDetailVC.swift; path = ../CartItemDetailVC.swift; sourceTree = "<group>"; };
 		046FB5E71D0160D60059F904 /* SignUPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUPViewController.swift; path = ../SignUPViewController.swift; sourceTree = "<group>"; };
+		04795BC81D8A8F1600FD681E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		04795BC91D8A8F1600FD681E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		04795BCA1D8A8F1600FD681E /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		04795BCE1D8A8F6600FD681E /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		0489B50D1D45D07500F2AC34 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0489B50F1D45D09200F2AC34 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		04A022411CEC47690002B3D1 /* EKartSideMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKartSideMenuManager.swift; path = ../EKartSideMenuManager.swift; sourceTree = "<group>"; };
@@ -139,7 +147,7 @@
 		61B7E42343524F180F2EE1E5 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		730078CF1D13FBE000ECFC91 /* TextFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldViewController.swift; sourceTree = "<group>"; };
 		730078D11D13FDB600ECFC91 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		730078D31D13FDF900ECFC91 /* SigninOperaion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninOperaion.swift; sourceTree = "<group>"; };
+		730078D31D13FDF900ECFC91 /* SigninOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninOperation.swift; sourceTree = "<group>"; };
 		730078D51D13FDFF00ECFC91 /* bcConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bcConfig.swift; sourceTree = "<group>"; };
 		730078D71D13FE4B00ECFC91 /* VerificationCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationCodeViewController.swift; sourceTree = "<group>"; };
 		730078D91D13FEC200ECFC91 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -175,9 +183,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04795BCD1D8A8F1600FD681E /* FBSDKShareKit.framework in Frameworks */,
 				0489B5101D45D09200F2AC34 /* AddressBookUI.framework in Frameworks */,
+				04795BCB1D8A8F1600FD681E /* FBSDKCoreKit.framework in Frameworks */,
 				0489B50E1D45D07500F2AC34 /* CoreLocation.framework in Frameworks */,
 				18B49E871CF5AAF900B728BF /* MBProgressHUD.framework in Frameworks */,
+				04795BCC1D8A8F1600FD681E /* FBSDKLoginKit.framework in Frameworks */,
+				04795BCF1D8A8F6600FD681E /* Bolts.framework in Frameworks */,
 				18B49E851CF5AAD300B728BF /* AFNetworking.framework in Frameworks */,
 				74A51CC8A3AE332317F4C0AC /* Pods_BrillCreation.framework in Frameworks */,
 			);
@@ -317,7 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				18F56BA81CFD5A6500CFB052 /* BaseOperation.swift */,
-				730078D31D13FDF900ECFC91 /* SigninOperaion.swift */,
+				730078D31D13FDF900ECFC91 /* SigninOperation.swift */,
 			);
 			name = Webservices;
 			sourceTree = "<group>";
@@ -348,6 +360,10 @@
 		D48A0526576398153FC56E00 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04795BCE1D8A8F6600FD681E /* Bolts.framework */,
+				04795BC81D8A8F1600FD681E /* FBSDKCoreKit.framework */,
+				04795BC91D8A8F1600FD681E /* FBSDKLoginKit.framework */,
+				04795BCA1D8A8F1600FD681E /* FBSDKShareKit.framework */,
 				0489B50F1D45D09200F2AC34 /* AddressBookUI.framework */,
 				0489B50D1D45D07500F2AC34 /* CoreLocation.framework */,
 				18B49E861CF5AAF900B728BF /* MBProgressHUD.framework */,
@@ -530,7 +546,7 @@
 				18FB3F381CF444FE00C2E3D5 /* SearchViewController.swift in Sources */,
 				043694631CE465DC000868CE /* BaseViewController.swift in Sources */,
 				180B482D1CF2C74100B5808C /* HomeViewController.swift in Sources */,
-				730078D41D13FDF900ECFC91 /* SigninOperaion.swift in Sources */,
+				730078D41D13FDF900ECFC91 /* SigninOperation.swift in Sources */,
 				04358D991D48BD6D00CB24A8 /* MyOrderNumberCell.swift in Sources */,
 				73CFD22D1D3DFC58008D0AC5 /* ProfileSettingViewController.swift in Sources */,
 				730078D21D13FDB600ECFC91 /* User.swift in Sources */,
@@ -673,6 +689,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = eShopKart/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -701,6 +718,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = eShopKart/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

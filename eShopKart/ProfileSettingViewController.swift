@@ -130,7 +130,7 @@ class ProfileSettingViewController: TextFieldViewController {
                     "mobile" : mobNumberTxtField!.text!,
                     "email" : emailTxtField!.text!
                 ]
-                SigninOperaion.editProfile(userInfo, completionClosure: { response in
+                SigninOperation.editProfile(userInfo, completionClosure: { response in
                     let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
                     let user: User  = User.initWithArray(admin)[0] as! User
                     appDelegate.currentUser = user
@@ -197,7 +197,15 @@ class ProfileSettingViewController: TextFieldViewController {
                 return prospectiveText.characters.count <= 30
                 
             case mobNumberTxtField:
-                return prospectiveText.characters.count <= 10
+                //return prospectiveText.characters.count <= 10
+                if prospectiveText.characters.count <= 10 {
+                    mobNumberTxtField.addBorderWithColor(UIColor.clearColor(), borderWidth: 0.0)
+                    return true
+                }
+                else {
+                    mobNumberTxtField.addBorderWithColor(UIColor.redColor(), borderWidth: 1.0)
+                    return true
+                }
             default:
                 return true
             }
@@ -207,7 +215,7 @@ class ProfileSettingViewController: TextFieldViewController {
         return true
     }
     
-    /*override func textFieldDidBeginEditing(textField: UITextField) {
+   /*override func textFieldDidBeginEditing(textField: UITextField) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileSettingViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
     }*/
     

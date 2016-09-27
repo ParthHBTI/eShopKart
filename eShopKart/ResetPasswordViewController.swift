@@ -48,7 +48,7 @@ class ResetPasswordViewController: TextFieldViewController {
                 "email" : NSUserDefaults.standardUserDefaults().valueForKey("email") as! String,
                 "password" : newPassTextField.text! as String               ]
             loading.mode = MBProgressHUDModeIndeterminate
-            SigninOperaion.forgotPassword(userInfo, completionClosure: { (response: AnyObject) -> () in
+            SigninOperation.forgotPassword(userInfo, completionClosure: { (response: AnyObject) -> () in
                 let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
                 let user: User  = User.initWithArray(admin)[0] as! User
                 appDelegate.currentUser = user

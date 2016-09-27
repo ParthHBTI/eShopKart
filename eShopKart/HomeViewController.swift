@@ -98,7 +98,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
             let userInfo = [
                 "keyword" : searchText,
                 ]
-            SigninOperaion.search(userInfo, completionClosure: { response in
+            SigninOperation.search(userInfo, completionClosure: { response in
                 print(response)
                 self.loadData(response as! NSArray)
                 //self.performSelector(#selector(HomeViewController.loadData(_:)), withObject: response, afterDelay:0)
@@ -134,7 +134,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         let userInfo = [
             "product_id" : id as! String
             ] as NSDictionary
-        SigninOperaion.get_product_details(userInfo, completionClosure: { response in
+        SigninOperation.get_product_details(userInfo, completionClosure: { response in
             print(response)
             var values = NSArray()
             values = response.valueForKey("Gallery")! as! NSArray

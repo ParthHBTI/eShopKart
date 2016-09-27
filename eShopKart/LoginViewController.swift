@@ -8,16 +8,26 @@
 
 import UIKit
 import AFNetworking
+import FBSDKLoginKit
+import FBSDKCoreKit
 
-class LoginViewController: TextFieldViewController {
+class LoginViewController: TextFieldViewController, FBSDKLoginButtonDelegate {
     
     @IBOutlet var emailMobileTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet weak var logInBtn: UIButton!
     @IBOutlet weak var forgetBtn: UIButton!
-    
+    var isLoginWithAlert:Bool = false
+    @IBOutlet weak var loginButton: FBSDKLoginButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        loginButton.delegate = self
+        loginButton.setImage(UIImage(named:"login_with_fb"), forState: .Normal)
+        if isLoginWithAlert {
+            navigationItem.leftBarButtonItem = nil
+            //navigationItem.setHidesBackButton(true, animated: true)
+        }
+        //loginButton = (loginButton1 as? FBSDKLoginButton)!
         self.title = "Log In"
         self.emailMobileTextField.setLeftImage(UIImage(named: "icon_user.png")!)
         self.passwordTextField.setLeftImage(UIImage(named: "icon_password.png")!)
@@ -50,7 +60,7 @@ class LoginViewController: TextFieldViewController {
                 ]
                 loading.mode = MBProgressHUDModeIndeterminate
                 loading.yOffset = -55.0
-                SigninOperaion.signin(userInfo, completionClosure: { (response: AnyObject) -> () in
+                SigninOperation.signin(userInfo, completionClosure: { (response: AnyObject) -> () in
                     let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
                     let user: User  = User.initWithArray(admin)[0] as! User
                     appDelegate.currentUser = user
@@ -114,7 +124,7 @@ class LoginViewController: TextFieldViewController {
                 ]
                 loading.mode = MBProgressHUDModeIndeterminate
                 loading.yOffset = -55.0
-                SigninOperaion.verification(userInfo, completionClosure: { (response: AnyObject) -> () in
+                SigninOperation.verification(userInfo, completionClosure: { (response: AnyObject) -> () in
                     let admin = NSArray(object: response.valueForKey("User") as! NSDictionary)
                     let user: User  = User.initWithArray(admin)[0] as! User
                     appDelegate.currentUser = user
@@ -152,6 +162,44 @@ class LoginViewController: TextFieldViewController {
         }
     }
     
+    @IBAction func facebookLogin(sender: AnyObject) {
+        
+        print("testing")
+    }
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        
+        fetchProfile()
+    }
+    
+    
+    func fetchProfile() {
+        let parameters = ["fields": "email, first_name, last_name, picture.type(large)"]
+        FBSDKGraphRequest(graphPath: "me", parameters: parameters).startWithCompletionHandler({ (connection, user, requestError) -> Void in
+            
+            if requestError != nil {
+                print(requestError)
+                return
+            }
+            
+            let email = user["email"] as? String
+            let firstName = user["first_name"] as? String
+            let lastName = user["last_name"] as? String
+            
+            print("\(email)\n\(firstName)\n\(lastName)")
+            
+            var pictureUrl = ""
+            
+            if let picture = user["picture"] as? NSDictionary, data = picture["data"] as? NSDictionary, url = data["url"] as? String {
+                pictureUrl = url
+            }
+            
+        })
+    }
+
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("User Logged Out")
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
